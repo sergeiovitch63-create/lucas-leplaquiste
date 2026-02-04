@@ -1,0 +1,120 @@
+import Image from "next/image";
+import Link from "next/link";
+import { PhoneFrame } from "../../components/PhoneFrame";
+import { site } from "../../config/site";
+import { MadeByPublox } from "../../components/MadeByPublox";
+
+const doublagesImages = [
+  "doublages-1.jpg",
+  "doublages-2.jpg",
+  "doublages-3.jpg",
+  "doublages-4.jpg",
+  "doublages-5.jpg",
+  "doubalges-6.jpg", // Note: nom exact du fichier (faute de frappe dans le fichier)
+  "doublages-7.jpg",
+];
+
+export default function DoublagesPage() {
+  return (
+    <div
+      className="relative min-h-[100dvh] w-full overflow-x-hidden text-white"
+      style={{
+        background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
+      }}
+    >
+      {/* Subtle grain texture */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 flex w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
+        <PhoneFrame compact>
+          <div className="w-full space-y-6">
+            {/* Bouton retour */}
+            <div className="flex items-center justify-start">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1 text-xs font-medium text-white/80 underline-offset-4 hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                aria-label="Retour à la page principale"
+              >
+                <span aria-hidden>←</span>
+                <span>Retour</span>
+              </Link>
+            </div>
+
+            {/* Logo en haut */}
+            <div className="flex justify-center mt-2">
+              <div className="relative h-20 w-20">
+                <Image
+                  src="/media/services/logo.png"
+                  alt={site.brandName}
+                  fill
+                  sizes="80px"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Titre "Doublages" */}
+            <div className="flex justify-center -mt-1">
+              <h1 className="text-lg font-semibold text-white text-center">
+                Doublages
+              </h1>
+            </div>
+
+            {/* Texte descriptif */}
+            <div className="mx-auto max-w-[420px] text-center">
+              <p className="text-[14px] leading-relaxed text-white/90">
+                Doublage de murs en placo pour des surfaces planes, propres et
+                prêtes à recevoir les finitions.
+              </p>
+            </div>
+
+            {/* Galerie d'images */}
+            <div className="mx-auto grid max-w-[420px] grid-cols-2 gap-3">
+              {doublagesImages.map((imageName, index) => {
+                const isLast = index === doublagesImages.length - 1;
+                return (
+                  <div
+                    key={index}
+                    className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-md ${
+                      isLast ? "col-span-2 justify-self-center w-[calc(50%-0.375rem)]" : ""
+                    }`}
+                  >
+                    <Image
+                      src={`/media/services/${imageName}`}
+                      alt={`Doublage ${index + 1}`}
+                      fill
+                      sizes="(max-width: 420px) 50vw, 200px"
+                      className="object-cover"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Bouton Contacter nous */}
+            <div className="mx-auto max-w-[420px] pt-2">
+              <a
+                href={site.telLink}
+                className="flex h-[54px] w-full items-center justify-center gap-2.5 rounded-2xl border-t border-white/10 bg-white/15 px-4 backdrop-blur-xl text-sm font-medium text-white shadow-[0_10px_25px_rgba(0,0,0,0.18)] transition-all duration-200 hover:bg-white/20 hover:-translate-y-[1px] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-0"
+                aria-label="Contacter nous"
+              >
+                Contactez-nous
+              </a>
+            </div>
+
+            <MadeByPublox />
+          </div>
+        </PhoneFrame>
+      </div>
+    </div>
+  );
+}
+
+

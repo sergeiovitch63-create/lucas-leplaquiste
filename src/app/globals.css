@@ -5,6 +5,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Couleur bleue exacte du logo */
+  --logo-blue: #021C43;
+  --logo-blue-light: #021F4A;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +21,75 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-color: rgba(55, 65, 81, 0.9) transparent;
+  scrollbar-width: thin;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  @keyframes call-shake-burst {
+    0% {
+      transform: translate(0, 0) rotate(0);
+    }
+    5% {
+      transform: translate(-1px, 1px) rotate(-0.5deg);
+    }
+    10% {
+      transform: translate(1px, -1px) rotate(0.5deg);
+    }
+    15% {
+      transform: translate(-1px, -1px) rotate(-0.5deg);
+    }
+    20% {
+      transform: translate(1px, 1px) rotate(0.5deg);
+    }
+    25% {
+      transform: translate(-1px, 0) rotate(-0.5deg);
+    }
+    30% {
+      transform: translate(1px, 0) rotate(0.5deg);
+    }
+    35% {
+      transform: translate(-1px, 1px) rotate(-0.5deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(0.5deg);
+    }
+    45% {
+      transform: translate(-1px, 0) rotate(0);
+    }
+    50% {
+      transform: translate(0, 0) rotate(0);
+    }
+    100% {
+      transform: translate(0, 0) rotate(0);
+    }
+  }
+
+  .animate-call-shake-burst {
+    animation: call-shake-burst 2s linear infinite;
+  }
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.85);
+    border-radius: 9999px;
   }
 }

@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Lucas Le Plaquiste – Linktree premium (Next.js 14)
 
-## Getting Started
+Mini-site type Linktree construit avec **Next.js 14 App Router**, **TypeScript strict** et **TailwindCSS**, optimisé mobile-first pour une carte de liens premium.
 
-First, run the development server:
+### Démarrage local
+
+- **Installer les dépendances**:
+
+```bash
+npm install
+```
+
+- **Lancer le serveur de dev**:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvre `http://localhost:3000` dans ton navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Déploiement sur Vercel (rapide)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Pousser ce repo sur GitHub / GitLab.
+2. Aller sur Vercel et **importer le projet**.
+3. Dans les variables d’environnement Vercel, définir:
+   - `NEXT_PUBLIC_SITE_URL=https://ton-domaine.vercel.app` (ou ton domaine custom)
+4. Lancer le déploiement.  
+   Vercel détecte automatiquement Next.js 14 et configure le build.
 
-## Learn More
+### Configuration du contenu (`src/config/site.ts`)
 
-To learn more about Next.js, take a look at the following resources:
+Tout le contenu métier est centralisé dans `src/config/site.ts`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Identité**:
+  - `brandName`
+  - `tagline`
+  - `locationText`
+  - numéros / liens: `phoneNumber`, `telLink`, `whatsAppNumber`, `waLink`
+  - liens externes: `facebookUrl?`, `googleMapsUrl`
+- **SEO / preview**:
+  - `seo.title`, `seo.description`
+  - `og.image` (utilisé pour fallback, l’OG principal vient de la route `/og`)
+- **Liens Linktree**:
+  - `links: SiteLink[]` – ordre et icônes de chaque bouton.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pour ajouter / modifier un lien:
 
-## Deploy on Vercel
+1. Éditer `site.links` dans `src/config/site.ts`.
+2. Définir `id`, `title`, `href`, `type` (`"internal" | "external" | "action"`), et `iconKey` si besoin.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Images à remplacer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dans `/public`, tu peux remplacer les placeholders par de vrais visuels:
+
+- **Background**: `public/bg.jpg`  
+  - Image de fond plein écran (fond chantier, texture mur, etc.).
+  - Utilisée par `BackgroundShell` comme image de background.
+- **Avatar**: `public/avatar.jpg`  
+  - Portrait ou logo de Lucas.
+  - Utilisé par `ProfileHeader`. Si absent ou en erreur, un fallback avec initiales est affiché.
+- **Favicon / icône**:
+  - `public/icon.png` – favicon minimal référencé dans `layout.tsx`.
+  - Optionnellement, tu peux ajouter un vrai `favicon.ico` si tu le souhaites.
+
+### Variables d’environnement
+
+Le projet utilise:
+
+- `NEXT_PUBLIC_SITE_URL`  
+  - Utilisé par `robots.ts` et `sitemap.ts` pour générer les URLs complètes.
+  - **En production (Vercel)**, définis-le sur `https://ton-domaine.vercel.app` ou ton domaine custom.
+  - **En local**, si non défini, un fallback `http://localhost:3000` est utilisé automatiquement.
+
+Un exemple de fichier `.env.example` doit contenir au minimum:
+
+```env
+NEXT_PUBLIC_SITE_URL=
+```
+
+Copie ce fichier en `.env.local` et renseigne l’URL adaptée à ton environnement.
+
