@@ -3,7 +3,6 @@ import { BackgroundShell } from "../../components/BackgroundShell";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { GlassCard } from "../../components/GlassCard";
 import { GoogleReviewsWidget } from "../../components/GoogleReviewsWidget";
-import { MadeByPublox } from "../../components/MadeByPublox";
 
 export default function AvisPage() {
   return (
@@ -33,8 +32,6 @@ export default function AvisPage() {
                 <GoogleReviewsWidget />
               </div>
             </div>
-
-            <MadeByPublox />
           </div>
         </GlassCard>
       </PhoneFrame>

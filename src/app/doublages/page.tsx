@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { site } from "../../config/site";
-import { MadeByPublox } from "../../components/MadeByPublox";
 
 const doublagesImages = [
   "doublages-1.jpg",
@@ -108,8 +107,6 @@ export default function DoublagesPage() {
                 Contactez-nous
               </a>
             </div>
-
-            <MadeByPublox />
           </div>
         </PhoneFrame>
       </div>

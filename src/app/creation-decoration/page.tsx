@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { site } from "../../config/site";
-import { MadeByPublox } from "../../components/MadeByPublox";
 
 const creationDecorationImages = [
   "creation-decoration-1.jpg",
@@ -103,8 +102,6 @@ export default function CreationDecorationPage() {
                 Contactez-nous
               </a>
             </div>
-
-            <MadeByPublox />
           </div>
         </PhoneFrame>
       </div>

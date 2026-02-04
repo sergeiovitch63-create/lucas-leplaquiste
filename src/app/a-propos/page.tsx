@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { site } from "../../config/site";
-import { MadeByPublox } from "../../components/MadeByPublox";
 
 export default function AProposPage() {
   return (
@@ -100,7 +99,16 @@ export default function AProposPage() {
               </div>
             </div>
 
-            <MadeByPublox />
+            {/* Bouton Contacter nous */}
+            <div className="mx-auto max-w-[420px] pt-2">
+              <a
+                href={site.telLink}
+                className="flex h-[54px] w-full items-center justify-center gap-2.5 rounded-2xl border-t border-white/10 bg-white/15 px-4 backdrop-blur-xl text-sm font-medium text-white shadow-[0_10px_25px_rgba(0,0,0,0.18)] transition-all duration-200 hover:bg-white/20 hover:-translate-y-[1px] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-0"
+                aria-label="Contactez-nous"
+              >
+                Contactez-nous
+              </a>
+            </div>
           </div>
         </PhoneFrame>
       </div>
