@@ -70,7 +70,7 @@ export default function FauxPlafondsPage() {
             <div className="mx-auto max-w-[420px] text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
                 Création de faux plafonds en placo, sous charpente ou avec
-                intégration d'ouvertures, avec un travail précis et des finitions
+                intégration d&apos;ouvertures, avec un travail précis et des finitions
                 propres.
               </p>
             </div>

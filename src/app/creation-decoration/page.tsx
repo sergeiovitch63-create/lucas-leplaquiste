@@ -69,7 +69,7 @@ export default function CreationDecorationPage() {
             {/* Texte descriptif */}
             <div className="mx-auto max-w-[420px] text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
-                Création d'éléments en placo entièrement sur mesure, alliant
+                Création d&apos;éléments en placo entièrement sur mesure, alliant
                 fonctionnalité, esthétique et finitions soignées, pour un
                 aménagement intérieur personnalisé et durable.
               </p>

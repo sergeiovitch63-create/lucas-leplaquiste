@@ -63,17 +63,17 @@ export default function AProposPage() {
               <p className="text-[14px] leading-relaxed text-white/90">
                 Plaquiste formé chez les Compagnons du Devoir, avec une approche
                 du métier basée sur la rigueur, la précision et le respect des
-                règles de l'art.
+                règles de l&apos;art.
               </p>
 
               <p className="text-[14px] leading-relaxed text-white/90">
                 Chaque prestation est réalisée avec un souci constant du détail,
                 des supports bien préparés, des alignements précis et des finitions
-                propres, aussi bien en rénovation qu'en construction neuve.
+                propres, aussi bien en rénovation qu&apos;en construction neuve.
               </p>
 
               <p className="text-[14px] leading-relaxed text-white/90">
-                Travail sérieux, chantier propre en fin d'intervention, devis
+                Travail sérieux, chantier propre en fin d&apos;intervention, devis
                 gratuit et intervention locale.
               </p>
             </div>
