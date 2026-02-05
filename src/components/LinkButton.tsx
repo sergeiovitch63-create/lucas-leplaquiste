@@ -10,12 +10,14 @@ interface LinkButtonProps {
 }
 
 function CallHeroCard({ link }: { link: SiteLink }) {
+  const thumbnail = link.thumbnail || "/media/accueil/logo.png";
+  
   return (
     <div className="animate-call-shake-burst group relative w-full overflow-hidden rounded-2xl shadow-[0_10px_25px_rgba(0,0,0,0.18)] transition-all duration-200 hover:-translate-y-[1px] active:scale-[0.99]">
       {/* ZONE 1: Image en haut (bloc distinct, coins arrondis en haut) */}
       <div className="relative h-[175px] w-full overflow-hidden rounded-t-2xl">
         <Image
-          src="/media/accueil/logo.png"
+          src={thumbnail}
           alt=""
           fill
           className="object-cover"

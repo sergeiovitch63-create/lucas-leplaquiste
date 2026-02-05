@@ -4,6 +4,7 @@ export type IconKey =
   | "phone"
   | "whatsapp"
   | "facebook"
+  | "email"
   | "map"
   | "paint"
   | "ceiling"
@@ -45,9 +46,20 @@ export interface SiteConfig {
   links: SiteLink[];
 }
 
+// Mapping des icônes pour chaque lien
+const linkIcons: Record<string, string> = {
+  call: "/media/accueil/logo.png",
+  reviews: "/media/accueil/favicon-avis.png",
+  creation: "/media/accueil/favicon-creation-decoration.jpg",
+  ceilings: "/media/accueil/favicon-faux-plafond.jpg",
+  doublages: "/media/accueil/favicon-doublage.jpg",
+  cloisons: "/media/accueil/favicon-cloison.jpg",
+  about: "/media/accueil/logo.png",
+};
+
 export const site: SiteConfig = {
   brandName: "Lucas Le Plaquiste",
-  tagline: "Zones d’intervention: Occitanie",
+  tagline: "Zones d'intervention: Occitanie",
   locationText: "Occitanie",
   phoneNumber: "+33699156340",
   telLink: "tel:+33699156340",
@@ -70,6 +82,7 @@ export const site: SiteConfig = {
       href: "tel:+33699156340",
       type: "action",
       iconKey: "phone",
+      thumbnail: linkIcons.call,
     },
     {
       id: "reviews",
@@ -77,7 +90,7 @@ export const site: SiteConfig = {
       href: "/avis",
       type: "internal",
       iconKey: "stars",
-      thumbnail: "/media/avis/thumbnail.png",
+      thumbnail: linkIcons.reviews,
     },
     {
       id: "creation",
@@ -85,7 +98,7 @@ export const site: SiteConfig = {
       href: "/creation-decoration",
       type: "internal",
       iconKey: "paint",
-      thumbnail: "/media/avis/thumbnail.png",
+      thumbnail: linkIcons.creation,
     },
     {
       id: "ceilings",
@@ -93,7 +106,7 @@ export const site: SiteConfig = {
       href: "/faux-plafonds",
       type: "internal",
       iconKey: "ceiling",
-      thumbnail: "/media/avis/thumbnail.png",
+      thumbnail: linkIcons.ceilings,
     },
     {
       id: "doublages",
@@ -101,7 +114,7 @@ export const site: SiteConfig = {
       href: "/doublages",
       type: "internal",
       iconKey: "layers",
-      thumbnail: "/media/avis/thumbnail.png",
+      thumbnail: linkIcons.doublages,
     },
     {
       id: "cloisons",
@@ -109,7 +122,7 @@ export const site: SiteConfig = {
       href: "/cloisons",
       type: "internal",
       iconKey: "walls",
-      thumbnail: "/media/avis/thumbnail.png",
+      thumbnail: linkIcons.cloisons,
     },
     {
       id: "about",
@@ -117,12 +130,12 @@ export const site: SiteConfig = {
       href: "/a-propos",
       type: "internal",
       iconKey: "info",
-      thumbnail: "/media/avis/thumbnail.png",
+      thumbnail: linkIcons.about,
     },
   ],
 };
 
-export type QuickActionId = "call" | "whatsapp" | "facebook";
+export type QuickActionId = "call" | "whatsapp" | "facebook" | "email";
 
 export interface QuickAction {
   id: QuickActionId;
@@ -154,6 +167,13 @@ export const getQuickActions = (): QuickAction[] => {
       href: site.facebookUrl!,
       type: "external",
       iconKey: "facebook",
+    },
+    {
+      id: "email",
+      title: "Envoyer un email",
+      href: "mailto:lucasleplaquiste34@gmail.com?subject=Demande%20de%20devis&body=Bonjour%2C%20je%20souhaite%20un%20devis.",
+      type: "action",
+      iconKey: "email",
     },
   ];
 };

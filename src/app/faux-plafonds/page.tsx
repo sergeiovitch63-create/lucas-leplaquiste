@@ -1,15 +1,23 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { site } from "../../config/site";
+import { ImageGallery } from "../../components/ImageGallery";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/media/accueil/favicon-faux-plafond.jpg",
+  },
+};
 
 const fauxPlafondsImages = [
-  "faux-plafond-1.jpg",
-  "faux-plafond-2.jpg",
-  "faux-plafond-3.jpg",
-  "faux-plafond-4.jpg",
-  "faux-plafonnd-5.jpg", // Note: nom exact du fichier (faute de frappe dans le fichier)
-  "faux-plafond-6.jpg",
+  { src: "faux-plafond-1.jpg", alt: "Faux plafond 1" },
+  { src: "faux-plafond-2.jpg", alt: "Faux plafond 2" },
+  { src: "faux-plafond-3.jpg", alt: "Faux plafond 3" },
+  { src: "faux-plafond-4.jpg", alt: "Faux plafond 4" },
+  { src: "faux-plafonnd-5.jpg", alt: "Faux plafond 5" }, // Note: nom exact du fichier (faute de frappe dans le fichier)
+  { src: "faux-plafond-6.jpg", alt: "Faux plafond 6" },
 ];
 
 export default function FauxPlafondsPage() {
@@ -28,6 +36,9 @@ export default function FauxPlafondsPage() {
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
         }}
       />
+
+      {/* Light overlay to brighten the blue background */}
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-white/8" />
 
       {/* Content */}
       <div className="relative z-10 flex w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
@@ -68,34 +79,17 @@ export default function FauxPlafondsPage() {
             {/* Texte descriptif */}
             <div className="mx-auto max-w-[420px] text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
-                Création de faux plafonds en placo, sous charpente ou avec
+                Création de faux plafonds en plaque de plâtre, sous charpente ou avec
                 intégration d&apos;ouvertures, avec un travail précis et des finitions
                 propres.
               </p>
             </div>
 
             {/* Galerie d'images */}
-            <div className="mx-auto grid max-w-[420px] grid-cols-2 gap-3">
-              {fauxPlafondsImages.map((imageName, index) => {
-                const isLast = index === fauxPlafondsImages.length - 1;
-                return (
-                  <div
-                    key={index}
-                    className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-md ${
-                      isLast ? "col-start-2" : ""
-                    }`}
-                  >
-                    <Image
-                      src={`/media/services/${imageName}`}
-                      alt={`Faux plafond ${index + 1}`}
-                      fill
-                      sizes="(max-width: 420px) 50vw, 200px"
-                      className="object-cover"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            <ImageGallery
+              images={fauxPlafondsImages}
+              basePath="/media/services"
+            />
 
             {/* Bouton Contacter nous */}
             <div className="mx-auto max-w-[420px] pt-2">

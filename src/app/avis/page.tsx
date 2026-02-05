@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BackgroundShell } from "../../components/BackgroundShell";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { GlassCard } from "../../components/GlassCard";
 import { GoogleReviewsWidget } from "../../components/GoogleReviewsWidget";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/media/accueil/favicon-avis.png",
+  },
+};
 
 export default function AvisPage() {
   return (

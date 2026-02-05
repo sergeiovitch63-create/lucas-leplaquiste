@@ -1,16 +1,24 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { site } from "../../config/site";
+import { ImageGallery } from "../../components/ImageGallery";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/media/accueil/favicon-doublage.jpg",
+  },
+};
 
 const doublagesImages = [
-  "doublages-1.jpg",
-  "doublages-2.jpg",
-  "doublages-3.jpg",
-  "doublages-4.jpg",
-  "doublages-5.jpg",
-  "doubalges-6.jpg", // Note: nom exact du fichier (faute de frappe dans le fichier)
-  "doublages-7.jpg",
+  { src: "doublages-1.jpg", alt: "Doublage 1" },
+  { src: "doublages-2.jpg", alt: "Doublage 2" },
+  { src: "doublages-3.jpg", alt: "Doublage 3" },
+  { src: "doublages-4.jpg", alt: "Doublage 4" },
+  { src: "doublages-5.jpg", alt: "Doublage 5" },
+  { src: "doubalges-6.jpg", alt: "Doublage 6" }, // Note: nom exact du fichier (faute de frappe dans le fichier)
+  { src: "doublages-7.jpg", alt: "Doublage 7" },
 ];
 
 export default function DoublagesPage() {
@@ -29,6 +37,9 @@ export default function DoublagesPage() {
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
         }}
       />
+
+      {/* Light overlay to brighten the blue background */}
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-white/8" />
 
       {/* Content */}
       <div className="relative z-10 flex w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
@@ -69,33 +80,16 @@ export default function DoublagesPage() {
             {/* Texte descriptif */}
             <div className="mx-auto max-w-[420px] text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
-                Doublage de murs en placo pour des surfaces planes, propres et
+                Doublage de murs en plaque de plâtre pour des surfaces planes, propres et
                 prêtes à recevoir les finitions.
               </p>
             </div>
 
             {/* Galerie d'images */}
-            <div className="mx-auto grid max-w-[420px] grid-cols-2 gap-3">
-              {doublagesImages.map((imageName, index) => {
-                const isLast = index === doublagesImages.length - 1;
-                return (
-                  <div
-                    key={index}
-                    className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-md ${
-                      isLast ? "col-span-2 justify-self-center w-[calc(50%-0.375rem)]" : ""
-                    }`}
-                  >
-                    <Image
-                      src={`/media/services/${imageName}`}
-                      alt={`Doublage ${index + 1}`}
-                      fill
-                      sizes="(max-width: 420px) 50vw, 200px"
-                      className="object-cover"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            <ImageGallery
+              images={doublagesImages}
+              basePath="/media/services"
+            />
 
             {/* Bouton Contacter nous */}
             <div className="mx-auto max-w-[420px] pt-2">

@@ -1,7 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneFrame } from "../../components/PhoneFrame";
 import { site } from "../../config/site";
+import { ImageGallery } from "../../components/ImageGallery";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/media/accueil/logo.png",
+  },
+};
+
+const aProposImages = [
+  { src: "a-propos-1.jpg", alt: "Travaux de plâtrerie - Véranda avec toit vitré" },
+  { src: "a-propos-2.jpg", alt: "Travaux de plâtrerie - Chantier en cours" },
+];
 
 export default function AProposPage() {
   return (
@@ -19,6 +32,9 @@ export default function AProposPage() {
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
         }}
       />
+
+      {/* Light overlay to brighten the blue background */}
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-white/8" />
 
       {/* Content */}
       <div className="relative z-10 flex min-h-[100dvh] w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+3rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
@@ -78,26 +94,10 @@ export default function AProposPage() {
             </div>
 
             {/* Section images */}
-            <div className="mx-auto grid max-w-[420px] grid-cols-2 gap-3">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
-                <Image
-                  src="/media/a-propos/a-propos-1.jpg"
-                  alt="Travaux de plâtrerie - Véranda avec toit vitré"
-                  fill
-                  sizes="(max-width: 420px) 50vw, 200px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
-                <Image
-                  src="/media/a-propos/a-propos-2.jpg"
-                  alt="Travaux de plâtrerie - Chantier en cours"
-                  fill
-                  sizes="(max-width: 420px) 50vw, 200px"
-                  className="object-cover"
-                />
-              </div>
-            </div>
+            <ImageGallery
+              images={aProposImages}
+              basePath="/media/a-propos"
+            />
 
             {/* Bouton Contacter nous */}
             <div className="mx-auto max-w-[420px] pt-2">
