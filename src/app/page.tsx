@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <BackgroundShell priority backgroundImage="/media/accueil/fond-ecran.jpg">
+    <BackgroundShell>
       <PhoneFrame>
-        <GlassCard>
+        <GlassCard backgroundImage="/media/accueil/fond-ecrans.jpg">
           <div className="space-y-7">
             <ProfileHeader />
             <LinkList />

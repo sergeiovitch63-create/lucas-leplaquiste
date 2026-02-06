@@ -32,10 +32,8 @@ export function BackgroundShell({
         </div>
       )}
 
-      {/* Dark overlay + blur (only if backgroundImage is provided) */}
-      {backgroundImage && (
-        <div className="pointer-events-none fixed inset-0 z-10 bg-black/40 backdrop-blur-sm" />
-      )}
+      {/* Dark overlay + blur (always applied for readability) */}
+      <div className="pointer-events-none fixed inset-0 z-10 bg-black/40 backdrop-blur-sm" />
 
       {/* Content */}
       <div className="relative z-20 flex min-h-[100dvh] w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+3rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">

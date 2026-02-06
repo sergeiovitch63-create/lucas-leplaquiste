@@ -21,13 +21,18 @@ export default function CloisonsPage() {
   return (
     <div
       className="relative min-h-[100dvh] w-full overflow-x-hidden text-white"
-      style={{
-        background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
-      }}
     >
+      {/* Blue gradient overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[1]"
+        style={{
+          background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
+        }}
+      />
+
       {/* Subtle grain texture */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+        className="pointer-events-none fixed inset-0 z-[2] opacity-[0.03]"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -35,7 +40,7 @@ export default function CloisonsPage() {
       />
 
       {/* Light overlay to brighten the blue background */}
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-white/8" />
+      <div className="pointer-events-none fixed inset-0 z-[3] bg-white/8" />
 
       {/* Content */}
       <div className="relative z-10 flex w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
@@ -76,9 +81,8 @@ export default function CloisonsPage() {
             {/* Texte descriptif */}
             <div className="mx-auto max-w-[420px] text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
-                Pose de cloisons en plaque de plâtre pour structurer vos espaces : création
-                de pièces, séparation, redistribution, avec un travail propre,
-                des alignements précis et des finitions soignées.
+                Pose de cloisons en plaques de plâtre pour structurer, séparer ou redistribuer vos espaces de vie, avec intégration de solutions d&apos;isolation phonique adaptées.
+                Chaque installation est réalisée avec précision, dans le respect des alignements et des finitions, afin d&apos;offrir un résultat propre, durable et fonctionnel.
               </p>
             </div>
 

@@ -25,13 +25,18 @@ export default function DoublagesPage() {
   return (
     <div
       className="relative min-h-[100dvh] w-full overflow-x-hidden text-white"
-      style={{
-        background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
-      }}
     >
+      {/* Blue gradient overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[1]"
+        style={{
+          background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
+        }}
+      />
+
       {/* Subtle grain texture */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+        className="pointer-events-none fixed inset-0 z-[2] opacity-[0.03]"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -39,7 +44,7 @@ export default function DoublagesPage() {
       />
 
       {/* Light overlay to brighten the blue background */}
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-white/8" />
+      <div className="pointer-events-none fixed inset-0 z-[3] bg-white/8" />
 
       {/* Content */}
       <div className="relative z-10 flex w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
@@ -80,8 +85,8 @@ export default function DoublagesPage() {
             {/* Texte descriptif */}
             <div className="mx-auto max-w-[420px] text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
-                Doublage de murs en plaque de plâtre pour des surfaces planes, propres et
-                prêtes à recevoir les finitions.
+                Doublage de murs en plaques de plâtre avec intégration d&apos;une isolation thermique et acoustique, permettant d&apos;obtenir des surfaces parfaitement planes, propres et prêtes à recevoir tous types de finitions.
+                Une solution idéale pour améliorer l&apos;esthétique, la régularité et le confort de vos espaces intérieurs.
               </p>
             </div>
 

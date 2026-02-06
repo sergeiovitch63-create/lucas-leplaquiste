@@ -20,13 +20,18 @@ export default function AProposPage() {
   return (
     <div
       className="relative min-h-[100dvh] w-full overflow-x-hidden text-white"
-      style={{
-        background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
-      }}
     >
+      {/* Blue gradient overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[1]"
+        style={{
+          background: `linear-gradient(to bottom, var(--logo-blue-light), var(--logo-blue))`,
+        }}
+      />
+
       {/* Subtle grain texture */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+        className="pointer-events-none fixed inset-0 z-[2] opacity-[0.03]"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -34,7 +39,7 @@ export default function AProposPage() {
       />
 
       {/* Light overlay to brighten the blue background */}
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-white/8" />
+      <div className="pointer-events-none fixed inset-0 z-[3] bg-white/8" />
 
       {/* Content */}
       <div className="relative z-10 flex min-h-[100dvh] w-full items-start justify-center px-4 pt-[calc(env(safe-area-inset-top)+3rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)]">
@@ -76,20 +81,20 @@ export default function AProposPage() {
             {/* Contenu texte centré */}
             <div className="mx-auto max-w-[420px] space-y-4 text-center">
               <p className="text-[14px] leading-relaxed text-white/90">
-                Plaquiste formé chez les Compagnons du Devoir, avec une approche
-                du métier basée sur la rigueur, la précision et le respect des
-                règles de l&apos;art.
+                Plaquiste formé chez les compagnons du devoir, avec une approche du métier fondée sur la rigueur, la précision et le respect des règles de l&apos;art.
               </p>
 
               <p className="text-[14px] leading-relaxed text-white/90">
-                Chaque prestation est réalisée avec un souci constant du détail,
-                des supports bien préparés, des alignements précis et des finitions
-                propres, aussi bien en rénovation qu&apos;en construction neuve.
+                Chaque prestation est réalisée avec un souci constant du détail : supports soigneusement préparés, alignements précis et finitions propres, aussi bien en rénovation qu&apos;en construction neuve.
               </p>
 
               <p className="text-[14px] leading-relaxed text-white/90">
-                Travail sérieux, chantier propre en fin d&apos;intervention, devis
-                gratuit et intervention locale.
+                À l&apos;écoute des clients, des conseils et un accompagnement personnalisé sont proposés afin d&apos;apporter des solutions adaptées aux besoins et aux attentes de chaque projet.
+              </p>
+
+              <p className="text-[14px] leading-relaxed text-white/90">
+                Travail sérieux, chantier propre en fin d&apos;intervention.
+                Devis gratuit.
               </p>
             </div>
 
