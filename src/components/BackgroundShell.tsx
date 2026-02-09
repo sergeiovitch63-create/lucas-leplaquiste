@@ -2,13 +2,11 @@ import type { ReactNode } from "react";
 
 interface BackgroundShellProps {
   children: ReactNode;
-  priority?: boolean;
   backgroundImage?: string;
 }
 
 export function BackgroundShell({
   children,
-  priority = false,
   backgroundImage,
 }: BackgroundShellProps) {
   return (
