@@ -3,11 +3,20 @@
 import { useEffect } from "react";
 import Script from "next/script";
 
+// Extend the global Window interface to include Elfsight API
+declare global {
+  interface Window {
+    eapps?: {
+      init: () => void;
+    };
+  }
+}
+
 export function GoogleReviewsWidget() {
   useEffect(() => {
     // Ensure Elfsight platform is loaded and widgets are initialized
-    if (typeof window !== "undefined" && (window as any).eapps) {
-      (window as any).eapps.init();
+    if (typeof window !== "undefined" && window.eapps) {
+      window.eapps.init();
     }
   }, []);
 
@@ -18,8 +27,8 @@ export function GoogleReviewsWidget() {
         strategy="afterInteractive"
         onLoad={() => {
           // Initialize widgets after script loads
-          if (typeof window !== "undefined" && (window as any).eapps) {
-            (window as any).eapps.init();
+          if (typeof window !== "undefined" && window.eapps) {
+            window.eapps.init();
           }
         }}
       />
