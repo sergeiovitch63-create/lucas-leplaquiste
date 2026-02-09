@@ -3,28 +3,41 @@ import type { ReactNode } from "react";
 interface GlassCardProps {
   children: ReactNode;
   className?: string;
+  /**
+   * Optional background image URL.
+   * Pass the same value as the page background to make the card feel like a window.
+   */
   backgroundImage?: string;
 }
 
-export function GlassCard({ children, className, backgroundImage }: GlassCardProps) {
+export function GlassCard({
+  children,
+  className,
+  backgroundImage,
+}: GlassCardProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl border border-white/15 bg-white/5 bg-gradient-to-b from-white/10 via-white/5 to-white/[0.03] shadow-[0_22px_60px_rgba(0,0,0,0.75)] backdrop-blur-2xl ${className ?? ""}`}
-      style={{
-        ...(backgroundImage && {
-          backgroundImage: `url('${backgroundImage}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }),
-      }}
+      className={`relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm ${className ?? ""}`}
     >
-      {/* Internal overlay + highlight */}
-      <div className="pointer-events-none absolute inset-0 z-10 bg-black/10" />
-      <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-b from-black/15 via-transparent to-black/25" />
+      {/* Background image – fully visible, no opacity/filter applied */}
+      {backgroundImage && (
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('${backgroundImage}')`,
+          }}
+          aria-hidden
+        />
+      )}
 
-      {/* Content */}
-      <div className="relative z-30 p-6">{children}</div>
+      {/* Separate overlay layer for readability (does NOT affect the image itself) */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40"
+        aria-hidden
+      />
+
+      {/* Content – always on top */}
+      <div className="relative z-10 p-6">{children}</div>
     </div>
   );
 }
