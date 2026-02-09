@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 
 interface BackgroundShellProps {
@@ -13,23 +12,21 @@ export function BackgroundShell({
   backgroundImage,
 }: BackgroundShellProps) {
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-gradient-to-b from-slate-900 via-zinc-950 to-black text-white">
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden text-white">
       {/* Background image (only if backgroundImage is provided) */}
       {backgroundImage && (
-        <div className="pointer-events-none select-none fixed inset-0 z-0 overflow-hidden">
-          <Image
-            src={backgroundImage}
-            alt=""
-            fill
-            priority={priority}
-            className="object-cover"
-            style={{
-              objectPosition: "center",
-            }}
-            sizes="100vw"
-            aria-hidden
-          />
-        </div>
+        <div
+          className="pointer-events-none select-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('${backgroundImage}')`,
+          }}
+          aria-hidden
+        />
+      )}
+
+      {/* Fallback gradient background if no image is provided */}
+      {!backgroundImage && (
+        <div className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-slate-900 via-zinc-950 to-black" />
       )}
 
       {/* Dark overlay + blur (always applied for readability) */}
