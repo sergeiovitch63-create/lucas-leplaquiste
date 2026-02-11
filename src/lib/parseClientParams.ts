@@ -98,9 +98,9 @@ function parseClientLinks(raw: string | undefined | null): ClientLink[] | null {
         if (!label || !href) return null;
         return { label, href, icon };
       })
-      .filter((x): x is ClientLink => x !== null);
+      .filter((x): x is NonNullable<typeof x> => x !== null);
 
-    return mapped.length ? mapped : null;
+    return mapped.length ? (mapped as ClientLink[]) : null;
   } catch {
     return null;
   }
