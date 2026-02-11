@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { JobPreset } from "@/lib/getPreset";
 import type { ClientParams, ClientLink } from "@/lib/parseClientParams";
 import { Icon } from "./icons";
@@ -8,6 +9,26 @@ interface LucasLikeTemplateProps {
   heroTitle: string;
 }
 
+const ALLOWED_IMAGE_HOSTS = new Set(["images.unsplash.com", "via.placeholder.com"]);
+
+function getSafeImageSrc(
+  rawSrc: string | null | undefined,
+  fallback: string,
+): string {
+  if (!rawSrc) return fallback;
+
+  try {
+    if (rawSrc.startsWith("/")) return rawSrc;
+    const url = new URL(rawSrc);
+    if (!ALLOWED_IMAGE_HOSTS.has(url.hostname)) {
+      return fallback;
+    }
+    return url.toString();
+  } catch {
+    return fallback;
+  }
+}
+
 function buildZoneText(preset: JobPreset, client: ClientParams): string {
   if (client.zone) return client.zone;
   if (preset.defaultZoneText) return preset.defaultZoneText;
@@ -16,20 +37,20 @@ function buildZoneText(preset: JobPreset, client: ClientParams): string {
 }
 
 function buildBgImage(preset: JobPreset, client: ClientParams): string {
-  return (
+  const primary =
     client.bg ||
     preset.defaultBgImage ||
-    "/media/accueil/fond-ecrans.jpg"
-  );
+    "/media/accueil/fond-ecrans.jpg";
+  return getSafeImageSrc(primary, "/media/accueil/fond-ecrans.jpg");
 }
 
 function buildBannerImage(preset: JobPreset, client: ClientParams): string {
-  return (
+  const primary =
     client.banner ||
     client.logo ||
     preset.defaultBannerImage ||
-    "/media/accueil/logo.png"
-  );
+    "/media/accueil/logo.png";
+  return getSafeImageSrc(primary, "/media/accueil/logo.png");
 }
 
 function buildLinks(
@@ -124,16 +145,28 @@ export function LucasLikeTemplate({
             <div className="flex justify-center">
               <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/25 shadow-lg">
                 {client.logo ? (
-                  <img
-                    src={client.logo}
+                  <Image
+                    src={getSafeImageSrc(
+                      client.logo,
+                      preset.defaultBannerImage ||
+                        preset.defaultBgImage ||
+                        "/media/logo-centre.png",
+                    )}
                     alt={name}
-                    className="h-full w-full object-cover"
+                    width={64}
+                    height={64}
+                    className="h-full w-full object-cover rounded-full"
                   />
                 ) : preset.defaultBannerImage || preset.defaultBgImage ? (
-                  <img
-                    src={preset.defaultBannerImage || preset.defaultBgImage!}
+                  <Image
+                    src={getSafeImageSrc(
+                      preset.defaultBannerImage || preset.defaultBgImage!,
+                      "/media/logo-centre.png",
+                    )}
                     alt={preset.jobLabel}
-                    className="h-full w-full object-cover"
+                    width={64}
+                    height={64}
+                    className="h-full w-full object-cover rounded-full"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500 text-sm font-semibold uppercase text-white shadow-inner">
@@ -203,9 +236,11 @@ export function LucasLikeTemplate({
           >
             <div className="relative h-[170px] w-full overflow-hidden bg-[color:var(--logo-blue,#021C43)]">
               {bannerImage && (
-                <img
+                <Image
                   src={bannerImage}
                   alt=""
+                  width={800}
+                  height={340}
                   className="h-full w-full object-cover"
                 />
               )}
@@ -228,10 +263,15 @@ export function LucasLikeTemplate({
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/20">
                     {link.icon ? (
-                      <img
-                        src={link.icon}
+                      <Image
+                        src={getSafeImageSrc(
+                          link.icon,
+                          bannerImage || "/media/logo-centre.png",
+                        )}
                         alt=""
-                        className="h-full w-full object-cover"
+                        width={36}
+                        height={36}
+                        className="h-full w-full object-cover rounded-full"
                       />
                     ) : (
                       <span className="text-xs font-semibold text-white/80">

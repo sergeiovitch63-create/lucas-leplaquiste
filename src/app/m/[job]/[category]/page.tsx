@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPreset, type JobCategory } from "@/lib/getPreset";
@@ -57,12 +58,31 @@ export async function generateMetadata({
   };
 }
 
+const ALLOWED_IMAGE_HOSTS = new Set(["images.unsplash.com", "via.placeholder.com"]);
+
+function getSafeImageSrc(
+  rawSrc: string | null | undefined,
+  fallback: string,
+): string {
+  if (!rawSrc) return fallback;
+  try {
+    if (rawSrc.startsWith("/")) return rawSrc;
+    const url = new URL(rawSrc);
+    if (!ALLOWED_IMAGE_HOSTS.has(url.hostname)) {
+      return fallback;
+    }
+    return url.toString();
+  } catch {
+    return fallback;
+  }
+}
+
 function buildBgImage(presetBg?: string, clientBg?: string | null): string {
-  return (
+  const primary =
     clientBg ||
     presetBg ||
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80"
-  );
+    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80";
+  return getSafeImageSrc(primary, "/media/accueil/fond-ecrans.jpg");
 }
 
 function buildZoneText(presetZone: string | undefined, client: ClientParams): string {
@@ -254,9 +274,14 @@ export default async function Page({ params, searchParams }: PageParams) {
           {/* Hero image */}
           <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/10 shadow-xl">
             <div className="relative h-[180px] w-full overflow-hidden">
-              <img
-                src={category.heroImage}
+              <Image
+                src={getSafeImageSrc(
+                  category.heroImage,
+                  preset.defaultBgImage || "/media/accueil/fond-ecrans.jpg",
+                )}
                 alt={category.label}
+                width={800}
+                height={360}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -310,9 +335,14 @@ export default async function Page({ params, searchParams }: PageParams) {
                     key={index}
                     className="overflow-hidden rounded-xl border border-white/15 bg-white/10"
                   >
-                    <img
-                      src={src}
+                    <Image
+                      src={getSafeImageSrc(
+                        src,
+                        preset.defaultBgImage || "/media/accueil/fond-ecrans.jpg",
+                      )}
                       alt=""
+                      width={240}
+                      height={120}
                       className="h-24 w-full object-cover"
                     />
                   </div>
