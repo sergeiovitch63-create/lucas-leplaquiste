@@ -139,11 +139,6 @@ export default async function Page({ params, searchParams }: PageParams) {
   const bgImage = buildBgImage(preset.defaultBgImage, client.bg);
   const name = client.name || `Votre ${preset.jobLabel}`;
 
-  const phoneHref = client.phone ? `tel:${client.phone}` : null;
-  const whatsappHref = client.whatsapp;
-  const emailHref = client.email ? `mailto:${client.email}` : null;
-  const facebookHref = client.facebook;
-
   const primaryCta = buildPrimaryCtaHref(preset.cta.mode, client, category);
   const backHref = buildBackHref(params.job, usp);
 

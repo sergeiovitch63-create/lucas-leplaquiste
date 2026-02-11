@@ -9,6 +9,7 @@ interface SafeImageProps extends ImageProps {
 
 export default function SafeImage({
   src,
+  alt,
   fallbackSrc = "/media/placeholder.svg",
   ...rest
 }: SafeImageProps) {
@@ -27,6 +28,7 @@ export default function SafeImage({
     <Image
       {...rest}
       src={currentSrc || fallbackSrc}
+      alt={alt ?? ""}
       onError={() => setCurrentSrc(fallbackSrc)}
     />
   );

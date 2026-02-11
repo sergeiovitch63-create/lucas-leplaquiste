@@ -1,7 +1,6 @@
 import type { JobPreset } from "@/lib/getPreset";
 import type { ClientParams, ClientLink } from "@/lib/parseClientParams";
 import { pickImage } from "@/lib/images";
-import { Icon } from "./icons";
 import { QuickActions } from "./QuickActions";
 import SafeImage from "./SafeImage";
 
@@ -111,8 +110,6 @@ export function LucasLikeTemplate({
 
   const phoneHref = client.phone ? `tel:${client.phone}` : null;
   const whatsappHref = client.whatsapp;
-  const facebookHref = client.facebook;
-  const emailHref = client.email ? `mailto:${client.email}` : null;
 
   const ctaLabel =
     client.primaryLabel ||
