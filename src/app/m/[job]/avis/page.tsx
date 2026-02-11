@@ -103,7 +103,7 @@ function buildBgImage(presetBg?: string, clientBg?: string | null): string {
   );
 }
 
-function buildZoneText(presetZone?: string, client: ClientParams): string {
+function buildZoneText(presetZone: string | undefined, client: ClientParams): string {
   if (client.zone) return client.zone;
   if (presetZone) return presetZone;
   if (client.city) return `${client.city} et alentours`;

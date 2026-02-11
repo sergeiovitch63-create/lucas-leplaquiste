@@ -66,7 +66,6 @@ function buildBgImage(presetBg?: string, clientBg?: string | null): string {
 }
 
 function buildZoneText(presetZone: string | undefined, client: ClientParams): string {
-function buildZoneText(presetZone: string | undefined, client: ClientParams): string {
   if (client.zone) return client.zone;
   if (presetZone) return presetZone;
   if (client.city) return `${client.city} et alentours`;
@@ -243,7 +242,7 @@ export default async function Page({ params, searchParams }: PageParams) {
               {emailHref && (
                 <a
                   href={emailHref}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-slate-800 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
+                  className="flex h-9 w-9 items-center justifycenter rounded-full bg-white/85 text-slate-800 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
                   aria-label="Email"
                 >
                   ✉️
