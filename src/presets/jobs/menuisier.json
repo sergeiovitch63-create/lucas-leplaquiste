@@ -1,0 +1,214 @@
+{
+  "jobKey": "menuisier",
+  "jobLabel": "Menuisier",
+  "defaultHeroTagline": "Création, pose et rénovation de menuiseries sur mesure pour votre habitat.",
+  "defaultServices": [
+    { "title": "Agencements sur mesure", "desc": "Placards, dressings, bibliothèques et meubles adaptés à votre intérieur." },
+    { "title": "Menuiseries extérieures", "desc": "Portes, fenêtres, volets, terrasses et bardages en bois." },
+    { "title": "Rénovation menuiserie", "desc": "Réparation d’éléments abîmés, ajustements et finitions." },
+    { "title": "Escaliers & garde-corps", "desc": "Conception et pose d’escaliers sur mesure, sécurisés et esthétiques." },
+    { "title": "Cuisines et plans de travail", "desc": "Aménagements bois ou dérivés pour cuisines chaleureuses et fonctionnelles." },
+    { "title": "Mobilier professionnel", "desc": "Comptoirs, étagères, rangements pour bureaux, commerces et cabinets." }
+  ],
+  "defaultBenefits": [
+    { "title": "Sur-mesure", "desc": "Chaque projet est adapté à vos dimensions, vos goûts et vos contraintes techniques." },
+    { "title": "Matériaux de qualité", "desc": "Essences de bois et panneaux sélectionnés pour leur durabilité." },
+    { "title": "Accompagnement complet", "desc": "Conseils, conception, réalisation en atelier et pose sur site." }
+  ],
+  "defaultFaq": [
+    { "q": "Pouvez-vous vous déplacer pour prendre les mesures ?", "a": "Oui, une visite sur place est prévue avant tout projet sur mesure pour valider les cotes et les contraintes." },
+    { "q": "Proposez-vous des plans ou des vues 3D ?", "a": "Des croquis, plans cotés ou vues 3D peuvent être réalisés pour vous aider à valider le projet." },
+    { "q": "Travaillez-vous uniquement avec du bois massif ?", "a": "Nous utilisons du massif, des panneaux et des matériaux complémentaires selon l’usage et le budget." }
+  ],
+  "defaultBgImage": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80",
+  "defaultBannerImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
+  "defaultZoneText": "Votre ville et alentours",
+  "categories": [
+    {
+      "slug": "agencements-sur-mesure",
+      "label": "Agencements sur mesure",
+      "short": "Optimiser chaque mètre carré avec des rangements adaptés.",
+      "heroImage": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Un bon agencement sur mesure permet d’exploiter pleinement l’espace disponible, même dans les pièces les plus contraignantes.",
+        "Placards, dressings, bibliothèques, meubles TV ou rangements sous escalier : chaque projet est conçu pour répondre à un usage précis.",
+        "Nous travaillons avec vous sur les dimensions, les finitions et les fonctionnalités pour obtenir un résultat à la fois pratique et esthétique."
+      ],
+      "whyUs": [
+        "Prise de cotes précise à domicile.",
+        "Fabrication en atelier et pose soignée sur site.",
+        "Possibilité de coordonner le projet avec d’autres corps de métier (peinture, électricité)."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous travailler à partir d’idées trouvées en ligne ?", "a": "Oui, nous pouvons nous inspirer de vos références pour créer une version adaptée à votre intérieur." },
+        { "q": "Combien de temps entre la prise de mesures et la pose ?", "a": "Selon la charge de l’atelier, il faut compter en moyenne quelques semaines." },
+        { "q": "Les meubles sont-ils démontables ?", "a": "Certains éléments sont démontables, d’autres sont conçus pour rester en place. Nous vous expliquons le fonctionnement lors de la pose." },
+        { "q": "Intervenez-vous en appartement ?", "a": "Oui, nous adaptons la logistique de livraison et de montage aux accès disponibles." },
+        { "q": "Proposez-vous des finitions peintes ou laquées ?", "a": "Oui, plusieurs types de finitions sont possibles selon le rendu souhaité." }
+      ]
+    },
+    {
+      "slug": "menuiseries-exterieures",
+      "label": "Menuiseries extérieures",
+      "short": "Portes, fenêtres et terrasses pour valoriser votre façade.",
+      "heroImage": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les menuiseries extérieures participent au confort thermique, acoustique et esthétique de votre maison.",
+        "Nous réalisons la pose ou le remplacement de portes, fenêtres, volets, terrasses ou bardages en bois, en tenant compte de l’exposition et des contraintes de votre façade.",
+        "Chaque projet est étudié pour concilier durabilité, entretien raisonnable et harmonie avec l’architecture existante."
+      ],
+      "whyUs": [
+        "Conseils sur les essences de bois adaptées à l’extérieur.",
+        "Respect des règles de pose pour une bonne étanchéité.",
+        "Possibilité de coordonner les teintes avec vos menuiseries existantes."
+      ],
+      "faq": [
+        { "q": "Proposez-vous aussi du PVC ou de l’aluminium ?", "a": "Nous pouvons intégrer d’autres matériaux si le projet le nécessite, ou collaborer avec des partenaires spécialisés." },
+        { "q": "Les terrasses en bois demandent-elles beaucoup d’entretien ?", "a": "Un entretien régulier prolonge leur durée de vie. Nous vous donnons des conseils simples à appliquer." },
+        { "q": "Pouvez-vous remplacer à l’identique d’anciennes menuiseries ?", "a": "Nous faisons au mieux pour nous approcher du style existant, notamment en secteur protégé." },
+        { "q": "Intervenez-vous en copropriété ?", "a": "Oui, en respectant les règles de façade définies par la copropriété." },
+        { "q": "Les menuiseries sont-elles garanties ?", "a": "Nos réalisations et les fournitures associées bénéficient de garanties. Les conditions vous sont présentées avant la commande." }
+      ]
+    },
+    {
+      "slug": "renovation-menuiserie",
+      "label": "Rénovation menuiserie",
+      "short": "Redonner vie à vos ouvrages en bois existants.",
+      "heroImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Plutôt que de tout remplacer, certaines menuiseries peuvent être réparées, ajustées ou modernisées.",
+        "Nous intervenons sur les portes, fenêtres, escaliers, volets ou meubles intégrés pour corriger les jeux, remplacer des pièces et améliorer l’ergonomie.",
+        "Ces interventions prolongent la durée de vie de vos ouvrages et préservent le charme de l’existant."
+      ],
+      "whyUs": [
+        "Diagnostic précis de ce qui peut être conservé ou non.",
+        "Interventions ciblées pour limiter les coûts.",
+        "Respect de l’esthétique d’origine autant que possible."
+      ],
+      "faq": [
+        { "q": "Intervenez-vous sur des boiseries anciennes ?", "a": "Oui, sous réserve de la solidité structurelle. Une visite permet de juger de la faisabilité." },
+        { "q": "Pouvez-vous adapter d’anciens meubles encastrés ?", "a": "Dans de nombreux cas, oui. Nous étudions les adaptations possibles sur place." },
+        { "q": "Les travaux génèrent-ils beaucoup de poussière ?", "a": "Nous protégeons au maximum les zones de travail et nettoyons après notre passage." },
+        { "q": "Faites-vous aussi de petites réparations ?", "a": "Oui, même un ajustement ponctuel peut faire partie de notre intervention." },
+        { "q": "Peut-on moderniser la finition d’un meuble existant ?", "a": "Nous pouvons envisager un ponçage et une nouvelle finition selon l’état du support." }
+      ]
+    },
+    {
+      "slug": "escaliers-garde-corps",
+      "label": "Escaliers & garde-corps",
+      "short": "Sécuriser et mettre en valeur vos circulations.",
+      "heroImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "L’escalier est un élément central autant fonctionnel que décoratif. Un projet sur mesure permet de concilier confort de marche, sécurité et esthétique.",
+        "Nous concevons et posons des escaliers droits, tournants ou à pas décalés, en bois seul ou associé à d’autres matériaux.",
+        "Les garde-corps sont pensés pour sécuriser les hauteurs tout en laissant passer la lumière."
+      ],
+      "whyUs": [
+        "Étude des contraintes d’encombrement et de hauteur.",
+        "Fabrication sur mesure en atelier.",
+        "Pose soignée avec attention portée aux finitions."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous remplacer un escalier existant ?", "a": "Oui, en tenant compte de la trémie existante et des contraintes structurelles." },
+        { "q": "Faites-vous des escaliers pour les combles ?", "a": "Nous étudions les solutions possibles pour accéder à vos combles de manière confortable." },
+        { "q": "Les garde-corps respectent-ils les normes ?", "a": "Oui, nous respectons les hauteurs et écartements de sécurité en vigueur." },
+        { "q": "Puis-je voir un visuel avant fabrication ?", "a": "Des croquis ou visuels peuvent être présentés pour valider le design." },
+        { "q": "Intervenez-vous en rénovation partielle (remplacement de rampes) ?", "a": "Oui, nous pouvons moderniser uniquement certaines parties de votre escalier." }
+      ]
+    },
+    {
+      "slug": "cuisines-plans-travail",
+      "label": "Cuisines & plans de travail",
+      "short": "Des surfaces de travail pratiques et agréables au quotidien.",
+      "heroImage": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "La cuisine est une pièce de vie à part entière. Un agencement sur mesure permet de gagner en fluidité et en confort d’utilisation.",
+        "Nous réalisons des meubles bas, hauts, colonnes et plans de travail adaptés à vos appareils et à vos habitudes.",
+        "Bois, stratifié, panneaux mélaminés ou finitions spécifiques : les matériaux sont choisis avec vous en fonction du rendu et de l’entretien souhaités."
+      ],
+      "whyUs": [
+        "Prise en compte de l’ergonomie globale de la cuisine.",
+        "Adaptation aux contraintes existantes (arrivées d’eau, évacuations, prises).",
+        "Possibilité de travailler en coordination avec votre cuisiniste ou votre architecte."
+      ],
+      "faq": [
+        { "q": "Intervenez-vous uniquement pour la partie bois ?", "a": "Nous pouvons concentrer notre intervention sur les éléments menuisés et collaborer avec vos autres intervenants." },
+        { "q": "Pouvez-vous intégrer des appareils existants ?", "a": "Oui, à condition de disposer des dimensions et contraintes techniques." },
+        { "q": "Proposez-vous des plans de travail sur mesure ?", "a": "Oui, pour s’adapter aux dimensions spécifiques de votre cuisine." },
+        { "q": "Faites-vous des cuisines complètes ?", "a": "Selon le projet, nous pouvons prendre en charge la majeure partie de l’agencement." },
+        { "q": "Combien de temps faut-il pour un projet cuisine ?", "a": "Après validation du projet, comptez plusieurs semaines entre la fabrication et la pose." }
+      ]
+    },
+    {
+      "slug": "mobilier-professionnel",
+      "label": "Mobilier professionnel",
+      "short": "Aménager les espaces de travail et d’accueil.",
+      "heroImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les espaces professionnels demandent des aménagements robustes, fonctionnels et accueillants.",
+        "Nous concevons et réalisons comptoirs d’accueil, rangements, bibliothèques, éléments d’agencement pour bureaux, commerces ou cabinets.",
+        "Chaque projet est étudié en tenant compte de l’image que vous souhaitez renvoyer et des contraintes d’usage quotidien."
+      ],
+      "whyUs": [
+        "Expérience dans l’aménagement de petits commerces et bureaux.",
+        "Choix de matériaux adaptés à un usage intensif.",
+        "Possibilité d’intervenir en dehors des heures d’ouverture pour limiter la gêne."
+      ],
+      "faq": [
+        { "q": "Travaillez-vous à partir de plans d’architecte ?", "a": "Oui, nous pouvons nous appuyer sur des plans fournis par vos partenaires ou concevoir ensemble une solution." },
+        { "q": "Les délais sont-ils compatibles avec un aménagement en activité ?", "a": "Nous planifions les interventions pour réduire au maximum l’impact sur votre activité." },
+        { "q": "Pouvez-vous harmoniser plusieurs espaces (attente, bureaux, archives) ?", "a": "Oui, nous réfléchissons volontiers à un ensemble cohérent." },
+        { "q": "Proposez-vous des solutions modulables ?", "a": "Selon les besoins, certains éléments peuvent être conçus pour évoluer ou être déplacés facilement." },
+        { "q": "Intervenez-vous uniquement en local ou aussi plus loin ?", "a": "Tout dépend de l’ampleur du projet. Contactez-nous pour en discuter." }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    { "label": "Agencements sur mesure", "href": "/m/menuisier/agencements-sur-mesure", "icon": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Menuiseries extérieures", "href": "/m/menuisier/menuiseries-exterieures", "icon": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Rénovation menuiserie", "href": "/m/menuisier/renovation-menuiserie", "icon": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Escaliers & garde-corps", "href": "/m/menuisier/escaliers-garde-corps", "icon": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Cuisines & plans de travail", "href": "/m/menuisier/cuisines-plans-travail", "icon": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Mobilier professionnel", "href": "/m/menuisier/mobilier-professionnel", "icon": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=200&q=80" }
+  ],
+  "favicon": "/favicons/menuisier.svg",
+  "seo": {
+    "keywords": ["menuisier", "menuiserie sur mesure", "agencement intérieur", "fenêtres et portes bois"],
+    "category": "HomeAndConstructionBusiness"
+  },
+  "cta": {
+    "mode": "quote"
+  }
+}
+
+

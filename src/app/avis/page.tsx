@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BackgroundShell } from "../../components/BackgroundShell";
 import { PhoneFrame } from "../../components/PhoneFrame";
-import { GoogleReviewsWidget } from "../../components/GoogleReviewsWidget";
+import { ElfsightReviews } from "../../components/ElfsightReviews";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -37,7 +37,7 @@ export default function AvisPage() {
 
           <div className="py-6">
             <div className="max-w-[420px] w-full mx-auto px-0">
-              <GoogleReviewsWidget />
+              <ElfsightReviews />
             </div>
           </div>
         </div>

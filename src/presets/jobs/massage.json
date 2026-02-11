@@ -1,0 +1,238 @@
+{
+  "jobKey": "massage",
+  "jobLabel": "Massage bien-être",
+  "defaultHeroTagline": "Séances de massage personnalisées pour lâcher-prise et retrouver votre énergie.",
+  "defaultServices": [
+    { "title": "Massage relaxant", "desc": "Séance douce pour apaiser les tensions et favoriser le sommeil." },
+    { "title": "Massage décontractant", "desc": "Travail ciblé sur les zones tendues : dos, nuque, épaules." },
+    { "title": "Massage sportif", "desc": "Massage plus appuyé pour préparer ou récupérer après l’effort." },
+    { "title": "Massage duo", "desc": "Deux personnes massées en même temps dans une ambiance harmonieuse." },
+    { "title": "Soins visage", "desc": "Nettoyage, massage et masque pour une peau reposée et lumineuse." },
+    { "title": "Rituels premium", "desc": "Parcours complets mêlant soins du corps et du visage pour un lâcher-prise total." }
+  ],
+  "defaultBenefits": [
+    { "title": "Ambiance apaisante", "desc": "Cabinet chaleureux, musique douce et huiles de qualité pour une détente immédiate." },
+    { "title": "Écoute et bienveillance", "desc": "Temps d’échange avant chaque séance pour adapter le massage à votre état du moment." },
+    { "title": "Rendez-vous flexibles", "desc": "Créneaux en journée ou en soirée pour s’adapter à votre emploi du temps." }
+  ],
+  "defaultFaq": [
+    { "q": "Les massages sont-ils thérapeutiques ?", "a": "Les massages proposés sont à visée bien-être et ne remplacent pas un suivi médical. Ils complètent parfaitement une démarche globale de mieux-être." },
+    { "q": "Comment préparer ma séance ?", "a": "Prévoyez d’arriver quelques minutes en avance, évitez un repas trop lourd juste avant et portez une tenue confortable." },
+    { "q": "Puis-je choisir l’intensité du massage ?", "a": "Oui, la pression est ajustée en fonction de votre sensibilité et de vos attentes, tout au long de la séance." }
+  ],
+  "defaultBgImage": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80",
+  "defaultBannerImage": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+  "defaultZoneText": "Votre ville et alentours",
+  "defaultLinks": [
+    {
+      "label": "Massage relaxant",
+      "href": "/m/massage/massage-relaxant",
+      "icon": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "label": "Massage décontractant",
+      "href": "/m/massage/massage-decontractant",
+      "icon": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "label": "Massage sportif",
+      "href": "/m/massage/massage-sportif",
+      "icon": "https://images.unsplash.com/photo-1599059813005-11265ba4b7a5?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "label": "Massage duo",
+      "href": "/m/massage/massage-duo",
+      "icon": "https://images.unsplash.com/photo-1613128759088-5dba4c68a3f7?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "label": "Soins visage",
+      "href": "/m/massage/soins-visage",
+      "icon": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "label": "Rituels premium",
+      "href": "/m/massage/rituels-premium",
+      "icon": "https://images.unsplash.com/photo-1540555700478-4cf8c7bd5a98?auto=format&fit=crop&w=200&q=80"
+    }
+  ],
+  "favicon": "/favicons/massage.svg",
+  "categories": [
+    {
+      "slug": "massage-relaxant",
+      "label": "Massage relaxant",
+      "short": "Pour relâcher les tensions et apaiser le mental.",
+      "heroImage": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1519823551271-9d2de2ce882a?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le massage relaxant est idéal pour ralentir le rythme, dénouer les tensions et offrir au corps un vrai moment de pause. Les mouvements sont lents, enveloppants et continus pour vous aider à relâcher la pression du quotidien.",
+        "En travaillant sur l’ensemble du dos, de la nuque, des épaules et parfois des jambes, ce massage favorise un meilleur sommeil, une respiration plus ample et une sensation générale de légèreté.",
+        "Il convient parfaitement aux personnes stressées, fatiguées ou simplement en quête d’un moment pour elles, sans objectif de performance ni douleur."
+      ],
+      "whyUs": [
+        "Techniques douces inspirées de plusieurs approches relaxantes.",
+        "Ambiance chaleureuse : lumière tamisée, musique douce et huiles naturelles.",
+        "Adaptation permanente de la pression en fonction de votre ressenti."
+      ],
+      "faq": [
+        { "q": "Combien de temps dure une séance ?", "a": "Une séance de massage relaxant dure généralement entre 60 et 90 minutes selon la formule choisie." },
+        { "q": "Puis-je parler pendant le massage ?", "a": "Vous êtes libre de parler ou de rester silencieux. Le plus important est que vous vous sentiez à l’aise et détendu." },
+        { "q": "Y a-t-il des contre-indications ?", "a": "Certaines pathologies nécessitent un avis médical préalable. N’hésitez pas à nous signaler tout souci de santé avant la séance." },
+        { "q": "Dois-je prévoir quelque chose de particulier ?", "a": "Prévoyez simplement de venir quelques minutes en avance pour vous installer tranquillement et couper avec l’extérieur." },
+        { "q": "Puis-je offrir ce massage en bon cadeau ?", "a": "Oui, des cartes cadeaux sont disponibles pour offrir une séance à la personne de votre choix." }
+      ]
+    },
+    {
+      "slug": "massage-decontractant",
+      "label": "Massage décontractant",
+      "short": "Cibler les zones tendues et retrouver de la mobilité.",
+      "heroImage": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1519821172141-b5d8c5eaffd0?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1519823551271-9d2de2ce882a?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le massage décontractant s’adresse aux personnes qui ressentent des tensions localisées, notamment au niveau du dos, de la nuque ou des épaules. Les manœuvres sont plus ciblées et plus profondes, tout en restant à l’écoute de vos sensations.",
+        "L’objectif est de dénouer les nœuds musculaires, améliorer la circulation et redonner de la souplesse aux zones particulièrement sollicitées par le travail, le sport ou le stress.",
+        "Ce massage est particulièrement apprécié après une période intense, un déménagement, un changement de posture ou toute situation qui sollicite le corps de manière inhabituelle."
+      ],
+      "whyUs": [
+        "Travail précis sur les zones de tension identifiées ensemble en début de séance.",
+        "Possibilité de se concentrer uniquement sur le dos, la nuque ou une zone spécifique.",
+        "Conseils simples pour prolonger les effets du massage à la maison."
+      ],
+      "faq": [
+        { "q": "Le massage décontractant est-il douloureux ?", "a": "La pression est ferme mais toujours adaptée à votre tolérance. Vous pouvez à tout moment demander à alléger l’intensité." },
+        { "q": "Est-ce adapté après le sport ?", "a": "Oui, ce massage est tout à fait indiqué après un effort important pour aider les muscles à récupérer." },
+        { "q": "Dois-je prévoir plusieurs séances ?", "a": "Une seule séance peut déjà apporter un vrai soulagement, mais une cure de plusieurs massages permet un résultat plus durable." },
+        { "q": "Puis-je choisir la zone à travailler en priorité ?", "a": "Oui, nous définissons ensemble les zones prioritaires en début de séance." },
+        { "q": "Quelle tenue prévoir ?", "a": "Le massage se fait généralement directement sur la peau, avec serviettes et drapage pour votre confort et votre intimité." }
+      ]
+    },
+    {
+      "slug": "massage-sportif",
+      "label": "Massage sportif",
+      "short": "Accompagner l’effort avant ou après vos séances de sport.",
+      "heroImage": "https://images.unsplash.com/photo-1599059813005-11265ba4b7a5?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1546484959-f9a9ae384058?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1534367954556-a5f2e7d1d623?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le massage sportif prépare le corps à l’effort ou l’aide à mieux récupérer après une séance intense. Les manœuvres sont plus toniques, ciblées sur les groupes musculaires les plus sollicités.",
+        "Il peut réduire la sensation de jambes lourdes, améliorer la circulation et limiter l’apparition de courbatures trop marquées après l’entraînement.",
+        "Ce massage s’adresse aussi bien aux sportifs réguliers qu’aux personnes qui pratiquent une activité physique ponctuelle mais exigeante."
+      ],
+      "whyUs": [
+        "Approche adaptée à votre niveau et à votre discipline sportive.",
+        "Possibilité de cibler uniquement les jambes, le dos ou les zones les plus sollicitées.",
+        "Idéal en complément d’un programme d’entraînement ou de préparation à un événement."
+      ],
+      "faq": [
+        { "q": "Quand programmer un massage sportif ?", "a": "Il peut être réalisé la veille ou quelques heures avant l’effort pour préparer le corps, ou dans les jours qui suivent pour favoriser la récupération." },
+        { "q": "Est-ce compatible avec une pathologie ?", "a": "En cas de blessure ou de douleur aiguë, un avis médical est recommandé avant toute séance." },
+        { "q": "Le massage sportif remplace-t-il les étirements ?", "a": "Non, il les complète. Les étirements restent importants pour conserver souplesse et mobilité." },
+        { "q": "Combien de temps dure le massage ?", "a": "Les séances durent généralement 45 à 75 minutes selon la formule choisie et les zones travaillées." },
+        { "q": "Puis-je venir juste avant une compétition ?", "a": "Oui, mais la séance sera alors adaptée pour ne pas fatiguer le muscle juste avant l’effort." }
+      ]
+    },
+    {
+      "slug": "massage-duo",
+      "label": "Massage duo",
+      "short": "Partager un moment de détente à deux dans la même pièce.",
+      "heroImage": "https://images.unsplash.com/photo-1613128759088-5dba4c68a3f7?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1509592149239-9a3b0e19a1cb?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le massage duo permet de profiter d’un soin à deux, dans la même ambiance et au même rythme. Idéal pour un couple, un parent et son enfant adulte ou deux ami(e)s.",
+        "Chaque personne bénéficie d’un massage adapté à ses besoins, tout en partageant le même moment de détente dans un cadre chaleureux.",
+        "C’est une excellente idée de cadeau pour marquer un événement ou simplement s’offrir un temps de qualité ensemble."
+      ],
+      "whyUs": [
+        "Cabinet organisé pour accueillir confortablement deux personnes en même temps.",
+        "Possibilité d’ajuster l’intensité et le style du massage pour chaque personne.",
+        "Ambiance douce et intimiste pour un vrai moment hors du temps."
+      ],
+      "faq": [
+        { "q": "Faut-il réserver longtemps à l’avance ?", "a": "Les créneaux duo sont très demandés, il est donc préférable de réserver plusieurs jours à l’avance." },
+        { "q": "Proposez-vous des bons cadeaux duo ?", "a": "Oui, des cartes cadeaux spécifiques massage duo sont disponibles sur demande." },
+        { "q": "Les deux massages sont-ils identiques ?", "a": "Pas forcément : chacun peut choisir le type de massage qui lui convient le mieux." },
+        { "q": "Est-ce adapté pour une première expérience ?", "a": "Oui, c’est même une excellente façon de découvrir le massage dans un cadre rassurant à deux." },
+        { "q": "Y a-t-il une tenue particulière à prévoir ?", "a": "Comme pour un massage classique, tout est prévu sur place pour votre confort et votre intimité." }
+      ]
+    },
+    {
+      "slug": "soins-visage",
+      "label": "Soins visage",
+      "short": "Illuminer le teint et détendre les traits.",
+      "heroImage": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505455184862-554165e5f6ba?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1540555700478-4cf8c7bd5a98?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les soins visage associent nettoyage doux, massage et application de produits adaptés à votre type de peau. Ils permettent de relâcher les tensions du visage et de redonner de l’éclat au teint.",
+        "Le massage du visage stimule la microcirculation, aide à lisser les traits et procure une profonde sensation de détente souvent ressentie dans tout le corps.",
+        "Chaque soin est personnalisé après un échange sur vos habitudes, vos attentes et la sensibilité de votre peau."
+      ],
+      "whyUs": [
+        "Produits sélectionnés pour leur douceur et leur efficacité.",
+        "Techniques manuelles respectueuses des peaux sensibles.",
+        "Possibilité de combiner le soin visage avec un massage du corps pour une expérience complète."
+      ],
+      "faq": [
+        { "q": "À quelle fréquence faire un soin visage ?", "a": "Une séance toutes les 4 à 6 semaines est idéale pour entretenir les bienfaits, mais un soin ponctuel avant un événement fait déjà la différence." },
+        { "q": "Puis-je venir maquillé(e) ?", "a": "Oui, le nettoyage de peau est inclus au début du soin pour travailler sur une base propre." },
+        { "q": "Les produits conviennent-ils aux peaux sensibles ?", "a": "Oui, des formules adaptées aux peaux réactives sont utilisées et choisies avec vous." },
+        { "q": "Y a-t-il des contre-indications ?", "a": "En cas de lésions cutanées importantes ou de traitement dermatologique en cours, un avis médical est recommandé." },
+        { "q": "Puis-je offrir ce soin en cadeau ?", "a": "Bien sûr, c’est une excellente idée pour offrir un moment de bien-être ciblé." }
+      ]
+    },
+    {
+      "slug": "rituels-premium",
+      "label": "Rituels premium",
+      "short": "Des parcours complets pour une déconnexion totale.",
+      "heroImage": "https://images.unsplash.com/photo-1540555700478-4cf8c7bd5a98?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1540553016722-784bb9f63fc4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1519823551271-9d2de2ce882a?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les rituels premium combinent plusieurs techniques de massage et de soins pour vous offrir une parenthèse de bien-être complète, de la tête aux pieds.",
+        "Ces parcours peuvent inclure massage du corps, soin visage, enveloppement ou temps de repos prolongé, pour un réel lâcher-prise physique et mental.",
+        "Ils sont particulièrement appréciés lors de périodes de transition, de grands changements ou tout simplement pour se faire un cadeau à soi-même."
+      ],
+      "whyUs": [
+        "Parcours entièrement personnalisables selon vos besoins du moment.",
+        "Temps de soin plus long pour une détente profonde et durable.",
+        "Idéal en bon cadeau pour marquer une occasion particulière."
+      ],
+      "faq": [
+        { "q": "Combien de temps dure un rituel premium ?", "a": "Selon la formule, comptez entre 90 minutes et 2h30 de soin." },
+        { "q": "Puis-je combiner plusieurs rituels ?", "a": "Oui, nous pouvons créer ensemble une expérience sur mesure en combinant plusieurs soins." },
+        { "q": "Faut-il réserver très à l’avance ?", "a": "Les créneaux longs sont limités, mieux vaut réserver quelques jours ou semaines à l’avance." },
+        { "q": "Les rituels sont-ils adaptés à tout le monde ?", "a": "Ils sont adaptés en fonction de votre état de santé et de votre niveau de fatigue. Un échange préalable permet d’ajuster le contenu." },
+        { "q": "Proposez-vous des formules duo en rituel premium ?", "a": "Certaines formules peuvent être déclinées en version duo, selon les disponibilités." }
+      ]
+    }
+  ],
+  "seo": {
+    "keywords": ["massage bien-être", "massage relaxant", "cabinet de massage", "soin détente"],
+    "category": "HealthAndBeautyBusiness"
+  },
+  "cta": {
+    "mode": "booking"
+  }
+}
+
+

@@ -35,6 +35,21 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 8px rgba(0, 0, 0, 0.3);
   }
 
+  .bg-noise-soft {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+    background-size: 12px 12px;
+  }
+
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.72),
+      rgba(15, 23, 42, 0.88)
+    );
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+  }
+
   @keyframes call-shake-burst {
     0% {
       transform: translate(0, 0) rotate(0);

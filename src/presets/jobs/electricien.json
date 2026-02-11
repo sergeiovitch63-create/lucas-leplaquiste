@@ -1,0 +1,214 @@
+{
+  "jobKey": "electricien",
+  "jobLabel": "Électricien",
+  "defaultHeroTagline": "Mises aux normes, dépannages et installations électriques en toute sécurité.",
+  "defaultServices": [
+    { "title": "Dépannage électrique", "desc": "Panne de courant, disjonctions répétées, prises défectueuses : diagnostic et réparation." },
+    { "title": "Mise aux normes", "desc": "Mise en conformité de votre installation selon les normes en vigueur." },
+    { "title": "Tableaux et protections", "desc": "Remplacement de tableaux, ajout de protections différentielles, répartition des circuits." },
+    { "title": "Éclairage intérieur", "desc": "Création et modernisation de l’éclairage dans les pièces de vie et les circulations." },
+    { "title": "Éclairage extérieur", "desc": "Sécuriser et mettre en valeur vos extérieurs : terrasses, jardins, allées." },
+    { "title": "Domotique simple", "desc": "Programmer vos éclairages, volets ou prises via des solutions connectées accessibles." }
+  ],
+  "defaultBenefits": [
+    { "title": "Sécurité avant tout", "desc": "Interventions réalisées dans le respect strict des normes électriques." },
+    { "title": "Conseils personnalisés", "desc": "Accompagnement pour optimiser votre installation et réduire votre consommation." },
+    { "title": "Intervention locale", "desc": "Artisan de proximité, réactif et disponible." }
+  ],
+  "defaultFaq": [
+    { "q": "Pouvez-vous vérifier la sécurité de mon installation ?", "a": "Oui, nous réalisons un contrôle complet avec un rapport clair et des recommandations adaptées à votre logement." },
+    { "q": "Intervenez-vous pour de petites modifications ?", "a": "Oui, un simple ajout de prise ou le remplacement d’un luminaire peuvent faire l’objet d’une intervention dédiée." },
+    { "q": "Proposez-vous des solutions pour réduire la consommation ?", "a": "Nous pouvons vous conseiller sur les éclairages LED, les programmations et les petits gestes qui font la différence." }
+  ],
+  "defaultBgImage": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1600&q=80",
+  "defaultBannerImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
+  "defaultZoneText": "Votre ville et alentours",
+  "categories": [
+    {
+      "slug": "depannage-electrique",
+      "label": "Dépannage électrique",
+      "short": "Retrouver rapidement une installation sûre et fonctionnelle.",
+      "heroImage": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Une coupure générale, un disjoncteur qui saute régulièrement ou des prises qui ne fonctionnent plus sont des signes de dysfonctionnement à ne pas négliger.",
+        "Nous intervenons pour diagnostiquer l’origine de la panne, remettre en service ce qui peut l’être immédiatement et vous orienter si une remise aux normes plus globale est nécessaire.",
+        "Chaque dépannage est l’occasion de vérifier les principaux points de sécurité afin de vous éviter de futures mauvaises surprises."
+      ],
+      "whyUs": [
+        "Diagnostic clair avant toute réparation.",
+        "Intervention possible sur tableaux, prises, éclairages et circuits spécifiques.",
+        "Conseils pour sécuriser durablement votre installation."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous intervenir en urgence ?", "a": "Selon nos disponibilités, nous pouvons planifier un passage rapide lorsque vous êtes totalement privés d’électricité." },
+        { "q": "Faut-il couper le courant avant votre arrivée ?", "a": "Si une odeur de brûlé ou un échauffement anormal est constaté, coupez le courant et contactez-nous. Sinon, nous gérerons sur place." },
+        { "q": "Travaillez-vous en copropriété ?", "a": "Oui, nous intervenons aussi bien en appartement qu’en maison individuelle." },
+        { "q": "Le dépannage inclut-il le remplacement de pièces ?", "a": "Lorsque c’est possible, nous remplaçons immédiatement les éléments défectueux après validation du devis avec vous." },
+        { "q": "Faites-vous un rapport après l’intervention ?", "a": "Sur demande, un compte rendu peut être fourni pour votre assurance ou votre bailleur." }
+      ]
+    },
+    {
+      "slug": "mise-aux-normes",
+      "label": "Mise aux normes",
+      "short": "Mettre votre installation en conformité avec les exigences actuelles.",
+      "heroImage": "https://images.unsplash.com/photo-1604079628040-94301bb21b11?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Une installation ancienne peut fonctionner mais ne plus répondre aux normes de sécurité actuelles. La mise aux normes permet de réduire les risques de court-circuit, d’incendie ou d’électrisation.",
+        "Après un état des lieux, nous listons les points à corriger : absence de terre, protections insuffisantes, circuits surchargés, prises non conformes dans les pièces d’eau…",
+        "Les travaux sont planifiés pour limiter les coupures et s’adapter à votre rythme de vie, que vous soyez occupant ou bailleur."
+      ],
+      "whyUs": [
+        "Analyse complète de l’installation avec priorisation des travaux.",
+        "Explications pédagogiques des risques identifiés et des solutions proposées.",
+        "Respect des normes en vigueur pour les logements anciens et récents."
+      ],
+      "faq": [
+        { "q": "Une mise aux normes est-elle obligatoire ?", "a": "Elle n’est pas toujours obligatoire mais fortement recommandée pour votre sécurité et celle de vos proches." },
+        { "q": "Dois-je quitter le logement pendant les travaux ?", "a": "La plupart du temps, vous pouvez rester sur place. Nous organisons les coupures par zones." },
+        { "q": "Pouvez-vous intervenir avant une vente ou une location ?", "a": "Oui, nous pouvons vous aider à corriger les points relevés dans un diagnostic électrique." },
+        { "q": "Les travaux sont-ils certifiés ?", "a": "Les interventions sont réalisées dans les règles de l’art et peuvent s’accompagner d’attestations si nécessaire." },
+        { "q": "Puis-je étaler les travaux dans le temps ?", "a": "Nous pouvons définir un plan par étapes en commençant par les points les plus sensibles." }
+      ]
+    },
+    {
+      "slug": "tableaux-electriques",
+      "label": "Tableaux électriques",
+      "short": "Sécuriser et organiser la distribution électrique de votre logement.",
+      "heroImage": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1597858303079-76f1c7a0b98f?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le tableau électrique est le cœur de votre installation. Il regroupe les protections de chaque circuit et assure la coupure générale en cas de problème.",
+        "Un remplacement de tableau peut être l’occasion de mieux répartir vos circuits, d’ajouter des protections différentielles et de prévoir des réserves pour de futurs équipements.",
+        "Nous dimensionnons le tableau en fonction de la surface du logement, du nombre de pièces et de vos usages (chauffage, cuisson, électroménager, véhicule électrique…)."
+      ],
+      "whyUs": [
+        "Choix de matériel de marques reconnues.",
+        "Câblage propre et lisible, avec repérage clair des circuits.",
+        "Possibilité de prévoir des emplacements libres pour vos projets futurs."
+      ],
+      "faq": [
+        { "q": "Quand faut-il remplacer un tableau électrique ?", "a": "Un tableau trop ancien, mal protégé ou surchargé doit être remplacé pour garantir la sécurité de l’installation." },
+        { "q": "Dois-je prévoir un local spécifique ?", "a": "Nous vous conseillons sur l’emplacement le plus adapté, en tenant compte de l’accessibilité et des contraintes techniques." },
+        { "q": "La coupure est-elle totale pendant les travaux ?", "a": "Oui, le courant est coupé le temps du remplacement, mais nous organisons l’intervention pour limiter la gêne." },
+        { "q": "Le nouveau tableau sera-t-il évolutif ?", "a": "Nous prévoyons systématiquement des emplacements libres pour de futurs ajouts si l’espace le permet." },
+        { "q": "Faites-vous le repérage des circuits ?", "a": "Oui, chaque circuit est identifié pour faciliter l’utilisation quotidienne et les futures interventions." }
+      ]
+    },
+    {
+      "slug": "eclairage-interieur",
+      "label": "Éclairage intérieur",
+      "short": "Créer une lumière confortable et adaptée à chaque pièce.",
+      "heroImage": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Un bon éclairage rend les pièces plus agréables à vivre et peut réellement changer la perception de votre intérieur.",
+        "Nous vous aidons à positionner les points lumineux, à choisir les températures de couleur et les intensités adaptées à chaque usage.",
+        "Les solutions LED actuelles permettent de concilier confort visuel et consommation maîtrisée."
+      ],
+      "whyUs": [
+        "Conseils esthétiques et techniques combinés.",
+        "Installation possible de variateurs ou de commandes groupées.",
+        "Prise en compte des contraintes de hauteur sous plafond et de mobilier."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous poser des suspensions que j’ai achetées ?", "a": "Oui, nous vérifions simplement qu’elles sont compatibles avec votre installation." },
+        { "q": "Quel type de lumière privilégier au salon ?", "a": "Une lumière chaude et modulable est souvent idéale pour créer une ambiance conviviale." },
+        { "q": "L’éclairage LED est-il vraiment économique ?", "a": "Oui, à luminosité équivalente, la consommation est nettement plus faible qu’avec des ampoules classiques." },
+        { "q": "Intervenez-vous en présence de faux plafonds ?", "a": "Oui, nous pouvons intégrer des spots ou luminaires adaptés aux plafonds techniques." },
+        { "q": "Faut-il repeindre après les travaux ?", "a": "Nous veillons à intervenir proprement. Si des ouvertures sont nécessaires, nous vous en informons avant." }
+      ]
+    },
+    {
+      "slug": "eclairage-exterieur",
+      "label": "Éclairage extérieur",
+      "short": "Sécuriser vos accès et mettre en valeur vos extérieurs.",
+      "heroImage": "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "L’éclairage extérieur permet de sécuriser vos déplacements, de dissuader les intrusions et de prolonger l’usage de votre terrasse ou jardin.",
+        "Nous étudions les zones à couvrir (allées, escaliers, entrée, terrasse) et proposons des solutions adaptées, avec ou sans détection de mouvement.",
+        "Les équipements sont choisis pour résister aux intempéries et s’intégrer harmonieusement au style de votre maison."
+      ],
+      "whyUs": [
+        "Prise en compte de la sécurité et de l’esthétique.",
+        "Modules à détection et éclairage basse consommation.",
+        "Installation dans le respect des contraintes d’étanchéité (IP adapté)."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous ajouter des détecteurs de mouvement ?", "a": "Oui, sur les projecteurs existants ou sur de nouveaux points lumineux." },
+        { "q": "Les éclairages peuvent-ils être pilotés à distance ?", "a": "Des solutions connectées existent pour programmer ou piloter vos éclairages depuis votre smartphone." },
+        { "q": "Faut-il une autorisation particulière en façade ?", "a": "En maison individuelle, non en général. En copropriété, il peut être nécessaire d’informer le syndic." },
+        { "q": "Les travaux se font-ils par tous les temps ?", "a": "Certaines étapes peuvent être décalées en cas de conditions météo trop défavorables." },
+        { "q": "Peut-on limiter la pollution lumineuse ?", "a": "Oui, le choix des orientations, des horaires et de l’intensité permet de réduire l’éclairage excessif." }
+      ]
+    },
+    {
+      "slug": "domotique",
+      "label": "Domotique simple",
+      "short": "Rendre votre installation plus pratique sans la compliquer.",
+      "heroImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "La domotique ne rime pas forcément avec solutions complexes. Il est possible de commencer simplement, par la gestion d’éclairages, de volets ou de prises connectées.",
+        "Nous vous aidons à choisir des équipements pérennes, compatibles entre eux et faciles à utiliser au quotidien.",
+        "L’objectif est d’augmenter votre confort et de réduire certaines consommations, sans transformer votre maison en laboratoire expérimental."
+      ],
+      "whyUs": [
+        "Sélection de solutions grand public fiables et durables.",
+        "Configuration et explication sur place pour une prise en main sereine.",
+        "Possibilité de faire évoluer la solution par étapes."
+      ],
+      "faq": [
+        { "q": "Dois-je changer tout mon tableau électrique ?", "a": "Non, certains modules se greffent sur l’existant ou se pilotent via des boîtiers additionnels." },
+        { "q": "Est-ce compatible avec les assistants vocaux ?", "a": "Oui, de nombreux équipements peuvent être reliés à vos assistants habituels." },
+        { "q": "En cas de panne internet, tout s’arrête ?", "a": "La plupart des installations continuent de fonctionner localement, même sans connexion." },
+        { "q": "Puis-je revenir en arrière si cela ne me convient pas ?", "a": "Oui, les solutions proposées restent réversibles et ne bloquent pas le fonctionnement classique de votre installation." },
+        { "q": "La domotique consomme-t-elle beaucoup ?", "a": "Les modules eux-mêmes consomment très peu. Bien configurés, ils permettent même souvent de réduire votre consommation globale." }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    { "label": "Dépannage électrique", "href": "/m/electricien/depannage-electrique", "icon": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Mise aux normes", "href": "/m/electricien/mise-aux-normes", "icon": "https://images.unsplash.com/photo-1604079628040-94301bb21b11?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Tableaux électriques", "href": "/m/electricien/tableaux-electriques", "icon": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Éclairage intérieur", "href": "/m/electricien/eclairage-interieur", "icon": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Éclairage extérieur", "href": "/m/electricien/eclairage-exterieur", "icon": "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Domotique simple", "href": "/m/electricien/domotique", "icon": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80" }
+  ],
+  "favicon": "/favicons/electricien.svg",
+  "seo": {
+    "keywords": ["électricien", "dépannage électrique", "mise aux normes", "tableau électrique"],
+    "category": "Electrician"
+  },
+  "cta": {
+    "mode": "quote"
+  }
+}
+
+

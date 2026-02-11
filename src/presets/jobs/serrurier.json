@@ -1,0 +1,214 @@
+{
+  "jobKey": "serrurier",
+  "jobLabel": "Serrurier",
+  "defaultHeroTagline": "Ouverture de porte, sécurisation et remplacement de serrures rapidement.",
+  "defaultServices": [
+    { "title": "Ouverture de porte", "desc": "Porte claquée ou verrouillée : ouverture sans dégâts lorsque c’est possible." },
+    { "title": "Remplacement de serrures", "desc": "Changement de cylindre ou de serrure après perte de clés ou tentative d’effraction." },
+    { "title": "Renforcement de sécurité", "desc": "Pose de serrures multipoints, barres de sécurité et conseils anti-effraction." },
+    { "title": "Blindage et portes blindées", "desc": "Solutions pour renforcer efficacement l’accès à votre logement." },
+    { "title": "Serrures connectées", "desc": "Accéder à votre domicile avec des systèmes modernes, codes ou smartphone." },
+    { "title": "Conseil sécurité", "desc": "Audit des accès et recommandations pour limiter les risques d’effraction." }
+  ],
+  "defaultBenefits": [
+    { "title": "Intervention rapide", "desc": "Dépannage prioritaire pour les portes bloquées." },
+    { "title": "Tarifs annoncés à l’avance", "desc": "Devis clair avant intervention, sans surprise." },
+    { "title": "Travail soigné", "desc": "Respect des portes et huisseries, finitions propres." }
+  ],
+  "defaultFaq": [
+    { "q": "Pouvez-vous intervenir en urgence ?", "a": "Oui, selon la disponibilité, une intervention rapide est proposée pour les situations bloquantes." },
+    { "q": "Remplacez-vous uniquement le barillet ?", "a": "Oui, il est souvent possible de ne changer que le cylindre pour limiter les coûts." },
+    { "q": "Travaillez-vous avec les assurances ?", "a": "Nous pouvons vous fournir un devis et une facture détaillée pour vos démarches auprès de l’assurance." }
+  ],
+  "defaultBgImage": "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=1600&q=80",
+  "defaultBannerImage": "https://images.unsplash.com/photo-1517414628894-83e2d803a85d?auto=format&fit=crop&w=1600&q=80",
+  "defaultZoneText": "Votre ville et alentours",
+  "categories": [
+    {
+      "slug": "ouverture-de-porte",
+      "label": "Ouverture de porte",
+      "short": "Retrouver l’accès à votre logement en limitant les dégâts.",
+      "heroImage": "https://images.unsplash.com/photo-1517414628894-83e2d803a85d?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489079989141-efb7a5a7d018?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Porte claquée, clé oubliée à l’intérieur ou perdue : la situation est stressante, mais se règle le plus souvent sans dégâts sur la serrure ou la porte.",
+        "Nous intervenons avec le matériel adapté pour ouvrir votre porte proprement, en privilégiant toujours les techniques non destructives lorsque c’est possible.",
+        "À l’issue de l’intervention, nous vérifions le bon fonctionnement de la serrure et pouvons, si nécessaire, vous proposer un renforcement ou un remplacement."
+      ],
+      "whyUs": [
+        "Interventions rapides pour les situations bloquantes.",
+        "Techniques d’ouverture maîtrisées pour limiter les dommages.",
+        "Explications claires sur les options possibles après l’ouverture."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous ouvrir toutes les portes ?", "a": "Nous intervenons sur la majorité des serrures de logement. Certains dispositifs très spécifiques peuvent nécessiter une étude au cas par cas." },
+        { "q": "Dois-je fournir un justificatif pour l’ouverture ?", "a": "Oui, un justificatif d’identité et de domicile peut être demandé pour des raisons de sécurité." },
+        { "q": "L’ouverture laisse-t-elle des traces ?", "a": "Lorsque c’est possible, l’ouverture est réalisée sans casse. Si une destruction est nécessaire, nous vous le signalons avant." },
+        { "q": "Intervenez-vous en soirée ou le week-end ?", "a": "Selon les disponibilités, des créneaux peuvent être proposés en dehors des heures de bureau." },
+        { "q": "Puis-je payer en plusieurs fois ?", "a": "Nous vous informons des conditions de règlement avant l’intervention." }
+      ]
+    },
+    {
+      "slug": "remplacement-serrures",
+      "label": "Remplacement de serrures",
+      "short": "Retrouver une serrure fiable après perte de clés ou tentative d’effraction.",
+      "heroImage": "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1517414628894-83e2d803a85d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489079989141-efb7a5a7d018?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Après une perte de clés, un cambriolage ou une serrure qui fatigue, le remplacement devient souvent la solution la plus sûre.",
+        "Nous vous proposons des modèles adaptés à votre porte, à votre budget et au niveau de sécurité souhaité (cylindres simples, haute sécurité, serrures multipoints…).",
+        "Le remplacement est réalisé proprement, en veillant à conserver au maximum l’esthétique de votre porte et de votre entrée."
+      ],
+      "whyUs": [
+        "Large choix de serrures adaptées aux logements particuliers.",
+        "Conseils pour choisir le bon niveau de sécurité.",
+        "Pose soignée, finitions propres et tests systématiques."
+      ],
+      "faq": [
+        { "q": "Dois-je changer toute la serrure ou seulement le cylindre ?", "a": "Dans de nombreux cas, le changement du cylindre suffit. Nous vous guidons vers la solution la plus pertinente." },
+        { "q": "Fournissez-vous les nouvelles clés ?", "a": "Oui, la serrure est livrée avec un jeu de clés. Des clés supplémentaires peuvent être commandées." },
+        { "q": "Combien de temps dure le remplacement ?", "a": "Un simple changement de cylindre prend généralement moins d’une heure. Une serrure complète peut demander un peu plus de temps." },
+        { "q": "Mes anciennes clés fonctionneront-elles encore ?", "a": "Non, l’objectif est justement de rendre les anciennes clés inutilisables pour sécuriser votre accès." },
+        { "q": "Puis-je garder la même apparence de poignée ou de plaque ?", "a": "Dans la plupart des cas, oui. Nous vous prévenons si une modification esthétique est nécessaire." }
+      ]
+    },
+    {
+      "slug": "renforcement-securite",
+      "label": "Renforcement de sécurité",
+      "short": "Dissuader les tentatives d’effraction par des solutions adaptées.",
+      "heroImage": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489079989141-efb7a5a7d018?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le renforcement de sécurité ne se limite pas à la serrure principale. Barres, renforts de paumelles, verrous supplémentaires participent aussi à la protection de votre logement.",
+        "Nous analysons vos accès (porte d’entrée, portes secondaires, cave, garage) pour vous proposer des solutions simples et efficaces.",
+        "L’objectif est de ralentir au maximum toute tentative d’effraction et de dissuader les opportunistes."
+      ],
+      "whyUs": [
+        "Audit sécurité sur l’ensemble des accès.",
+        "Propositions graduées selon votre budget et votre sensibilité au risque.",
+        "Installation discrète, qui s’intègre au style de votre porte."
+      ],
+      "faq": [
+        { "q": "Une barre de sécurité est-elle vraiment utile ?", "a": "Oui, bien posée, elle complique nettement le forçage de la porte et joue un rôle dissuasif." },
+        { "q": "Dois-je changer de porte pour renforcer la sécurité ?", "a": "Pas forcément. De nombreux renforcements sont possibles sur une porte existante en bon état." },
+        { "q": "Les renforts sont-ils visibles de l’extérieur ?", "a": "Certains dispositifs sont très discrets. Nous vous présentons les options avant la pose." },
+        { "q": "Pouvez-vous intervenir après une tentative d’effraction ?", "a": "Oui, nous sécurisons la porte et proposons ensuite un plan de renforcement durable." },
+        { "q": "Ces travaux sont-ils pris en charge par l’assurance ?", "a": "Selon votre contrat, une partie peut être remboursée. Nous fournissons les justificatifs nécessaires." }
+      ]
+    },
+    {
+      "slug": "portes-blindees",
+      "label": "Blindage et portes blindées",
+      "short": "Passer un cap en matière de sécurité d’accès.",
+      "heroImage": "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le blindage ou le remplacement par une porte blindée permet d’augmenter nettement le niveau de sécurité, notamment en appartement.",
+        "Nous vous aidons à choisir entre différents niveaux de certification et d’isolation, en tenant compte des contraintes de votre immeuble.",
+        "L’installation est réalisée avec soin pour conserver un ouvrant fluide, sans frottements, et une fermeture robuste."
+      ],
+      "whyUs": [
+        "Conseil sur les modèles adaptés à votre situation (logement principal, local professionnel…).",
+        "Pose dans le respect des règles de copropriété lorsqu’elles existent.",
+        "Finitions propres pour une porte sécurisée mais esthétique."
+      ],
+      "faq": [
+        { "q": "Dois-je demander l’accord de la copropriété ?", "a": "En immeuble, il est souvent nécessaire de respecter certaines règles. Nous pouvons vous indiquer les points à vérifier." },
+        { "q": "Combien de temps prend la pose d’une porte blindée ?", "a": "En général, une journée suffit pour déposer l’ancienne porte et installer la nouvelle." },
+        { "q": "La porte est-elle bruyante à l’usage ?", "a": "Non, une pose correcte garantit un usage confortable au quotidien." },
+        { "q": "Puis-je garder le même style visuel côté intérieur ?", "a": "Plusieurs finitions intérieures sont possibles pour s’accorder avec votre décoration." },
+        { "q": "Les portes sont-elles certifiées ?", "a": "Nous proposons des modèles répondant aux normes de résistance en vigueur." }
+      ]
+    },
+    {
+      "slug": "serrures-connectees",
+      "label": "Serrures connectées",
+      "short": "Contrôler l’accès à votre logement de manière moderne et pratique.",
+      "heroImage": "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489079989141-efb7a5a7d018?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les serrures connectées permettent d’ouvrir votre porte à l’aide d’un code, d’un badge ou d’un smartphone, sans multiplier les jeux de clés.",
+        "Elles sont particulièrement pratiques pour les locations saisonnières, les locations meublées ou les familles qui entrent et sortent à des horaires différents.",
+        "Nous vous accompagnons dans le choix du modèle et dans sa configuration, afin de concilier simplicité d’usage et sécurité."
+      ],
+      "whyUs": [
+        "Sélection de modèles fiables et reconnus.",
+        "Configuration initiale et explications complètes sur place.",
+        "Possibilité de revenir à une utilisation plus classique si besoin."
+      ],
+      "faq": [
+        { "q": "Que se passe-t-il en cas de panne de batterie ?", "a": "Les serrures connectées prévoient généralement des systèmes de secours. Nous vous expliquons tout lors de l’installation." },
+        { "q": "Est-ce compatible avec ma porte actuelle ?", "a": "Une visite sur place permet de vérifier la compatibilité mécanique avant toute commande." },
+        { "q": "Puis-je gérer les accès à distance ?", "a": "Selon le modèle, il est possible de créer ou supprimer des codes à distance." },
+        { "q": "La serrure connectée est-elle sécurisée ?", "a": "Nous privilégions des marques qui mettent la sécurité et les mises à jour au cœur de leur produit." },
+        { "q": "Faut-il un abonnement ?", "a": "Certains services avancés peuvent nécessiter un abonnement, mais de nombreuses fonctionnalités restent gratuites." }
+      ]
+    },
+    {
+      "slug": "conseil-securite",
+      "label": "Conseil sécurité",
+      "short": "Faire le point sur la protection de votre logement avant d’agir.",
+      "heroImage": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1489079989141-efb7a5a7d018?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Avant de multiplier les équipements, il est utile de faire un point global sur la sécurité de votre logement.",
+        "Nous passons en revue vos portes, fenêtres et accès secondaires pour repérer les points faibles et vous proposer un plan d’action réaliste.",
+        "Vous choisissez ensuite les priorités à traiter en fonction de votre budget et de votre niveau de tolérance au risque."
+      ],
+      "whyUs": [
+        "Regard professionnel sur l’ensemble des accès.",
+        "Recommandations graduées, sans survente d’équipements.",
+        "Possibilité de planifier les travaux par étapes."
+      ],
+      "faq": [
+        { "q": "Combien de temps dure un rendez-vous conseil ?", "a": "Selon la taille du logement, comptez environ une heure pour un diagnostic complet." },
+        { "q": "Le rendez-vous est-il payant ?", "a": "Oui, il fait l’objet d’un forfait qui peut être partiellement déduit si vous réalisez ensuite des travaux avec nous." },
+        { "q": "Intervenez-vous aussi sur les locaux professionnels ?", "a": "Oui, nous pouvons proposer des pistes d’amélioration pour les commerces et bureaux." },
+        { "q": "Dois-je être présent pendant toute la visite ?", "a": "Oui, vos retours et vos habitudes de vie nous aident à proposer des solutions adaptées." },
+        { "q": "Recevrai-je un compte rendu écrit ?", "a": "Un récapitulatif des principaux points évoqués peut vous être transmis après le rendez-vous." }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    { "label": "Ouverture de porte", "href": "/m/serrurier/ouverture-de-porte", "icon": "https://images.unsplash.com/photo-1517414628894-83e2d803a85d?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Remplacement de serrures", "href": "/m/serrurier/remplacement-serrures", "icon": "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Renforcement de sécurité", "href": "/m/serrurier/renforcement-securite", "icon": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Portes blindées", "href": "/m/serrurier/portes-blindees", "icon": "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Serrures connectées", "href": "/m/serrurier/serrures-connectees", "icon": "https://images.unsplash.com/photo-1517244868701-9d7b0ae23c07?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Conseil sécurité", "href": "/m/serrurier/conseil-securite", "icon": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=200&q=80" }
+  ],
+  "favicon": "/favicons/serrurier.svg",
+  "seo": {
+    "keywords": ["serrurier", "ouverture de porte", "changement de serrure", "dépannage serrure"],
+    "category": "Locksmith"
+  },
+  "cta": {
+    "mode": "urgent"
+  }
+}
+
+

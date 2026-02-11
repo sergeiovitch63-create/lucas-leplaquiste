@@ -1,0 +1,214 @@
+{
+  "jobKey": "plombier",
+  "jobLabel": "Plombier",
+  "defaultHeroTagline": "Interventions rapides pour vos urgences et travaux de plomberie.",
+  "defaultServices": [
+    { "title": "Dépannage d'urgence 24/7", "desc": "Fuite d'eau, canalisation bouchée, ballon d'eau chaude en panne : intervention rapide à domicile." },
+    { "title": "Installation de sanitaires", "desc": "Pose de douches, baignoires, lavabos, WC, robinetterie et adoucisseurs." },
+    { "title": "Chauffe-eau et ballons", "desc": "Remplacement, entretien et mise en sécurité des chauffe-eau électriques ou thermodynamiques." },
+    { "title": "Débouchage de canalisations", "desc": "Débouchage mécanique ou haute pression des évacuations et colonnes." },
+    { "title": "Rénovation salle de bain", "desc": "Refonte complète ou partielle de votre salle de bain, du plan à la réalisation." },
+    { "title": "Recherche de fuite", "desc": "Méthodes non destructives pour localiser les fuites avant intervention ciblée." }
+  ],
+  "defaultBenefits": [
+    { "title": "Devis clairs et transparents", "desc": "Vous connaissez le tarif avant l'intervention, sans surprise." },
+    { "title": "Intervention locale rapide", "desc": "Basé près de chez vous pour réduire les délais d'intervention." },
+    { "title": "Artisan qualifié", "desc": "Travail soigné, matériaux de qualité et conseils personnalisés." }
+  ],
+  "defaultFaq": [
+    { "q": "Intervenez-vous en urgence ?", "a": "Oui, selon les disponibilités, nous intervenons en urgence pour les fuites et pannes critiques." },
+    { "q": "Puis-je avoir une estimation avant votre venue ?", "a": "Nous vous donnons une fourchette indicative par téléphone, puis un devis précis avant tout travail sur place." },
+    { "q": "Travaillez-vous sur les anciennes installations ?", "a": "Oui, nous intervenons aussi bien sur les installations récentes que sur les réseaux plus anciens." }
+  ],
+  "defaultBgImage": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
+  "defaultBannerImage": "https://images.unsplash.com/photo-1580917136763-3eeab65c8d6c?auto=format&fit=crop&w=1600&q=80",
+  "defaultZoneText": "Votre ville et alentours",
+  "categories": [
+    {
+      "slug": "depannage-urgence",
+      "label": "Dépannage urgence",
+      "short": "Fuites et pannes traitées rapidement, de jour comme de nuit.",
+      "heroImage": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1580915411954-282cb1c9c450?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1580915411954-282cb1c9c450?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Un flexible qui lâche, un robinet qui fuit ou une canalisation qui déborde ne préviennent jamais. Le dépannage urgence permet de sécuriser rapidement la situation et de limiter les dégâts dans votre logement.",
+        "Après un premier diagnostic sur place, nous mettons en œuvre les solutions les plus adaptées : coupure ciblée, réparation provisoire ou définitive, remplacement de pièces défectueuses.",
+        "L’objectif est de vous redonner un usage normal de votre installation le plus vite possible, tout en vous expliquant clairement ce qui a été fait et ce qu’il faudra éventuellement prévoir par la suite."
+      ],
+      "whyUs": [
+        "Plage horaire élargie pour les appels urgents.",
+        "Véhicule équipé pour traiter la plupart des pannes en une seule visite.",
+        "Communication transparente sur les tarifs avant chaque intervention."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous intervenir le soir ou le week-end ?", "a": "Selon les disponibilités, une intervention en dehors des horaires de bureau est possible pour les urgences avérées." },
+        { "q": "Dois-je couper l’eau avant votre arrivée ?", "a": "Si vous le pouvez, fermer le robinet général limite les dégâts. Nous vous guiderons par téléphone si nécessaire." },
+        { "q": "Comment est calculé le prix d’un dépannage ?", "a": "Le tarif tient compte du déplacement, du temps passé sur place et des pièces éventuelles. Un montant vous est annoncé avant toute intervention." },
+        { "q": "Intervenez-vous en immeuble ?", "a": "Oui, nous intervenons aussi bien en maison individuelle qu’en appartement, en lien avec la copropriété si besoin." },
+        { "q": "Que faire en cas de dégât des eaux important ?", "a": "Coupez l’eau, protégez ce que vous pouvez, puis contactez-nous. Nous pourrons également vous fournir un rapport pour l’assurance." }
+      ]
+    },
+    {
+      "slug": "installation-sanitaire",
+      "label": "Installation sanitaire",
+      "short": "Créer ou moderniser vos points d’eau en toute sérénité.",
+      "heroImage": "https://images.unsplash.com/photo-1617099132309-99c421bb6e0d?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154340-0ef3c08c0632?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1564540586988-aa4e866b55f1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Vous souhaitez ajouter un point d’eau, remplacer un WC ou installer une nouvelle douche ? Une installation sanitaire bien pensée garantit confort au quotidien et longévité de votre réseau.",
+        "Nous vous accompagnons dans le choix des équipements (robinetterie, receveurs, meubles vasques) en fonction de votre budget, de vos habitudes et de l’espace disponible.",
+        "Chaque installation est testée et vérifiée avec vous avant la fin du chantier, pour s’assurer que tout fonctionne parfaitement et que l’entretien futur sera facilité."
+      ],
+      "whyUs": [
+        "Conseils sur le matériel adapté à votre usage et à votre budget.",
+        "Pose soignée avec respect des notices fabricants et des normes.",
+        "Livraison d’un chantier propre et prêt à l’emploi."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous fournir le matériel ?", "a": "Oui, nous pouvons fournir les équipements ou installer ceux que vous avez déjà achetés, après validation de leur compatibilité." },
+        { "q": "Combien de temps dure une installation de WC ou de lave-main ?", "a": "Pour un remplacement simple, il faut généralement compter une demi-journée d’intervention." },
+        { "q": "Faites-vous les petites modifications (déplacement d’un robinet) ?", "a": "Oui, nous intervenons aussi pour les ajustements ponctuels, même sur de petites longueurs de tuyauterie." },
+        { "q": "Proposez-vous des solutions adaptées aux personnes à mobilité réduite ?", "a": "Nous pouvons vous conseiller et installer du matériel spécifique pour sécuriser l’accès aux points d’eau." },
+        { "q": "Est-il nécessaire de couper l’eau de tout l’immeuble ?", "a": "Dans la plupart des cas, seule la colonne privative est concernée. Nous vous expliquons la marche à suivre avant l’intervention." }
+      ]
+    },
+    {
+      "slug": "chauffe-eau",
+      "label": "Chauffe-eau et ballons",
+      "short": "Assurer une production d’eau chaude fiable et sécurisée.",
+      "heroImage": "https://images.unsplash.com/photo-1606813912771-0284189d9864?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1621905251204-3c5b5c4c43cf?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Un chauffe-eau en fin de vie peut entraîner des pannes répétées, une surconsommation électrique ou même des risques de fuite importants.",
+        "Nous intervenons pour le diagnostic, l’entretien et le remplacement de vos ballons d’eau chaude, en veillant à dimensionner correctement l’équipement selon le nombre d’occupants et vos habitudes.",
+        "Lors d’un remplacement, l’ancien appareil est déposé et évacué, puis le nouveau est mis en service avec les réglages adaptés à votre logement."
+      ],
+      "whyUs": [
+        "Conseil sur la capacité adaptée à votre foyer.",
+        "Installation conforme avec groupe de sécurité et évacuation appropriée.",
+        "Possibilité de programmer un entretien régulier pour prolonger la durée de vie."
+      ],
+      "faq": [
+        { "q": "Quand faut-il changer un chauffe-eau ?", "a": "Au-delà de 10 à 12 ans, les risques de fuite augmentent. Des bruits inhabituels ou une eau moins chaude sont aussi des signaux d’alerte." },
+        { "q": "Proposez-vous des chauffe-eau économiques ?", "a": "Oui, nous pouvons vous orienter vers des modèles plus performants et moins énergivores." },
+        { "q": "Faut-il entretenir un chauffe-eau électrique ?", "a": "Un détartrage régulier permet de préserver le rendement et d’éviter certaines pannes." },
+        { "q": "Combien de temps dure le remplacement ?", "a": "En général, une journée suffit pour déposer l’ancien chauffe-eau et installer le nouveau." },
+        { "q": "Gérez-vous l’évacuation de l’ancien appareil ?", "a": "Oui, nous nous chargeons de l’enlèvement et du recyclage dans les filières adaptées." }
+      ]
+    },
+    {
+      "slug": "debouchage",
+      "label": "Débouchage",
+      "short": "Retrouver des évacuations fluides sans abîmer vos installations.",
+      "heroImage": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1621905251910-19c0ebd1cde0?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa5?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Un évier qui se vide mal, une douche qui retient l’eau ou des toilettes qui se bouchent régulièrement sont des signes d’un conduit encombré.",
+        "Nous utilisons des techniques mécaniques ou hydrauliques pour déboucher vos canalisations sans recours systématique aux produits chimiques agressifs.",
+        "Si nécessaire, une inspection plus poussée peut être proposée pour repérer un éventuel défaut de pente, un affaissement ou un objet coincé dans la canalisation."
+      ],
+      "whyUs": [
+        "Priorité donnée aux méthodes qui préservent vos canalisations.",
+        "Interventions possibles en cuisine, salle de bain, WC et réseaux extérieurs.",
+        "Conseils pour éviter le retour des bouchons (gestes simples au quotidien)."
+      ],
+      "faq": [
+        { "q": "Dois-je utiliser un produit déboucheur avant de vous appeler ?", "a": "Ce n’est pas obligatoire et parfois déconseillé. Certains produits peuvent abîmer les joints ou les tuyaux." },
+        { "q": "Intervenez-vous sur les colonnes communes d’immeuble ?", "a": "Oui, en lien avec le syndic ou le gestionnaire de l’immeuble lorsque c’est nécessaire." },
+        { "q": "Pouvez-vous intervenir en cas de mauvaises odeurs ?", "a": "Oui, nous vérifions les siphons, aérations et évacuations pour identifier l’origine du problème." },
+        { "q": "Le débouchage est-il garanti dans le temps ?", "a": "Nous faisons le nécessaire pour rétablir un bon écoulement. En cas de défaut structurel, nous vous proposerons des solutions complémentaires." },
+        { "q": "Faut-il protéger certaines zones avant votre arrivée ?", "a": "Nous prévoyons des protections, mais vous pouvez dégager l’accès aux points d’eau pour faciliter l’intervention." }
+      ]
+    },
+    {
+      "slug": "renovation-salle-de-bain",
+      "label": "Rénovation salle de bain",
+      "short": "Transformer votre salle de bain en espace fonctionnel et agréable.",
+      "heroImage": "https://images.unsplash.com/photo-1617099404995-0a2a09a3d95c?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154340-0ef3c08c0632?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1564540586988-aa4e866b55f1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Une salle de bain bien pensée facilite le quotidien et valorise votre logement. Remplacement de baignoire par une douche, création de rangements, modernisation de la robinetterie : chaque détail compte.",
+        "Nous étudions avec vous la configuration idéale en tenant compte de la plomberie existante, de la ventilation et de vos habitudes de vie.",
+        "Les travaux sont planifiés pour limiter au maximum la durée d’indisponibilité de la salle de bain et vous permettre de retrouver rapidement un espace confortable."
+      ],
+      "whyUs": [
+        "Accompagnement du projet de l’idée au rendu final.",
+        "Collaboration possible avec d’autres corps de métier (carrelage, électricité).",
+        "Choix de matériaux adaptés aux pièces humides."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous coordonner tous les corps de métier ?", "a": "Nous pouvons travailler avec vos artisans habituels ou vous recommander des partenaires si besoin." },
+        { "q": "Combien de temps dure une rénovation de salle de bain ?", "a": "Selon l’ampleur des travaux, il faut compter de quelques jours à deux semaines." },
+        { "q": "Est-il possible de garder certains éléments existants ?", "a": "Oui, nous pouvons conserver ce qui est encore en bon état et l’intégrer au nouveau projet." },
+        { "q": "Proposez-vous des solutions pour petits espaces ?", "a": "Nous adaptons les aménagements aux contraintes de surface, avec des astuces gain de place." },
+        { "q": "Étudiez-vous l’accessibilité pour les personnes à mobilité réduite ?", "a": "Oui, nous pouvons intégrer des barres d’appui, receveurs extra-plats et aménagements spécifiques." }
+      ]
+    },
+    {
+      "slug": "recherche-fuite",
+      "label": "Recherche de fuite",
+      "short": "Localiser précisément l’origine d’une fuite avant d’ouvrir les murs.",
+      "heroImage": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1621905251910-19c0ebd1cde0?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1606813902912-2723f112d6e1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Une trace d’humidité ou un plafond qui gondole n’indiquent pas toujours l’endroit exact de la fuite. La recherche de fuite permet d’identifier la zone à traiter avec précision.",
+        "Selon les cas, différentes méthodes peuvent être utilisées : mise en pression, écoute, inspection visuelle ou collaboration avec une société spécialisée si nécessaire.",
+        "L’objectif est de limiter les ouvertures et de prévoir ensuite une réparation ciblée, en lien avec votre assurance si le sinistre est déclaré."
+      ],
+      "whyUs": [
+        "Diagnostic méthodique avant toute démolition.",
+        "Rapport clair pour faciliter vos démarches auprès de l’assurance.",
+        "Intervention possible en coordination avec d’autres intervenants du bâtiment."
+      ],
+      "faq": [
+        { "q": "Pouvez-vous intervenir à la demande de l’assurance ?", "a": "Oui, nous pouvons fournir un devis détaillé et un rapport après intervention si nécessaire." },
+        { "q": "La recherche de fuite implique-t-elle forcément des trous dans les murs ?", "a": "Nous privilégions d’abord les méthodes non destructives et n’ouvrons que si cela s’avère indispensable." },
+        { "q": "Intervenez-vous en étage dans un immeuble ?", "a": "Oui, en coordination avec les voisins et le syndic lorsque plusieurs logements sont concernés." },
+        { "q": "Pouvez-vous réparer immédiatement après la recherche ?", "a": "Dans de nombreux cas, nous pouvons enchaîner sur une réparation ciblée, sinon une seconde intervention est programmée." },
+        { "q": "Aidez-vous à remplir les documents pour l’assurance ?", "a": "Nous pouvons vous fournir les éléments techniques nécessaires pour votre dossier." }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    { "label": "Dépannage urgence", "href": "/m/plombier/depannage-urgence", "icon": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Installation sanitaire", "href": "/m/plombier/installation-sanitaire", "icon": "https://images.unsplash.com/photo-1617099132309-99c421bb6e0d?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Chauffe-eau et ballons", "href": "/m/plombier/chauffe-eau", "icon": "https://images.unsplash.com/photo-1606813912771-0284189d9864?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Débouchage", "href": "/m/plombier/debouchage", "icon": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Rénovation salle de bain", "href": "/m/plombier/renovation-salle-de-bain", "icon": "https://images.unsplash.com/photo-1617099404995-0a2a09a3d95c?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Recherche de fuite", "href": "/m/plombier/recherche-fuite", "icon": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=200&q=80" }
+  ],
+  "favicon": "/favicons/plombier.svg",
+  "seo": {
+    "keywords": ["plombier", "dépannage plomberie", "urgence fuite eau", "installation sanitaires"],
+    "category": "Plumber"
+  },
+  "cta": {
+    "mode": "urgent"
+  }
+}
+
+

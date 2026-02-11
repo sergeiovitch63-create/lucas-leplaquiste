@@ -1,0 +1,214 @@
+{
+  "jobKey": "garage",
+  "jobLabel": "Garage auto",
+  "defaultHeroTagline": "Entretien, réparations et préparation de votre véhicule en toute confiance.",
+  "defaultServices": [
+    { "title": "Révisions et vidanges", "desc": "Entretien constructeur, contrôle des niveaux, filtres et pneumatiques." },
+    { "title": "Diagnostic et réparation", "desc": "Freins, moteur, électronique, climatisation : diagnostic précis et réparation." },
+    { "title": "Pré-contrôle technique", "desc": "Vérification des points clés avant le contrôle technique officiel." },
+    { "title": "Pneumatiques et freins", "desc": "Montage, équilibrage, remplacement de disques et plaquettes." },
+    { "title": "Climatisation", "desc": "Contrôle d’étanchéité, recharge et désinfection du circuit." },
+    { "title": "Préparation esthétique", "desc": "Nettoyage approfondi, lustrage et remise en beauté du véhicule." }
+  ],
+  "defaultBenefits": [
+    { "title": "Transparence sur les travaux", "desc": "Explication claire des opérations effectuées sur votre véhicule." },
+    { "title": "Pièces de qualité", "desc": "Utilisation de pièces conformes aux préconisations constructeur." },
+    { "title": "Garage de proximité", "desc": "Un seul interlocuteur pour le suivi de votre véhicule." }
+  ],
+  "defaultFaq": [
+    { "q": "Puis-je conserver ma garantie constructeur ?", "a": "Oui, les entretiens sont réalisés dans le respect des préconisations constructeur et des carnets d’entretien." },
+    { "q": "Proposez-vous un véhicule de courtoisie ?", "a": "Selon disponibilité, un véhicule de courtoisie peut être mis à disposition le temps des travaux." },
+    { "q": "Faites-vous un devis avant les réparations ?", "a": "Oui, un devis vous est présenté avant toute intervention importante sur le véhicule." }
+  ],
+  "defaultBgImage": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80",
+  "defaultBannerImage": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
+  "defaultZoneText": "Votre ville et alentours",
+  "categories": [
+    {
+      "slug": "revision-entretien",
+      "label": "Révision & entretien",
+      "short": "Respecter le carnet constructeur pour rouler sereinement.",
+      "heroImage": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les révisions régulières permettent de préserver la fiabilité de votre véhicule et de maintenir votre garantie constructeur lorsque cela s’applique.",
+        "Vidange, filtres, bougies, niveaux et contrôles visuels sont effectués conformément aux préconisations du constructeur.",
+        "Chaque visite est l’occasion de faire un point sur l’état général du véhicule et d’anticiper d’éventuelles interventions futures."
+      ],
+      "whyUs": [
+        "Respect du carnet d’entretien et des intervalles recommandés.",
+        "Utilisation d’huiles et de pièces adaptées à votre motorisation.",
+        "Compte rendu clair à la restitution du véhicule."
+      ],
+      "faq": [
+        { "q": "Dois-je forcément aller chez le concessionnaire ?", "a": "Vous pouvez faire vos entretiens dans un garage indépendant, à condition que les préconisations constructeurs soient respectées." },
+        { "q": "Combien de temps immobilisez-vous le véhicule ?", "a": "Pour une révision standard, il faut généralement compter une demi-journée." },
+        { "q": "Prévenez-vous en cas d’élément imprévu ?", "a": "Oui, aucun travail supplémentaire n’est réalisé sans votre accord." },
+        { "q": "Proposez-vous la remise à zéro des indicateurs d’entretien ?", "a": "Oui, nous réinitialisons les témoins selon les procédures du constructeur." },
+        { "q": "Puis-je patienter sur place ?", "a": "Pour une petite intervention, c’est possible. Pour une révision complète, il est souvent plus confortable de revenir en fin de journée." }
+      ]
+    },
+    {
+      "slug": "diagnostic-reparation",
+      "label": "Diagnostic & réparation",
+      "short": "Identifier précisément l’origine des pannes avant d’intervenir.",
+      "heroImage": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Témoin moteur allumé, bruit inhabituel, difficulté au démarrage : un diagnostic précis évite les remplacements inutiles et les pannes à répétition.",
+        "Nous utilisons des outils de diagnostic modernes et complétons par une approche mécanique classique pour confirmer l’origine du problème.",
+        "Une fois la panne identifiée, un devis détaillé vous est proposé avant toute réparation."
+      ],
+      "whyUs": [
+        "Outils de diagnostic adaptés aux véhicules récents.",
+        "Recherche de panne méthodique plutôt que remplacement systématique.",
+        "Explications accessibles, même si vous n’êtes pas expert en mécanique."
+      ],
+      "faq": [
+        { "q": "Le diagnostic est-il payant ?", "a": "Un forfait diagnostic est appliqué. Il peut être partiellement intégré au devis si vous faites réaliser les travaux chez nous." },
+        { "q": "Combien de temps faut-il pour trouver une panne ?", "a": "Cela dépend de la complexité du problème. Nous vous tenons informé dès que nous avons identifié une cause probable." },
+        { "q": "Travaillez-vous sur toutes les marques ?", "a": "Nous intervenons sur la plupart des marques du marché, n’hésitez pas à nous préciser le modèle lors de la prise de rendez-vous." },
+        { "q": "Puis-je récupérer le rapport de diagnostic ?", "a": "Oui, un compte rendu peut vous être transmis si vous le souhaitez." },
+        { "q": "Intervenez-vous sur l’électronique embarquée ?", "a": "Nous traitons de nombreux problèmes liés aux capteurs, calculateurs et faisceaux, dans la limite des équipements disponibles." }
+      ]
+    },
+    {
+      "slug": "pre-controle-technique",
+      "label": "Pré-contrôle technique",
+      "short": "Limiter les mauvaises surprises le jour du contrôle officiel.",
+      "heroImage": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Le pré-contrôle technique permet de vérifier les points les plus souvent signalés lors du contrôle officiel : freinage, éclairage, pneus, fuites, visibilité…",
+        "Nous identifions les éléments à corriger avant le passage au centre, ce qui vous évite parfois une contre-visite coûteuse et une nouvelle immobilisation.",
+        "Vous gardez ainsi la maîtrise du planning et du budget des éventuelles réparations."
+      ],
+      "whyUs": [
+        "Contrôle des points clés identiques à ceux du centre de contrôle technique.",
+        "Conseils sur ce qui est réellement prioritaire.",
+        "Possibilité de planifier les réparations immédiatement après."
+      ],
+      "faq": [
+        { "q": "Le pré-contrôle est-il obligatoire ?", "a": "Non, mais il permet d’anticiper et de limiter les mauvaises surprises lors du contrôle officiel." },
+        { "q": "Pouvez-vous emmener la voiture au contrôle technique ?", "a": "Selon l’organisation du garage, ce service peut être proposé. Renseignez-vous lors de la prise de rendez-vous." },
+        { "q": "Faites-vous un devis si des défauts sont repérés ?", "a": "Oui, un devis détaillé vous est remis avant toute intervention." },
+        { "q": "Combien de temps prévoir pour cette visite ?", "a": "Environ une heure, selon l’état général du véhicule." },
+        { "q": "Contrôlez-vous aussi la pollution ?", "a": "Nous vérifions visuellement les éléments apparents et les symptômes, mais la mesure officielle reste celle du centre de contrôle." }
+      ]
+    },
+    {
+      "slug": "pneus-freins",
+      "label": "Pneus & freins",
+      "short": "Sécurité et adhérence en toutes saisons.",
+      "heroImage": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522364723953-452d3431c267?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Les pneus et le système de freinage sont essentiels pour votre sécurité et celle des autres usagers de la route.",
+        "Nous contrôlons l’usure, la pression et l’équilibrage de vos pneus, ainsi que l’état des disques, plaquettes et éléments hydrauliques.",
+        "En cas de remplacement, nous vous orientons vers des références adaptées à votre véhicule et à votre usage (ville, autoroute, montagne…)."
+      ],
+      "whyUs": [
+        "Matériel de montage et d’équilibrage adapté à la plupart des jantes.",
+        "Contrôle systématique du freinage lors des interventions sur les trains roulants.",
+        "Conseils sur le choix des pneus pour votre usage quotidien."
+      ],
+      "faq": [
+        { "q": "Quand faut-il changer les plaquettes de frein ?", "a": "Des bruits, une pédale moins réactive ou un témoin au tableau de bord sont des signes d’alerte. Un contrôle visuel permet de trancher." },
+        { "q": "Puis-je fournir mes propres pneus ?", "a": "Oui, sous réserve qu’ils soient compatibles avec votre véhicule et en bon état." },
+        { "q": "Faites-vous la permutation été/hiver ?", "a": "Oui, nous pouvons permuter et stocker vos pneus selon les services proposés par le garage." },
+        { "q": "Contrôlez-vous le parallélisme ?", "a": "Nous pouvons détecter des signes de mauvais parallélisme et vous proposer une correction si nécessaire." },
+        { "q": "Les pneus sont-ils équilibrés après montage ?", "a": "Oui, l’équilibrage est systématiquement réalisé après chaque montage." }
+      ]
+    },
+    {
+      "slug": "climatisation",
+      "label": "Climatisation",
+      "short": "Confort thermique et air sain dans l’habitacle.",
+      "heroImage": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522364723953-452d3431c267?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "Une climatisation efficace assure un confort de conduite et participe à la sécurité en limitant la buée et la fatigue.",
+        "Nous contrôlons la pression, la température de soufflage et l’étanchéité du circuit. En cas de besoin, une recharge est effectuée dans le respect des réglementations en vigueur.",
+        "Des traitements spécifiques peuvent aussi être réalisés pour limiter les mauvaises odeurs et assainir les conduits."
+      ],
+      "whyUs": [
+        "Équipements adaptés aux fluides frigorigènes récents.",
+        "Contrôle avant recharge pour éviter les fuites récurrentes.",
+        "Conseils pour utiliser la climatisation sans surconsommer."
+      ],
+      "faq": [
+        { "q": "À quelle fréquence entretenir la climatisation ?", "a": "Un contrôle tous les 2 ans est en général recommandé, avec un remplacement régulier du filtre d’habitacle." },
+        { "q": "La recharge est-elle toujours possible ?", "a": "Nous vérifions d’abord l’état du circuit. En cas de fuite importante, une réparation peut être nécessaire avant toute recharge." },
+        { "q": "Les mauvaises odeurs disparaissent-elles après le traitement ?", "a": "Un traitement des conduits améliore nettement la situation. Certaines situations anciennes peuvent nécessiter plusieurs actions." },
+        { "q": "Puis-je utiliser la clim l’hiver ?", "a": "Oui, cela permet notamment de désembuer plus rapidement les vitrages." },
+        { "q": "La climatisation consomme-t-elle beaucoup ?", "a": "Elle a un impact, mais une utilisation raisonnée et un circuit en bon état limitent la surconsommation." }
+      ]
+    },
+    {
+      "slug": "preparation-esthetique",
+      "label": "Préparation esthétique",
+      "short": "Redonner de l’éclat à votre véhicule, intérieur et extérieur.",
+      "heroImage": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522364723953-452d3431c267?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80"
+      ],
+      "body": [
+        "La préparation esthétique comprend le nettoyage approfondi de la carrosserie et de l’habitacle, ainsi que des traitements spécifiques pour raviver les surfaces.",
+        "Lustrage, rénovation des plastiques, nettoyage des textiles et des vitres permettent de redonner une seconde jeunesse à votre véhicule.",
+        "C’est une prestation appréciée avant une vente, une restitution de leasing ou simplement pour retrouver le plaisir de conduire une voiture propre."
+      ],
+      "whyUs": [
+        "Produits et techniques adaptés aux différentes finitions de carrosserie.",
+        "Soin apporté aux détails : joints, jantes, vitres, seuils de porte.",
+        "Possibilité d’adapter la prestation selon l’état initial du véhicule."
+      ],
+      "faq": [
+        { "q": "Combien de temps dure une préparation complète ?", "a": "Selon l’état du véhicule et le niveau de finition choisi, il faut compter de quelques heures à une journée." },
+        { "q": "Traitez-vous les poils d’animaux dans l’habitacle ?", "a": "Oui, un travail spécifique peut être réalisé pour éliminer un maximum de poils et d’odeurs." },
+        { "q": "Le lustrage enlève-t-il toutes les rayures ?", "a": "Il atténue les micro-rayures et ravive la brillance, mais certaines rayures profondes peuvent rester visibles." },
+        { "q": "Puis-je choisir uniquement l’intérieur ou l’extérieur ?", "a": "Oui, des formules ciblées sont possibles." },
+        { "q": "Faut-il vider entièrement la voiture avant ?", "a": "Idéalement oui, pour un accès complet aux différentes zones à traiter." }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    { "label": "Révision & entretien", "href": "/m/garage/revision-entretien", "icon": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Diagnostic & réparation", "href": "/m/garage/diagnostic-reparation", "icon": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Pré-contrôle technique", "href": "/m/garage/pre-controle-technique", "icon": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Pneus & freins", "href": "/m/garage/pneus-freins", "icon": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Climatisation", "href": "/m/garage/climatisation", "icon": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=200&q=80" },
+    { "label": "Préparation esthétique", "href": "/m/garage/preparation-esthetique", "icon": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=200&q=80" }
+  ],
+  "favicon": "/favicons/garage.svg",
+  "seo": {
+    "keywords": ["garage auto", "réparation voiture", "entretien véhicule", "révision auto"],
+    "category": "AutoRepair"
+  },
+  "cta": {
+    "mode": "booking"
+  }
+}
+
+
