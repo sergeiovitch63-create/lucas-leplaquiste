@@ -48,7 +48,6 @@ function cleanObject<T extends Record<string, unknown>>(obj: T): Partial<T> {
   const result: Partial<T> = {};
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null || value === "") continue;
-    // @ts-expect-error dynamic assignment
     result[key as keyof T] = value as T[keyof T];
   }
   return result;
