@@ -24,18 +24,24 @@ export interface LinkPageProps {
   benefits: { title: string; desc: string }[];
   faq: { q: string; a: string }[];
   ctas: LinkPageCtas;
+  jobKey: string;
+  queryString: string;
 }
 
 export function LinkPage({
   preset,
   client,
   hero,
+  jobKey,
+  queryString,
 }: LinkPageProps) {
   return (
     <LucasLikeTemplate
       preset={preset}
       client={client}
       heroTitle={hero.title}
+      jobKey={jobKey}
+      queryString={queryString}
     />
   );
 }

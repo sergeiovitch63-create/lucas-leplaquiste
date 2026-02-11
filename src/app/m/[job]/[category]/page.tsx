@@ -1,8 +1,12 @@
-import Image from "next/image";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { getPreset, type JobCategory } from "@/lib/getPreset";
 import { parseClientParams, type ClientParams } from "@/lib/parseClientParams";
+import { getBrandFromHost } from "@/lib/brand";
+import { QuickActions } from "@/components/QuickActions";
+import SafeImage from "@/components/SafeImage";
+import { pickImage } from "@/lib/images";
 
 type PageParams = {
   params: { job: string; category: string };
@@ -32,6 +36,8 @@ export async function generateMetadata({
   const preset = getPreset(params.job);
   const usp = toURLSearchParams(searchParams);
   const client = parseClientParams(usp);
+  const host = headers().get("host");
+  const brand = getBrandFromHost(host);
 
   const categories = preset.categories ?? [];
   const category = categories.find((c) => c.slug === params.category);
@@ -53,36 +59,18 @@ export async function generateMetadata({
     title,
     description,
     icons: {
-      icon: preset.favicon ?? "/favicon.ico",
+      icon: preset.favicon ?? brand.faviconPath,
+    },
+    openGraph: {
+      title,
+      description,
+      siteName: brand.siteName,
     },
   };
 }
 
-const ALLOWED_IMAGE_HOSTS = new Set(["images.unsplash.com", "via.placeholder.com"]);
-
-function getSafeImageSrc(
-  rawSrc: string | null | undefined,
-  fallback: string,
-): string {
-  if (!rawSrc) return fallback;
-  try {
-    if (rawSrc.startsWith("/")) return rawSrc;
-    const url = new URL(rawSrc);
-    if (!ALLOWED_IMAGE_HOSTS.has(url.hostname)) {
-      return fallback;
-    }
-    return url.toString();
-  } catch {
-    return fallback;
-  }
-}
-
 function buildBgImage(presetBg?: string, clientBg?: string | null): string {
-  const primary =
-    clientBg ||
-    presetBg ||
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80";
-  return getSafeImageSrc(primary, "/media/accueil/fond-ecrans.jpg");
+  return pickImage(clientBg ?? undefined, presetBg, "/media/accueil/fond-ecrans.jpg");
 }
 
 function buildZoneText(presetZone: string | undefined, client: ClientParams): string {
@@ -198,16 +186,17 @@ export default async function Page({ params, searchParams }: PageParams) {
           <div className="text-center space-y-4">
             <div className="flex justify-center">
               <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white/25 shadow-lg">
-                {client.logo ? (
-                  <img
-                    src={client.logo}
-                    alt={name}
-                    className="h-full w-full object-cover"
-                  />
-                ) : preset.defaultBannerImage || preset.defaultBgImage ? (
-                  <img
-                    src={preset.defaultBannerImage || preset.defaultBgImage!}
-                    alt={preset.jobLabel}
+                {client.logo || preset.defaultBannerImage || preset.defaultBgImage ? (
+                  <SafeImage
+                    src={pickImage(
+                      client.logo,
+                      preset.defaultBannerImage,
+                      preset.defaultBgImage,
+                      "/media/placeholder.jpg",
+                    )}
+                    alt={client.logo ? name : preset.jobLabel}
+                    width={56}
+                    height={56}
                     className="h-full w-full object-cover"
                   />
                 ) : (
@@ -227,57 +216,25 @@ export default async function Page({ params, searchParams }: PageParams) {
             </div>
 
             {/* Icons row */}
-            <div className="mt-3 flex items-center justify-center gap-3">
-              {phoneHref && (
-                <a
-                  href={phoneHref}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-black shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                  aria-label="Appeler"
-                >
-                  📞
-                </a>
-              )}
-              {whatsappHref && (
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-emerald-600 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                  aria-label="WhatsApp"
-                >
-                  💬
-                </a>
-              )}
-              {facebookHref && (
-                <a
-                  href={facebookHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-sky-700 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                  aria-label="Facebook"
-                >
-                  f
-                </a>
-              )}
-              {emailHref && (
-                <a
-                  href={emailHref}
-                  className="flex h-9 w-9 items-center justifycenter rounded-full bg-white/85 text-slate-800 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                  aria-label="Email"
-                >
-                  ✉️
-                </a>
-              )}
+            <div className="mt-3">
+              <QuickActions
+                phone={client.phone}
+                whatsapp={client.whatsapp}
+                facebook={client.facebook}
+                email={client.email}
+                variant="dark"
+              />
             </div>
           </div>
 
           {/* Hero image */}
           <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/10 shadow-xl">
             <div className="relative h-[180px] w-full overflow-hidden">
-              <Image
-                src={getSafeImageSrc(
+              <SafeImage
+                src={pickImage(
                   category.heroImage,
-                  preset.defaultBgImage || "/media/accueil/fond-ecrans.jpg",
+                  preset.defaultBgImage,
+                  "/media/accueil/fond-ecrans.jpg",
                 )}
                 alt={category.label}
                 width={800}
@@ -335,10 +292,11 @@ export default async function Page({ params, searchParams }: PageParams) {
                     key={index}
                     className="overflow-hidden rounded-xl border border-white/15 bg-white/10"
                   >
-                    <Image
-                      src={getSafeImageSrc(
+                    <SafeImage
+                      src={pickImage(
                         src,
-                        preset.defaultBgImage || "/media/accueil/fond-ecrans.jpg",
+                        preset.defaultBgImage,
+                        "/media/accueil/fond-ecrans.jpg",
                       )}
                       alt=""
                       width={240}

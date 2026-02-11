@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { LinkPage } from "@/components/LinkPage";
 import { getPreset, type JobPreset } from "@/lib/getPreset";
 import { parseClientParams, type ClientParams } from "@/lib/parseClientParams";
+import { getBrandFromHost } from "@/lib/brand";
 
 type PageParams = {
   params: { job: string };
@@ -105,6 +107,8 @@ export async function generateMetadata({
 }: PageParams): Promise<Metadata> {
   const preset = getPreset(params.job);
   const client = parseClientParams(toURLSearchParams(searchParams));
+  const host = headers().get("host");
+  const brand = getBrandFromHost(host);
 
   const name = client.name || `Votre ${preset.jobLabel}`;
   const city = client.city || "Votre ville";
@@ -116,7 +120,12 @@ export async function generateMetadata({
     title,
     description,
     icons: {
-      icon: preset.favicon ?? "/favicon.ico",
+      icon: preset.favicon ?? brand.faviconPath,
+    },
+    openGraph: {
+      title,
+      description,
+      siteName: brand.siteName,
     },
     alternates: {
       canonical: `/m/${params.job}`,
@@ -126,7 +135,8 @@ export async function generateMetadata({
 
 export default async function Page({ params, searchParams }: PageParams) {
   const preset = getPreset(params.job);
-  const client: ClientParams = parseClientParams(toURLSearchParams(searchParams));
+  const usp = toURLSearchParams(searchParams);
+  const client: ClientParams = parseClientParams(usp);
 
   const name = client.name || `Votre ${preset.jobLabel}`;
   const city = client.city || "Votre ville";
@@ -191,6 +201,8 @@ export default async function Page({ params, searchParams }: PageParams) {
           primaryCtaHref,
           primaryCtaLabel,
         }}
+        jobKey={preset.jobKey}
+        queryString={usp.toString()}
       />
     </>
   );

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { getPreset } from "@/lib/getPreset";
 import { parseClientParams, type ClientParams } from "@/lib/parseClientParams";
+import { getBrandFromHost } from "@/lib/brand";
+import { QuickActions } from "@/components/QuickActions";
+import { pickImage } from "@/lib/images";
 
 type PageParams = {
   params: { job: string };
@@ -29,14 +33,22 @@ export async function generateMetadata({
 }: PageParams): Promise<Metadata> {
   const preset = getPreset(params.job);
   const client = parseClientParams(toURLSearchParams(searchParams));
+  const host = headers().get("host");
+  const brand = getBrandFromHost(host);
 
   const name = client.name || `Votre ${preset.jobLabel}`;
   const city = client.city || client.zone || "Votre ville";
 
+  const title = `Avis — ${name} (${preset.jobLabel} à ${city})`;
+
   return {
-    title: `Avis — ${name} (${preset.jobLabel} à ${city})`,
+    title,
     icons: {
-      icon: preset.favicon ?? "/favicon.ico",
+      icon: preset.favicon ?? brand.faviconPath,
+    },
+    openGraph: {
+      title,
+      siteName: brand.siteName,
     },
   };
 }
@@ -95,31 +107,8 @@ function getMassageReviews(): Review[] {
   ];
 }
 
-const ALLOWED_IMAGE_HOSTS = new Set(["images.unsplash.com", "via.placeholder.com"]);
-
-function getSafeImageSrc(
-  rawSrc: string | null | undefined,
-  fallback: string,
-): string {
-  if (!rawSrc) return fallback;
-  try {
-    if (rawSrc.startsWith("/")) return rawSrc;
-    const url = new URL(rawSrc);
-    if (!ALLOWED_IMAGE_HOSTS.has(url.hostname)) {
-      return fallback;
-    }
-    return url.toString();
-  } catch {
-    return fallback;
-  }
-}
-
 function buildBgImage(presetBg?: string, clientBg?: string | null): string {
-  const primary =
-    clientBg ||
-    presetBg ||
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80";
-  return getSafeImageSrc(primary, "/media/accueil/fond-ecrans.jpg");
+  return pickImage(clientBg ?? undefined, presetBg, "/media/accueil/fond-ecrans.jpg");
 }
 
 function buildZoneText(presetZone: string | undefined, client: ClientParams): string {
@@ -179,13 +168,24 @@ export default async function Page({ params, searchParams }: PageParams) {
           </div>
 
           {/* Title */}
-          <header className="space-y-2 text-center">
-            <h1 className="text-xl font-semibold tracking-tight text-shadow-soft">
-              Avis sur {name}
-            </h1>
-            <p className="text-xs text-white/80">
-              {preset.jobLabel} — Zones d’intervention: {zoneText}
-            </p>
+          <header className="space-y-3 text-center">
+            <div className="space-y-1">
+              <h1 className="text-xl font-semibold tracking-tight text-shadow-soft">
+                Avis sur {name}
+              </h1>
+              <p className="text-xs text-white/80">
+                {preset.jobLabel} — Zones d’intervention: {zoneText}
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <QuickActions
+                phone={client.phone}
+                whatsapp={client.whatsapp}
+                facebook={client.facebook}
+                email={client.email}
+                variant="dark"
+              />
+            </div>
           </header>
 
           {/* Global score */}

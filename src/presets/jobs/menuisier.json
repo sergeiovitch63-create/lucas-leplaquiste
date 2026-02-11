@@ -20,20 +20,16 @@
     { "q": "Proposez-vous des plans ou des vues 3D ?", "a": "Des croquis, plans cotés ou vues 3D peuvent être réalisés pour vous aider à valider le projet." },
     { "q": "Travaillez-vous uniquement avec du bois massif ?", "a": "Nous utilisons du massif, des panneaux et des matériaux complémentaires selon l’usage et le budget." }
   ],
-  "defaultBgImage": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80",
-  "defaultBannerImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
+  "defaultBgImage": "/media/jobs/menuisier.svg",
+  "defaultBannerImage": "/media/jobs/menuisier.svg",
   "defaultZoneText": "Votre ville et alentours",
   "categories": [
     {
       "slug": "agencements-sur-mesure",
       "label": "Agencements sur mesure",
       "short": "Optimiser chaque mètre carré avec des rangements adaptés.",
-      "heroImage": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/menuisier.svg",
+      "gallery": ["/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg"],
       "body": [
         "Un bon agencement sur mesure permet d’exploiter pleinement l’espace disponible, même dans les pièces les plus contraignantes.",
         "Placards, dressings, bibliothèques, meubles TV ou rangements sous escalier : chaque projet est conçu pour répondre à un usage précis.",
@@ -56,12 +52,8 @@
       "slug": "menuiseries-exterieures",
       "label": "Menuiseries extérieures",
       "short": "Portes, fenêtres et terrasses pour valoriser votre façade.",
-      "heroImage": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/menuisier.svg",
+      "gallery": ["/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg"],
       "body": [
         "Les menuiseries extérieures participent au confort thermique, acoustique et esthétique de votre maison.",
         "Nous réalisons la pose ou le remplacement de portes, fenêtres, volets, terrasses ou bardages en bois, en tenant compte de l’exposition et des contraintes de votre façade.",
@@ -84,12 +76,8 @@
       "slug": "renovation-menuiserie",
       "label": "Rénovation menuiserie",
       "short": "Redonner vie à vos ouvrages en bois existants.",
-      "heroImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/menuisier.svg",
+      "gallery": ["/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg"],
       "body": [
         "Plutôt que de tout remplacer, certaines menuiseries peuvent être réparées, ajustées ou modernisées.",
         "Nous intervenons sur les portes, fenêtres, escaliers, volets ou meubles intégrés pour corriger les jeux, remplacer des pièces et améliorer l’ergonomie.",
@@ -112,12 +100,8 @@
       "slug": "escaliers-garde-corps",
       "label": "Escaliers & garde-corps",
       "short": "Sécuriser et mettre en valeur vos circulations.",
-      "heroImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/menuisier.svg",
+      "gallery": ["/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg"],
       "body": [
         "L’escalier est un élément central autant fonctionnel que décoratif. Un projet sur mesure permet de concilier confort de marche, sécurité et esthétique.",
         "Nous concevons et posons des escaliers droits, tournants ou à pas décalés, en bois seul ou associé à d’autres matériaux.",
@@ -140,12 +124,8 @@
       "slug": "cuisines-plans-travail",
       "label": "Cuisines & plans de travail",
       "short": "Des surfaces de travail pratiques et agréables au quotidien.",
-      "heroImage": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/menuisier.svg",
+      "gallery": ["/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg"],
       "body": [
         "La cuisine est une pièce de vie à part entière. Un agencement sur mesure permet de gagner en fluidité et en confort d’utilisation.",
         "Nous réalisons des meubles bas, hauts, colonnes et plans de travail adaptés à vos appareils et à vos habitudes.",
@@ -168,12 +148,8 @@
       "slug": "mobilier-professionnel",
       "label": "Mobilier professionnel",
       "short": "Aménager les espaces de travail et d’accueil.",
-      "heroImage": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/menuisier.svg",
+      "gallery": ["/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg", "/media/jobs/menuisier.svg"],
       "body": [
         "Les espaces professionnels demandent des aménagements robustes, fonctionnels et accueillants.",
         "Nous concevons et réalisons comptoirs d’accueil, rangements, bibliothèques, éléments d’agencement pour bureaux, commerces ou cabinets.",
@@ -194,12 +170,12 @@
     }
   ],
   "defaultLinks": [
-    { "label": "Agencements sur mesure", "href": "/m/menuisier/agencements-sur-mesure", "icon": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Menuiseries extérieures", "href": "/m/menuisier/menuiseries-exterieures", "icon": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Rénovation menuiserie", "href": "/m/menuisier/renovation-menuiserie", "icon": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Escaliers & garde-corps", "href": "/m/menuisier/escaliers-garde-corps", "icon": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Cuisines & plans de travail", "href": "/m/menuisier/cuisines-plans-travail", "icon": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Mobilier professionnel", "href": "/m/menuisier/mobilier-professionnel", "icon": "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c7?auto=format&fit=crop&w=200&q=80" }
+    { "label": "Agencements sur mesure", "href": "/m/menuisier/agencements-sur-mesure", "icon": "/media/jobs/menuisier.svg" },
+    { "label": "Menuiseries extérieures", "href": "/m/menuisier/menuiseries-exterieures", "icon": "/media/jobs/menuisier.svg" },
+    { "label": "Rénovation menuiserie", "href": "/m/menuisier/renovation-menuiserie", "icon": "/media/jobs/menuisier.svg" },
+    { "label": "Escaliers & garde-corps", "href": "/m/menuisier/escaliers-garde-corps", "icon": "/media/jobs/menuisier.svg" },
+    { "label": "Cuisines & plans de travail", "href": "/m/menuisier/cuisines-plans-travail", "icon": "/media/jobs/menuisier.svg" },
+    { "label": "Mobilier professionnel", "href": "/m/menuisier/mobilier-professionnel", "icon": "/media/jobs/menuisier.svg" }
   ],
   "favicon": "/favicons/menuisier.svg",
   "seo": {

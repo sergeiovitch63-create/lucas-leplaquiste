@@ -1,32 +1,16 @@
-import Image from "next/image";
 import type { JobPreset } from "@/lib/getPreset";
 import type { ClientParams, ClientLink } from "@/lib/parseClientParams";
+import { pickImage } from "@/lib/images";
 import { Icon } from "./icons";
+import { QuickActions } from "./QuickActions";
+import SafeImage from "./SafeImage";
 
 interface LucasLikeTemplateProps {
   preset: JobPreset;
   client: ClientParams;
   heroTitle: string;
-}
-
-const ALLOWED_IMAGE_HOSTS = new Set(["images.unsplash.com", "via.placeholder.com"]);
-
-function getSafeImageSrc(
-  rawSrc: string | null | undefined,
-  fallback: string,
-): string {
-  if (!rawSrc) return fallback;
-
-  try {
-    if (rawSrc.startsWith("/")) return rawSrc;
-    const url = new URL(rawSrc);
-    if (!ALLOWED_IMAGE_HOSTS.has(url.hostname)) {
-      return fallback;
-    }
-    return url.toString();
-  } catch {
-    return fallback;
-  }
+  jobKey: string;
+  queryString: string;
 }
 
 function buildZoneText(preset: JobPreset, client: ClientParams): string {
@@ -37,44 +21,87 @@ function buildZoneText(preset: JobPreset, client: ClientParams): string {
 }
 
 function buildBgImage(preset: JobPreset, client: ClientParams): string {
-  const primary =
-    client.bg ||
-    preset.defaultBgImage ||
-    "/media/accueil/fond-ecrans.jpg";
-  return getSafeImageSrc(primary, "/media/accueil/fond-ecrans.jpg");
+  return pickImage(client.bg, preset.defaultBgImage);
 }
 
 function buildBannerImage(preset: JobPreset, client: ClientParams): string {
-  const primary =
-    client.banner ||
-    client.logo ||
-    preset.defaultBannerImage ||
-    "/media/accueil/logo.png";
-  return getSafeImageSrc(primary, "/media/accueil/logo.png");
+  return pickImage(
+    client.banner,
+    client.logo,
+    preset.defaultBannerImage,
+    preset.defaultBgImage,
+    "/media/logo-centre.png",
+  );
+}
+
+function appendQueryToInternalHref(href: string, queryString: string): string {
+  if (!queryString) return href;
+  if (!href.startsWith("/m/")) return href;
+  const separator = href.includes("?") ? "&" : "?";
+  return `${href}${separator}${queryString}`;
 }
 
 function buildLinks(
   preset: JobPreset,
   client: ClientParams,
   services: { title: string; desc: string }[],
+  jobKey: string,
+  queryString: string,
 ): ClientLink[] {
+  let baseLinks: ClientLink[];
+
   if (client.links && client.links.length > 0) {
-    return client.links;
+    baseLinks = client.links;
+  } else if (preset.defaultLinks && preset.defaultLinks.length > 0) {
+    baseLinks = preset.defaultLinks;
+  } else {
+    // Fallback: map default services to non-clickable links
+    baseLinks = services.map((service) => ({
+      label: service.title,
+      href: "#",
+    }));
   }
-  if (preset.defaultLinks && preset.defaultLinks.length > 0) {
-    return preset.defaultLinks;
-  }
-  // Fallback: map default services to non-clickable links
-  return services.map((service) => ({
-    label: service.title,
-    href: "#",
+
+  const normalizedBase = baseLinks.map((link) => ({
+    ...link,
+    href: appendQueryToInternalHref(link.href, queryString),
+    icon:
+      link.icon ||
+      pickImage(
+        preset.defaultCategoryIcon,
+        preset.defaultBgImage,
+        "/media/logo-centre.png",
+      ),
   }));
+
+  const qs = queryString ? `?${queryString}` : "";
+  const avisHref = appendQueryToInternalHref(
+    `/m/${encodeURIComponent(jobKey)}/avis${qs}`,
+    queryString,
+  );
+
+  const avisIcon = pickImage(
+    preset.defaultReviewsIcon,
+    preset.defaultCategoryIcon,
+    preset.defaultBgImage,
+    "/media/logo-centre.png",
+  );
+
+  const avisLink: ClientLink = {
+    label: "Avis clients",
+    href: avisHref,
+    icon: avisIcon,
+  };
+
+  return [avisLink, ...normalizedBase];
 }
 
 export function LucasLikeTemplate({
   preset,
   client,
   heroTitle,
+  jobKey,
+  queryString,
 }: LucasLikeTemplateProps) {
   const zoneText = buildZoneText(preset, client);
   const bgImage = buildBgImage(preset, client);
@@ -117,7 +144,13 @@ export function LucasLikeTemplate({
     }
   }
 
-  const links = buildLinks(preset, client, preset.defaultServices);
+  const links = buildLinks(
+    preset,
+    client,
+    preset.defaultServices,
+    jobKey,
+    queryString,
+  );
 
   const initials = name
     .split(" ")
@@ -145,12 +178,12 @@ export function LucasLikeTemplate({
             <div className="flex justify-center">
               <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/25 shadow-lg">
                 {client.logo ? (
-                  <Image
-                    src={getSafeImageSrc(
+                  <SafeImage
+                    src={pickImage(
                       client.logo,
-                      preset.defaultBannerImage ||
-                        preset.defaultBgImage ||
-                        "/media/logo-centre.png",
+                      preset.defaultBannerImage,
+                      preset.defaultBgImage,
+                      "/media/logo-centre.png",
                     )}
                     alt={name}
                     width={64}
@@ -158,9 +191,9 @@ export function LucasLikeTemplate({
                     className="h-full w-full object-cover rounded-full"
                   />
                 ) : preset.defaultBannerImage || preset.defaultBgImage ? (
-                  <Image
-                    src={getSafeImageSrc(
-                      preset.defaultBannerImage || preset.defaultBgImage!,
+                  <SafeImage
+                    src={pickImage(
+                      preset.defaultBannerImage || preset.defaultBgImage,
                       "/media/logo-centre.png",
                     )}
                     alt={preset.jobLabel}
@@ -186,48 +219,13 @@ export function LucasLikeTemplate({
           </div>
 
           {/* Icons row */}
-          <div className="flex items-center justify-center gap-3">
-            {phoneHref && (
-              <a
-                href={phoneHref}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-black shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                aria-label="Appeler"
-              >
-                <Icon name="phone" className="h-4 w-4" />
-              </a>
-            )}
-            {whatsappHref && (
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-emerald-600 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                aria-label="WhatsApp"
-              >
-                <Icon name="whatsapp" className="h-4 w-4" />
-              </a>
-            )}
-            {facebookHref && (
-              <a
-                href={facebookHref}
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-sky-700 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                aria-label="Facebook"
-              >
-                <Icon name="facebook" className="h-4 w-4" />
-              </a>
-            )}
-            {emailHref && (
-              <a
-                href={emailHref}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-slate-800 shadow-sm transition hover:translate-y-[1px] hover:bg-white"
-                aria-label="Email"
-              >
-                <Icon name="email" className="h-4 w-4" />
-              </a>
-            )}
-          </div>
+          <QuickActions
+            phone={client.phone || null}
+            whatsapp={client.whatsapp}
+            facebook={client.facebook}
+            email={client.email}
+            variant="dark"
+          />
 
           {/* Banner card */}
           <a
@@ -236,7 +234,7 @@ export function LucasLikeTemplate({
           >
             <div className="relative h-[170px] w-full overflow-hidden bg-[color:var(--logo-blue,#021C43)]">
               {bannerImage && (
-                <Image
+                <SafeImage
                   src={bannerImage}
                   alt=""
                   width={800}
@@ -262,22 +260,19 @@ export function LucasLikeTemplate({
                   className="group flex min-h-[56px] items-center gap-3 rounded-2xl border border-white/10 bg-white/18 px-3.5 shadow-[0_10px_25px_rgba(0,0,0,0.18)] backdrop-blur-md transition hover:translate-y-[-1px] hover:bg-white/22 active:scale-[0.99]"
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/20">
-                    {link.icon ? (
-                      <Image
-                        src={getSafeImageSrc(
-                          link.icon,
-                          bannerImage || "/media/logo-centre.png",
-                        )}
-                        alt=""
-                        width={36}
-                        height={36}
-                        className="h-full w-full object-cover rounded-full"
-                      />
-                    ) : (
-                      <span className="text-xs font-semibold text-white/80">
-                        {link.label.slice(0, 2).toUpperCase()}
-                      </span>
-                    )}
+                    <SafeImage
+                      src={pickImage(
+                        link.icon || null,
+                        bannerImage,
+                        preset.defaultBannerImage,
+                        preset.defaultBgImage,
+                        "/media/logo-centre.png",
+                      )}
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="h-full w-full object-cover rounded-full"
+                    />
                   </div>
                   <div className="flex flex-1 items-center justify-center">
                     <span className="line-clamp-1 text-sm font-medium text-white/90">

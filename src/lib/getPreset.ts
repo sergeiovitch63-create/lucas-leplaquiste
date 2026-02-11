@@ -25,6 +25,8 @@ export interface JobPreset {
   defaultBannerImage?: string;
   defaultZoneText?: string;
   defaultLinks?: { label: string; href: string; icon?: string }[];
+  defaultCategoryIcon?: string;
+  defaultReviewsIcon?: string;
   favicon?: string;
   categories?: JobCategory[];
   seo: {

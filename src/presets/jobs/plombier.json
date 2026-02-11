@@ -20,20 +20,16 @@
     { "q": "Puis-je avoir une estimation avant votre venue ?", "a": "Nous vous donnons une fourchette indicative par téléphone, puis un devis précis avant tout travail sur place." },
     { "q": "Travaillez-vous sur les anciennes installations ?", "a": "Oui, nous intervenons aussi bien sur les installations récentes que sur les réseaux plus anciens." }
   ],
-  "defaultBgImage": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
-  "defaultBannerImage": "https://images.unsplash.com/photo-1580917136763-3eeab65c8d6c?auto=format&fit=crop&w=1600&q=80",
+  "defaultBgImage": "/media/jobs/plombier.svg",
+  "defaultBannerImage": "/media/jobs/plombier.svg",
   "defaultZoneText": "Votre ville et alentours",
   "categories": [
     {
       "slug": "depannage-urgence",
       "label": "Dépannage urgence",
       "short": "Fuites et pannes traitées rapidement, de jour comme de nuit.",
-      "heroImage": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1580915411954-282cb1c9c450?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1580915411954-282cb1c9c450?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/plombier.svg",
+      "gallery": ["/media/jobs/plombier.svg", "/media/jobs/plombier.svg", "/media/jobs/plombier.svg"],
       "body": [
         "Un flexible qui lâche, un robinet qui fuit ou une canalisation qui déborde ne préviennent jamais. Le dépannage urgence permet de sécuriser rapidement la situation et de limiter les dégâts dans votre logement.",
         "Après un premier diagnostic sur place, nous mettons en œuvre les solutions les plus adaptées : coupure ciblée, réparation provisoire ou définitive, remplacement de pièces défectueuses.",
@@ -56,12 +52,8 @@
       "slug": "installation-sanitaire",
       "label": "Installation sanitaire",
       "short": "Créer ou moderniser vos points d’eau en toute sérénité.",
-      "heroImage": "https://images.unsplash.com/photo-1617099132309-99c421bb6e0d?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1600585154340-0ef3c08c0632?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1564540586988-aa4e866b55f1?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/plombier.svg",
+      "gallery": ["/media/jobs/plombier.svg", "/media/jobs/plombier.svg", "/media/jobs/plombier.svg"],
       "body": [
         "Vous souhaitez ajouter un point d’eau, remplacer un WC ou installer une nouvelle douche ? Une installation sanitaire bien pensée garantit confort au quotidien et longévité de votre réseau.",
         "Nous vous accompagnons dans le choix des équipements (robinetterie, receveurs, meubles vasques) en fonction de votre budget, de vos habitudes et de l’espace disponible.",
@@ -84,12 +76,8 @@
       "slug": "chauffe-eau",
       "label": "Chauffe-eau et ballons",
       "short": "Assurer une production d’eau chaude fiable et sécurisée.",
-      "heroImage": "https://images.unsplash.com/photo-1606813912771-0284189d9864?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1621905251204-3c5b5c4c43cf?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/plombier.svg",
+      "gallery": ["/media/jobs/plombier.svg", "/media/jobs/plombier.svg", "/media/jobs/plombier.svg"],
       "body": [
         "Un chauffe-eau en fin de vie peut entraîner des pannes répétées, une surconsommation électrique ou même des risques de fuite importants.",
         "Nous intervenons pour le diagnostic, l’entretien et le remplacement de vos ballons d’eau chaude, en veillant à dimensionner correctement l’équipement selon le nombre d’occupants et vos habitudes.",
@@ -112,12 +100,8 @@
       "slug": "debouchage",
       "label": "Débouchage",
       "short": "Retrouver des évacuations fluides sans abîmer vos installations.",
-      "heroImage": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1621905251910-19c0ebd1cde0?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa5?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/plombier.svg",
+      "gallery": ["/media/jobs/plombier.svg", "/media/jobs/plombier.svg", "/media/jobs/plombier.svg"],
       "body": [
         "Un évier qui se vide mal, une douche qui retient l’eau ou des toilettes qui se bouchent régulièrement sont des signes d’un conduit encombré.",
         "Nous utilisons des techniques mécaniques ou hydrauliques pour déboucher vos canalisations sans recours systématique aux produits chimiques agressifs.",
@@ -140,12 +124,8 @@
       "slug": "renovation-salle-de-bain",
       "label": "Rénovation salle de bain",
       "short": "Transformer votre salle de bain en espace fonctionnel et agréable.",
-      "heroImage": "https://images.unsplash.com/photo-1617099404995-0a2a09a3d95c?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1600585154340-0ef3c08c0632?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1564540586988-aa4e866b55f1?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/plombier.svg",
+      "gallery": ["/media/jobs/plombier.svg", "/media/jobs/plombier.svg", "/media/jobs/plombier.svg"],
       "body": [
         "Une salle de bain bien pensée facilite le quotidien et valorise votre logement. Remplacement de baignoire par une douche, création de rangements, modernisation de la robinetterie : chaque détail compte.",
         "Nous étudions avec vous la configuration idéale en tenant compte de la plomberie existante, de la ventilation et de vos habitudes de vie.",
@@ -168,12 +148,8 @@
       "slug": "recherche-fuite",
       "label": "Recherche de fuite",
       "short": "Localiser précisément l’origine d’une fuite avant d’ouvrir les murs.",
-      "heroImage": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1621905251910-19c0ebd1cde0?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1606813902912-2723f112d6e1?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/plombier.svg",
+      "gallery": ["/media/jobs/plombier.svg", "/media/jobs/plombier.svg", "/media/jobs/plombier.svg"],
       "body": [
         "Une trace d’humidité ou un plafond qui gondole n’indiquent pas toujours l’endroit exact de la fuite. La recherche de fuite permet d’identifier la zone à traiter avec précision.",
         "Selon les cas, différentes méthodes peuvent être utilisées : mise en pression, écoute, inspection visuelle ou collaboration avec une société spécialisée si nécessaire.",
@@ -194,12 +170,12 @@
     }
   ],
   "defaultLinks": [
-    { "label": "Dépannage urgence", "href": "/m/plombier/depannage-urgence", "icon": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Installation sanitaire", "href": "/m/plombier/installation-sanitaire", "icon": "https://images.unsplash.com/photo-1617099132309-99c421bb6e0d?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Chauffe-eau et ballons", "href": "/m/plombier/chauffe-eau", "icon": "https://images.unsplash.com/photo-1606813912771-0284189d9864?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Débouchage", "href": "/m/plombier/debouchage", "icon": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Rénovation salle de bain", "href": "/m/plombier/renovation-salle-de-bain", "icon": "https://images.unsplash.com/photo-1617099404995-0a2a09a3d95c?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Recherche de fuite", "href": "/m/plombier/recherche-fuite", "icon": "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=200&q=80" }
+    { "label": "Dépannage urgence", "href": "/m/plombier/depannage-urgence", "icon": "/media/jobs/plombier.svg" },
+    { "label": "Installation sanitaire", "href": "/m/plombier/installation-sanitaire", "icon": "/media/jobs/plombier.svg" },
+    { "label": "Chauffe-eau et ballons", "href": "/m/plombier/chauffe-eau", "icon": "/media/jobs/plombier.svg" },
+    { "label": "Débouchage", "href": "/m/plombier/debouchage", "icon": "/media/jobs/plombier.svg" },
+    { "label": "Rénovation salle de bain", "href": "/m/plombier/renovation-salle-de-bain", "icon": "/media/jobs/plombier.svg" },
+    { "label": "Recherche de fuite", "href": "/m/plombier/recherche-fuite", "icon": "/media/jobs/plombier.svg" }
   ],
   "favicon": "/favicons/plombier.svg",
   "seo": {

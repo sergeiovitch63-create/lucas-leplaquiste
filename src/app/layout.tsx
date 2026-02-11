@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "../config/site";
 import { FloatingCallButton } from "../components/FloatingCallButton";
+import { getBrandFromHost } from "@/lib/brand";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,31 +17,46 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: site.seo.title,
-  description: site.seo.description,
-  openGraph: {
-    title: site.seo.title,
-    description: site.seo.description,
-    type: "website",
-    images: [
-      {
-        url: "/og",
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.seo.title,
-    description: site.seo.description,
-    images: ["/og"],
-  },
-  icons: {
-    icon: "/icon.png",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const host = headers().get("host");
+  const brand = getBrandFromHost(host);
+
+  const isPublink = host?.includes("publink-teamplates");
+
+  const title = brand.defaultTitle;
+  const description = brand.defaultDescription;
+
+  return {
+    title,
+    description,
+    icons: {
+      icon: brand.faviconPath,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      siteName: brand.siteName,
+      images: [
+        // Keep Lucas OG image for all, so we don't break existing links
+        {
+          url: site.og.image || "/og",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [site.og.image || "/og"],
+    },
+    metadataBase: isPublink
+      ? new URL("https://publink-teamplates.vercel.app")
+      : new URL("https://lucas-leplaquiste-55q4.vercel.app"),
+  };
+}
 
 export default function RootLayout({
   children,

@@ -20,20 +20,16 @@
     { "q": "Intervenez-vous pour de petites modifications ?", "a": "Oui, un simple ajout de prise ou le remplacement d’un luminaire peuvent faire l’objet d’une intervention dédiée." },
     { "q": "Proposez-vous des solutions pour réduire la consommation ?", "a": "Nous pouvons vous conseiller sur les éclairages LED, les programmations et les petits gestes qui font la différence." }
   ],
-  "defaultBgImage": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1600&q=80",
-  "defaultBannerImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
+  "defaultBgImage": "/media/jobs/electricien.svg",
+  "defaultBannerImage": "/media/jobs/electricien.svg",
   "defaultZoneText": "Votre ville et alentours",
   "categories": [
     {
       "slug": "depannage-electrique",
       "label": "Dépannage électrique",
       "short": "Retrouver rapidement une installation sûre et fonctionnelle.",
-      "heroImage": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/electricien.svg",
+      "gallery": ["/media/jobs/electricien.svg", "/media/jobs/electricien.svg", "/media/jobs/electricien.svg"],
       "body": [
         "Une coupure générale, un disjoncteur qui saute régulièrement ou des prises qui ne fonctionnent plus sont des signes de dysfonctionnement à ne pas négliger.",
         "Nous intervenons pour diagnostiquer l’origine de la panne, remettre en service ce qui peut l’être immédiatement et vous orienter si une remise aux normes plus globale est nécessaire.",
@@ -56,12 +52,8 @@
       "slug": "mise-aux-normes",
       "label": "Mise aux normes",
       "short": "Mettre votre installation en conformité avec les exigences actuelles.",
-      "heroImage": "https://images.unsplash.com/photo-1604079628040-94301bb21b11?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1582719478250-cc70d3d45ba3?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/electricien.svg",
+      "gallery": ["/media/jobs/electricien.svg", "/media/jobs/electricien.svg", "/media/jobs/electricien.svg"],
       "body": [
         "Une installation ancienne peut fonctionner mais ne plus répondre aux normes de sécurité actuelles. La mise aux normes permet de réduire les risques de court-circuit, d’incendie ou d’électrisation.",
         "Après un état des lieux, nous listons les points à corriger : absence de terre, protections insuffisantes, circuits surchargés, prises non conformes dans les pièces d’eau…",
@@ -84,12 +76,8 @@
       "slug": "tableaux-electriques",
       "label": "Tableaux électriques",
       "short": "Sécuriser et organiser la distribution électrique de votre logement.",
-      "heroImage": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1597858303079-76f1c7a0b98f?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/electricien.svg",
+      "gallery": ["/media/jobs/electricien.svg", "/media/jobs/electricien.svg", "/media/jobs/electricien.svg"],
       "body": [
         "Le tableau électrique est le cœur de votre installation. Il regroupe les protections de chaque circuit et assure la coupure générale en cas de problème.",
         "Un remplacement de tableau peut être l’occasion de mieux répartir vos circuits, d’ajouter des protections différentielles et de prévoir des réserves pour de futurs équipements.",
@@ -112,12 +100,8 @@
       "slug": "eclairage-interieur",
       "label": "Éclairage intérieur",
       "short": "Créer une lumière confortable et adaptée à chaque pièce.",
-      "heroImage": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/electricien.svg",
+      "gallery": ["/media/jobs/electricien.svg", "/media/jobs/electricien.svg", "/media/jobs/electricien.svg"],
       "body": [
         "Un bon éclairage rend les pièces plus agréables à vivre et peut réellement changer la perception de votre intérieur.",
         "Nous vous aidons à positionner les points lumineux, à choisir les températures de couleur et les intensités adaptées à chaque usage.",
@@ -140,12 +124,8 @@
       "slug": "eclairage-exterieur",
       "label": "Éclairage extérieur",
       "short": "Sécuriser vos accès et mettre en valeur vos extérieurs.",
-      "heroImage": "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/electricien.svg",
+      "gallery": ["/media/jobs/electricien.svg", "/media/jobs/electricien.svg", "/media/jobs/electricien.svg"],
       "body": [
         "L’éclairage extérieur permet de sécuriser vos déplacements, de dissuader les intrusions et de prolonger l’usage de votre terrasse ou jardin.",
         "Nous étudions les zones à couvrir (allées, escaliers, entrée, terrasse) et proposons des solutions adaptées, avec ou sans détection de mouvement.",
@@ -168,12 +148,8 @@
       "slug": "domotique",
       "label": "Domotique simple",
       "short": "Rendre votre installation plus pratique sans la compliquer.",
-      "heroImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
-      "gallery": [
-        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80"
-      ],
+      "heroImage": "/media/jobs/electricien.svg",
+      "gallery": ["/media/jobs/electricien.svg", "/media/jobs/electricien.svg", "/media/jobs/electricien.svg"],
       "body": [
         "La domotique ne rime pas forcément avec solutions complexes. Il est possible de commencer simplement, par la gestion d’éclairages, de volets ou de prises connectées.",
         "Nous vous aidons à choisir des équipements pérennes, compatibles entre eux et faciles à utiliser au quotidien.",
@@ -194,12 +170,12 @@
     }
   ],
   "defaultLinks": [
-    { "label": "Dépannage électrique", "href": "/m/electricien/depannage-electrique", "icon": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Mise aux normes", "href": "/m/electricien/mise-aux-normes", "icon": "https://images.unsplash.com/photo-1604079628040-94301bb21b11?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Tableaux électriques", "href": "/m/electricien/tableaux-electriques", "icon": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Éclairage intérieur", "href": "/m/electricien/eclairage-interieur", "icon": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Éclairage extérieur", "href": "/m/electricien/eclairage-exterieur", "icon": "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=200&q=80" },
-    { "label": "Domotique simple", "href": "/m/electricien/domotique", "icon": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80" }
+    { "label": "Dépannage électrique", "href": "/m/electricien/depannage-electrique", "icon": "/media/jobs/electricien.svg" },
+    { "label": "Mise aux normes", "href": "/m/electricien/mise-aux-normes", "icon": "/media/jobs/electricien.svg" },
+    { "label": "Tableaux électriques", "href": "/m/electricien/tableaux-electriques", "icon": "/media/jobs/electricien.svg" },
+    { "label": "Éclairage intérieur", "href": "/m/electricien/eclairage-interieur", "icon": "/media/jobs/electricien.svg" },
+    { "label": "Éclairage extérieur", "href": "/m/electricien/eclairage-exterieur", "icon": "/media/jobs/electricien.svg" },
+    { "label": "Domotique simple", "href": "/m/electricien/domotique", "icon": "/media/jobs/electricien.svg" }
   ],
   "favicon": "/favicons/electricien.svg",
   "seo": {
