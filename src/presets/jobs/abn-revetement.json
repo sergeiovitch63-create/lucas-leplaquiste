@@ -1,0 +1,259 @@
+{
+  "jobKey": "abn-revetement",
+  "jobLabel": "ABN Revêtement",
+  "defaultHeroTagline": "Isolation thermique, plâtrerie et peinture — travail propre et finitions soignées.",
+  "defaultServices": [
+    {
+      "title": "Isolation thermique par l’extérieur",
+      "desc": "Pose de systèmes d’ITE complets pour améliorer le confort du logement et réduire les factures d’énergie."
+    },
+    {
+      "title": "Isolation thermique par l’intérieur",
+      "desc": "Doublages isolants, contre-cloisons et aménagements pour traiter les murs froids et les ponts thermiques."
+    },
+    {
+      "title": "Travaux de plâtrerie",
+      "desc": "Cloisons, doublages, faux-plafonds, bandes et enduits pour des surfaces prêtes à peindre."
+    },
+    {
+      "title": "Travaux de peinture",
+      "desc": "Peintures intérieures et finitions décoratives propres, adaptées à chaque pièce de votre logement."
+    }
+  ],
+  "defaultBenefits": [
+    {
+      "title": "Spécialiste de l’enveloppe du bâtiment",
+      "desc": "Isolation, plâtrerie et peinture gérées par le même interlocuteur pour un chantier cohérent."
+    },
+    {
+      "title": "Travail soigné",
+      "desc": "Protection des pièces, finitions propres et respect des supports existants."
+    },
+    {
+      "title": "Suivi de chantier clair",
+      "desc": "Explications simples sur les étapes, les matériaux utilisés et les délais."
+    }
+  ],
+  "defaultFaq": [
+    {
+      "q": "Intervenez-vous uniquement à Toulouse ?",
+      "a": "ABN Revêtement intervient à Toulouse et dans les communes voisines. Selon le projet, un déplacement plus large peut être envisagé."
+    },
+    {
+      "q": "Pouvez-vous m’aider à choisir entre isolation par l’intérieur et par l’extérieur ?",
+      "a": "Oui, un état des lieux permet de comparer les solutions ITE et ITI en fonction de votre façade, de votre budget et de vos objectifs de performance."
+    },
+    {
+      "q": "Travaillez-vous en rénovation occupée ?",
+      "a": "Oui, les chantiers sont organisés pour limiter la gêne : protection des sols, des meubles et nettoyage en fin d’intervention."
+    }
+  ],
+  "defaultBgImage": "/media/jobs/abn-revetement.jpg",
+  "defaultBannerImage": "/media/jobs/abn-logo.jpg",
+  "defaultZoneText": "Toulouse et alentours",
+  "defaultAddress": "34 avenue de l'Hers 31500 Toulouse",
+  "defaultCategoryIcon": "/media/accueil/favicon-creation-decoration.jpg",
+  "defaultReviewsIcon": "/media/avis/thumbnail.png",
+  "phone": "0771262633",
+  "whatsapp": "33771262633",
+  "email": "abn.revetement@gmail.com",
+  "facebook": null,
+  "categories": [
+    {
+      "slug": "isolation-thermique-exterieure",
+      "label": "Isolation thermique par l’extérieur",
+      "short": "Améliorer le confort et la performance énergétique de votre façade à Toulouse.",
+      "heroImage": "/media/services/doublages-1.jpg",
+      "gallery": [
+        "/media/services/doublages-2.jpg",
+        "/media/services/doublages-3.jpg",
+        "/media/services/doublages-4.jpg"
+      ],
+      "body": [
+        "L’isolation thermique par l’extérieur (ITE) consiste à envelopper votre façade d’un manteau isolant continu, puis à la protéger par un enduit ou un bardage. Cette solution limite fortement les déperditions de chaleur tout en modernisant l’aspect de votre maison.",
+        "À Toulouse et dans la région, l’ITE permet de mieux se protéger des variations de température, été comme hiver, et de réduire la sensation de murs froids à l’intérieur du logement.",
+        "ABN Revêtement vous accompagne du choix du système isolant aux finitions, en veillant au traitement des points singuliers (tableaux, appuis de fenêtre, jonctions de toiture) pour un résultat durable."
+      ],
+      "whyUs": [
+        "Solutions d’ITE adaptées au climat toulousain et aux façades existantes.",
+        "Accompagnement dans la préparation des supports avant la pose de l’isolant.",
+        "Finitions soignées pour valoriser l’esthétique de votre façade.",
+        "Conseils simples pour entretenir votre nouvelle isolation dans le temps."
+      ],
+      "faq": [
+        {
+          "q": "Dois-je refaire entièrement ma façade pour poser une ITE ?",
+          "a": "Nous vérifions l’état du support avant travaux. Des reprises localisées peuvent suffire pour garantir une bonne accroche du système isolant."
+        },
+        {
+          "q": "L’isolation par l’extérieur réduit-elle la luminosité intérieure ?",
+          "a": "L’ITE modifie la profondeur des tableaux de fenêtres mais n’impacte pas la quantité de lumière entrant dans la pièce."
+        },
+        {
+          "q": "Combien de temps dure un chantier d’ITE sur une maison ?",
+          "a": "Selon la surface de façade et la complexité du bâti, il faut généralement compter de 2 à 4 semaines de travaux."
+        },
+        {
+          "q": "Intervenez-vous sur des maisons anciennes à Toulouse ?",
+          "a": "Oui, un diagnostic préalable permet d’adapter la solution d’ITE aux façades en briques ou anciennes maçonneries."
+        }
+      ]
+    },
+    {
+      "slug": "isolation-thermique-interieure",
+      "label": "Isolation thermique par l’intérieur",
+      "short": "Traiter les murs froids et améliorer le confort pièce par pièce.",
+      "heroImage": "/media/services/doublages-3.jpg",
+      "gallery": [
+        "/media/services/doublages-5.jpg",
+        "/media/services/doublages-7.jpg",
+        "/media/services/doubalges-6.jpg"
+      ],
+      "body": [
+        "L’isolation thermique par l’intérieur (ITI) permet de limiter les pertes de chaleur en créant un doublage isolant côté intérieur : ossatures, isolant, plaques de plâtre puis finitions.",
+        "C’est une solution intéressante en rénovation lorsque la façade extérieure ne peut pas être modifiée ou lorsqu’on souhaite traiter uniquement certaines pièces prioritaires.",
+        "ABN Revêtement intervient à Toulouse pour concevoir des doublages adaptés à chaque configuration, en intégrant les contraintes d’épaisseur, de passage de gaines et de finitions."
+      ],
+      "whyUs": [
+        "Conseils pour cibler les murs les plus déperditifs en priorité.",
+        "Respect des volumes et intégration des prises, radiateurs et menuiseries.",
+        "Organisation du chantier pour limiter la gêne dans un logement occupé."
+      ],
+      "faq": [
+        {
+          "q": "Vais-je perdre beaucoup de surface avec une ITI ?",
+          "a": "L’épaisseur du doublage est étudiée au cas par cas. Nous vous expliquons clairement le compromis entre performance thermique et perte de surface."
+        },
+        {
+          "q": "Faut-il vider complètement les pièces avant travaux ?",
+          "a": "Nous recommandons de dégager les murs concernés. Les protections et déplacements complémentaires sont organisés avec vous."
+        },
+        {
+          "q": "Pouvez-vous traiter aussi les plafonds ?",
+          "a": "Oui, lorsqu’un gain est possible, nous pouvons proposer l’isolation des plafonds en complément des murs."
+        },
+        {
+          "q": "Intervenez-vous en appartement à Toulouse ?",
+          "a": "Oui, nous intervenons aussi bien en maison individuelle qu’en appartement, après vérification des contraintes de copropriété."
+        }
+      ]
+    },
+    {
+      "slug": "platerie",
+      "label": "Travaux de plâtrerie",
+      "short": "Cloisons, doublages et faux-plafonds prêts à peindre à Toulouse.",
+      "heroImage": "/media/services/faux-plafond-1.jpg",
+      "gallery": [
+        "/media/services/cloison-1.jpg",
+        "/media/services/cloison-2.jpg",
+        "/media/services/cloison-3.jpg"
+      ],
+      "body": [
+        "Les travaux de plâtrerie permettent de structurer vos espaces : création de cloisons, doublages, niches, faux-plafonds et habillages divers.",
+        "Un travail soigné sur les bandes, les angles et les enduits garantit des murs et plafonds réguliers, prêts à recevoir la peinture ou les revêtements décoratifs.",
+        "ABN Revêtement intervient sur les projets de rénovation et d’aménagement intérieur à Toulouse, du simple cloisonnement à la réorganisation complète de l’espace."
+      ],
+      "whyUs": [
+        "Respect des plans et des côtes pour des cloisons droites et alignées.",
+        "Soin particulier apporté aux jonctions avec les menuiseries et les sols.",
+        "Préparation des supports compatible avec les peintures et finitions prévues.",
+        "Habitude de travailler en coordination avec les autres corps d’état."
+      ],
+      "faq": [
+        {
+          "q": "Pouvez-vous uniquement refaire les bandes et enduits ?",
+          "a": "Oui, nous intervenons aussi pour reprendre des surfaces avant peinture lorsqu’elles sont irrégulières ou marquées."
+        },
+        {
+          "q": "Est-il possible de créer des cloisons phoniques ?",
+          "a": "Nous pouvons proposer des solutions de cloisons renforcées acoustiquement pour limiter la transmission des bruits entre pièces."
+        },
+        {
+          "q": "Les travaux génèrent-ils beaucoup de poussière ?",
+          "a": "La plâtrerie reste un travail de chantier, mais nous limitons au maximum la poussière avec protections et nettoyage en fin de journée."
+        },
+        {
+          "q": "Intervenez-vous sur des petites surfaces à Toulouse ?",
+          "a": "Oui, une simple cloison ou la reprise d’un plafond peuvent faire l’objet d’une intervention dédiée."
+        }
+      ]
+    },
+    {
+      "slug": "peinture",
+      "label": "Travaux de peinture",
+      "short": "Peintures intérieures propres, adaptées à chaque pièce de votre logement.",
+      "heroImage": "/media/services/creation-decoration-2.jpg",
+      "gallery": [
+        "/media/services/creation-decoration-3.jpg",
+        "/media/services/creation-decoration-4.jpg",
+        "/media/services/creation-decoration-5.jpg"
+      ],
+      "body": [
+        "Une peinture bien réalisée met en valeur les volumes, la lumière et les choix de décoration de votre intérieur.",
+        "Avant d’appliquer la moindre couche, les supports sont préparés : rebouchage, ponçage, impression pour garantir une bonne tenue dans le temps.",
+        "ABN Revêtement intervient à Toulouse pour vos travaux de peinture dans les pièces de vie, chambres, circulations ou locaux professionnels."
+      ],
+      "whyUs": [
+        "Protection soignée des sols, meubles et menuiseries avant travaux.",
+        "Choix de peintures adaptées aux pièces sèches ou humides.",
+        "Finitions régulières, sans traces de rouleau ni reprises visibles."
+      ],
+      "faq": [
+        {
+          "q": "Dois-je acheter moi-même la peinture ?",
+          "a": "Vous pouvez fournir la peinture ou nous laisser gérer l’approvisionnement avec des produits que nous connaissons bien."
+        },
+        {
+          "q": "Combien de couches sont prévues ?",
+          "a": "Selon l’état du support et la teinte choisie, nous prévoyons généralement une impression puis deux couches de finition."
+        },
+        {
+          "q": "Puis-je rester dans le logement pendant les travaux ?",
+          "a": "Oui, les pièces sont traitées par étapes et nous veillons à aérer régulièrement pour limiter les odeurs."
+        },
+        {
+          "q": "Travaillez-vous aussi sur des locaux professionnels à Toulouse ?",
+          "a": "Oui, bureaux, commerces ou petits locaux peuvent être peints en dehors des heures d’ouverture lorsque c’est possible."
+        }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    {
+      "label": "Isolation thermique par l’extérieur",
+      "href": "/m/abn-revetement/isolation-thermique-exterieure",
+      "icon": "/media/accueil/favicon-creation-decoration.jpg"
+    },
+    {
+      "label": "Isolation thermique par l’intérieur",
+      "href": "/m/abn-revetement/isolation-thermique-interieure",
+      "icon": "/media/services/doublages-1.jpg"
+    },
+    {
+      "label": "Travaux de plâtrerie",
+      "href": "/m/abn-revetement/platerie",
+      "icon": "/media/services/faux-plafond-2.jpg"
+    },
+    {
+      "label": "Travaux de peinture",
+      "href": "/m/abn-revetement/peinture",
+      "icon": "/media/services/creation-decoration-6.jpg"
+    }
+  ],
+  "favicon": "/favicons/menuisier.svg",
+  "seo": {
+    "keywords": [
+      "isolation thermique",
+      "isolation façade Toulouse",
+      "plâtrerie",
+      "peinture intérieure",
+      "ABN Revêtement"
+    ],
+    "category": "HomeAndConstructionBusiness"
+  },
+  "cta": {
+    "mode": "quote"
+  }
+}
+
+

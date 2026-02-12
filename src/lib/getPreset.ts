@@ -29,6 +29,10 @@ export interface JobPreset {
   defaultReviewsIcon?: string;
   favicon?: string;
   categories?: JobCategory[];
+  phone?: string;
+  whatsapp?: string | null;
+  email?: string | null;
+  facebook?: string | null;
   seo: {
     keywords: string[];
     category: string;

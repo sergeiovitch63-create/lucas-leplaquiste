@@ -92,6 +92,42 @@ body {
   .animate-call-shake-burst {
     animation: call-shake-burst 2s linear infinite;
   }
+
+  @keyframes softVibrate {
+    0% {
+      transform: translateX(0);
+    }
+    15% {
+      transform: translateX(-2px);
+    }
+    30% {
+      transform: translateX(2px);
+    }
+    45% {
+      transform: translateX(-2px);
+    }
+    60% {
+      transform: translateX(2px);
+    }
+    75% {
+      transform: translateX(-1px);
+    }
+    90% {
+      transform: translateX(1px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .vibrate-loop {
+    animation: softVibrate 1s ease-in-out infinite;
+    animation-play-state: running;
+  }
+}
+
+.vibrate-loop:nth-child(even) {
+  animation-delay: 1s;
 }
 
 @media (min-width: 768px) {

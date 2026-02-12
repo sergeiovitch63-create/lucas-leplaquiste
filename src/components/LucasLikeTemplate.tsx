@@ -47,6 +47,7 @@ function buildLinks(
   jobKey: string,
   queryString: string,
 ): ClientLink[] {
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
   let baseLinks: ClientLink[];
 
   if (client.links && client.links.length > 0) {
@@ -64,13 +65,14 @@ function buildLinks(
   const normalizedBase = baseLinks.map((link) => ({
     ...link,
     href: appendQueryToInternalHref(link.href, queryString),
-    icon:
-      link.icon ||
-      pickImage(
-        preset.defaultCategoryIcon,
-        preset.defaultBgImage,
-        "/media/logo-centre.png",
-      ),
+    icon: isAbnRevetement
+      ? "/media/jobs/abn-logo.jpg"
+      : link.icon ||
+        pickImage(
+          preset.defaultCategoryIcon,
+          preset.defaultBgImage,
+          "/media/logo-centre.png",
+        ),
   }));
 
   const qs = queryString ? `?${queryString}` : "";
@@ -79,12 +81,14 @@ function buildLinks(
     queryString,
   );
 
-  const avisIcon = pickImage(
-    preset.defaultReviewsIcon,
-    preset.defaultCategoryIcon,
-    preset.defaultBgImage,
-    "/media/logo-centre.png",
-  );
+  const avisIcon = isAbnRevetement
+    ? "/media/jobs/abn-logo.jpg"
+    : pickImage(
+        preset.defaultReviewsIcon,
+        preset.defaultCategoryIcon,
+        preset.defaultBgImage,
+        "/media/logo-centre.png",
+      );
 
   const avisLink: ClientLink = {
     label: "Avis clients",
@@ -102,14 +106,31 @@ export function LucasLikeTemplate({
   jobKey,
   queryString,
 }: LucasLikeTemplateProps) {
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
   const zoneText = buildZoneText(preset, client);
   const bgImage = buildBgImage(preset, client);
   const bannerImage = buildBannerImage(preset, client);
 
   const name = heroTitle;
 
-  const phoneHref = client.phone ? `tel:${client.phone}` : null;
-  const whatsappHref = client.whatsapp;
+  const effectivePhone = isAbnRevetement
+    ? preset.phone || "0771262633"
+    : client.phone;
+
+  const effectiveWhatsapp = isAbnRevetement
+    ? `https://wa.me/${(preset.whatsapp || "33771262633")
+        .toString()
+        .replace(/[^\d]/g, "")}`
+    : client.whatsapp;
+
+  const effectiveEmail = isAbnRevetement
+    ? preset.email || "abn.revetement@gmail.com"
+    : client.email;
+
+  const effectiveFacebook = isAbnRevetement ? null : client.facebook;
+
+  const phoneHref = effectivePhone ? `tel:${effectivePhone}` : null;
+  const whatsappHref = effectiveWhatsapp || null;
 
   const ctaLabel =
     client.primaryLabel ||
@@ -121,7 +142,9 @@ export function LucasLikeTemplate({
 
   // Primary CTA: urgent -> tel, sinon -> WhatsApp (avec message pré-rempli)
   let primaryHref: string | null = null;
-  if (preset.cta.mode === "urgent" && phoneHref) {
+  if (isAbnRevetement && phoneHref) {
+    primaryHref = phoneHref;
+  } else if (preset.cta.mode === "urgent" && phoneHref) {
     primaryHref = phoneHref;
   } else if (whatsappHref) {
     // message simple, on garde la logique avancée dans la page si besoin
@@ -173,37 +196,49 @@ export function LucasLikeTemplate({
           {/* Logo / Hero */}
           <div className="space-y-4">
             <div className="flex justify-center">
-              <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/25 shadow-lg">
-                {client.logo ? (
+              {isAbnRevetement ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full border border-white/25 shadow-lg">
                   <SafeImage
-                    src={pickImage(
-                      client.logo,
-                      preset.defaultBannerImage,
-                      preset.defaultBgImage,
-                      "/media/logo-centre.png",
-                    )}
-                    alt={name}
-                    width={64}
-                    height={64}
-                    className="h-full w-full object-cover rounded-full"
-                  />
-                ) : preset.defaultBannerImage || preset.defaultBgImage ? (
-                  <SafeImage
-                    src={pickImage(
-                      preset.defaultBannerImage || preset.defaultBgImage,
-                      "/media/logo-centre.png",
-                    )}
+                    src="/media/jobs/abn-logo.jpg"
                     alt={preset.jobLabel}
-                    width={64}
-                    height={64}
-                    className="h-full w-full object-cover rounded-full"
+                    fill
+                    className="object-cover scale-150 rounded-full"
+                    fallbackSrc="/media/logo-centre.png"
                   />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500 text-sm font-semibold uppercase text-white shadow-inner">
-                    {initials || preset.jobLabel[0]?.toUpperCase() || "A"}
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/25 shadow-lg">
+                  {client.logo ? (
+                    <SafeImage
+                      src={pickImage(
+                        client.logo,
+                        preset.defaultBannerImage,
+                        preset.defaultBgImage,
+                        "/media/logo-centre.png",
+                      )}
+                      alt={name}
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-cover rounded-full"
+                    />
+                  ) : preset.defaultBannerImage || preset.defaultBgImage ? (
+                    <SafeImage
+                      src={pickImage(
+                        preset.defaultBannerImage || preset.defaultBgImage,
+                        "/media/logo-centre.png",
+                      )}
+                      alt={preset.jobLabel}
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500 text-sm font-semibold uppercase text-white shadow-inner">
+                      {initials || preset.jobLabel[0]?.toUpperCase() || "A"}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <div className="space-y-1">
               <h1 className="text-2xl font-semibold tracking-tight text-shadow-soft">
@@ -217,33 +252,75 @@ export function LucasLikeTemplate({
 
           {/* Icons row */}
           <QuickActions
-            phone={client.phone || null}
-            whatsapp={client.whatsapp}
-            facebook={client.facebook}
-            email={client.email}
+            phone={effectivePhone || null}
+            whatsapp={whatsappHref}
+            facebook={effectiveFacebook}
+            email={effectiveEmail}
             variant="dark"
+            size={isAbnRevetement ? "large" : "normal"}
           />
 
           {/* Banner card */}
-          <a
-            href={primaryHref || phoneHref || whatsappHref || "#"}
-            className="block overflow-hidden rounded-2xl bg-white/15 shadow-xl ring-1 ring-black/10 backdrop-blur-md transition hover:translate-y-[1px]"
-          >
-            <div className="relative h-[170px] w-full overflow-hidden bg-[color:var(--logo-blue,#021C43)]">
-              {bannerImage && (
-                <SafeImage
-                  src={bannerImage}
-                  alt=""
-                  width={800}
-                  height={340}
-                  className="h-full w-full object-cover"
-                />
-              )}
-            </div>
-            <div className="flex h-[54px] items-center justify-center bg-white/35 px-4 text-sm font-semibold text-slate-900 backdrop-blur-md">
-              <span>Appeler — {ctaLabel}</span>
-            </div>
-          </a>
+          {isAbnRevetement ? (
+            <a
+              href={primaryHref || phoneHref || whatsappHref || "#"}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/18 shadow-[0_10px_25px_rgba(0,0,0,0.18)] backdrop-blur-md transition hover:translate-y-[-1px] active:scale-[0.99] vibrate-loop"
+            >
+              {/* Zone media avec logo plein */}
+              <div className="relative h-[170px] w-full overflow-hidden flex items-center justify-center">
+                <div className="relative w-full h-full flex items-center justify-center p-4">
+                  <SafeImage
+                    src="/media/jobs/abn-logo.jpg"
+                    alt={preset.jobLabel}
+                    fill
+                    className="object-contain"
+                    fallbackSrc="/media/logo-centre.png"
+                  />
+                </div>
+              </div>
+              {/* Footer aligné sur les cards de la liste */}
+              <div className="flex min-h-[56px] items-center gap-3 px-3.5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/20">
+                  <SafeImage
+                    src="/media/jobs/abn-logo.jpg"
+                    alt={preset.jobLabel}
+                    width={36}
+                    height={36}
+                    className="h-full w-full object-cover rounded-full scale-150"
+                    fallbackSrc="/media/logo-centre.png"
+                  />
+                </div>
+                <div className="flex flex-1 items-center justify-center">
+                  <span className="line-clamp-1 text-sm font-medium text-white/90">
+                    Appeler — {ctaLabel}
+                  </span>
+                </div>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg leading-none text-white/80">
+                  <span aria-hidden>📞</span>
+                </div>
+              </div>
+            </a>
+          ) : (
+            <a
+              href={primaryHref || phoneHref || whatsappHref || "#"}
+              className="block overflow-hidden rounded-2xl bg-white/15 shadow-xl ring-1 ring-black/10 backdrop-blur-md transition hover:translate-y-[1px]"
+            >
+              <div className="relative h-[170px] w-full overflow-hidden bg-[color:var(--logo-blue,#021C43)]">
+                {bannerImage && (
+                  <SafeImage
+                    src={bannerImage}
+                    alt=""
+                    width={800}
+                    height={340}
+                    className="h-full w-full object-cover"
+                  />
+                )}
+              </div>
+              <div className="flex h-[54px] items-center justify-center bg-white/35 px-4 text-sm font-semibold text-slate-900 backdrop-blur-md">
+                <span>Appeler — {ctaLabel}</span>
+              </div>
+            </a>
+          )}
 
           {/* Links list */}
           {links.length > 0 && (
@@ -268,7 +345,11 @@ export function LucasLikeTemplate({
                       alt=""
                       width={36}
                       height={36}
-                      className="h-full w-full object-cover rounded-full"
+                      className={
+                        isAbnRevetement
+                          ? "h-full w-full object-cover rounded-full scale-150"
+                          : "h-full w-full object-cover rounded-full"
+                      }
                     />
                   </div>
                   <div className="flex flex-1 items-center justify-center">
@@ -282,6 +363,17 @@ export function LucasLikeTemplate({
                 </a>
               ))}
             </div>
+          )}
+
+          {/* Floating call button (ABN Revêtement only) */}
+          {isAbnRevetement && phoneHref && (
+            <a
+              href={phoneHref}
+              className="fixed bottom-6 right-6 bg-white/20 backdrop-blur-lg rounded-full p-4 shadow-lg"
+            >
+              <span className="sr-only">Appeler</span>
+              <span aria-hidden>📞</span>
+            </a>
           )}
 
           {/* Footer */}

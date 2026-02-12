@@ -1,9 +1,12 @@
+import { Icon } from "./icons";
+
 interface QuickActionsProps {
   phone?: string | null;
   whatsapp?: string | null;
   facebook?: string | null;
   email?: string | null;
   variant?: "light" | "dark";
+  size?: "normal" | "large";
 }
 
 function buildWhatsappFromPhone(phone: string | null | undefined): string | null {
@@ -19,27 +22,32 @@ export function QuickActions({
   facebook,
   email,
   variant = "dark",
+  size = "normal",
 }: QuickActionsProps) {
   const phoneHref = phone ? `tel:${phone}` : null;
   const whatsappHref = whatsapp || buildWhatsappFromPhone(phone);
 
-  const baseBtn =
-    "flex h-9 w-9 items-center justify-center rounded-full shadow-sm transition hover:translate-y-[1px]";
-  const darkStyle =
-    "bg-white/85 text-black hover:bg-white";
-  const lightStyle =
-    "bg-black/80 text-white hover:bg-black";
+  const circleSizeClass = size === "large" ? "h-14 w-14" : "h-9 w-9";
+  const iconSizeClass = size === "large" ? "h-7 w-7" : "h-5 w-5";
+
+  const baseBtn = [
+    "flex items-center justify-center rounded-full bg-white/15 text-white shadow-sm backdrop-blur-md transition hover:bg-white/25 hover:translate-y-[1px]",
+    circleSizeClass,
+  ].join(" ");
+
+  const darkStyle = "";
+  const lightStyle = "";
   const style = variant === "light" ? lightStyle : darkStyle;
 
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex items-center justify-center gap-3 mt-3">
       {phoneHref && (
         <a
           href={phoneHref}
           aria-label="Appeler"
           className={`${baseBtn} ${style}`}
         >
-          <span aria-hidden>📞</span>
+          <Icon name="phone" className={`${iconSizeClass} text-white`} />
         </a>
       )}
       {whatsappHref && (
@@ -48,9 +56,9 @@ export function QuickActions({
           aria-label="WhatsApp"
           target="_blank"
           rel="noreferrer"
-          className={`${baseBtn} ${style} text-emerald-600`}
+          className={`${baseBtn} ${style}`}
         >
-          <span aria-hidden>💬</span>
+          <Icon name="whatsapp" className={`${iconSizeClass} text-white`} />
         </a>
       )}
       {facebook && (
@@ -59,22 +67,20 @@ export function QuickActions({
           aria-label="Facebook"
           target="_blank"
           rel="noreferrer"
-          className={`${baseBtn} ${style} text-sky-700`}
+          className={`${baseBtn} ${style}`}
         >
-          <span aria-hidden>f</span>
+          <Icon name="facebook" className={`${iconSizeClass} text-white`} />
         </a>
       )}
       {email && (
         <a
           href={`mailto:${email}`}
           aria-label="Email"
-          className={`${baseBtn} ${style} text-slate-800`}
+          className={`${baseBtn} ${style}`}
         >
-          <span aria-hidden>✉️</span>
+          <Icon name="email" className={`${iconSizeClass} text-white`} />
         </a>
       )}
     </div>
   );
 }
-
-

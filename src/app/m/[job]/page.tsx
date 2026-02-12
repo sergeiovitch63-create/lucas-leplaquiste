@@ -110,7 +110,9 @@ export async function generateMetadata({
   const host = headers().get("host");
   const brand = getBrandFromHost(host);
 
-  const name = client.name || `Votre ${preset.jobLabel}`;
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
+  const name =
+    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
   const city = client.city || "Votre ville";
 
   const title = `${name} — ${preset.jobLabel} à ${city}`;
@@ -138,7 +140,9 @@ export default async function Page({ params, searchParams }: PageParams) {
   const usp = toURLSearchParams(searchParams);
   const client: ClientParams = parseClientParams(usp);
 
-  const name = client.name || `Votre ${preset.jobLabel}`;
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
+  const name =
+    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
   const city = client.city || "Votre ville";
 
   const hero = {

@@ -47,7 +47,9 @@ export async function generateMetadata({
     };
   }
 
-  const name = client.name || `Votre ${preset.jobLabel}`;
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
+  const name =
+    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
   const city = client.city || client.zone || "Votre ville";
 
   const title = `${category.label} — ${name} à ${city}`;
@@ -128,6 +130,7 @@ export default async function Page({ params, searchParams }: PageParams) {
   const preset = getPreset(params.job);
   const usp = toURLSearchParams(searchParams);
   const client = parseClientParams(usp);
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
 
   const categories = preset.categories ?? [];
   const category = categories.find((c) => c.slug === params.category);
@@ -137,7 +140,8 @@ export default async function Page({ params, searchParams }: PageParams) {
 
   const zoneText = buildZoneText(preset.defaultZoneText, client);
   const bgImage = buildBgImage(preset.defaultBgImage, client.bg);
-  const name = client.name || `Votre ${preset.jobLabel}`;
+  const name =
+    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
 
   const primaryCta = buildPrimaryCtaHref(preset.cta.mode, client, category);
   const backHref = buildBackHref(params.job, usp);
@@ -180,26 +184,39 @@ export default async function Page({ params, searchParams }: PageParams) {
           {/* Hero logo + title */}
           <div className="text-center space-y-4">
             <div className="flex justify-center">
-              <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white/25 shadow-lg">
-                {client.logo || preset.defaultBannerImage || preset.defaultBgImage ? (
+              {isAbnRevetement ? (
+                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-white/25 shadow-lg">
                   <SafeImage
-                    src={pickImage(
-                      client.logo,
-                      preset.defaultBannerImage,
-                      preset.defaultBgImage,
-                      "/media/placeholder.jpg",
-                    )}
-                    alt={client.logo ? name : preset.jobLabel}
-                    width={56}
-                    height={56}
-                    className="h-full w-full object-cover"
+                    src="/media/jobs/abn-logo.jpg"
+                    alt={preset.jobLabel}
+                    width={80}
+                    height={80}
+                    className="h-full w-full object-cover scale-150 rounded-full"
+                    fallbackSrc="/media/placeholder.jpg"
                   />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500 text-xs font-semibold uppercase text-white shadow-inner">
-                    {initials || preset.jobLabel[0]?.toUpperCase() || "A"}
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white/25 shadow-lg">
+                  {client.logo || preset.defaultBannerImage || preset.defaultBgImage ? (
+                    <SafeImage
+                      src={pickImage(
+                        client.logo,
+                        preset.defaultBannerImage,
+                        preset.defaultBgImage,
+                        "/media/placeholder.jpg",
+                      )}
+                      alt={client.logo ? name : preset.jobLabel}
+                      width={56}
+                      height={56}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500 text-xs font-semibold uppercase text-white shadow-inner">
+                      {initials || preset.jobLabel[0]?.toUpperCase() || "A"}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <div className="space-y-1">
               <h1 className="text-xl font-semibold tracking-tight text-shadow-soft">

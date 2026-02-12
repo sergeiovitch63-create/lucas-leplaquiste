@@ -36,7 +36,9 @@ export async function generateMetadata({
   const host = headers().get("host");
   const brand = getBrandFromHost(host);
 
-  const name = client.name || `Votre ${preset.jobLabel}`;
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
+  const name =
+    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
   const city = client.city || client.zone || "Votre ville";
 
   const title = `Avis — ${name} (${preset.jobLabel} à ${city})`;
@@ -107,6 +109,89 @@ function getMassageReviews(): Review[] {
   ];
 }
 
+function getAbnRevetementReviews(): Review[] {
+  return [
+    {
+      name: "Laurent P.",
+      rating: 5,
+      date: "janvier 2025",
+      text: "Isolation thermique par l’extérieur réalisée sur notre maison près de Toulouse. Chantier propre, délais tenus et une vraie différence sur le confort dès le premier hiver.",
+    },
+    {
+      name: "Mélanie R.",
+      rating: 4.9,
+      date: "décembre 2024",
+      text: "Nous avons refait plusieurs pièces (doublages + peinture). Les équipes d’ABN Revêtement ont été ponctuelles, soigneuses et très claires sur les étapes du chantier.",
+    },
+    {
+      name: "Hugo D.",
+      rating: 4.8,
+      date: "novembre 2024",
+      text: "Travaux de plâtrerie pour créer une nouvelle chambre. Cloisons droites, bandes propres, tout était prêt à peindre sans mauvaise surprise.",
+    },
+    {
+      name: "Claire S.",
+      rating: 5,
+      date: "septembre 2024",
+      text: "Rafraîchissement complet d’un appartement à Toulouse : murs, plafonds et portes. Le résultat est net, sans traces, et le chantier a été très bien protégé.",
+    },
+    {
+      name: "Nicolas F.",
+      rating: 4.9,
+      date: "juillet 2024",
+      text: "Bon accompagnement pour choisir entre isolation intérieure et extérieure. Les explications étaient claires et les travaux se sont déroulés comme prévu.",
+    },
+    {
+      name: "Sarah G.",
+      rating: 5,
+      date: "mai 2024",
+      text: "Nous avons confié à ABN Revêtement la réfection complète d’un séjour : faux-plafond, enduits et peinture. Le rendu est très propre, on sent le souci du détail.",
+    },
+  ];
+}
+
+function getGenericReviews(jobLabel: string, city: string): Review[] {
+  const baseCity = city || "votre ville";
+  return [
+    {
+      name: "Alexandre B.",
+      rating: 4.9,
+      date: "mars 2024",
+      text: `Intervention très professionnelle. ${jobLabel} à ${baseCity} à l’écoute, qui prend le temps d’expliquer les travaux et de proposer des solutions adaptées au logement.`,
+    },
+    {
+      name: "Julie C.",
+      rating: 5,
+      date: "février 2024",
+      text: `Chantier bien organisé du début à la fin. Le ${jobLabel.toLowerCase()} a respecté les délais annoncés et laissé les pièces propres après son passage.`,
+    },
+    {
+      name: "Thomas H.",
+      rating: 4.8,
+      date: "janvier 2024",
+      text: `Très bon contact, devis clair et sans surprise. Le résultat est conforme à ce qui avait été annoncé, je recommande ce ${jobLabel.toLowerCase()} sur ${baseCity}.`,
+    },
+    {
+      name: "Isabelle M.",
+      rating: 5,
+      date: "novembre 2023",
+      text: "Prise de rendez-vous simple, horaires respectés et travail soigné. On sent qu’il y a l’habitude des chantiers en rénovation.",
+    },
+    {
+      name: "Romain T.",
+      rating: 4.7,
+      date: "octobre 2023",
+      text: "Bon suivi, photos envoyées au fur et à mesure de l’avancement des travaux. Très pratique quand on n’est pas sur place.",
+    },
+    {
+      name: "Céline D.",
+      rating: 5,
+      date: "septembre 2023",
+      text: "Artisan sérieux, réactif et force de proposition. Le rendu final est conforme à nos attentes, nous referons appel à lui sans hésiter.",
+    },
+  ];
+}
+
 function buildBgImage(presetBg?: string, clientBg?: string | null): string {
   return pickImage(clientBg ?? undefined, presetBg, "/media/accueil/fond-ecrans.jpg");
 }
@@ -128,13 +213,19 @@ export default async function Page({ params, searchParams }: PageParams) {
   const usp = toURLSearchParams(searchParams);
   const client = parseClientParams(usp);
 
-  const name = client.name || `Votre ${preset.jobLabel}`;
+  const isAbnRevetement = preset.jobKey === "abn-revetement";
+  const name =
+    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
   const zoneText = buildZoneText(preset.defaultZoneText, client);
   const bgImage = buildBgImage(preset.defaultBgImage, client.bg);
   const backHref = buildBackHref(params.job, usp);
 
   const reviews =
-    params.job === "massage" ? getMassageReviews() : getMassageReviews();
+    params.job === "massage"
+      ? getMassageReviews()
+      : params.job === "abn-revetement"
+      ? getAbnRevetementReviews()
+      : getGenericReviews(preset.jobLabel, client.city || client.zone || "Votre ville");
 
   const globalRating = 4.9;
   const totalCount = 37;
