@@ -49,7 +49,6 @@ function appendQueryToInternalHref(
   locale: Locale = "fr",
 ): string {
   if (!queryString) return href;
-  const prefix = locale === "es" ? "/es/m/" : "/m/";
   if (!href.startsWith("/m/") && !href.startsWith("/es/m/")) return href;
   const separator = href.includes("?") ? "&" : "?";
   return `${href}${separator}${queryString}`;
