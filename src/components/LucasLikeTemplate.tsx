@@ -1,6 +1,8 @@
 import type { JobPreset } from "@/lib/getPreset";
 import type { ClientParams, ClientLink } from "@/lib/parseClientParams";
 import { pickImage } from "@/lib/images";
+import type { Locale } from "@/lib/i18n";
+import { getTranslation } from "@/lib/i18n";
 import { QuickActions } from "./QuickActions";
 import SafeImage from "./SafeImage";
 
@@ -10,13 +12,21 @@ interface LucasLikeTemplateProps {
   heroTitle: string;
   jobKey: string;
   queryString: string;
+  locale?: Locale;
 }
 
-function buildZoneText(preset: JobPreset, client: ClientParams): string {
+function buildZoneText(
+  preset: JobPreset,
+  client: ClientParams,
+  locale: Locale = "fr",
+): string {
   if (client.zone) return client.zone;
   if (preset.defaultZoneText) return preset.defaultZoneText;
-  if (client.city) return `${client.city} et alentours`;
-  return "Votre zone d’intervention";
+  if (client.city)
+    return locale === "es"
+      ? `${client.city} y alrededores`
+      : `${client.city} et alentours`;
+  return locale === "es" ? "Su zona de intervención" : "Votre zone d'intervention";
 }
 
 function buildBgImage(preset: JobPreset, client: ClientParams): string {
@@ -33,9 +43,14 @@ function buildBannerImage(preset: JobPreset, client: ClientParams): string {
   );
 }
 
-function appendQueryToInternalHref(href: string, queryString: string): string {
+function appendQueryToInternalHref(
+  href: string,
+  queryString: string,
+  locale: Locale = "fr",
+): string {
   if (!queryString) return href;
-  if (!href.startsWith("/m/")) return href;
+  const prefix = locale === "es" ? "/es/m/" : "/m/";
+  if (!href.startsWith("/m/") && !href.startsWith("/es/m/")) return href;
   const separator = href.includes("?") ? "&" : "?";
   return `${href}${separator}${queryString}`;
 }
@@ -46,6 +61,7 @@ function buildLinks(
   services: { title: string; desc: string }[],
   jobKey: string,
   queryString: string,
+  locale: Locale = "fr",
 ): ClientLink[] {
   const isAbnRevetement = preset.jobKey === "abn-revetement";
   let baseLinks: ClientLink[];
@@ -64,7 +80,7 @@ function buildLinks(
 
   const normalizedBase = baseLinks.map((link) => ({
     ...link,
-    href: appendQueryToInternalHref(link.href, queryString),
+    href: appendQueryToInternalHref(link.href, queryString, locale),
     icon: isAbnRevetement
       ? "/media/jobs/abn-logo.jpg"
       : link.icon ||
@@ -76,9 +92,11 @@ function buildLinks(
   }));
 
   const qs = queryString ? `?${queryString}` : "";
+  const prefix = locale === "es" ? "/es" : "";
   const avisHref = appendQueryToInternalHref(
-    `/m/${encodeURIComponent(jobKey)}/avis${qs}`,
+    `${prefix}/m/${encodeURIComponent(jobKey)}/avis${qs}`,
     queryString,
+    locale,
   );
 
   const avisIcon = isAbnRevetement
@@ -91,7 +109,7 @@ function buildLinks(
       );
 
   const avisLink: ClientLink = {
-    label: "Avis clients",
+    label: getTranslation(locale, "avis-clients"),
     href: avisHref,
     icon: avisIcon,
   };
@@ -105,9 +123,10 @@ export function LucasLikeTemplate({
   heroTitle,
   jobKey,
   queryString,
+  locale = "fr",
 }: LucasLikeTemplateProps) {
   const isAbnRevetement = preset.jobKey === "abn-revetement";
-  const zoneText = buildZoneText(preset, client);
+  const zoneText = buildZoneText(preset, client, locale);
   const bgImage = buildBgImage(preset, client);
   const bannerImage = buildBannerImage(preset, client);
 
@@ -148,9 +167,13 @@ export function LucasLikeTemplate({
     primaryHref = phoneHref;
   } else if (whatsappHref) {
     // message simple, on garde la logique avancée dans la page si besoin
-    const cityLabel = client.city || zoneText || "votre ville";
+    const cityLabel = client.city || zoneText || (locale === "es" ? "su ciudad" : "votre ville");
     const message =
-      preset.cta.mode === "booking"
+      locale === "es"
+        ? preset.cta.mode === "booking"
+          ? `Hola, me gustaría reservar en ${cityLabel}.`
+          : `Hola, me gustaría un presupuesto para sus servicios en ${cityLabel}.`
+        : preset.cta.mode === "booking"
         ? `Bonjour, je voudrais réserver à ${cityLabel}.`
         : `Bonjour, je voudrais un devis pour vos services à ${cityLabel}.`;
     try {
@@ -170,6 +193,7 @@ export function LucasLikeTemplate({
     preset.defaultServices,
     jobKey,
     queryString,
+    locale,
   );
 
   const initials = name
@@ -245,7 +269,7 @@ export function LucasLikeTemplate({
                 {name}
               </h1>
               <p className="text-xs text-white/80">
-                Zones d’intervention: {zoneText}
+                {getTranslation(locale, "zones-intervention")}: {zoneText}
               </p>
             </div>
           </div>
@@ -292,7 +316,7 @@ export function LucasLikeTemplate({
                 </div>
                 <div className="flex flex-1 items-center justify-center">
                   <span className="line-clamp-1 text-sm font-medium text-white/90">
-                    Appeler — {ctaLabel}
+                    {getTranslation(locale, "appeler-devis")}
                   </span>
                 </div>
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg leading-none text-white/80">
@@ -378,7 +402,7 @@ export function LucasLikeTemplate({
 
           {/* Footer */}
           <div className="pt-6">
-            <p className="text-[11px] text-white/60">Made by</p>
+            <p className="text-[11px] text-white/60">{getTranslation(locale, "made-by")}</p>
             <a
               href="https://www.publox-marketing.com/"
               target="_blank"

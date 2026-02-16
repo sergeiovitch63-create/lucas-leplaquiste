@@ -9,7 +9,7 @@ import SafeImage from "@/components/SafeImage";
 import { pickImage } from "@/lib/images";
 import { getTranslation, type Locale } from "@/lib/i18n";
 
-const locale: Locale = "fr";
+const locale: Locale = "es";
 
 type PageParams = {
   params: { job: string; category: string };
@@ -46,19 +46,19 @@ export async function generateMetadata({
   const category = categories.find((c) => c.slug === params.category);
   if (!category) {
     return {
-      title: locale === "es" ? "Página no encontrada" : "Page non trouvée",
+      title: "Página no encontrada",
     };
   }
 
   const isAbnRevetement = preset.jobKey === "abn-revetement";
   const name =
-    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
-  const city = client.city || client.zone || (locale === "es" ? "Su ciudad" : "Votre ville");
+    client.name || (isAbnRevetement ? preset.jobLabel : `Su ${preset.jobLabel}`);
+  const city = client.city || client.zone || "Su ciudad";
 
-  const title = `${category.label} — ${name} ${locale === "es" ? "en" : "à"} ${city}`;
+  const title = `${category.label} — ${name} en ${city}`;
   const description =
     category.short ||
-    `${preset.jobLabel} ${locale === "es" ? "en" : "à"} ${city}. ${locale === "es" ? "Descubra la categoría" : "Découverte de la catégorie"} ${category.label}.`;
+    `${preset.jobLabel} en ${city}. Descubra la categoría ${category.label}.`;
 
   return {
     title,
@@ -81,7 +81,7 @@ function buildBgImage(presetBg?: string, clientBg?: string | null): string {
 function buildZoneText(
   presetZone: string | undefined,
   client: ClientParams,
-  locale: Locale = "fr",
+  locale: Locale = "es",
 ): string {
   if (client.zone) return client.zone;
   if (presetZone) return presetZone;
@@ -96,7 +96,7 @@ function buildPrimaryCtaHref(
   presetMode: "booking" | "urgent" | "quote",
   client: ClientParams,
   category: JobCategory,
-  locale: Locale = "fr",
+  locale: Locale = "es",
 ): { href: string | null; label: string } {
   const cityLabel =
     client.city || client.zone || (locale === "es" ? "su ciudad" : "votre ville");
@@ -137,7 +137,7 @@ function buildPrimaryCtaHref(
   }
 }
 
-function buildBackHref(job: string, usp: URLSearchParams, locale: Locale = "fr"): string {
+function buildBackHref(job: string, usp: URLSearchParams, locale: Locale = "es"): string {
   const qs = usp.toString();
   const prefix = locale === "es" ? "/es" : "";
   return qs
@@ -160,7 +160,7 @@ export default async function Page({ params, searchParams }: PageParams) {
   const zoneText = buildZoneText(preset.defaultZoneText, client, locale);
   const bgImage = buildBgImage(preset.defaultBgImage, client.bg);
   const name =
-    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
+    client.name || (isAbnRevetement ? preset.jobLabel : `Su ${preset.jobLabel}`);
 
   const primaryCta = buildPrimaryCtaHref(preset.cta.mode, client, category, locale);
   const backHref = buildBackHref(params.job, usp, locale);
@@ -389,5 +389,4 @@ export default async function Page({ params, searchParams }: PageParams) {
     </div>
   );
 }
-
 

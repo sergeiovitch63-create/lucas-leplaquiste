@@ -1,5 +1,6 @@
 import type { JobPreset } from "@/lib/getPreset";
 import type { ClientParams } from "@/lib/parseClientParams";
+import type { Locale } from "@/lib/i18n";
 import { LucasLikeTemplate } from "./LucasLikeTemplate";
 
 interface LinkPageHero {
@@ -26,6 +27,7 @@ export interface LinkPageProps {
   ctas: LinkPageCtas;
   jobKey: string;
   queryString: string;
+  locale?: Locale;
 }
 
 export function LinkPage({
@@ -34,6 +36,7 @@ export function LinkPage({
   hero,
   jobKey,
   queryString,
+  locale = "fr",
 }: LinkPageProps) {
   return (
     <LucasLikeTemplate
@@ -42,6 +45,7 @@ export function LinkPage({
       heroTitle={hero.title}
       jobKey={jobKey}
       queryString={queryString}
+      locale={locale}
     />
   );
 }

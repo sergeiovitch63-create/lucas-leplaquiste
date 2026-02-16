@@ -3,7 +3,6 @@ import { BackgroundShell } from "../components/BackgroundShell";
 import { PhoneFrame } from "../components/PhoneFrame";
 import { ProfileHeader } from "../components/ProfileHeader";
 import { LinkList } from "../components/LinkList";
-import { MadeByPublox } from "../components/MadeByPublox";
 
 export const metadata: Metadata = {
   icons: {
@@ -18,7 +17,6 @@ export default function Home() {
         <div className="space-y-7">
           <ProfileHeader />
           <LinkList />
-          <MadeByPublox />
         </div>
       </PhoneFrame>
     </BackgroundShell>

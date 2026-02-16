@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { Locale } from "./i18n";
 
 export type JobCtaMode = "booking" | "urgent" | "quote";
 
@@ -44,9 +45,19 @@ export interface JobPreset {
 
 const FALLBACK_JOB_KEY = "plombier";
 
-function readPresetFile(jobKey: string): JobPreset | null {
+function readPresetFile(jobKey: string, locale: Locale = "fr"): JobPreset | null {
   try {
     const presetsDir = path.join(process.cwd(), "src", "presets", "jobs");
+    // Try locale-specific file first (e.g., abn-revetement.es.json)
+    if (locale === "es") {
+      const esFilePath = path.join(presetsDir, `${jobKey}.es.json`);
+      if (fs.existsSync(esFilePath)) {
+        const raw = fs.readFileSync(esFilePath, "utf8");
+        const parsed = JSON.parse(raw) as JobPreset;
+        return parsed;
+      }
+    }
+    // Fallback to default file
     const filePath = path.join(presetsDir, `${jobKey}.json`);
     const raw = fs.readFileSync(filePath, "utf8");
     const parsed = JSON.parse(raw) as JobPreset;
@@ -56,20 +67,39 @@ function readPresetFile(jobKey: string): JobPreset | null {
   }
 }
 
-export function getPreset(jobKeyRaw: string | undefined | null): JobPreset {
+export function getPreset(
+  jobKeyRaw: string | undefined | null,
+  locale: Locale = "fr",
+): JobPreset {
   const safeKey = (jobKeyRaw || "").toLowerCase().trim() || FALLBACK_JOB_KEY;
 
-  const direct = readPresetFile(safeKey);
+  // Try to read the locale-specific file first
+  const direct = readPresetFile(safeKey, locale);
   if (direct) return direct;
 
-  const fallback = readPresetFile(FALLBACK_JOB_KEY);
+  // If we're in Spanish mode and no Spanish file exists, try to read the French file
+  // and use it as a temporary fallback (this should be replaced with actual .es.json files)
+  if (locale === "es") {
+    const frFile = readPresetFile(safeKey, "fr");
+    if (frFile) {
+      // Return the French file as a temporary fallback
+      // TODO: Create proper .es.json files for all jobs
+      return frFile;
+    }
+  }
+
+  // Fallback to default job
+  const fallback = readPresetFile(FALLBACK_JOB_KEY, locale);
   if (fallback) return fallback;
 
   // Very defensive fallback if even files are missing
   return {
     jobKey: FALLBACK_JOB_KEY,
-    jobLabel: "Plombier",
-    defaultHeroTagline: "Interventions rapides pour vos urgences et travaux de plomberie.",
+    jobLabel: locale === "es" ? "Fontanero" : "Plombier",
+    defaultHeroTagline:
+      locale === "es"
+        ? "Intervenciones rápidas para sus emergencias y trabajos de fontanería."
+        : "Interventions rapides pour vos urgences et travaux de plomberie.",
     defaultServices: [],
     defaultBenefits: [],
     defaultFaq: [],

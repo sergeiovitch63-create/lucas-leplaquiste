@@ -6,12 +6,12 @@ import { parseClientParams, type ClientParams } from "@/lib/parseClientParams";
 import { getBrandFromHost } from "@/lib/brand";
 import { getTranslation, type Locale } from "@/lib/i18n";
 
-const locale: Locale = "fr";
-
 type PageParams = {
   params: { job: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
+
+const locale: Locale = "es";
 
 function toURLSearchParams(
   searchParams: PageParams["searchParams"],
@@ -60,7 +60,7 @@ function cleanObject<T extends Record<string, unknown>>(obj: T): Partial<T> {
 
 function buildPrimaryCtaLabel(
   mode: JobPreset["cta"]["mode"],
-  locale: Locale = "fr",
+  locale: Locale = "es",
 ): string {
   switch (mode) {
     case "urgent":
@@ -77,7 +77,7 @@ function buildPrimaryCtaHref(
   baseWhatsapp: string | null,
   mode: JobPreset["cta"]["mode"],
   city: string,
-  locale: Locale = "fr",
+  locale: Locale = "es",
 ): string | null {
   if (!baseWhatsapp) return null;
 
@@ -127,12 +127,11 @@ export async function generateMetadata({
   const brand = getBrandFromHost(host);
 
   const isAbnRevetement = preset.jobKey === "abn-revetement";
-  const name =
-    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
+  const name = client.name || (isAbnRevetement ? preset.jobLabel : `Su ${preset.jobLabel}`);
   const city = client.city || (locale === "es" ? "Su ciudad" : "Votre ville");
 
-  const title = `${name} — ${preset.jobLabel} ${locale === "es" ? "en" : "à"} ${city}`;
-  const description = `${preset.jobLabel} ${locale === "es" ? "en" : "à"} ${city}. ${preset.defaultHeroTagline} ${locale === "es" ? "Contacto directo: llamada / WhatsApp." : "Contact direct: appel / WhatsApp."}`;
+  const title = `${name} — ${preset.jobLabel} en ${city}`;
+  const description = `${preset.jobLabel} en ${city}. ${preset.defaultHeroTagline} Contacto directo: llamada / WhatsApp.`;
 
   return {
     title,
@@ -146,7 +145,7 @@ export async function generateMetadata({
       siteName: brand.siteName,
     },
     alternates: {
-      canonical: `/m/${params.job}`,
+      canonical: `/es/m/${params.job}`,
     },
   };
 }
@@ -157,8 +156,7 @@ export default async function Page({ params, searchParams }: PageParams) {
   const client: ClientParams = parseClientParams(usp);
 
   const isAbnRevetement = preset.jobKey === "abn-revetement";
-  const name =
-    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
+  const name = client.name || (isAbnRevetement ? preset.jobLabel : `Su ${preset.jobLabel}`);
   const city = client.city || (locale === "es" ? "Su ciudad" : "Votre ville");
 
   const hero = {
@@ -188,7 +186,7 @@ export default async function Page({ params, searchParams }: PageParams) {
   );
 
   const schemaType = mapJobToSchemaType(preset.jobKey);
-  const urlPath = `/m/${encodeURIComponent(params.job)}`;
+  const urlPath = `/es/m/${encodeURIComponent(params.job)}`;
 
   const schemaObj = cleanObject({
     "@context": "https://schema.org",
@@ -205,7 +203,6 @@ export default async function Page({ params, searchParams }: PageParams) {
     <>
       <script
         type="application/ld+json"
-        // JSON-LD LocalBusiness schema
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaObj) }}
       />
       <LinkPage
@@ -229,5 +226,4 @@ export default async function Page({ params, searchParams }: PageParams) {
     </>
   );
 }
-
 

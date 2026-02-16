@@ -1,0 +1,242 @@
+{
+  "jobKey": "abn-revetement",
+  "jobLabel": "ABN Revestimiento",
+  "defaultHeroTagline": "Aislamiento térmico, yesería y pintura — trabajo limpio y acabados cuidadosos.",
+  "defaultServices": [
+    {
+      "title": "Aislamiento térmico por el exterior",
+      "desc": "Instalación de sistemas de AITE completos para mejorar el confort de la vivienda y reducir las facturas de energía."
+    },
+    {
+      "title": "Aislamiento térmico por el interior",
+      "desc": "Trasdosados aislantes, contraparedes y acondicionamientos para tratar los muros fríos y los puentes térmicos."
+    },
+    {
+      "title": "Trabajos de yesería",
+      "desc": "Tabiques, trasdosados, falsos techos, cintas y enlucidos para superficies listas para pintar."
+    },
+    {
+      "title": "Trabajos de pintura",
+      "desc": "Pinturas interiores y acabados decorativos limpios, adaptados a cada estancia de su vivienda."
+    }
+  ],
+  "defaultBenefits": [
+    {
+      "title": "Especialista en la envolvente del edificio",
+      "desc": "Aislamiento, yesería y pintura gestionados por el mismo interlocutor para una obra coherente."
+    },
+    {
+      "title": "Trabajo cuidado",
+      "desc": "Protección de las estancias, acabados limpios y respeto de los soportes existentes."
+    },
+    {
+      "title": "Seguimiento de obra claro",
+      "desc": "Explicaciones sencillas sobre las etapas, los materiales utilizados y los plazos."
+    }
+  ],
+  "defaultFaq": [
+    {
+      "q": "¿Intervienen únicamente en Toulouse?",
+      "a": "ABN Revestimiento interviene en Toulouse y en los municipios vecinos. Según el proyecto, puede contemplarse un desplazamiento más amplio."
+    },
+    {
+      "q": "¿Pueden ayudarme a elegir entre aislamiento por el interior y por el exterior?",
+      "a": "Sí, un estado de situación permite comparar las soluciones AITE y AITI en función de su fachada, su presupuesto y sus objetivos de rendimiento."
+    },
+    {
+      "q": "¿Trabajan en renovación ocupada?",
+      "a": "Sí, las obras se organizan para limitar las molestias: protección de suelos, muebles y limpieza al final de la intervención."
+    }
+  ],
+  "defaultBgImage": "/media/jobs/abn-revetement.jpg",
+  "defaultBannerImage": "/media/jobs/abn-logo.jpg",
+  "defaultZoneText": "Toulouse y alrededores",
+  "defaultAddress": "34 avenue de l'Hers 31500 Toulouse",
+  "defaultCategoryIcon": "/media/accueil/favicon-creation-decoration.jpg",
+  "defaultReviewsIcon": "/media/avis/thumbnail.png",
+  "phone": "0771262633",
+  "whatsapp": "33771262633",
+  "email": "abn.revetement@gmail.com",
+  "facebook": null,
+  "categories": [
+    {
+      "slug": "isolation-thermique-exterieure",
+      "label": "Aislamiento térmico por el exterior",
+      "short": "Mejorar el confort y el rendimiento energético de su fachada en Toulouse.",
+      "heroImage": "/media/jobs/ABN-Isolation-thermique-exterieur.jpg",
+      "gallery": [],
+      "body": [
+        "El aislamiento térmico por el exterior (AITE) consiste en envolver su fachada con un manto aislante continuo, y luego protegerla con un revoco o un revestimiento. Esta solución limita considerablemente las pérdidas de calor mientras moderniza el aspecto de su casa.",
+        "En Toulouse y en la región, el AITE permite protegerse mejor de las variaciones de temperatura, tanto en verano como en invierno, y reducir la sensación de muros fríos en el interior de la vivienda.",
+        "ABN Revestimiento le acompaña desde la elección del sistema aislante hasta los acabados, velando por el tratamiento de los puntos singulares (dinteles, alféizares, uniones de cubierta) para un resultado duradero."
+      ],
+      "whyUs": [
+        "Soluciones de AITE adaptadas al clima toulousino y a las fachadas existentes.",
+        "Acompañamiento en la preparación de los soportes antes de la instalación del aislante.",
+        "Acabados cuidadosos para valorizar la estética de su fachada.",
+        "Consejos sencillos para mantener su nuevo aislamiento con el tiempo."
+      ],
+      "faq": [
+        {
+          "q": "¿Debo rehacer completamente mi fachada para instalar un AITE?",
+          "a": "Verificamos el estado del soporte antes de las obras. Pueden bastar reparaciones localizadas para garantizar una buena adherencia del sistema aislante."
+        },
+        {
+          "q": "¿El aislamiento por el exterior reduce la luminosidad interior?",
+          "a": "El AITE modifica la profundidad de los dinteles de las ventanas pero no afecta la cantidad de luz que entra en la estancia."
+        },
+        {
+          "q": "¿Cuánto tiempo dura una obra de AITE en una casa?",
+          "a": "Según la superficie de fachada y la complejidad de la construcción, generalmente hay que contar entre 2 y 4 semanas de obras."
+        },
+        {
+          "q": "¿Intervienen en casas antiguas en Toulouse?",
+          "a": "Sí, un diagnóstico previo permite adaptar la solución de AITE a las fachadas de ladrillo o antiguas mamposterías."
+        }
+      ]
+    },
+    {
+      "slug": "isolation-thermique-interieure",
+      "label": "Aislamiento térmico por el interior",
+      "short": "Tratar los muros fríos y mejorar el confort estancia por estancia.",
+      "heroImage": "/media/jobs/ABN-Isolation-thermique-interieur.jpg",
+      "gallery": [],
+      "body": [
+        "El aislamiento térmico por el interior (AITI) permite limitar las pérdidas de calor creando un trasdosado aislante en el lado interior: estructuras, aislante, placas de yeso y luego acabados.",
+        "Es una solución interesante en renovación cuando la fachada exterior no puede modificarse o cuando se desea tratar únicamente ciertas estancias prioritarias.",
+        "ABN Revestimiento interviene en Toulouse para diseñar trasdosados adaptados a cada configuración, integrando las limitaciones de espesor, paso de conductos y acabados."
+      ],
+      "whyUs": [
+        "Consejos para priorizar los muros más disipadores.",
+        "Respeto de los volúmenes e integración de enchufes, radiadores y carpinterías.",
+        "Organización de la obra para limitar las molestias en una vivienda ocupada."
+      ],
+      "faq": [
+        {
+          "q": "¿Perderé mucha superficie con un AITI?",
+          "a": "El espesor del trasdosado se estudia caso por caso. Le explicamos claramente el compromiso entre rendimiento térmico y pérdida de superficie."
+        },
+        {
+          "q": "¿Hay que vaciar completamente las estancias antes de las obras?",
+          "a": "Recomendamos despejar los muros concernidos. Las protecciones y desplazamientos complementarios se organizan con usted."
+        },
+        {
+          "q": "¿Pueden tratar también los techos?",
+          "a": "Sí, cuando es posible un beneficio, podemos proponer el aislamiento de los techos además de los muros."
+        },
+        {
+          "q": "¿Intervienen en apartamentos en Toulouse?",
+          "a": "Sí, intervenimos tanto en vivienda individual como en apartamento, tras verificación de las limitaciones de copropiedad."
+        }
+      ]
+    },
+    {
+      "slug": "platerie",
+      "label": "Trabajos de yesería",
+      "short": "Tabiques, trasdosados y falsos techos listos para pintar en Toulouse.",
+      "heroImage": "/media/jobs/ABN-Travaux-platerie.jpg",
+      "gallery": [],
+      "body": [
+        "Los trabajos de yesería permiten estructurar sus espacios: creación de tabiques, trasdosados, nichos, falsos techos y revestimientos diversos.",
+        "Un trabajo cuidado en las cintas, los ángulos y los enlucidos garantiza muros y techos regulares, listos para recibir la pintura o los revestimientos decorativos.",
+        "ABN Revestimiento interviene en proyectos de renovación y acondicionamiento interior en Toulouse, desde el simple tabicado hasta la reorganización completa del espacio."
+      ],
+      "whyUs": [
+        "Respeto de los planos y las cotas para tabiques rectos y alineados.",
+        "Cuidado particular en las uniones con las carpinterías y los suelos.",
+        "Preparación de los soportes compatible con las pinturas y acabados previstos.",
+        "Costumbre de trabajar en coordinación con los demás oficios."
+      ],
+      "faq": [
+        {
+          "q": "¿Pueden únicamente rehacer las cintas y enlucidos?",
+          "a": "Sí, también intervenimos para retomar superficies antes de pintar cuando son irregulares o marcadas."
+        },
+        {
+          "q": "¿Es posible crear tabiques fónicos?",
+          "a": "Podemos proponer soluciones de tabiques reforzados acústicamente para limitar la transmisión de ruidos entre estancias."
+        },
+        {
+          "q": "¿Las obras generan mucho polvo?",
+          "a": "La yesería sigue siendo un trabajo de obra, pero limitamos al máximo el polvo con protecciones y limpieza al final de la jornada."
+        },
+        {
+          "q": "¿Intervienen en pequeñas superficies en Toulouse?",
+          "a": "Sí, un simple tabique o la reparación de un techo pueden ser objeto de una intervención dedicada."
+        }
+      ]
+    },
+    {
+      "slug": "peinture",
+      "label": "Trabajos de pintura",
+      "short": "Pinturas interiores limpias, adaptadas a cada estancia de su vivienda.",
+      "heroImage": "/media/jobs/abn-revetement.jpg",
+      "gallery": [],
+      "body": [
+        "Una pintura bien realizada pone en valor los volúmenes, la luz y las elecciones de decoración de su interior.",
+        "Antes de aplicar la menor capa, los soportes se preparan: relleno, lijado, imprimación para garantizar una buena adherencia con el tiempo.",
+        "ABN Revestimiento interviene en Toulouse para sus trabajos de pintura en las estancias de vida, dormitorios, circulaciones o locales profesionales."
+      ],
+      "whyUs": [
+        "Protección cuidadosa de suelos, muebles y carpinterías antes de las obras.",
+        "Elección de pinturas adaptadas a estancias secas o húmedas.",
+        "Acabados regulares, sin huellas de rodillo ni retoques visibles."
+      ],
+      "faq": [
+        {
+          "q": "¿Debo comprar yo mismo la pintura?",
+          "a": "Puede proporcionar la pintura o dejarnos gestionar el aprovisionamiento con productos que conocemos bien."
+        },
+        {
+          "q": "¿Cuántas capas están previstas?",
+          "a": "Según el estado del soporte y el tono elegido, generalmente prevemos una imprimación y luego dos capas de acabado."
+        },
+        {
+          "q": "¿Puedo permanecer en la vivienda durante las obras?",
+          "a": "Sí, las estancias se tratan por etapas y velamos por ventilar regularmente para limitar los olores."
+        },
+        {
+          "q": "¿Trabajan también en locales profesionales en Toulouse?",
+          "a": "Sí, oficinas, comercios o pequeños locales pueden pintarse fuera de las horas de apertura cuando es posible."
+        }
+      ]
+    }
+  ],
+  "defaultLinks": [
+    {
+      "label": "Aislamiento térmico por el exterior",
+      "href": "/es/m/abn-revetement/isolation-thermique-exterieure",
+      "icon": "/media/accueil/favicon-creation-decoration.jpg"
+    },
+    {
+      "label": "Aislamiento térmico por el interior",
+      "href": "/es/m/abn-revetement/isolation-thermique-interieure",
+      "icon": "/media/services/doublages-1.jpg"
+    },
+    {
+      "label": "Trabajos de yesería",
+      "href": "/es/m/abn-revetement/platerie",
+      "icon": "/media/services/faux-plafond-2.jpg"
+    },
+    {
+      "label": "Trabajos de pintura",
+      "href": "/es/m/abn-revetement/peinture",
+      "icon": "/media/services/creation-decoration-6.jpg"
+    }
+  ],
+  "favicon": "/favicons/menuisier.svg",
+  "seo": {
+    "keywords": [
+      "aislamiento térmico",
+      "aislamiento fachada Toulouse",
+      "yesería",
+      "pintura interior",
+      "ABN Revestimiento"
+    ],
+    "category": "HomeAndConstructionBusiness"
+  },
+  "cta": {
+    "mode": "quote"
+  }
+}
+

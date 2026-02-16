@@ -61,14 +61,10 @@
   "categories": [
     {
       "slug": "isolation-thermique-exterieure",
-      "label": "Isolation thermique par l’extérieur",
+      "label": "Isolation thermique par l'extérieur",
       "short": "Améliorer le confort et la performance énergétique de votre façade à Toulouse.",
-      "heroImage": "/media/services/doublages-1.jpg",
-      "gallery": [
-        "/media/services/doublages-2.jpg",
-        "/media/services/doublages-3.jpg",
-        "/media/services/doublages-4.jpg"
-      ],
+      "heroImage": "/media/jobs/ABN-Isolation-thermique-exterieur.jpg",
+      "gallery": [],
       "body": [
         "L’isolation thermique par l’extérieur (ITE) consiste à envelopper votre façade d’un manteau isolant continu, puis à la protéger par un enduit ou un bardage. Cette solution limite fortement les déperditions de chaleur tout en modernisant l’aspect de votre maison.",
         "À Toulouse et dans la région, l’ITE permet de mieux se protéger des variations de température, été comme hiver, et de réduire la sensation de murs froids à l’intérieur du logement.",
@@ -101,14 +97,10 @@
     },
     {
       "slug": "isolation-thermique-interieure",
-      "label": "Isolation thermique par l’intérieur",
+      "label": "Isolation thermique par l'intérieur",
       "short": "Traiter les murs froids et améliorer le confort pièce par pièce.",
-      "heroImage": "/media/services/doublages-3.jpg",
-      "gallery": [
-        "/media/services/doublages-5.jpg",
-        "/media/services/doublages-7.jpg",
-        "/media/services/doubalges-6.jpg"
-      ],
+      "heroImage": "/media/jobs/ABN-Isolation-thermique-interieur.jpg",
+      "gallery": [],
       "body": [
         "L’isolation thermique par l’intérieur (ITI) permet de limiter les pertes de chaleur en créant un doublage isolant côté intérieur : ossatures, isolant, plaques de plâtre puis finitions.",
         "C’est une solution intéressante en rénovation lorsque la façade extérieure ne peut pas être modifiée ou lorsqu’on souhaite traiter uniquement certaines pièces prioritaires.",
@@ -142,12 +134,8 @@
       "slug": "platerie",
       "label": "Travaux de plâtrerie",
       "short": "Cloisons, doublages et faux-plafonds prêts à peindre à Toulouse.",
-      "heroImage": "/media/services/faux-plafond-1.jpg",
-      "gallery": [
-        "/media/services/cloison-1.jpg",
-        "/media/services/cloison-2.jpg",
-        "/media/services/cloison-3.jpg"
-      ],
+      "heroImage": "/media/jobs/ABN-Travaux-platerie.jpg",
+      "gallery": [],
       "body": [
         "Les travaux de plâtrerie permettent de structurer vos espaces : création de cloisons, doublages, niches, faux-plafonds et habillages divers.",
         "Un travail soigné sur les bandes, les angles et les enduits garantit des murs et plafonds réguliers, prêts à recevoir la peinture ou les revêtements décoratifs.",
@@ -182,12 +170,8 @@
       "slug": "peinture",
       "label": "Travaux de peinture",
       "short": "Peintures intérieures propres, adaptées à chaque pièce de votre logement.",
-      "heroImage": "/media/services/creation-decoration-2.jpg",
-      "gallery": [
-        "/media/services/creation-decoration-3.jpg",
-        "/media/services/creation-decoration-4.jpg",
-        "/media/services/creation-decoration-5.jpg"
-      ],
+      "heroImage": "/media/jobs/abn-revetement.jpg",
+      "gallery": [],
       "body": [
         "Une peinture bien réalisée met en valeur les volumes, la lumière et les choix de décoration de votre intérieur.",
         "Avant d’appliquer la moindre couche, les supports sont préparés : rebouchage, ponçage, impression pour garantir une bonne tenue dans le temps.",

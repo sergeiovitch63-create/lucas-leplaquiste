@@ -7,7 +7,7 @@ import { QuickActions } from "@/components/QuickActions";
 import { pickImage } from "@/lib/images";
 import { getTranslation, type Locale } from "@/lib/i18n";
 
-const locale: Locale = "fr";
+const locale: Locale = "es";
 
 type PageParams = {
   params: { job: string };
@@ -41,10 +41,10 @@ export async function generateMetadata({
 
   const isAbnRevetement = preset.jobKey === "abn-revetement";
   const name =
-    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
-  const city = client.city || client.zone || (locale === "es" ? "Su ciudad" : "Votre ville");
+    client.name || (isAbnRevetement ? preset.jobLabel : `Su ${preset.jobLabel}`);
+  const city = client.city || client.zone || "Su ciudad";
 
-  const title = `${locale === "es" ? "Opiniones" : "Avis"} — ${name} (${preset.jobLabel} ${locale === "es" ? "en" : "à"} ${city})`;
+  const title = `Opiniones — ${name} (${preset.jobLabel} en ${city})`;
 
   return {
     title,
@@ -68,46 +68,46 @@ interface Review {
 function getMassageReviews(): Review[] {
   return [
     {
-      name: "Camille L.",
+      name: "Camila L.",
       rating: 5,
-      date: "mars 2024",
-      text: "Un des meilleurs massages que j’ai pu recevoir. L’ambiance est très douce et je suis ressortie beaucoup plus légère, aussi bien physiquement que mentalement.",
+      date: "marzo 2024",
+      text: "Uno de los mejores masajes que he recibido. El ambiente es muy suave y salí mucho más ligera, tanto física como mentalmente.",
     },
     {
-      name: "Thomas R.",
+      name: "Tomás R.",
       rating: 5,
-      date: "février 2024",
-      text: "Massage décontractant du dos après plusieurs semaines de tension : résultat immédiat. On sent une vraie écoute et une grande maîtrise des gestes.",
+      date: "febrero 2024",
+      text: "Masaje descontracturante de espalda después de varias semanas de tensión: resultado inmediato. Se nota una verdadera escucha y un gran dominio de los gestos.",
     },
     {
       name: "Elena G.",
       rating: 4.8,
-      date: "janvier 2024",
-      text: "J’ai testé le massage relaxant puis un soin visage, les deux ont été parfaits. Lieu très propre, musique agréable, on se sent vite en confiance.",
+      date: "enero 2024",
+      text: "Probé el masaje relajante y luego un cuidado facial, ambos fueron perfectos. Lugar muy limpio, música agradable, te sientes en confianza rápidamente.",
     },
     {
-      name: "Julie M.",
+      name: "Julia M.",
       rating: 5,
-      date: "décembre 2023",
-      text: "Offert en bon cadeau pour mon anniversaire, le rituel premium a été une vraie parenthèse. J’ai adoré le mélange massage du corps et soin visage.",
+      date: "diciembre 2023",
+      text: "Regalado en bono regalo para mi cumpleaños, el ritual premium fue una verdadera pausa. Me encantó la mezcla de masaje corporal y cuidado facial.",
     },
     {
-      name: "Paul D.",
+      name: "Pablo D.",
       rating: 4.9,
-      date: "novembre 2023",
-      text: "Massage sportif très efficace après un trail. Les jambes étaient beaucoup moins lourdes le lendemain, et les explications sont claires.",
+      date: "noviembre 2023",
+      text: "Masaje deportivo muy eficaz después de un trail. Las piernas estaban mucho menos pesadas al día siguiente, y las explicaciones son claras.",
     },
     {
-      name: "Sophie T.",
+      name: "Sofía T.",
       rating: 5,
-      date: "octobre 2023",
-      text: "Accueil chaleureux, écoute, et aucune sensation de “chaîne”. On prend vraiment le temps de vous demander comment vous allez avant de commencer.",
+      date: "octubre 2023",
+      text: "Atención cálida, escucha, y ninguna sensación de 'cadena'. Realmente se toman el tiempo de preguntarte cómo estás antes de comenzar.",
     },
     {
-      name: "Nicolas V.",
+      name: "Nicolás V.",
       rating: 4.7,
-      date: "septembre 2023",
-      text: "Massage duo avec ma compagne, très belle expérience. Nous sommes ressortis détendus et ravis tous les deux, nous reviendrons sans hésiter.",
+      date: "septiembre 2023",
+      text: "Masaje en pareja con mi compañera, muy bella experiencia. Salimos relajados y encantados ambos, volveremos sin dudarlo.",
     },
   ];
 }
@@ -117,120 +117,80 @@ function getAbnRevetementReviews(): Review[] {
     {
       name: "Laurent P.",
       rating: 5,
-      date: "janvier 2025",
-      text: "Isolation thermique par l’extérieur réalisée sur notre maison près de Toulouse. Chantier propre, délais tenus et une vraie différence sur le confort dès le premier hiver.",
+      date: "enero 2025",
+      text: "Aislamiento térmico por el exterior realizado en nuestra casa cerca de Toulouse. Obra limpia, plazos cumplidos y una verdadera diferencia en el confort desde el primer invierno.",
     },
     {
       name: "Mélanie R.",
       rating: 4.9,
-      date: "décembre 2024",
-      text: "Nous avons refait plusieurs pièces (doublages + peinture). Les équipes d’ABN Revêtement ont été ponctuelles, soigneuses et très claires sur les étapes du chantier.",
+      date: "diciembre 2024",
+      text: "Hemos rehecho varias estancias (trasdosados + pintura). Los equipos de ABN Revestimiento han sido puntuales, cuidadosos y muy claros sobre las etapas de la obra.",
     },
     {
       name: "Hugo D.",
       rating: 4.8,
-      date: "novembre 2024",
-      text: "Travaux de plâtrerie pour créer une nouvelle chambre. Cloisons droites, bandes propres, tout était prêt à peindre sans mauvaise surprise.",
+      date: "noviembre 2024",
+      text: "Trabajos de yesería para crear un nuevo dormitorio. Tabiques rectos, cintas limpias, todo estaba listo para pintar sin sorpresas desagradables.",
     },
     {
       name: "Claire S.",
       rating: 5,
-      date: "septembre 2024",
-      text: "Rafraîchissement complet d’un appartement à Toulouse : murs, plafonds et portes. Le résultat est net, sans traces, et le chantier a été très bien protégé.",
+      date: "septiembre 2024",
+      text: "Renovación completa de un apartamento en Toulouse: muros, techos y puertas. El resultado es neto, sin huellas, y la obra ha estado muy bien protegida.",
     },
     {
       name: "Nicolas F.",
       rating: 4.9,
-      date: "juillet 2024",
-      text: "Bon accompagnement pour choisir entre isolation intérieure et extérieure. Les explications étaient claires et les travaux se sont déroulés comme prévu.",
+      date: "julio 2024",
+      text: "Buen acompañamiento para elegir entre aislamiento interior y exterior. Las explicaciones eran claras y los trabajos se desarrollaron como estaba previsto.",
     },
     {
       name: "Sarah G.",
       rating: 5,
-      date: "mai 2024",
-      text: "Nous avons confié à ABN Revêtement la réfection complète d’un séjour : faux-plafond, enduits et peinture. Le rendu est très propre, on sent le souci du détail.",
+      date: "mayo 2024",
+      text: "Hemos confiado a ABN Revestimiento la refección completa de un salón: falso techo, enlucidos y pintura. El resultado es muy limpio, se nota el cuidado del detalle.",
     },
   ];
 }
 
-function getGenericReviews(jobLabel: string, city: string, locale: Locale = "fr"): Review[] {
-  const baseCity = city || (locale === "es" ? "su ciudad" : "votre ville");
-  if (locale === "es") {
-    return [
-      {
-        name: "Alejandro B.",
-        rating: 4.9,
-        date: "marzo 2024",
-        text: `Intervención muy profesional. ${jobLabel} en ${baseCity} atento, que se toma el tiempo de explicar los trabajos y proponer soluciones adaptadas a la vivienda.`,
-      },
-      {
-        name: "Julia C.",
-        rating: 5,
-        date: "febrero 2024",
-        text: `Obra bien organizada de principio a fin. El ${jobLabel.toLowerCase()} ha respetado los plazos anunciados y dejado las estancias limpias después de su paso.`,
-      },
-      {
-        name: "Tomás H.",
-        rating: 4.8,
-        date: "enero 2024",
-        text: `Muy buen contacto, presupuesto claro y sin sorpresas. El resultado es conforme a lo que se había anunciado, recomiendo este ${jobLabel.toLowerCase()} en ${baseCity}.`,
-      },
-      {
-        name: "Isabel M.",
-        rating: 5,
-        date: "noviembre 2023",
-        text: "Toma de cita simple, horarios respetados y trabajo cuidado. Se nota que hay la costumbre de las obras en renovación.",
-      },
-      {
-        name: "Román T.",
-        rating: 4.7,
-        date: "octubre 2023",
-        text: "Buen seguimiento, fotos enviadas a medida del avance de los trabajos. Muy práctico cuando no se está en el lugar.",
-      },
-      {
-        name: "Céline D.",
-        rating: 5,
-        date: "septiembre 2023",
-        text: "Artesano serio, reactivo y fuerza de propuesta. El resultado final es conforme a nuestras expectativas, volveremos a llamarle sin dudarlo.",
-      },
-    ];
-  }
+function getGenericReviews(jobLabel: string, city: string): Review[] {
+  const baseCity = city || "su ciudad";
   return [
     {
-      name: "Alexandre B.",
+      name: "Alejandro B.",
       rating: 4.9,
-      date: "mars 2024",
-      text: `Intervention très professionnelle. ${jobLabel} à ${baseCity} à l'écoute, qui prend le temps d'expliquer les travaux et de proposer des solutions adaptées au logement.`,
+      date: "marzo 2024",
+      text: `Intervención muy profesional. ${jobLabel} en ${baseCity} atento, que se toma el tiempo de explicar los trabajos y proponer soluciones adaptadas a la vivienda.`,
     },
     {
-      name: "Julie C.",
+      name: "Julia C.",
       rating: 5,
-      date: "février 2024",
-      text: `Chantier bien organisé du début à la fin. Le ${jobLabel.toLowerCase()} a respecté les délais annoncés et laissé les pièces propres après son passage.`,
+      date: "febrero 2024",
+      text: `Obra bien organizada de principio a fin. El ${jobLabel.toLowerCase()} ha respetado los plazos anunciados y dejado las estancias limpias después de su paso.`,
     },
     {
-      name: "Thomas H.",
+      name: "Tomás H.",
       rating: 4.8,
-      date: "janvier 2024",
-      text: `Très bon contact, devis clair et sans surprise. Le résultat est conforme à ce qui avait été annoncé, je recommande ce ${jobLabel.toLowerCase()} sur ${baseCity}.`,
+      date: "enero 2024",
+      text: `Muy buen contacto, presupuesto claro y sin sorpresas. El resultado es conforme a lo que se había anunciado, recomiendo este ${jobLabel.toLowerCase()} en ${baseCity}.`,
     },
     {
-      name: "Isabelle M.",
+      name: "Isabel M.",
       rating: 5,
-      date: "novembre 2023",
-      text: "Prise de rendez-vous simple, horaires respectés et travail soigné. On sent qu'il y a l'habitude des chantiers en rénovation.",
+      date: "noviembre 2023",
+      text: "Toma de cita simple, horarios respetados y trabajo cuidado. Se nota que hay la costumbre de las obras en renovación.",
     },
     {
-      name: "Romain T.",
+      name: "Román T.",
       rating: 4.7,
-      date: "octobre 2023",
-      text: "Bon suivi, photos envoyées au fur et à mesure de l'avancement des travaux. Très pratique quand on n'est pas sur place.",
+      date: "octubre 2023",
+      text: "Buen seguimiento, fotos enviadas a medida del avance de los trabajos. Muy práctico cuando no se está en el lugar.",
     },
     {
       name: "Céline D.",
       rating: 5,
-      date: "septembre 2023",
-      text: "Artisan sérieux, réactif et force de proposition. Le rendu final est conforme à nos attentes, nous referons appel à lui sans hésiter.",
+      date: "septiembre 2023",
+      text: "Artesano serio, reactivo y fuerza de propuesta. El resultado final es conforme a nuestras expectativas, volveremos a llamarle sin dudarlo.",
     },
   ];
 }
@@ -242,7 +202,7 @@ function buildBgImage(presetBg?: string, clientBg?: string | null): string {
 function buildZoneText(
   presetZone: string | undefined,
   client: ClientParams,
-  locale: Locale = "fr",
+  locale: Locale = "es",
 ): string {
   if (client.zone) return client.zone;
   if (presetZone) return presetZone;
@@ -253,7 +213,7 @@ function buildZoneText(
   return locale === "es" ? "Su zona de intervención" : "Votre zone d'intervention";
 }
 
-function buildBackHref(job: string, usp: URLSearchParams, locale: Locale = "fr"): string {
+function buildBackHref(job: string, usp: URLSearchParams, locale: Locale = "es"): string {
   const qs = usp.toString();
   const prefix = locale === "es" ? "/es" : "";
   return qs
@@ -268,7 +228,7 @@ export default async function Page({ params, searchParams }: PageParams) {
 
   const isAbnRevetement = preset.jobKey === "abn-revetement";
   const name =
-    client.name || (isAbnRevetement ? preset.jobLabel : `Votre ${preset.jobLabel}`);
+    client.name || (isAbnRevetement ? preset.jobLabel : `Su ${preset.jobLabel}`);
   const zoneText = buildZoneText(preset.defaultZoneText, client, locale);
   const bgImage = buildBgImage(preset.defaultBgImage, client.bg);
   const backHref = buildBackHref(params.job, usp, locale);
@@ -280,8 +240,7 @@ export default async function Page({ params, searchParams }: PageParams) {
       ? getAbnRevetementReviews()
       : getGenericReviews(
           preset.jobLabel,
-          client.city || client.zone || (locale === "es" ? "Su ciudad" : "Votre ville"),
-          locale,
+          client.city || client.zone || "Su ciudad",
         );
 
   const globalRating = 4.9;
