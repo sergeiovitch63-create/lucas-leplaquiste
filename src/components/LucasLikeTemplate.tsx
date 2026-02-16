@@ -46,7 +46,6 @@ function buildBannerImage(preset: JobPreset, client: ClientParams): string {
 function appendQueryToInternalHref(
   href: string,
   queryString: string,
-  locale: Locale = "fr",
 ): string {
   if (!queryString) return href;
   if (!href.startsWith("/m/") && !href.startsWith("/es/m/")) return href;
@@ -79,7 +78,7 @@ function buildLinks(
 
   const normalizedBase = baseLinks.map((link) => ({
     ...link,
-    href: appendQueryToInternalHref(link.href, queryString, locale),
+    href: appendQueryToInternalHref(link.href, queryString),
     icon: isAbnRevetement
       ? "/media/jobs/abn-logo.jpg"
       : link.icon ||
@@ -95,7 +94,6 @@ function buildLinks(
   const avisHref = appendQueryToInternalHref(
     `${prefix}/m/${encodeURIComponent(jobKey)}/avis${qs}`,
     queryString,
-    locale,
   );
 
   const avisIcon = isAbnRevetement
