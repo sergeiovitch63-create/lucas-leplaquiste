@@ -64,7 +64,10 @@
       "label": "Isolation thermique par l'extérieur",
       "short": "Améliorer le confort et la performance énergétique de votre façade à Toulouse.",
       "heroImage": "/media/jobs/ABN-Isolation-thermique-exterieur.jpg",
-      "gallery": [],
+      "gallery": [
+        "/media/jobs/ABN-Isolation-thermique-exterieur.jpg",
+        "/media/jobs/abn-revetement.jpg"
+      ],
       "body": [
         "L’isolation thermique par l’extérieur (ITE) consiste à envelopper votre façade d’un manteau isolant continu, puis à la protéger par un enduit ou un bardage. Cette solution limite fortement les déperditions de chaleur tout en modernisant l’aspect de votre maison.",
         "À Toulouse et dans la région, l’ITE permet de mieux se protéger des variations de température, été comme hiver, et de réduire la sensation de murs froids à l’intérieur du logement.",
@@ -100,7 +103,9 @@
       "label": "Isolation thermique par l'intérieur",
       "short": "Traiter les murs froids et améliorer le confort pièce par pièce.",
       "heroImage": "/media/jobs/ABN-Isolation-thermique-interieur.jpg",
-      "gallery": [],
+      "gallery": [
+        "/media/jobs/ABN-Isolation-thermique-interieur.jpg"
+      ],
       "body": [
         "L’isolation thermique par l’intérieur (ITI) permet de limiter les pertes de chaleur en créant un doublage isolant côté intérieur : ossatures, isolant, plaques de plâtre puis finitions.",
         "C’est une solution intéressante en rénovation lorsque la façade extérieure ne peut pas être modifiée ou lorsqu’on souhaite traiter uniquement certaines pièces prioritaires.",
@@ -135,7 +140,11 @@
       "label": "Travaux de plâtrerie",
       "short": "Cloisons, doublages et faux-plafonds prêts à peindre à Toulouse.",
       "heroImage": "/media/jobs/ABN-Travaux-platerie.jpg",
-      "gallery": [],
+      "gallery": [
+        "/media/jobs/ABN-Travaux-platerie.jpg",
+        "/media/jobs/ABN-Travaux-platerie-2.jpg",
+        "/media/jobs/ABN-Travaux-platrerie.jpg"
+      ],
       "body": [
         "Les travaux de plâtrerie permettent de structurer vos espaces : création de cloisons, doublages, niches, faux-plafonds et habillages divers.",
         "Un travail soigné sur les bandes, les angles et les enduits garantit des murs et plafonds réguliers, prêts à recevoir la peinture ou les revêtements décoratifs.",
@@ -171,7 +180,10 @@
       "label": "Travaux de peinture",
       "short": "Peintures intérieures propres, adaptées à chaque pièce de votre logement.",
       "heroImage": "/media/jobs/abn-revetement.jpg",
-      "gallery": [],
+      "gallery": [
+        "/media/jobs/abn-revetement.jpg",
+        "/media/jobs/ABN-Travaux-platrerie.jpg"
+      ],
       "body": [
         "Une peinture bien réalisée met en valeur les volumes, la lumière et les choix de décoration de votre intérieur.",
         "Avant d’appliquer la moindre couche, les supports sont préparés : rebouchage, ponçage, impression pour garantir une bonne tenue dans le temps.",

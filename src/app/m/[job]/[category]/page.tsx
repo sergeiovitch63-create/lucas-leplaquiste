@@ -258,21 +258,23 @@ export default async function Page({ params, searchParams }: PageParams) {
             </div>
           </div>
 
-          {/* Hero image - Full width header for ABN Revêtement */}
+          {/* Hero image - Full width header for ABN Revêtement, centré avec contours */}
           {isAbnRevetement ? (
-            <div className="relative w-full overflow-hidden -mx-4">
-              <div className="relative h-[240px] w-full">
-                <SafeImage
-                  src={pickImage(
-                    category.heroImage,
-                    preset.defaultBgImage,
-                    "/media/jobs/abn-revetement.jpg",
-                  )}
-                  alt={category.label}
-                  width={1200}
-                  height={480}
-                  className="h-full w-full object-cover"
-                />
+            <div className="flex w-full justify-center">
+              <div className="relative w-full max-w-[360px] overflow-hidden rounded-3xl border border-white/18 bg-black/35 shadow-[0_18px_40px_rgba(0,0,0,0.55)]">
+                <div className="relative h-[230px] w-full">
+                  <SafeImage
+                    src={pickImage(
+                      category.heroImage,
+                      preset.defaultBgImage,
+                      "/media/jobs/abn-revetement.jpg",
+                    )}
+                    alt={category.label}
+                    width={1200}
+                    height={480}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
               </div>
             </div>
           ) : (
@@ -329,8 +331,8 @@ export default async function Page({ params, searchParams }: PageParams) {
             </a>
           )}
 
-          {/* Gallery - Hidden for ABN Revêtement */}
-          {category.gallery.length > 0 && !isAbnRevetement && (
+          {/* Gallery */}
+          {category.gallery.length > 0 && (
             <section className="space-y-3">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-white/80">
                 {getTranslation(locale, "en-images")}

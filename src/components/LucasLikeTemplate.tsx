@@ -287,17 +287,15 @@ export function LucasLikeTemplate({
               href={primaryHref || phoneHref || whatsappHref || "#"}
               className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/18 shadow-[0_10px_25px_rgba(0,0,0,0.18)] backdrop-blur-md transition hover:translate-y-[-1px] active:scale-[0.99] vibrate-loop"
             >
-              {/* Zone media avec logo plein */}
-              <div className="relative h-[170px] w-full overflow-hidden flex items-center justify-center">
-                <div className="relative w-full h-full flex items-center justify-center p-4">
-                  <SafeImage
-                    src="/media/jobs/abn-logo.jpg"
-                    alt={preset.jobLabel}
-                    fill
-                    className="object-contain"
-                    fallbackSrc="/media/logo-centre.png"
-                  />
-                </div>
+              {/* Zone media avec image plein cadre */}
+              <div className="relative h-[170px] w-full overflow-hidden">
+                <SafeImage
+                  src="/media/jobs/abn-logo.jpg"
+                  alt={preset.jobLabel}
+                  fill
+                  className="h-full w-full object-cover"
+                  fallbackSrc="/media/logo-centre.png"
+                />
               </div>
               {/* Footer aligné sur les cards de la liste */}
               <div className="flex min-h-[56px] items-center gap-3 px-3.5">
