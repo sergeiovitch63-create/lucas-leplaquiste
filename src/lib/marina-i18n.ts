@@ -94,22 +94,6 @@ export const marinaTranslations: MarinaTranslations = {
   },
 };
 
-/** Clés pour chaque catégorie : title, description, faq.0.q, faq.0.a, etc. */
-const categoryKeys = [
-  "hand-and-foot-massage",
-  "relaxing-back-massage",
-  "harmonizing-vital-areas-massage",
-  "energizing-back-and-legs-massage",
-  "facial-massage-cervical-decompression",
-  "psychosomatic-back-massage",
-  "japanese-lifting-kobido",
-  "full-body-relaxing-massage",
-  "deep-lifting-facial-intraoral",
-  "maderotherapy-wood-therapy",
-] as const;
-
-type CategorySlug = (typeof categoryKeys)[number];
-
 /** Traductions des catégories (title, description, faq) */
 const categoryTranslations: Record<
   MarinaLocale,
