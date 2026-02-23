@@ -4,7 +4,7 @@
 
 export type TallerLocale = "fr" | "en" | "es" | "de";
 
-export const tallerDefaultLocale: TallerLocale = "fr";
+export const tallerDefaultLocale: TallerLocale = "es";
 
 export const tallerLocales: { value: TallerLocale; label: string; flag: string }[] = [
   { value: "fr", label: "Français", flag: "🇫🇷" },
