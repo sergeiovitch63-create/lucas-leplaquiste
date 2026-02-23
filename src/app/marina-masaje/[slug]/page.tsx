@@ -19,7 +19,7 @@ import {
 } from "@/lib/marina-i18n";
 
 const MARINA_IMAGES_BASE = "/api/marina-image";
-const MARINA_BACKGROUND_VIDEO = "/api/marina-bg-video";
+const MARINA_BACKGROUND_VIDEO = "/media/fond-ecran-marina-masaje.MP4";
 
 const VALID_LOCALES: MarinaLocale[] = ["fr", "en", "ru", "es", "de", "it"];
 function parseLocale(value: string | undefined): MarinaLocale {

@@ -16,7 +16,7 @@ export function BackgroundShell({
     <div className="relative min-h-[100dvh] w-full overflow-x-hidden text-white">
       {/* Background video (boucle continue, muet) */}
       {backgroundVideo && (
-        <div className="pointer-events-none select-none fixed inset-0 z-0" aria-hidden>
+        <div className="pointer-events-none select-none fixed inset-0 z-0 bg-slate-950" aria-hidden>
           <video
             autoPlay
             muted

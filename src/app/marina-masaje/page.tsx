@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 /** Vidéo fond : servie via l’API pour éviter 404 (fichier dans public/media/ fond-ecran-manna-masaje ou .mp4) */
-const MARINA_BACKGROUND_VIDEO = "/api/marina-bg-video";
+const MARINA_BACKGROUND_VIDEO = "/media/fond-ecran-marina-masaje.MP4";
 
 const VALID_LOCALES: MarinaLocale[] = ["fr", "en", "ru", "es", "de", "it"];
 function parseLocale(value: string | undefined): MarinaLocale {
