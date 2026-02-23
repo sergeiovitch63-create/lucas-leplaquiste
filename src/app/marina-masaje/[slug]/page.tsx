@@ -45,9 +45,25 @@ export async function generateMetadata({
   if (!massage) return { title: "Marina Masaje" };
   const title = getMarinaCategoryTranslation(locale, slug, "title") || massage.title;
   const description = getMarinaCategoryTranslation(locale, slug, "description") || massage.description;
+  const ogTitle = `${title} | Marina Masaje`;
+  const ogImage = "/media/logo-marina-masaje.jpg";
+
   return {
-    title: `${title} | Marina Masaje`,
+    title: ogTitle,
     description,
+    openGraph: {
+      title: ogTitle,
+      description,
+      type: "website",
+      siteName: "Marina Masaje",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
