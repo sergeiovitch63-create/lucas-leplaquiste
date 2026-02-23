@@ -15,10 +15,11 @@ import {
   tallerDefaultLocale,
   getTallerTranslation,
   getTallerCategoryTranslation,
+  getTallerFaq,
   type TallerLocale,
 } from "@/lib/taller-i18n";
 
-const VALID_LOCALES: TallerLocale[] = ["fr", "en", "es"];
+const VALID_LOCALES: TallerLocale[] = ["fr", "en", "es", "de"];
 function parseLocale(value: string | undefined): TallerLocale {
   if (value && VALID_LOCALES.includes(value as TallerLocale)) return value as TallerLocale;
   return tallerDefaultLocale;
@@ -147,13 +148,13 @@ export default async function TallerServicePage({
               )}
             </section>
 
-            {service.faq.length > 0 && (
+            {getTallerFaq(locale, slug).length > 0 && (
               <section aria-labelledby="faq-heading">
                 <h2 id="faq-heading" className="text-base font-semibold text-white text-shadow-soft mb-3">
                   {faqLabel}
                 </h2>
                 <ul className="space-y-4">
-                  {service.faq.map((item, i) => (
+                  {getTallerFaq(locale, slug).map((item, i) => (
                     <li key={i} className="rounded-xl border border-white/10 bg-white/5 p-3">
                       <p className="text-sm font-medium text-white/95">{item.question}</p>
                       <p className="mt-1.5 text-xs leading-relaxed text-white/80">{item.answer}</p>

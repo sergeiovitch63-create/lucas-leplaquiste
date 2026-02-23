@@ -7,6 +7,8 @@ import type { TallerServiceCategory } from "@/data/taller-el-salon-categories";
 import {
   getTallerTranslation,
   getTallerCategoryTranslation,
+  getTallerFaq,
+  getTallerReviews,
   type TallerLocale,
 } from "@/lib/taller-i18n";
 import { TallerLanguageAccordion } from "./TallerLanguageAccordion";
@@ -39,7 +41,7 @@ function ContactCard({
       target="_blank"
       rel="noreferrer"
       className="block w-full"
-      aria-label={`${label} sur WhatsApp`}
+      aria-label={`${label} ${getTallerTranslation(locale, "on-whatsapp")}`}
     >
       <div className="animate-call-shake-burst relative w-full overflow-hidden rounded-2xl shadow-[0_10px_25px_rgba(0,0,0,0.18)] transition-all duration-200 hover:-translate-y-[1px] active:scale-[0.99]">
         <div className="relative h-[140px] w-full overflow-hidden rounded-t-2xl bg-black/40 sm:h-[160px]">
@@ -167,11 +169,11 @@ function ServiceExpandableContent({
         )}
       </section>
 
-      {category.faq.length > 0 && (
+      {getTallerFaq(locale, category.slug).length > 0 && (
         <section>
           <h4 className="text-sm font-semibold text-white/95 mb-2">{faqLabel}</h4>
           <ul className="space-y-3">
-            {category.faq.map((item, i) => (
+            {getTallerFaq(locale, category.slug).map((item, i) => (
               <li key={i} className="rounded-lg border border-white/10 bg-black/30 p-2.5">
                 <p className="text-xs font-medium text-white/95">{item.question}</p>
                 <p className="mt-1 text-xs leading-relaxed text-white/75">{item.answer}</p>
@@ -233,12 +235,6 @@ function AccordionServiceRow({
   );
 }
 
-const TALLER_REVIEWS = [
-  { author: "Marie L.", rating: 5, text: "Excellent garage, très professionnel. Ma vidange a été faite rapidement et le personnel est très accueillant. Je recommande vivement !" },
-  { author: "Carlos M.", rating: 5, text: "J'ai fait réparer mes freins ici. Travail soigné, prix correct. Je reviendrai sans hésiter pour l'entretien de ma voiture." },
-  { author: "Sophie R.", rating: 5, text: "Service impeccable pour le changement de pneus. Équipe sympathique et compétente. Merci pour votre professionnalisme !" },
-];
-
 const OPENING_HOURS = [
   { day: "day-mon", hours: "09:00-15:30" },
   { day: "day-tue", hours: "09:00-15:30" },
@@ -281,10 +277,10 @@ function ReviewsAccordion({ locale }: { locale: TallerLocale }) {
         </span>
       </summary>
       <div className="border-t border-white/10 bg-black/40 px-4 py-3 space-y-4 max-h-[130px] overflow-y-auto">
-        {TALLER_REVIEWS.map((review, i) => (
+        {getTallerReviews(locale).map((review, i) => (
           <div key={i} className="rounded-lg border border-white/10 bg-black/30 p-2.5">
             <p className="text-xs font-medium text-white/95 mb-1">
-              {review.author} — {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
+              {review.author} — {"★".repeat(5)}
             </p>
             <p className="text-sm leading-relaxed text-white/85">{review.text}</p>
           </div>

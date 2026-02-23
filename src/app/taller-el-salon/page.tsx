@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-const VALID_LOCALES: TallerLocale[] = ["fr", "en", "es"];
+const VALID_LOCALES: TallerLocale[] = ["fr", "en", "es", "de"];
 function parseLocale(value: string | undefined): TallerLocale {
   if (value && VALID_LOCALES.includes(value as TallerLocale)) return value as TallerLocale;
   return tallerDefaultLocale;
