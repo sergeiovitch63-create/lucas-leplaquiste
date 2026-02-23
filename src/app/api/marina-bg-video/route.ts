@@ -11,10 +11,11 @@ function getMediaDirs(): string[] {
 }
 
 const POSSIBLE_NAMES = [
-  "fond-ecran-manna-masaje.mp4",
-  "fond-ecran-manna-masaje",
   "fond-ecran-marina-masaje.mp4",
+  "fond-ecran-marina-masaje.MP4",
+  "fond-ecran-manna-masaje.mp4",
   "fond-ecran-marina-masaje",
+  "fond-ecran-manna-masaje",
 ];
 
 export async function GET() {
@@ -33,7 +34,7 @@ export async function GET() {
 
     try {
       const files = await readdir(videoDir);
-      const mp4 = files.find((f) => f.toLowerCase().includes("fond") && (f.endsWith(".mp4") || f.toLowerCase().includes("masaje")));
+      const mp4 = files.find((f) => f.toLowerCase().includes("fond") && (f.toLowerCase().endsWith(".mp4") || f.toLowerCase().includes("masaje")));
       if (mp4) {
         path = join(videoDir, mp4);
         break;
