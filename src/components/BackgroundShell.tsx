@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AutoplayVideo } from "./AutoplayVideo";
 
 interface BackgroundShellProps {
   children: ReactNode;
@@ -17,16 +18,10 @@ export function BackgroundShell({
       {/* Background video (boucle continue, muet) */}
       {backgroundVideo && (
         <div className="pointer-events-none select-none fixed inset-0 z-0 bg-slate-950" aria-hidden>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
+          <AutoplayVideo
             src={backgroundVideo}
-          >
-            <source src={backgroundVideo} type="video/mp4" />
-          </video>
+            className="h-full w-full object-cover"
+          />
         </div>
       )}
 
