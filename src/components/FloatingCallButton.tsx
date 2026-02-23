@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { site } from "../config/site";
 import { marinaConfig } from "../config/marina";
+import { tallerConfig } from "../config/taller";
 import { Icon } from "./icons";
 
 export function FloatingCallButton() {
@@ -14,9 +15,11 @@ export function FloatingCallButton() {
   }
 
   const isMarina = pathname.startsWith("/marina-masaje");
-  const whatsappHref =
-    isMarina
-      ? marinaConfig.quickActions.find((a) => a.id === "whatsapp")?.href
+  const isTaller = pathname.startsWith("/taller-el-salon");
+  const whatsappHref = isMarina
+    ? marinaConfig.quickActions.find((a) => a.id === "whatsapp")?.href
+    : isTaller
+      ? tallerConfig.quickActions.find((a) => a.id === "whatsapp")?.href
       : site.waLink;
   if (!whatsappHref) return null;
 
