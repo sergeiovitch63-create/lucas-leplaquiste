@@ -3,16 +3,35 @@ import type { ReactNode } from "react";
 interface BackgroundShellProps {
   children: ReactNode;
   backgroundImage?: string;
+  /** Video en fond (boucle infinie, muet). Prioritaire sur backgroundImage si les deux sont fournis. */
+  backgroundVideo?: string;
 }
 
 export function BackgroundShell({
   children,
   backgroundImage,
+  backgroundVideo,
 }: BackgroundShellProps) {
   return (
     <div className="relative min-h-[100dvh] w-full overflow-x-hidden text-white">
-      {/* Background image (only if backgroundImage is provided) */}
-      {backgroundImage && (
+      {/* Background video (boucle continue, muet) */}
+      {backgroundVideo && (
+        <div className="pointer-events-none select-none fixed inset-0 z-0" aria-hidden>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+            src={backgroundVideo}
+          >
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
+        </div>
+      )}
+
+      {/* Background image (si pas de vidéo) */}
+      {!backgroundVideo && backgroundImage && (
         <div
           className="pointer-events-none select-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -22,8 +41,8 @@ export function BackgroundShell({
         />
       )}
 
-      {/* Fallback gradient background if no image is provided */}
-      {!backgroundImage && (
+      {/* Fallback gradient si ni vidéo ni image */}
+      {!backgroundVideo && !backgroundImage && (
         <div className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-slate-900 via-zinc-950 to-black" />
       )}
 

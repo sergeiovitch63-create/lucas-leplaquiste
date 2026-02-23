@@ -11,7 +11,9 @@ export type IconKey =
   | "layers"
   | "walls"
   | "info"
-  | "stars";
+  | "stars"
+  | "instagram"
+  | "tiktok";
 
 export interface SiteLink {
   id: string;

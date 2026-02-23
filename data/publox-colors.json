@@ -1,0 +1,20 @@
+{
+  "url": "https://www.publox-marketing.com/es",
+  "analyzedAt": "2026-02-18T15:36:19.718Z",
+  "backgroundColor": "#fff",
+  "backgroundImage": null,
+  "gradient": null,
+  "colors": [
+    "#25D366",
+    "#000",
+    "#fff",
+    "rgba(0,0,0,.3)",
+    "rgba(255,255,255,.3)"
+  ],
+  "summary": {
+    "totalColors": 5,
+    "hasGradient": false,
+    "hasBackgroundImage": false,
+    "mainBackgroundColor": "#fff"
+  }
+}

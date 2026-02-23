@@ -93,6 +93,15 @@ body {
     animation: call-shake-burst 2s linear infinite;
   }
 
+  @keyframes marina-carousel-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
   @keyframes softVibrate {
     0% {
       transform: translateX(0);

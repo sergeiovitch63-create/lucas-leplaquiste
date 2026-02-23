@@ -1,0 +1,13 @@
+/* Couleurs extraites de https://www.publox-marketing.com/es */
+/* Date: 18/02/2026 17:36:19 */
+
+:root {
+  --publox-bg-color: #fff;
+}
+
+/* Couleurs principales détectées */
+.publox-color-1 { color: #25D366; }
+.publox-color-2 { color: #000; }
+.publox-color-3 { color: #fff; }
+.publox-color-4 { color: rgba(0,0,0,.3); }
+.publox-color-5 { color: rgba(255,255,255,.3); }
