@@ -9,13 +9,13 @@ const FINCA_PHONE = "tel:+34617009592";
 const FINCA_MAPS_URL = "https://maps.app.goo.gl/EN4YsCsmL1xpUqUD9";
 
 export const metadata: Metadata = {
-  title: "Finca Canarias | Publink",
+  title: "Fincas Canarias | Publink",
   description:
-    "Finca de vacances aux Canaries. Informations, contact WhatsApp et localisation.",
+    "Fincas de vacances aux Canaries. Informations, contact WhatsApp et localisation.",
 };
 
-export default function FincaCanariasPage() {
-  const brandName = "Finca Canarias";
+export default function FincasCanariasPage() {
+  const brandName = "Fincas Canarias";
   const location = "Islas Canarias";
 
   return (
@@ -121,4 +121,3 @@ export default function FincaCanariasPage() {
     </BackgroundShell>
   );
 }
-
