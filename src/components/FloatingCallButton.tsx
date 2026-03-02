@@ -9,8 +9,8 @@ import { Icon } from "./icons";
 export function FloatingCallButton() {
   const pathname = usePathname();
 
-  // Ne pas afficher sur la home
-  if (pathname === "/") {
+  // Ne pas afficher sur la home ni dans le back office
+  if (pathname === "/" || pathname.startsWith("/admin")) {
     return null;
   }
 

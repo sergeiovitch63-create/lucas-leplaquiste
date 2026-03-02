@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local data (back office store)
+/data/autoaufbereitung-store.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
