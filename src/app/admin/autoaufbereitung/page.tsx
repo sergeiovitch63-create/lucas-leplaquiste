@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { AutoaufbereitungConfig } from "@/config/autoaufbereitung";
 import type { AutoaufbereitungServiceCategory } from "@/data/autoaufbereitung-categories";
 import {
@@ -397,10 +398,13 @@ export default function AdminAutoaufbereitungPage() {
             <div className="flex items-center gap-3">
               <div className="relative h-24 w-40 overflow-hidden rounded border border-slate-600 bg-slate-900">
                 {config.backgroundImageUrl ? (
-                  <img
+                  <Image
                     src={config.backgroundImageUrl}
                     alt=""
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="160px"
+                    unoptimized
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-xs text-slate-500">
@@ -413,7 +417,7 @@ export default function AdminAutoaufbereitungPage() {
                   htmlFor="bg-upload"
                   className="inline-flex cursor-pointer items-center justify-center rounded bg-slate-700 px-3 py-1.5 text-sm text-white hover:bg-slate-600"
                 >
-                  Changer l'image
+                  Changer l’image
                 </label>
                 <input
                   id="bg-upload"
@@ -441,10 +445,13 @@ export default function AdminAutoaufbereitungPage() {
             <div className="flex items-center gap-3">
               <div className="relative h-24 w-40 overflow-hidden rounded border border-slate-600 bg-slate-900">
                 {(config.contactCardLogoUrl || config.avatarUrl) ? (
-                  <img
+                  <Image
                     src={config.contactCardLogoUrl || config.avatarUrl}
                     alt=""
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="160px"
+                    unoptimized
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-xs text-slate-500">
@@ -457,7 +464,7 @@ export default function AdminAutoaufbereitungPage() {
                   htmlFor="contact-card-upload"
                   className="inline-flex cursor-pointer items-center justify-center rounded bg-slate-700 px-3 py-1.5 text-sm text-white hover:bg-slate-600"
                 >
-                  Changer l'image
+                  Changer l’image
                 </label>
                 <input
                   id="contact-card-upload"
@@ -730,10 +737,13 @@ export default function AdminAutoaufbereitungPage() {
                             key={url + imgIndex}
                             className="relative h-20 w-28 overflow-hidden rounded border border-slate-700 bg-slate-800"
                           >
-                            <img
+                            <Image
                               src={url}
                               alt=""
-                              className="h-full w-full object-cover"
+                              fill
+                              className="object-cover"
+                              sizes="112px"
+                              unoptimized
                             />
                             <button
                               type="button"
