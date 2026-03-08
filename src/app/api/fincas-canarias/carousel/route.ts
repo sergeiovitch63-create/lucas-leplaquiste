@@ -1,96 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { getCarousel, setCarousel, type CarouselConfig, type CarouselItem } from "@/lib/redis";
 
-const DATA_FILE = path.join(process.cwd(), "data", "fincas-canarias-carousel.json");
-
-export interface CarouselItem {
-  id: number;
-  img: string | null; // Base64 image
-  name: {
-    es: string;
-    en: string;
-    de: string;
-    fr?: string;
-    it?: string;
-    ru?: string;
-    pl?: string;
-  };
-  description: {
-    es: string;
-    en: string;
-    de: string;
-    fr?: string;
-    it?: string;
-    ru?: string;
-    pl?: string;
-  };
-  order: number; // Ordre d'affichage
-}
-
-export interface CarouselConfig {
+// Configuration par défaut du carrousel
+const DEFAULT_CAROUSEL: CarouselConfig = {
   title: {
-    es: string;
-    en: string;
-    de: string;
-    fr?: string;
-    it?: string;
-    ru?: string;
-    pl?: string;
-  };
+    es: "Pack hecho para ti",
+    en: "Pack made for you",
+    de: "Pack für dich gemacht",
+    fr: "Pack fait pour vous",
+    it: "Pack fatto per te",
+    ru: "Набор для вас",
+    pl: "Pakiet dla Ciebie",
+  },
   description: {
-    es: string;
-    en: string;
-    de: string;
-    fr?: string;
-    it?: string;
-    ru?: string;
-    pl?: string;
-  };
-  items: CarouselItem[];
-}
-
-// Helper pour lire le carrousel
-async function readCarousel(): Promise<CarouselConfig> {
-  try {
-    const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    // Si le fichier n'existe pas, retourner la config par défaut
-    return {
-      title: {
-        es: "Pack hecho para ti",
-        en: "Pack made for you",
-        de: "Pack für dich gemacht",
-        fr: "Pack fait pour vous",
-        it: "Pack fatto per te",
-        ru: "Набор для вас",
-        pl: "Pakiet dla Ciebie",
-      },
-      description: {
-        es: "Selección especial de productos canarios",
-        en: "Special selection of Canarian products",
-        de: "Spezialauswahl kanarischer Produkte",
-        fr: "Sélection spéciale de produits canariens",
-        it: "Selezione speciale di prodotti canari",
-        ru: "Специальная подборка канарских продуктов",
-        pl: "Specjalna selekcja produktów kanaryjskich",
-      },
-      items: [],
-    };
-  }
-}
-
-// Helper pour écrire le carrousel
-async function writeCarousel(carousel: CarouselConfig): Promise<void> {
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(carousel, null, 2), "utf-8");
-}
+    es: "Selección especial de productos canarios",
+    en: "Special selection of Canarian products",
+    de: "Spezialauswahl kanarischer Produkte",
+    fr: "Sélection spéciale de produits canariens",
+    it: "Selezione speciale di prodotti canari",
+    ru: "Специальная подборка канарских продуктов",
+    pl: "Specjalna selekcja produktów kanaryjskich",
+  },
+  items: [],
+};
 
 // GET: Récupérer la configuration du carrousel
 export async function GET() {
   try {
-    const carousel = await readCarousel();
+    let carousel = await getCarousel();
+    if (!carousel) {
+      carousel = DEFAULT_CAROUSEL;
+    }
     return NextResponse.json(carousel);
   } catch {
     return NextResponse.json(
@@ -104,7 +44,10 @@ export async function GET() {
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    const carousel = await readCarousel();
+    let carousel = await getCarousel();
+    if (!carousel) {
+      carousel = DEFAULT_CAROUSEL;
+    }
     
     // Mettre à jour le titre et la description
     if (body.title) {
@@ -119,7 +62,7 @@ export async function PUT(request: NextRequest) {
       carousel.items = body.items;
     }
     
-    await writeCarousel(carousel);
+    await setCarousel(carousel);
     
     return NextResponse.json(carousel);
   } catch {
@@ -134,7 +77,10 @@ export async function PUT(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const carousel = await readCarousel();
+    let carousel = await getCarousel();
+    if (!carousel) {
+      carousel = DEFAULT_CAROUSEL;
+    }
     
     // Trouver le prochain ID
     const nextId = carousel.items.length > 0
@@ -155,7 +101,7 @@ export async function POST(request: NextRequest) {
     };
     
     carousel.items.push(newItem);
-    await writeCarousel(carousel);
+    await setCarousel(carousel);
     
     return NextResponse.json(newItem, { status: 201 });
   } catch {
@@ -179,7 +125,10 @@ export async function DELETE(request: NextRequest) {
       );
     }
     
-    const carousel = await readCarousel();
+    let carousel = await getCarousel();
+    if (!carousel) {
+      carousel = DEFAULT_CAROUSEL;
+    }
     const filtered = carousel.items.filter(item => item.id !== id);
     
     if (filtered.length === carousel.items.length) {
@@ -190,7 +139,7 @@ export async function DELETE(request: NextRequest) {
     }
     
     carousel.items = filtered;
-    await writeCarousel(carousel);
+    await setCarousel(carousel);
     
     return NextResponse.json({ success: true });
   } catch {

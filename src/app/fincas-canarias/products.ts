@@ -1,6 +1,4 @@
-﻿import { Product } from "./data";
-
-export const PRODUCTS: Product[] = [
+﻿import { Product } from "./data"; export const PRODUCTS: Product[] = [
   {
     id:1, category:"Sauces", img: null,
     name:{ es:"Pimienta Puta Madre", en:"Pimienta Puta Madre", de:"Pimienta Puta Madre" },

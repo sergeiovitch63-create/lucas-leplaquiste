@@ -1,31 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { getProducts, setProducts } from "@/lib/redis";
 import type { Product } from "@/app/fincas-canarias/data";
-
-const DATA_FILE = path.join(process.cwd(), "data", "fincas-canarias-products.json");
-
-// Helper pour lire les produits depuis le fichier
-async function readProducts(): Promise<Product[]> {
-  try {
-    const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    // Si le fichier n'existe pas, retourner un tableau vide
-    return [];
-  }
-}
-
-// Helper pour écrire les produits dans le fichier
-async function writeProducts(products: Product[]): Promise<void> {
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(products, null, 2), "utf-8");
-}
 
 // GET: Récupérer tous les produits
 export async function GET() {
   try {
-    const products = await readProducts();
+    const products = await getProducts();
     return NextResponse.json(products);
   } catch {
     return NextResponse.json(
@@ -39,7 +19,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const products = await readProducts();
+    const products = await getProducts();
     
     // Trouver le prochain ID
     const nextId = products.length > 0 
@@ -56,7 +36,7 @@ export async function POST(request: NextRequest) {
     };
     
     products.push(newProduct);
-    await writeProducts(products);
+    await setProducts(products);
     
     return NextResponse.json(newProduct, { status: 201 });
   } catch {
@@ -80,7 +60,7 @@ export async function PUT(request: NextRequest) {
       );
     }
     
-    const products = await readProducts();
+    const products = await getProducts();
     const index = products.findIndex(p => p.id === id);
     
     if (index === -1) {
@@ -91,7 +71,7 @@ export async function PUT(request: NextRequest) {
     }
     
     products[index] = { ...products[index], ...updates };
-    await writeProducts(products);
+    await setProducts(products);
     
     return NextResponse.json(products[index]);
   } catch {
@@ -115,7 +95,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
     
-    const products = await readProducts();
+    const products = await getProducts();
     const filtered = products.filter(p => p.id !== id);
     
     if (filtered.length === products.length) {
@@ -125,7 +105,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
     
-    await writeProducts(filtered);
+    await setProducts(filtered);
     
     return NextResponse.json({ success: true });
   } catch {

@@ -1,56 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { getCategories, setCategories, type Category } from "@/lib/redis";
 
-const DATA_FILE = path.join(process.cwd(), "data", "fincas-canarias-categories.json");
-
-export interface Category {
-  id: string;
-  key: string; // Clé technique (ex: "Sauces", "Biscuits")
-  label: {
-    es: string;
-    en: string;
-    de: string;
-    fr?: string;
-    it?: string;
-    ru?: string;
-    pl?: string;
-  };
-  order: number; // Ordre d'affichage
-}
-
-// Helper pour lire les catégories
-async function readCategories(): Promise<Category[]> {
-  try {
-    const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    // Si le fichier n'existe pas, retourner les catégories par défaut
-    return [
-      { id: "1", key: "All", label: { es: "Todo", en: "All", de: "Alle" }, order: 0 },
-      { id: "2", key: "Biscuits", label: { es: "Galletas y repostería", en: "Biscuits & Pastries", de: "Kekse & Gebäck" }, order: 1 },
-      { id: "3", key: "Snacks", label: { es: "Snacks", en: "Snacks", de: "Snacks" }, order: 2 },
-      { id: "4", key: "Confitures", label: { es: "Mermeladas y dulces", en: "Jams & Sweets", de: "Marmeladen & Süßes" }, order: 3 },
-      { id: "5", key: "Miel", label: { es: "Miel", en: "Honey", de: "Honig" }, order: 4 },
-      { id: "6", key: "Sauces", label: { es: "Salsas y condimentos", en: "Sauces & Condiments", de: "Saucen & Gewürze" }, order: 5 },
-      { id: "7", key: "Conserves", label: { es: "Conservas", en: "Preserves", de: "Konserven" }, order: 6 },
-      { id: "8", key: "Vins", label: { es: "Vinos, licores y zumos", en: "Wines, Liqueurs & Juices", de: "Weine, Liköre & Säfte" }, order: 7 },
-      { id: "9", key: "Packs", label: { es: "Packs", en: "Packs", de: "Packs" }, order: 8 },
-    ];
-  }
-}
-
-// Helper pour écrire les catégories
-async function writeCategories(categories: Category[]): Promise<void> {
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(categories, null, 2), "utf-8");
-}
+// Catégories par défaut
+const DEFAULT_CATEGORIES: Category[] = [
+  { id: "1", key: "All", label: { es: "Todo", en: "All", de: "Alle" }, order: 0 },
+  { id: "2", key: "Biscuits", label: { es: "Galletas y repostería", en: "Biscuits & Pastries", de: "Kekse & Gebäck" }, order: 1 },
+  { id: "3", key: "Snacks", label: { es: "Snacks", en: "Snacks", de: "Snacks" }, order: 2 },
+  { id: "4", key: "Confitures", label: { es: "Mermeladas y dulces", en: "Jams & Sweets", de: "Marmeladen & Süßes" }, order: 3 },
+  { id: "5", key: "Miel", label: { es: "Miel", en: "Honey", de: "Honig" }, order: 4 },
+  { id: "6", key: "Sauces", label: { es: "Salsas y condimentos", en: "Sauces & Condiments", de: "Saucen & Gewürze" }, order: 5 },
+  { id: "7", key: "Conserves", label: { es: "Conservas", en: "Preserves", de: "Konserven" }, order: 6 },
+  { id: "8", key: "Vins", label: { es: "Vinos, licores y zumos", en: "Wines, Liqueurs & Juices", de: "Weine, Liköre & Säfte" }, order: 7 },
+  { id: "9", key: "Packs", label: { es: "Packs", en: "Packs", de: "Packs" }, order: 8 },
+];
 
 // GET: Récupérer toutes les catégories
 export async function GET() {
   try {
-    const categories = await readCategories();
-    return NextResponse.json(categories);
+    const categories = await getCategories();
+    // Si aucune catégorie, retourner les catégories par défaut
+    return NextResponse.json(categories.length > 0 ? categories : DEFAULT_CATEGORIES);
   } catch {
     return NextResponse.json(
       { error: "Erreur lors de la lecture des catégories" },
@@ -63,7 +32,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const categories = await readCategories();
+    const categories = await getCategories();
     
     // Vérifier si la clé existe déjà
     if (categories.some(c => c.key === body.key)) {
@@ -91,7 +60,7 @@ export async function POST(request: NextRequest) {
     };
     
     categories.push(newCategory);
-    await writeCategories(categories);
+    await setCategories(categories);
     
     return NextResponse.json(newCategory, { status: 201 });
   } catch {
@@ -115,7 +84,7 @@ export async function PUT(request: NextRequest) {
       );
     }
     
-    const categories = await readCategories();
+    const categories = await getCategories();
     const index = categories.findIndex(c => c.id === id);
     
     if (index === -1) {
@@ -136,7 +105,7 @@ export async function PUT(request: NextRequest) {
     }
     
     categories[index] = { ...categories[index], ...updates };
-    await writeCategories(categories);
+    await setCategories(categories);
     
     return NextResponse.json(categories[index]);
   } catch {
@@ -168,7 +137,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
     
-    const categories = await readCategories();
+    const categories = await getCategories();
     const filtered = categories.filter(c => c.id !== id);
     
     if (filtered.length === categories.length) {
@@ -178,7 +147,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
     
-    await writeCategories(filtered);
+    await setCategories(filtered);
     
     return NextResponse.json({ success: true });
   } catch {
