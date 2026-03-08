@@ -7,12 +7,12 @@ export default function AdminHomePage() {
       <ul className="list-inside list-disc space-y-2 text-slate-300">
         <li>
           <Link
-            href="/admin/autoaufbereitung"
+            href="/admin/fincas-canarias"
             className="text-sky-400 hover:underline"
           >
-            Gérer la page Autoaufbereitung Puerto de la Cruz
+            Gérer les produits Fincas Canarias
           </Link>
-          — config (marque, contacts, liens) et catégories de services.
+          — gestion complète des produits, catégories, images et descriptions multilingues.
         </li>
       </ul>
     </div>

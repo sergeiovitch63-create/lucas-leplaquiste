@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fincas Canarias</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">Fincas Canarias</div>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('de')">DE</button>
+      </div>
+      <button class="search-icon-btn" onclick="openSearch()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="close-search" onclick="closeSearch()">×</button>
+  <div class="search-overlay-inner">
+    <span class="search-overlay-label" id="overlayLabel">Buscar productos</span>
+    <input class="search-input-big" id="overlaySearchInput" placeholder="Mojo, miel, conservas…" autocomplete="off" oninput="handleOverlaySearch(this.value)">
+    <div class="search-results-preview" id="overlayResults"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo-img" src="IMG_8660.jpeg" alt="Fincas Canarias">
+  <p class="hero-tagline" id="heroTagline">Productos auténticos de las Islas Canarias</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="categories-section">
+    <p class="section-title" id="catTitle">Categorías</p>
+    <div class="categories-scroll" id="categoriesBar"></div>
+  </div>
+  <div class="search-bar-wrap">
+    <svg class="search-bar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input class="search-bar-input" id="mainSearch" placeholder="Buscar entre todos los productos…" autocomplete="off" oninput="renderProducts()">
+  </div>
+  <p class="results-meta" id="resultsMeta"></p>
+  <div class="products-grid" id="productsGrid"></div>
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleModalClick(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-img-wrap" id="modalImgWrap"></div>
+    <div class="modal-body">
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-subtitle" id="modalSubtitle"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts : ordre important -->
+<script src="config.js"></script>
+<script src="products.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

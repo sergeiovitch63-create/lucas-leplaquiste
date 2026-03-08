@@ -9,8 +9,8 @@ import { Icon } from "./icons";
 export function FloatingCallButton() {
   const pathname = usePathname();
 
-  // Ne pas afficher sur la home ni dans le back office
-  if (pathname === "/" || pathname.startsWith("/admin")) {
+  // Ne pas afficher sur la home, dans le back office, ni sur fincas-canarias
+  if (pathname === "/" || pathname.startsWith("/admin") || pathname.startsWith("/fincas-canarias")) {
     return null;
   }
 

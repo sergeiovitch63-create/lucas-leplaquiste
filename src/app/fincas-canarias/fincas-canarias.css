@@ -1,0 +1,43 @@
+:root {
+  --wood-dark: #1a0f08;
+  --wood-mid: #2d1a0e;
+  --wood-light: #3d2314;
+  --gold: #c9963a;
+  --gold-light: #e8b85a;
+  --gold-pale: #f5d98a;
+  --cream: #f9f0e0;
+  --text-light: #f0e0c0;
+  --text-muted: #9a7a5a;
+}
+
+.fincas-canarias-page {
+  background: var(--wood-dark);
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+  min-height: 100vh;
+}
+
+.fincas-canarias-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(92deg, transparent, transparent 18px, rgba(0, 0, 0, 0.03) 18px, rgba(0, 0, 0, 0.03) 19px),
+    repeating-linear-gradient(180deg, transparent, transparent 60px, rgba(255, 180, 80, 0.015) 60px, rgba(255, 180, 80, 0.015) 61px);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--wood-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+

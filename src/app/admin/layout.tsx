@@ -32,12 +32,12 @@ export default function AdminLayout({
               <span>Tableau de bord</span>
             </Link>
             <Link
-              href="/admin/autoaufbereitung"
+              href="/admin/fincas-canarias"
               className="flex items-center justify-between rounded-lg bg-slate-800 px-3 py-2 text-white"
             >
-              <span>Autoaufbereitung</span>
+              <span>Fincas Canarias</span>
               <span className="rounded-full bg-slate-700 px-2 py-0.5 text-[10px] uppercase tracking-wide">
-                Page
+                Produits
               </span>
             </Link>
           </nav>
@@ -53,14 +53,14 @@ export default function AdminLayout({
           <header className="mb-4 flex items-center justify-between gap-3">
             <div>
               <h1 className="text-lg font-semibold text-white">
-                Autoaufbereitung — Back office
+                Fincas Canarias — Back office
               </h1>
               <p className="text-xs text-slate-400">
-                Gérez les liens, le fond et les cartes comme sur Linktree.
+                Gérez les produits, catégories, images et descriptions multilingues.
               </p>
             </div>
             <Link
-              href="/autoaufbereitung-puerto-de-la-cruz"
+              href="/fincas-canarias"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-700"
@@ -82,8 +82,8 @@ export default function AdminLayout({
                   <div className="h-6 w-32 rounded-full bg-black/80" />
                 </div>
                 <iframe
-                  title="Prévisualisation Autoaufbereitung"
-                  src="/autoaufbereitung-puerto-de-la-cruz?lang=de"
+                  title="Prévisualisation Fincas Canarias"
+                  src="/fincas-canarias"
                   className="h-full w-full bg-black"
                 />
               </div>
