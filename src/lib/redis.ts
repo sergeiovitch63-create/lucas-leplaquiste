@@ -95,7 +95,11 @@ export async function getProducts(): Promise<Product[]> {
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
         const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
-        return data || [];
+        if (data && data.length > 0) {
+          console.log(`✅ ${data.length} produits chargés depuis Redis`);
+          return data;
+        }
+        console.warn('⚠️  Redis vide, fallback vers fichiers JSON');
       } catch (error) {
         console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
@@ -104,11 +108,35 @@ export async function getProducts(): Promise<Product[]> {
     // Fallback vers fichiers JSON
     const { promises: fs } = await import('fs');
     const path = await import('path');
-    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-products.json');
+    const cwd = process.cwd();
+    const dataFile = path.join(cwd, 'data', 'fincas-canarias-products.json');
+    
+    console.log(`[getProducts] Tentative de lecture depuis: ${dataFile}`);
+    console.log(`[getProducts] process.cwd(): ${cwd}`);
+    
     try {
+      // Vérifier si le fichier existe
+      await fs.access(dataFile);
+      console.log(`[getProducts] ✅ Fichier trouvé: ${dataFile}`);
+      
       const data = await fs.readFile(dataFile, 'utf-8');
-      return JSON.parse(data);
-    } catch {
+      console.log(`[getProducts] Fichier lu, taille: ${data.length} caractères`);
+      
+      const products = JSON.parse(data);
+      console.log(`✅ ${products.length} produits chargés depuis ${dataFile}`);
+      
+      if (!Array.isArray(products)) {
+        console.error(`❌ Les données ne sont pas un tableau:`, typeof products);
+        return [];
+      }
+      
+      return products;
+    } catch (error) {
+      console.error(`❌ Erreur lecture fichier ${dataFile}:`, error);
+      if (error instanceof Error) {
+        console.error(`   Message: ${error.message}`);
+        console.error(`   Code: ${(error as NodeJS.ErrnoException).code}`);
+      }
       return [];
     }
   } catch (error) {
@@ -159,8 +187,11 @@ export async function getCategories(): Promise<Category[]> {
     const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-categories.json');
     try {
       const data = await fs.readFile(dataFile, 'utf-8');
-      return JSON.parse(data);
-    } catch {
+      const categories = JSON.parse(data);
+      console.log(`✅ ${categories.length} catégories chargées depuis ${dataFile}`);
+      return categories;
+    } catch (error) {
+      console.warn(`⚠️  Fichier catégories non trouvé ou erreur: ${dataFile}`);
       return [];
     }
   } catch (error) {
@@ -211,8 +242,11 @@ export async function getCarousel(): Promise<CarouselConfig | null> {
     const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-carousel.json');
     try {
       const data = await fs.readFile(dataFile, 'utf-8');
-      return JSON.parse(data);
-    } catch {
+      const carousel = JSON.parse(data);
+      console.log(`✅ Carrousel chargé depuis ${dataFile}`);
+      return carousel;
+    } catch (error) {
+      console.warn(`⚠️  Fichier carrousel non trouvé ou erreur: ${dataFile}`);
       return null;
     }
   } catch (error) {

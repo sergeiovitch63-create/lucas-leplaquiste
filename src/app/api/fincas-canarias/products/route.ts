@@ -5,11 +5,24 @@ import type { Product } from "@/app/fincas-canarias/data";
 // GET: Récupérer tous les produits
 export async function GET() {
   try {
+    console.log('[API GET /products] Début de la récupération...');
+    console.log('[API GET /products] process.cwd():', process.cwd());
+    console.log('[API GET /products] VERCEL:', process.env.VERCEL);
+    console.log('[API GET /products] NODE_ENV:', process.env.NODE_ENV);
+    console.log('[API GET /products] UPSTASH_REDIS_REST_URL:', process.env.UPSTASH_REDIS_REST_URL ? 'configuré' : 'non configuré');
+    
     const products = await getProducts();
+    console.log(`[API GET /products] ✅ ${products.length} produits récupérés`);
+    
+    if (products.length === 0) {
+      console.warn('[API GET /products] ⚠️  Aucun produit trouvé!');
+    }
+    
     return NextResponse.json(products);
-  } catch {
+  } catch (error) {
+    console.error('[API GET /products] ❌ Erreur:', error);
     return NextResponse.json(
-      { error: "Erreur lors de la lecture des produits" },
+      { error: "Erreur lors de la lecture des produits", details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
