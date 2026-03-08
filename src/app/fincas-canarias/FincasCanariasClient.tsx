@@ -94,6 +94,20 @@ export default function FincasCanariasClient() {
 
   const filteredProducts = getFiltered();
 
+  // Helper function to get flag emoji for language
+  const getLangFlag = (langCode: Lang): string => {
+    const flags: Record<Lang, string> = {
+      es: '🇪🇸',
+      en: '🇬🇧',
+      de: '🇩🇪',
+      fr: '🇫🇷',
+      it: '🇮🇹',
+      ru: '🇷🇺',
+      pl: '🇵🇱',
+    };
+    return flags[langCode] || '🌐';
+  };
+
   const handleOpenModalFromId = useCallback((productId: number) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
@@ -215,7 +229,7 @@ export default function FincasCanariasClient() {
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <line x1="3" y1="18" x2="21" y2="18" />
                 </svg>
-                <span className={styles.currentLang}>{lang.toUpperCase()}</span>
+                <span className={styles.currentLang}>{getLangFlag(lang)}</span>
               </button>
               {isLangMenuOpen && (
                 <div className={styles.langMenu}>
@@ -228,7 +242,7 @@ export default function FincasCanariasClient() {
                         setIsLangMenuOpen(false);
                       }}
                     >
-                      <span className={styles.langCode}>{l.toUpperCase()}</span>
+                      <span className={styles.langCode}>{getLangFlag(l)}</span>
                       <span className={styles.langName}>{LANG_NAMES[l]}</span>
                     </button>
                   ))}
@@ -327,6 +341,7 @@ export default function FincasCanariasClient() {
       {/* HERO */}
       <section className={styles.hero}>
         <p className={styles.heroTagline}>{UI[lang].tagline}</p>
+        <h1 className={styles.heroTitle}>Fincas Canarias</h1>
         <div className={styles.heroSocialLinks}>
           <a
             href="https://www.tiktok.com/@fincascanarias"
