@@ -67,7 +67,7 @@ export default function CategoriesManager({
       if (!res.ok) throw new Error("Erreur chargement");
       const data = await res.json();
       setCategories(data.sort((a: Category, b: Category) => a.order - b.order));
-    } catch (error) {
+    } catch {
       showToast("Erreur lors du chargement des catégories", "error");
     } finally {
       setLoading(false);
@@ -91,7 +91,7 @@ export default function CategoriesManager({
       setNewCategory(null);
       setShowAddPanel(false);
       showToast(`Catégorie ${isNew ? "ajoutée" : "modifiée"} !`);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la sauvegarde", "error");
     }
   };
@@ -105,7 +105,7 @@ export default function CategoriesManager({
       await loadCategories();
       setConfirmDeleteId(null);
       showToast("Catégorie supprimée !");
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la suppression", "error");
     }
   };
@@ -152,7 +152,7 @@ export default function CategoriesManager({
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
             <div>
               <label style={{ fontSize: ".7rem", letterSpacing: ".12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6, display: "block" }}>
-                Clé technique (ex: "NouvelleCategorie")
+                Clé technique (ex: &quot;NouvelleCategorie&quot;)
               </label>
               <input
                 style={inputStyle}

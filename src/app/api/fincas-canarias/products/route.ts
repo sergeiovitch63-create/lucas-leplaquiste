@@ -10,7 +10,7 @@ async function readProducts(): Promise<Product[]> {
   try {
     const data = await fs.readFile(DATA_FILE, "utf-8");
     return JSON.parse(data);
-  } catch (error) {
+  } catch {
     // Si le fichier n'existe pas, retourner un tableau vide
     return [];
   }
@@ -27,8 +27,7 @@ export async function GET() {
   try {
     const products = await readProducts();
     return NextResponse.json(products);
-  } catch (error) {
-    console.error("Error reading products:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la lecture des produits" },
       { status: 500 }
@@ -60,8 +59,7 @@ export async function POST(request: NextRequest) {
     await writeProducts(products);
     
     return NextResponse.json(newProduct, { status: 201 });
-  } catch (error) {
-    console.error("Error creating product:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la création du produit" },
       { status: 500 }
@@ -96,8 +94,7 @@ export async function PUT(request: NextRequest) {
     await writeProducts(products);
     
     return NextResponse.json(products[index]);
-  } catch (error) {
-    console.error("Error updating product:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la mise à jour du produit" },
       { status: 500 }
@@ -131,8 +128,7 @@ export async function DELETE(request: NextRequest) {
     await writeProducts(filtered);
     
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error deleting product:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la suppression du produit" },
       { status: 500 }

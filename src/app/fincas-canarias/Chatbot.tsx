@@ -10,18 +10,28 @@ interface ChatbotProps {
   onOpenModal: (productId: number) => void;
 }
 
+interface WindowWithChatbot extends Window {
+  PRODUCTS?: Product[];
+  lang?: Lang;
+  CHATBOT_QUESTIONS?: typeof CHATBOT_QUESTIONS;
+  getRecommendedProducts?: (answers: string[], lg: Lang, count?: number) => Product[];
+  openModal?: (id: number) => void;
+  updateChatbotLang?: (lang: Lang) => void;
+}
+
 export default function Chatbot({ lang, products, onOpenModal }: ChatbotProps) {
   const scriptLoadedRef = useRef(false);
 
   useEffect(() => {
+    const win = window as WindowWithChatbot;
     // Expose PRODUCTS, lang, questions and recommendation function globally for the chatbot script
-    (window as any).PRODUCTS = products;
-    (window as any).lang = lang;
-    (window as any).CHATBOT_QUESTIONS = CHATBOT_QUESTIONS;
-    (window as any).getRecommendedProducts = (answers: string[], lg: Lang, count: number = 3) => {
+    win.PRODUCTS = products;
+    win.lang = lang;
+    win.CHATBOT_QUESTIONS = CHATBOT_QUESTIONS;
+    win.getRecommendedProducts = (answers: string[], lg: Lang, count: number = 3) => {
       return getRecommendedProducts(answers, lg, count, products);
     };
-    (window as any).openModal = (id: number) => {
+    win.openModal = (id: number) => {
       onOpenModal(id);
     };
 
@@ -36,16 +46,16 @@ export default function Chatbot({ lang, products, onOpenModal }: ChatbotProps) {
     } else {
       // If script already loaded, just update the lang
       // The script should react to window.lang changes
-      if ((window as any).updateChatbotLang) {
-        (window as any).updateChatbotLang(lang);
+      if (win.updateChatbotLang) {
+        win.updateChatbotLang(lang);
       }
     }
 
     return () => {
       // Don't remove script on cleanup, just update references
-      (window as any).PRODUCTS = products;
-      (window as any).lang = lang;
-      (window as any).CHATBOT_QUESTIONS = CHATBOT_QUESTIONS;
+      win.PRODUCTS = products;
+      win.lang = lang;
+      win.CHATBOT_QUESTIONS = CHATBOT_QUESTIONS;
     };
   }, [lang, products, onOpenModal]);
 

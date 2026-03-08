@@ -24,7 +24,7 @@ async function readCategories(): Promise<Category[]> {
   try {
     const data = await fs.readFile(DATA_FILE, "utf-8");
     return JSON.parse(data);
-  } catch (error) {
+  } catch {
     // Si le fichier n'existe pas, retourner les catégories par défaut
     return [
       { id: "1", key: "All", label: { es: "Todo", en: "All", de: "Alle" }, order: 0 },
@@ -51,8 +51,7 @@ export async function GET() {
   try {
     const categories = await readCategories();
     return NextResponse.json(categories);
-  } catch (error) {
-    console.error("Error reading categories:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la lecture des catégories" },
       { status: 500 }
@@ -95,8 +94,7 @@ export async function POST(request: NextRequest) {
     await writeCategories(categories);
     
     return NextResponse.json(newCategory, { status: 201 });
-  } catch (error) {
-    console.error("Error creating category:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la création de la catégorie" },
       { status: 500 }
@@ -141,8 +139,7 @@ export async function PUT(request: NextRequest) {
     await writeCategories(categories);
     
     return NextResponse.json(categories[index]);
-  } catch (error) {
-    console.error("Error updating category:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la mise à jour de la catégorie" },
       { status: 500 }
@@ -184,8 +181,7 @@ export async function DELETE(request: NextRequest) {
     await writeCategories(filtered);
     
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error deleting category:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la suppression de la catégorie" },
       { status: 500 }

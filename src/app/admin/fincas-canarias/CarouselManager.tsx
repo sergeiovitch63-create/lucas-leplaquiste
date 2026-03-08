@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 
 export interface CarouselItem {
   id: number;
@@ -107,7 +108,7 @@ export default function CarouselManager({
       if (!res.ok) throw new Error("Erreur chargement");
       const data = await res.json();
       setConfig(data);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors du chargement du carrousel", "error");
     } finally {
       setLoading(false);
@@ -132,7 +133,7 @@ export default function CarouselManager({
       if (!res.ok) throw new Error("Erreur sauvegarde");
       await loadCarousel();
       showToast("Configuration sauvegardée !");
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la sauvegarde", "error");
     }
   };
@@ -161,7 +162,7 @@ export default function CarouselManager({
       setNewItem(null);
       setShowAddPanel(false);
       showToast(`Élément ${isNew ? "ajouté" : "modifié"} !`);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la sauvegarde", "error");
     }
   };
@@ -176,7 +177,7 @@ export default function CarouselManager({
       await loadCarousel();
       setConfirmDeleteId(null);
       showToast("Élément supprimé !");
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la suppression", "error");
     }
   };
@@ -366,7 +367,9 @@ export default function CarouselManager({
                   />
                   {newItem.img ? (
                     <>
-                      <img src={newItem.img} alt="" style={{ width: "100%", maxHeight: 250, borderRadius: 8, objectFit: "cover", marginBottom: 8 }} />
+                      <div style={{ position: "relative", width: "100%", height: 250, marginBottom: 8 }}>
+                        <Image src={newItem.img} alt="" fill style={{ objectFit: "cover", borderRadius: 8 }} unoptimized />
+                      </div>
                       <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
                         <button
                           type="button"
@@ -517,25 +520,27 @@ export default function CarouselManager({
               >
                 <div style={{ position: "relative" }}>
                   {item.img ? (
-                    <img 
-                      src={item.img} 
-                      alt="" 
+                    <div
                       style={{ 
                         width: 60, 
                         height: 60, 
-                        objectFit: "cover", 
+                        position: "relative",
                         borderRadius: 8, 
                         border: "1px solid var(--border)",
                         cursor: "pointer",
+                        overflow: "hidden",
                       }}
                       onClick={() => {
-                        const img = new Image();
-                        img.src = item.img!;
                         const w = window.open("");
-                        w?.document.write(`<img src="${item.img}" style="max-width: 90vw; max-height: 90vh; margin: auto; display: block;" />`);
+                        if (w) {
+                          // eslint-disable-next-line @next/next/no-img-element
+                          w.document.write(`<img src="${item.img}" style="max-width: 90vw; max-height: 90vh; margin: auto; display: block;" alt="Preview" />`);
+                        }
                       }}
                       title="Cliquer pour agrandir"
-                    />
+                    >
+                      <Image src={item.img} alt="" fill style={{ objectFit: "cover" }} unoptimized />
+                    </div>
                   ) : (
                     <div style={{ 
                       width: 60, 
@@ -630,7 +635,10 @@ export default function CarouselManager({
                     const input = document.createElement("input");
                     input.type = "file";
                     input.accept = "image/*";
-                    input.onchange = (e) => handleFile(e as any, editItem, setEditItem);
+                    input.onchange = (ev: Event) => {
+                      const target = ev.target as HTMLInputElement;
+                      handleFile({ target } as React.ChangeEvent<HTMLInputElement>, editItem, setEditItem);
+                    };
                     input.click();
                   }}
                   style={{
@@ -656,7 +664,9 @@ export default function CarouselManager({
                 >
                   {editItem.img ? (
                     <>
-                      <img src={editItem.img} alt="" style={{ width: "100%", maxHeight: 250, borderRadius: 8, objectFit: "cover", marginBottom: 8 }} />
+                      <div style={{ position: "relative", width: "100%", height: 250, marginBottom: 8 }}>
+                        <Image src={editItem.img} alt="" fill style={{ objectFit: "cover", borderRadius: 8 }} unoptimized />
+                      </div>
                       <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
                         <button
                           type="button"
@@ -665,7 +675,10 @@ export default function CarouselManager({
                             const input = document.createElement("input");
                             input.type = "file";
                             input.accept = "image/*";
-                            input.onchange = (e) => handleFile(e as any, editItem, setEditItem);
+                            input.onchange = (ev: Event) => {
+                              const target = ev.target as HTMLInputElement;
+                              handleFile({ target } as React.ChangeEvent<HTMLInputElement>, editItem, setEditItem);
+                            };
                             input.click();
                           }}
                           style={{

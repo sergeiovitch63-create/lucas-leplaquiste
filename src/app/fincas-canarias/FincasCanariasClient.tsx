@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { UI, CAT_KEY, CAT_LABEL, LANG_NAMES, getProductName, getProductSubtitle, getProductDesc, getCategoryLabel, type Lang, type Category, type Product } from './data';
+import { UI, CAT_KEY, LANG_NAMES, getProductName, getProductSubtitle, getProductDesc, getCategoryLabel, type Lang, type Category, type Product } from './data';
 import Chatbot from './Chatbot';
 import './fincas-canarias.css';
 import styles from './fincas-canarias.module.css';
@@ -46,8 +46,8 @@ export default function FincasCanariasClient() {
         if (!res.ok) throw new Error('Erreur chargement');
         const data = await res.json();
         setProducts(data);
-      } catch (error) {
-        console.error('Error loading products:', error);
+      } catch {
+        // Error loading products
       } finally {
         setLoading(false);
       }
@@ -67,8 +67,8 @@ export default function FincasCanariasClient() {
         if (!res.ok) throw new Error('Erreur chargement carrousel');
         const data = await res.json();
         setCarouselConfig(data);
-      } catch (error) {
-        console.error('Error loading carousel:', error);
+      } catch {
+        // Error loading carousel
       }
     };
     loadCarousel();

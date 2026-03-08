@@ -145,6 +145,10 @@ export function getProductDesc(product: Product, lang: Lang): string {
 
 // Helper function to get category label with fallback
 export function getCategoryLabel(category: Category, lang: Lang): string {
-  return CAT_LABEL[lang]?.[category] || CAT_LABEL.en[category] || CAT_LABEL.es[category] || CAT_LABEL.de[category] || category;
+  const langLabels = CAT_LABEL[lang] as Record<Category, string>;
+  const enLabels = CAT_LABEL.en as Record<Category, string>;
+  const esLabels = CAT_LABEL.es as Record<Category, string>;
+  const deLabels = CAT_LABEL.de as Record<Category, string>;
+  return langLabels?.[category] || enLabels?.[category] || esLabels?.[category] || deLabels?.[category] || category;
 }
 

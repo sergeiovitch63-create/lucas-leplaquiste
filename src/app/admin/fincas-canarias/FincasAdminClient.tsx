@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Product } from "@/app/fincas-canarias/data";
 import CategoriesManager from "./CategoriesManager";
 import CarouselManager from "./CarouselManager";
@@ -188,8 +189,8 @@ function ProductForm({ product, onChange, imgData, onImgChange, onImgRemove }: {
             <p style={{marginTop:4,fontSize:".7rem",color:"var(--muted)"}}>PNG, JPG, WEBP · Max 5MB</p>
           </div>
           {currentImg && (
-            <div style={{textAlign:"center",marginTop:12,position:"relative",display:"inline-block",marginLeft:"50%",transform:"translateX(-50%)"}}>
-              <img src={currentImg} alt="" style={{width:120,height:120,objectFit:"cover",borderRadius:10,border:"1px solid var(--border)"}}/>
+            <div style={{textAlign:"center",marginTop:12,position:"relative",display:"inline-block",marginLeft:"50%",transform:"translateX(-50%)",width:120,height:120}}>
+              <Image src={currentImg} alt="" fill style={{objectFit:"cover",borderRadius:10,border:"1px solid var(--border)"}} unoptimized/>
               <button onClick={onImgRemove} style={{
                 position:"absolute",top:-8,right:-8,width:22,height:22,
                 background:"var(--danger)",border:"none",borderRadius:"50%",color:"#fff",
@@ -245,7 +246,7 @@ export default function FincasAdminClient() {
       if (!res.ok) throw new Error("Erreur chargement");
       const data = await res.json();
       setProducts(data);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors du chargement des produits", "error");
     } finally {
       setLoading(false);
@@ -308,7 +309,7 @@ export default function FincasAdminClient() {
       setEditProduct(null);
       setEditImgData(null);
       showToast("Produit mis à jour !");
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la mise à jour", "error");
     }
   };
@@ -330,7 +331,7 @@ export default function FincasAdminClient() {
         if (!res.ok) throw new Error("Erreur upload");
         await loadProducts();
         showToast("Photo mise à jour !");
-      } catch (error) {
+      } catch {
         showToast("Erreur lors de l'upload", "error");
       }
     };
@@ -369,7 +370,7 @@ export default function FincasAdminClient() {
       setNewProduct(null);
       setNewImgData(null);
       showToast(`"${newProduct.name.es}" ajouté !`);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la création", "error");
     }
   };
@@ -386,7 +387,7 @@ export default function FincasAdminClient() {
       await loadProducts();
       setConfirmId(null);
       showToast(`"${p?.name?.es}" supprimé`);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la suppression", "error");
     }
   };
@@ -434,7 +435,7 @@ export default function FincasAdminClient() {
       setSelectedIds(new Set());
       setShowBulkActions(false);
       showToast(`${ids.length} produit${ids.length > 1 ? "s" : ""} supprimé${ids.length > 1 ? "s" : ""} !`);
-    } catch (error) {
+    } catch {
       showToast("Erreur lors de la suppression en masse", "error");
     }
   };
@@ -763,7 +764,7 @@ export default function FincasAdminClient() {
                   onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.borderColor="var(--border)"}}
                 >
                   {p.img
-                    ? <img src={p.img} alt="" style={{width:"100%",height:"100%",objectFit:"cover"}} onClick={()=>setPreviewImg(p.img || null)}/>
+                    ? <Image src={p.img} alt="" fill style={{objectFit:"cover"}} onClick={()=>setPreviewImg(p.img || null)} unoptimized/>
                     : <PlaceholderImg/>
                   }
                   <div style={{position:"absolute",inset:0,background:"rgba(201,150,58,.85)",display:"flex",alignItems:"center",justifyContent:"center",opacity:0,transition:"opacity .2s",borderRadius:8}}
@@ -851,7 +852,9 @@ export default function FincasAdminClient() {
               color:"var(--cream)",fontSize:"1.2rem",width:36,height:36,
               cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",
             }}>×</button>
-            <img src={previewImg} alt="Preview" style={{maxWidth:"100%",maxHeight:"90vh",objectFit:"contain",borderRadius:12,border:"1px solid var(--border)"}}/>
+            <div style={{position:"relative",width:"100%",maxWidth:"90vw",height:"90vh",maxHeight:"90vh"}}>
+              <Image src={previewImg} alt="Preview" fill style={{objectFit:"contain",borderRadius:12,border:"1px solid var(--border)"}} unoptimized/>
+            </div>
           </div>
         </div>
       )}

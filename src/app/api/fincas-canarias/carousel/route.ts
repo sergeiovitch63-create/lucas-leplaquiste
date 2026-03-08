@@ -55,7 +55,7 @@ async function readCarousel(): Promise<CarouselConfig> {
   try {
     const data = await fs.readFile(DATA_FILE, "utf-8");
     return JSON.parse(data);
-  } catch (error) {
+  } catch {
     // Si le fichier n'existe pas, retourner la config par défaut
     return {
       title: {
@@ -92,8 +92,7 @@ export async function GET() {
   try {
     const carousel = await readCarousel();
     return NextResponse.json(carousel);
-  } catch (error) {
-    console.error("Error reading carousel:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la lecture du carrousel" },
       { status: 500 }
@@ -123,8 +122,7 @@ export async function PUT(request: NextRequest) {
     await writeCarousel(carousel);
     
     return NextResponse.json(carousel);
-  } catch (error) {
-    console.error("Error updating carousel:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la mise à jour du carrousel" },
       { status: 500 }
@@ -160,8 +158,7 @@ export async function POST(request: NextRequest) {
     await writeCarousel(carousel);
     
     return NextResponse.json(newItem, { status: 201 });
-  } catch (error) {
-    console.error("Error adding carousel item:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de l'ajout de l'élément au carrousel" },
       { status: 500 }
@@ -196,8 +193,7 @@ export async function DELETE(request: NextRequest) {
     await writeCarousel(carousel);
     
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error deleting carousel item:", error);
+  } catch {
     return NextResponse.json(
       { error: "Erreur lors de la suppression de l'élément" },
       { status: 500 }
