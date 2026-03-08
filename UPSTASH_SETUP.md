@@ -33,9 +33,34 @@ Après avoir créé la base Redis, redéploie ton projet sur Vercel :
 - Soit via un nouveau push Git
 - Soit via le bouton "Redeploy" dans le dashboard Vercel
 
-### 4. Migration des données existantes (optionnel)
+### 4. Migration des données existantes
 
-Si tu as déjà des données dans les fichiers JSON locaux, elles seront automatiquement migrées lors de la première utilisation car le code fait un fallback vers les fichiers locaux si Redis n'est pas configuré.
+**IMPORTANT** : Si tu as déjà des produits/catégories/carrousel dans les fichiers JSON locaux (`/data`), tu dois les migrer vers Redis :
+
+1. **Installe tsx** (si pas déjà fait) :
+   ```bash
+   npm install -D tsx
+   ```
+
+2. **Configure les variables d'environnement localement** :
+   Crée un fichier `.env.local` avec :
+   ```env
+   UPSTASH_REDIS_REST_URL=https://ton-url-redis.upstash.io
+   UPSTASH_REDIS_REST_TOKEN=ton-token-redis
+   ```
+   (Tu peux trouver ces valeurs dans Vercel Dashboard > Storage > Upstash Redis > .env)
+
+3. **Exécute le script de migration** :
+   ```bash
+   npm run migrate:redis
+   ```
+
+   Ou directement :
+   ```bash
+   npx tsx scripts/migrate-to-redis.ts
+   ```
+
+4. **Vérifie** que les données sont bien dans Redis en visitant ton site Vercel.
 
 ## Fonctionnement
 
@@ -51,4 +76,18 @@ Une fois configuré, tu devrais pouvoir :
 - ✅ Uploader des images
 
 Tout fonctionne maintenant en production ! 🎉
+
+## Problème : "0 productos encontrados" sur Vercel
+
+Si tu vois "0 productos encontrados" après le déploiement, c'est que :
+
+1. **Les variables d'environnement Redis ne sont pas configurées** sur Vercel
+   - Solution : Configure Upstash Redis dans Vercel Dashboard (voir étape 1)
+
+2. **Les données n'ont pas été migrées vers Redis**
+   - Solution : Exécute le script de migration (voir étape 4)
+
+3. **Vérifie les logs Vercel** pour voir les erreurs :
+   - Va dans Vercel Dashboard > Ton projet > Deployments > Clique sur le dernier déploiement > Logs
+   - Cherche les messages d'erreur liés à Redis
 

@@ -73,7 +73,7 @@ function getRedis(): Redis {
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
     
     if (!url || !token) {
-      throw new Error('UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set');
+      throw new Error('UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set to use Redis');
     }
     
     redis = new Redis({
@@ -91,39 +91,50 @@ const CAROUSEL_KEY = 'fincas:carousel';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    // Fallback to file system if Redis is not configured (for local dev)
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
-      const { promises: fs } = await import('fs');
-      const path = await import('path');
-      const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-products.json');
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
-        const data = await fs.readFile(dataFile, 'utf-8');
-        return JSON.parse(data);
-      } catch {
-        return [];
+        const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
+        return data || [];
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
     }
     
-    const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
-    return data || [];
-  } catch {
+    // Fallback vers fichiers JSON
+    const { promises: fs } = await import('fs');
+    const path = await import('path');
+    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-products.json');
+    try {
+      const data = await fs.readFile(dataFile, 'utf-8');
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  } catch (error) {
+    console.error('❌ Erreur lors de la récupération des produits:', error);
     return [];
   }
 }
 
 export async function setProducts(products: Product[]): Promise<void> {
   try {
-    // Fallback to file system if Redis is not configured (for local dev)
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
-      const { promises: fs } = await import('fs');
-      const path = await import('path');
-      const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-products.json');
-      await fs.mkdir(path.dirname(dataFile), { recursive: true });
-      await fs.writeFile(dataFile, JSON.stringify(products, null, 2), 'utf-8');
-      return;
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+      try {
+        await getRedis().set(PRODUCTS_KEY, products);
+        return;
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
+      }
     }
     
-    await getRedis().set(PRODUCTS_KEY, products);
+    // Fallback vers fichiers JSON
+    const { promises: fs } = await import('fs');
+    const path = await import('path');
+    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-products.json');
+    await fs.mkdir(path.dirname(dataFile), { recursive: true });
+    await fs.writeFile(dataFile, JSON.stringify(products, null, 2), 'utf-8');
   } catch (error) {
     console.error('Error setting products:', error);
     throw error;
@@ -132,39 +143,50 @@ export async function setProducts(products: Product[]): Promise<void> {
 
 export async function getCategories(): Promise<Category[]> {
   try {
-    // Fallback to file system if Redis is not configured (for local dev)
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
-      const { promises: fs } = await import('fs');
-      const path = await import('path');
-      const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-categories.json');
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
-        const data = await fs.readFile(dataFile, 'utf-8');
-        return JSON.parse(data);
-      } catch {
-        return [];
+        const data = await getRedis().get<Category[]>(CATEGORIES_KEY);
+        return data || [];
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
     }
     
-    const data = await getRedis().get<Category[]>(CATEGORIES_KEY);
-    return data || [];
-  } catch {
+    // Fallback vers fichiers JSON
+    const { promises: fs } = await import('fs');
+    const path = await import('path');
+    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-categories.json');
+    try {
+      const data = await fs.readFile(dataFile, 'utf-8');
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  } catch (error) {
+    console.error('❌ Erreur lors de la récupération des catégories:', error);
     return [];
   }
 }
 
 export async function setCategories(categories: Category[]): Promise<void> {
   try {
-    // Fallback to file system if Redis is not configured (for local dev)
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
-      const { promises: fs } = await import('fs');
-      const path = await import('path');
-      const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-categories.json');
-      await fs.mkdir(path.dirname(dataFile), { recursive: true });
-      await fs.writeFile(dataFile, JSON.stringify(categories, null, 2), 'utf-8');
-      return;
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+      try {
+        await getRedis().set(CATEGORIES_KEY, categories);
+        return;
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
+      }
     }
     
-    await getRedis().set(CATEGORIES_KEY, categories);
+    // Fallback vers fichiers JSON
+    const { promises: fs } = await import('fs');
+    const path = await import('path');
+    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-categories.json');
+    await fs.mkdir(path.dirname(dataFile), { recursive: true });
+    await fs.writeFile(dataFile, JSON.stringify(categories, null, 2), 'utf-8');
   } catch (error) {
     console.error('Error setting categories:', error);
     throw error;
@@ -173,39 +195,50 @@ export async function setCategories(categories: Category[]): Promise<void> {
 
 export async function getCarousel(): Promise<CarouselConfig | null> {
   try {
-    // Fallback to file system if Redis is not configured (for local dev)
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
-      const { promises: fs } = await import('fs');
-      const path = await import('path');
-      const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-carousel.json');
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
-        const data = await fs.readFile(dataFile, 'utf-8');
-        return JSON.parse(data);
-      } catch {
-        return null;
+        const data = await getRedis().get<CarouselConfig>(CAROUSEL_KEY);
+        return data || null;
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
     }
     
-    const data = await getRedis().get<CarouselConfig>(CAROUSEL_KEY);
-    return data || null;
-  } catch {
+    // Fallback vers fichiers JSON
+    const { promises: fs } = await import('fs');
+    const path = await import('path');
+    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-carousel.json');
+    try {
+      const data = await fs.readFile(dataFile, 'utf-8');
+      return JSON.parse(data);
+    } catch {
+      return null;
+    }
+  } catch (error) {
+    console.error('❌ Erreur lors de la récupération du carrousel:', error);
     return null;
   }
 }
 
 export async function setCarousel(carousel: CarouselConfig): Promise<void> {
   try {
-    // Fallback to file system if Redis is not configured (for local dev)
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
-      const { promises: fs } = await import('fs');
-      const path = await import('path');
-      const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-carousel.json');
-      await fs.mkdir(path.dirname(dataFile), { recursive: true });
-      await fs.writeFile(dataFile, JSON.stringify(carousel, null, 2), 'utf-8');
-      return;
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+      try {
+        await getRedis().set(CAROUSEL_KEY, carousel);
+        return;
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
+      }
     }
     
-    await getRedis().set(CAROUSEL_KEY, carousel);
+    // Fallback vers fichiers JSON
+    const { promises: fs } = await import('fs');
+    const path = await import('path');
+    const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-carousel.json');
+    await fs.mkdir(path.dirname(dataFile), { recursive: true });
+    await fs.writeFile(dataFile, JSON.stringify(carousel, null, 2), 'utf-8');
   } catch (error) {
     console.error('Error setting carousel:', error);
     throw error;
