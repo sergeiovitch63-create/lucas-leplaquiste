@@ -673,8 +673,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   color: var(--text-muted);
   border: 1px solid rgba(201, 150, 58, 0.3);
   border-radius: 50%;
@@ -692,8 +692,8 @@
 }
 
 .socialLink svg {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
 }
 
 .heroDivider {
@@ -861,6 +861,19 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
+
+  /* Cartes plus compactes sur mobile pour réduire l'espace vide en bas */
+  .productCard {
+    min-height: 320px;
+  }
+
+  .productInfo {
+    padding: 10px 12px 4px 12px;
+  }
+
+  .productDesc {
+    -webkit-line-clamp: 3;
+  }
 }
 
 /* CARD */
@@ -1014,6 +1027,33 @@
   display: flex;
 }
 
+/* Croix globale en haut à droite de l'écran */
+.modalOverlayClose {
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  z-index: 310;
+  background: var(--gold);
+  border: none;
+  color: var(--wood-dark);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.modalOverlayClose:hover {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  background: var(--gold-light);
+}
+
 .modal {
   background: var(--wood-mid);
   border: 1px solid rgba(201, 150, 58, 0.3);
@@ -1045,6 +1085,31 @@
   background: var(--wood-light);
   position: relative;
   isolation: isolate;
+}
+
+/* Croix dans le hero de la photo (en haut à droite de l'image) */
+.modalImgClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--cream);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.modalImgClose:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-1px);
 }
 
 .modalImg {
