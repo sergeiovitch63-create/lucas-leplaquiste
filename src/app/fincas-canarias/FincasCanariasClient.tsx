@@ -84,17 +84,12 @@ export default function FincasCanariasClient() {
   const getFiltered = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
     return products.filter((p) => {
-      // Si on tape une recherche, on ignore le filtre de catégorie et on cherche partout
-      const catMatch =
-        !q
-          ? activeCategory === 'All' || p.category === activeCategory
-          : true;
-      const searchMatch =
-        !q ||
-        [getProductName(p, lang), getProductSubtitle(p, lang), getProductDesc(p, lang)]
-          .join(' ')
-          .toLowerCase()
-          .includes(q);
+      const catMatch = activeCategory === 'All' || p.category === activeCategory;
+
+      // Recherche: on veut des produits dont le nom commence par la lettre tapée
+      const name = getProductName(p, lang).toLowerCase();
+      const searchMatch = !q || name.startsWith(q);
+
       return catMatch && searchMatch;
     });
   }, [searchQuery, activeCategory, lang, products]);

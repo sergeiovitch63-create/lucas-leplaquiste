@@ -35,3 +35,4 @@ fs.writeFileSync(jsonPath, JSON.stringify(products, null, 2), 'utf-8');
 console.log(`✅ Created ${jsonPath} with ${products.length} products`);
 
 
+
