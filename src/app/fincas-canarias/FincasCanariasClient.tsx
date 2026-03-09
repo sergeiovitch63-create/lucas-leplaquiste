@@ -366,7 +366,12 @@ export default function FincasCanariasClient() {
         <p className={styles.heroAddress}>
           Calle la hoya 47, 38400 Puerto de la cruz, tenerife
         </p>
-        <div className={styles.locationCard}>
+        <a
+          href="https://maps.app.goo.gl/ZZyUbqzAGv8rsHZaA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.locationCard}
+        >
           <div className={styles.locationIcon}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -374,7 +379,7 @@ export default function FincasCanariasClient() {
             </svg>
           </div>
           <span className={styles.locationText}>Localisation</span>
-        </div>
+        </a>
         
         {/* Carousel Section */}
         {carouselConfig && (
@@ -577,14 +582,24 @@ export default function FincasCanariasClient() {
             if (e.target === e.currentTarget) setModalProduct(null);
           }}
         >
+          {/* Croix globale en haut à droite de l'écran */}
+          <button
+            className={styles.modalOverlayClose}
+            onClick={() => setModalProduct(null)}
+            aria-label="Fermer le produit"
+          >
+            ×
+          </button>
           <div className={styles.modal}>
-            <button
-              className={styles.modalClose}
-              onClick={() => setModalProduct(null)}
-            >
-              ×
-            </button>
             <div className={styles.modalImgWrap}>
+              {/* Croix dans le hero de la photo */}
+              <button
+                className={styles.modalImgClose}
+                onClick={() => setModalProduct(null)}
+                aria-label="Fermer le produit"
+              >
+                ×
+              </button>
               {modalProduct.img ? (
                 <Image
                   className={styles.modalImg}
