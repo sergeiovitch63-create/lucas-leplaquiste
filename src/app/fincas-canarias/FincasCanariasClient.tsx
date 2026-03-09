@@ -25,7 +25,7 @@ export default function FincasCanariasClient() {
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [carouselConfig, setCarouselConfig] = useState<{
     title: Record<Lang, string>;
     description: Record<Lang, string>;
@@ -42,6 +42,7 @@ export default function FincasCanariasClient() {
   useEffect(() => {
     const loadProducts = async () => {
       try {
+        setLoading(true);
         const res = await fetch('/api/fincas-canarias/products');
         if (!res.ok) throw new Error('Erreur chargement');
         const data = await res.json();
@@ -53,10 +54,6 @@ export default function FincasCanariasClient() {
       }
     };
     loadProducts();
-    
-    // Sync every 3 seconds
-    const interval = setInterval(loadProducts, 3000);
-    return () => clearInterval(interval);
   }, []);
 
   // ── LOAD CAROUSEL FROM API ──
@@ -72,10 +69,6 @@ export default function FincasCanariasClient() {
       }
     };
     loadCarousel();
-    
-    // Sync every 3 seconds
-    const interval = setInterval(loadCarousel, 3000);
-    return () => clearInterval(interval);
   }, []);
 
   const getFiltered = useCallback(() => {
@@ -185,14 +178,6 @@ export default function FincasCanariasClient() {
     }
   }, []);
 
-
-  if (loading) {
-    return (
-      <div className="fincas-canarias-page" style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh"}}>
-        <span style={{color:"var(--text-light)",fontSize:"1rem"}}>Chargement des produits…</span>
-      </div>
-    );
-  }
 
   return (
     <div className="fincas-canarias-page">
