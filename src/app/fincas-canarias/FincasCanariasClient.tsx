@@ -44,6 +44,11 @@ export default function FincasCanariasClient() {
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
+    // Ne rafraîchit pas si on a déjà des produits (évite un aller-retour réseau inutile au premier rendu)
+    if ((initialProductsJson as Product[]).length > 0) {
+      return;
+    }
+
     const loadProducts = async () => {
       try {
         const res = await fetch('/api/fincas-canarias/products');
@@ -59,6 +64,10 @@ export default function FincasCanariasClient() {
 
   // ── LOAD CAROUSEL FROM API ──
   useEffect(() => {
+    if ((initialCarouselJson as CarouselState).items?.length > 0) {
+      return;
+    }
+
     const loadCarousel = async () => {
       try {
         const res = await fetch('/api/fincas-canarias/carousel');
@@ -331,7 +340,7 @@ export default function FincasCanariasClient() {
         <h1 className={styles.heroTitle}>Fincas Canarias</h1>
         <div className={styles.heroSocialLinks}>
           <a
-            href="https://www.tiktok.com/@fincascanarias"
+            href="https://www.tiktok.com/@finca.canarias?_r=1&_t=ZN-94XyiupRNYc"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
@@ -342,7 +351,7 @@ export default function FincasCanariasClient() {
             </svg>
           </a>
           <a
-            href="https://www.facebook.com/fincascanarias"
+            href="https://www.facebook.com/share/1FTzh7UV5Z/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
