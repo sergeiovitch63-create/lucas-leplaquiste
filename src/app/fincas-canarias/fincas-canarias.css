@@ -2,12 +2,15 @@
   --wood-dark: #1a0f08;
   --wood-mid: #2d1a0e;
   --wood-light: #3d2314;
-  --gold: #c9963a;
-  --gold-light: #e8b85a;
-  --gold-pale: #f5d98a;
-  --cream: #f9f0e0;
-  --text-light: #f0e0c0;
-  --text-muted: #9a7a5a;
+  /* Or beaucoup plus lumineux / flashy pour le texte et les accents */
+  --gold: #f5c04a;
+  --gold-light: #ffd76a;
+  --gold-pale: #ffe8a4;
+  /* Texte principal très clair pour un contraste fort sur fond sombre */
+  --cream: #fff7e8;
+  --text-light: #ffebc6;
+  /* Texte secondaire un peu plus clair également */
+  --text-muted: #b98a5e;
 }
 
 .fincas-canarias-page {
