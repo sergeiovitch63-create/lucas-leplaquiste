@@ -7,8 +7,8 @@ import { UI, CAT_KEY, LANG_NAMES, getProductName, getProductSubtitle, getProduct
 import Chatbot from './Chatbot';
 import './fincas-canarias.css';
 import styles from './fincas-canarias.module.css';
-import initialProductsJson from '../../data/fincas-canarias-products.json';
-import initialCarouselJson from '../../data/fincas-canarias-carousel.json';
+import initialProductsJson from '../../../data/fincas-canarias-products.json';
+import initialCarouselJson from '../../../data/fincas-canarias-carousel.json';
 
 const PLACEHOLDER_SVG = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
