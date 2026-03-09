@@ -1,8 +1,5 @@
 import { Redis } from '@upstash/redis';
 import type { Product } from '@/app/fincas-canarias/data';
-import productsJson from '../../data/fincas-canarias-products.json';
-import categoriesJson from '../../data/fincas-canarias-categories.json';
-import carouselJson from '../../data/fincas-canarias-carousel.json';
 
 // Types
 export interface Category {
@@ -94,12 +91,6 @@ const CAROUSEL_KEY = 'fincas:carousel';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    // En production (Vercel), utiliser les données JSON embarquées dans le bundle
-    if (process.env.VERCEL === '1') {
-      console.log('getProducts: utilisation du JSON embarqué (Vercel)');
-      return (productsJson as Product[]) || [];
-    }
-
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -156,6 +147,12 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function setProducts(products: Product[]): Promise<void> {
   try {
+    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
+    if (process.env.VERCEL === '1') {
+      console.warn('setProducts: environnement Vercel (read-only), écriture ignorée');
+      return;
+    }
+
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -180,12 +177,6 @@ export async function setProducts(products: Product[]): Promise<void> {
 
 export async function getCategories(): Promise<Category[]> {
   try {
-    // En production (Vercel), utiliser les données JSON embarquées dans le bundle
-    if (process.env.VERCEL === '1') {
-      console.log('getCategories: utilisation du JSON embarqué (Vercel)');
-      return (categoriesJson as Category[]) || [];
-    }
-
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -217,6 +208,12 @@ export async function getCategories(): Promise<Category[]> {
 
 export async function setCategories(categories: Category[]): Promise<void> {
   try {
+    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
+    if (process.env.VERCEL === '1') {
+      console.warn('setCategories: environnement Vercel (read-only), écriture ignorée');
+      return;
+    }
+
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -241,12 +238,6 @@ export async function setCategories(categories: Category[]): Promise<void> {
 
 export async function getCarousel(): Promise<CarouselConfig | null> {
   try {
-    // En production (Vercel), utiliser les données JSON embarquées dans le bundle
-    if (process.env.VERCEL === '1') {
-      console.log('getCarousel: utilisation du JSON embarqué (Vercel)');
-      return (carouselJson as CarouselConfig) || null;
-    }
-
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -278,6 +269,12 @@ export async function getCarousel(): Promise<CarouselConfig | null> {
 
 export async function setCarousel(carousel: CarouselConfig): Promise<void> {
   try {
+    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
+    if (process.env.VERCEL === '1') {
+      console.warn('setCarousel: environnement Vercel (read-only), écriture ignorée');
+      return;
+    }
+
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
