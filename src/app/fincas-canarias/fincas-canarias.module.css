@@ -535,23 +535,17 @@
 /* MOBILE ADJUSTMENTS FOR CAROUSEL */
 @media (max-width: 768px) {
   .carouselContainer {
-    padding: 0 0 12px 16px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    padding: 0 20px 12px 20px;
+    overflow: hidden;
   }
 
   .carousel {
-    animation: none;
-    gap: 20px;
-  }
-
-  /* Ne garder qu'une seule série de cartes sur mobile */
-  .carouselWrapper:nth-of-type(2) {
-    display: none;
+    animation: carouselScroll 18s linear infinite;
+    gap: 24px;
   }
 
   .carouselWrapper {
-    gap: 20px;
+    gap: 24px;
   }
 
   .carouselCard {
