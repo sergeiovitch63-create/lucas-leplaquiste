@@ -640,6 +640,18 @@
     }
   },
 
+  // ── ALIÑO DE HIGOS ──
+  {
+    id:79, category:"Sauces", img: null,
+    name:{ es:"Aliño de Higos", en:"Fig Dressing", de:"Feigen-Dressing" },
+    subtitle:{ es:"Crema de vinagre de higos 100% naturales", en:"Vinegar cream made from 100% natural figs", de:"Essigcreme aus 100% natürlichen Feigen" },
+    desc:{
+      es:"Crema de vinagre a base de higos 100% naturales. Ideal para aliñar ensaladas, tomates, pastas frescas, pescados o platos a la plancha. Aporta un toque dulce y afrutado que realza los sabores sin enmascarar los ingredientes.",
+      en:"Vinegar cream made from 100% natural figs. Ideal for dressing salads, tomatoes, fresh pasta, fish or grilled dishes. Adds a sweet and fruity touch that enhances flavours without masking the ingredients.",
+      de:"Essigcreme aus 100% natürlichen Feigen. Ideal zum Anmachen von Salaten, Tomaten, frischer Pasta, Fisch oder gegrillten Gerichten. Verleiht eine süße und fruchtige Note, die die Aromen hervorhebt, ohne die Zutaten zu überdecken."
+    }
+  },
+
   // ── DULCES DE HIGOS ──
   {
     id:62, category:"Confitures", img: null,
