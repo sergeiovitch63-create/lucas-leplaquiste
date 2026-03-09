@@ -25,7 +25,6 @@ export default function FincasCanariasClient() {
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
   const [carouselConfig, setCarouselConfig] = useState<{
     title: Record<Lang, string>;
     description: Record<Lang, string>;
@@ -42,15 +41,12 @@ export default function FincasCanariasClient() {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        setLoading(true);
         const res = await fetch('/api/fincas-canarias/products');
         if (!res.ok) throw new Error('Erreur chargement');
         const data = await res.json();
         setProducts(data);
       } catch {
         // Error loading products
-      } finally {
-        setLoading(false);
       }
     };
     loadProducts();
@@ -477,20 +473,6 @@ export default function FincasCanariasClient() {
 
       {/* MAIN */}
       <main className={styles.main}>
-        <div className={styles.categoriesSection}>
-          <p className={styles.sectionTitle}>{UI[lang].categories}</p>
-          <div className={styles.categoriesScroll}>
-                {CAT_KEY.map((c) => (
-              <button
-                key={c}
-                className={`${styles.catBtn} ${activeCategory === c ? styles.catBtnActive : ''}`}
-                onClick={() => setActiveCategory(c)}
-              >
-                {getCategoryLabel(c, lang)}
-              </button>
-            ))}
-          </div>
-        </div>
         <div className={styles.searchBarWrap}>
           <svg
             className={styles.searchBarIcon}
@@ -512,6 +494,20 @@ export default function FincasCanariasClient() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+        </div>
+        <div className={styles.categoriesSection}>
+          <p className={styles.sectionTitle}>{UI[lang].categories}</p>
+          <div className={styles.categoriesScroll}>
+            {CAT_KEY.map((c) => (
+              <button
+                key={c}
+                className={`${styles.catBtn} ${activeCategory === c ? styles.catBtnActive : ''}`}
+                onClick={() => setActiveCategory(c)}
+              >
+                {getCategoryLabel(c, lang)}
+              </button>
+            ))}
+          </div>
         </div>
         <p
           className={styles.resultsMeta}
