@@ -191,7 +191,7 @@ export async function getCategories(): Promise<Category[]> {
       console.log(`✅ ${categories.length} catégories chargées depuis ${dataFile}`);
       return categories;
     } catch (error) {
-      console.warn(`⚠️  Fichier catégories non trouvé ou erreur: ${dataFile}`);
+      console.warn(`⚠️  Fichier catégories non trouvé ou erreur: ${dataFile}`, error);
       return [];
     }
   } catch (error) {
@@ -246,7 +246,7 @@ export async function getCarousel(): Promise<CarouselConfig | null> {
       console.log(`✅ Carrousel chargé depuis ${dataFile}`);
       return carousel;
     } catch (error) {
-      console.warn(`⚠️  Fichier carrousel non trouvé ou erreur: ${dataFile}`);
+      console.warn(`⚠️  Fichier carrousel non trouvé ou erreur: ${dataFile}`, error);
       return null;
     }
   } catch (error) {
