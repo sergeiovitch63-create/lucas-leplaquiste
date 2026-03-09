@@ -652,6 +652,22 @@
     }
   },
 
+  // ── PACK DEGUSTACIÓN ALMOGROTE GRAN REY ──
+  {
+    id:80, category:"Sauces", img: null,
+    name:{ es:"Pack Degustación Almogrote Gran Rey", en:"Gran Rey Almogrote Tasting Pack", de:"Gran Rey Almogrote Degustationspaket" },
+    subtitle:{ 
+      es:"Estuche de 8 mini porciones de almogrote artesanal",
+      en:"Box with 8 mini portions of traditional Canarian almogrote",
+      de:"Schachtel mit 8 Mini-Portionen traditionellem kanarischem Almogrote"
+    },
+    desc:{
+      es:"Descubre el pack de degustación Gran Rey: 8 mini porciones de almogrote de las Islas Canarias, cada sabor refleja la tradición artesanal del archipiélago. Perfecto para probar todas las variantes en un solo estuche.",
+      en:"Discover the Gran Rey tasting pack: 8 mini portions of almogrote from the Canary Islands, each flavour reflecting the artisanal tradition of the archipelago. Perfect for trying all the varieties in a single box.",
+      de:"Entdecke das Gran-Rey-Degustationspaket: 8 Mini-Portionen Almogrote von den Kanarischen Inseln, jede Sorte spiegelt die handwerkliche Tradition des Archipels wider. Perfekt, um alle Varianten in einer einzigen Schachtel zu probieren."
+    }
+  },
+
   // ── DULCES DE HIGOS ──
   {
     id:62, category:"Confitures", img: null,
