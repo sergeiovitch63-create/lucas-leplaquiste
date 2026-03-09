@@ -7,6 +7,8 @@ import { UI, CAT_KEY, LANG_NAMES, getProductName, getProductSubtitle, getProduct
 import Chatbot from './Chatbot';
 import './fincas-canarias.css';
 import styles from './fincas-canarias.module.css';
+import initialProductsJson from '../../data/fincas-canarias-products.json';
+import initialCarouselJson from '../../data/fincas-canarias-carousel.json';
 
 const PLACEHOLDER_SVG = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -16,6 +18,18 @@ const PLACEHOLDER_SVG = (
   </svg>
 );
 
+type CarouselState = {
+  title: Record<Lang, string>;
+  description: Record<Lang, string>;
+  items: Array<{
+    id: number;
+    img: string | null;
+    name: Record<Lang, string>;
+    description: Record<Lang, string>;
+    order: number;
+  }>;
+};
+
 export default function FincasCanariasClient() {
   const [lang, setLang] = useState<Lang>('es');
   const [activeCategory, setActiveCategory] = useState<Category>('All');
@@ -24,18 +38,8 @@ export default function FincasCanariasClient() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [carouselConfig, setCarouselConfig] = useState<{
-    title: Record<Lang, string>;
-    description: Record<Lang, string>;
-    items: Array<{
-      id: number;
-      img: string | null;
-      name: Record<Lang, string>;
-      description: Record<Lang, string>;
-      order: number;
-    }>;
-  } | null>(null);
+  const [products, setProducts] = useState<Product[]>(initialProductsJson as Product[]);
+  const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(initialCarouselJson as CarouselState);
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
