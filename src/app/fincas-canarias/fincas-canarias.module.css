@@ -422,7 +422,7 @@
 
 .carouselWrapper {
   display: flex;
-  gap: 40px;
+  gap: 48px;
   flex-shrink: 0;
   width: fit-content;
 }
@@ -535,7 +535,7 @@
 /* MOBILE ADJUSTMENTS FOR CAROUSEL */
 @media (max-width: 768px) {
   .carouselContainer {
-    padding: 0 0 12px 20px;
+    padding: 0 0 12px 16px;
     overflow-x: auto;
     overflow-y: hidden;
   }
@@ -557,6 +557,19 @@
   .carouselCard {
     flex: 0 0 240px;
     height: 220px;
+  }
+
+  /* Réduction de la hauteur des cards produits sur mobile */
+  .productCard {
+    min-height: 340px;
+  }
+
+  .productInfo {
+    padding: 10px 12px 6px 12px;
+  }
+
+  .productDesc {
+    -webkit-line-clamp: 3;
   }
 }
 
