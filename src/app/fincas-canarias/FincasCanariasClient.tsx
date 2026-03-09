@@ -40,6 +40,7 @@ export default function FincasCanariasClient() {
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>(initialProductsJson as Product[]);
   const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(initialCarouselJson as CarouselState);
+  const [visibleCount, setVisibleCount] = useState(20);
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
@@ -86,6 +87,7 @@ export default function FincasCanariasClient() {
   }, [searchQuery, activeCategory, lang, products]);
 
   const filteredProducts = getFiltered();
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   // Helper function to get flag emoji for language
   const getLangFlag = (langCode: Lang): string => {
@@ -523,7 +525,7 @@ export default function FincasCanariasClient() {
           {filteredProducts.length === 0 ? (
             <div className={styles.emptyState}>{UI[lang].empty}</div>
           ) : (
-            filteredProducts.map((p, i) => (
+            visibleProducts.map((p, i) => (
               <div
                 key={p.id}
                 className={styles.productCard}
@@ -555,6 +557,16 @@ export default function FincasCanariasClient() {
             ))
           )}
         </div>
+        {visibleCount < filteredProducts.length && (
+          <div style={{ textAlign: 'center', marginTop: 24 }}>
+            <button
+              className={styles.loadMoreBtn}
+              onClick={() => setVisibleCount((c) => c + 20)}
+            >
+              Charger plus de produits
+            </button>
+          </div>
+        )}
       </main>
 
       {/* MODAL */}

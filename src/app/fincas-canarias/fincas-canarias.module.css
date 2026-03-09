@@ -743,9 +743,10 @@
 
 .catBtn {
   flex-shrink: 0;
-  background: rgba(201, 150, 58, 0.08);
+  /* Tous les boutons catégories en jaune par défaut */
+  background: var(--gold);
   border: 1px solid rgba(201, 150, 58, 0.25);
-  color: var(--text-muted);
+  color: var(--wood-dark);
   font-family: 'Lato', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
@@ -758,12 +759,17 @@
   white-space: nowrap;
 }
 
-.catBtn:hover,
+.catBtn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 16px rgba(201, 150, 58, 0.4);
+}
+
+/* Quand une catégorie est active : effet entouré (fond plus sombre + bord or vif) */
 .catBtnActive {
-  background: var(--gold);
-  color: var(--wood-dark);
-  border-color: var(--gold);
-  box-shadow: 0 4px 20px rgba(201, 150, 58, 0.3);
+  background: var(--wood-dark);
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 2px rgba(255, 224, 122, 0.7);
 }
 
 /* SEARCH BAR */
@@ -815,6 +821,32 @@
 
 .resultsMeta span {
   color: var(--gold);
+}
+
+.loadMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  margin-top: 4px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--wood-dark);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.loadMoreBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  background: var(--gold-light);
 }
 
 /* GRID */
