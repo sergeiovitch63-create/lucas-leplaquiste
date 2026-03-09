@@ -91,7 +91,20 @@ const CAROUSEL_KEY = 'fincas:carousel';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
+    // Sur Vercel (prod), on lit les produits depuis le JSON embarqué dans le bundle
+    if (process.env.VERCEL === '1') {
+      try {
+        const mod = await import('../../data/fincas-canarias-products.json');
+        const products = (mod as { default: Product[] }).default || (mod as unknown as Product[]);
+        console.log(`✅ ${products.length} produits chargés depuis le JSON embarqué (Vercel)`);
+        return products;
+      } catch (error) {
+        console.error('❌ Erreur chargement JSON embarqué produits sur Vercel:', error);
+        // on continue avec le fallback Redis / fichiers pour ne pas casser
+      }
+    }
+
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON (dev / fallback)
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
         const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
@@ -177,6 +190,18 @@ export async function setProducts(products: Product[]): Promise<void> {
 
 export async function getCategories(): Promise<Category[]> {
   try {
+    // Sur Vercel (prod), on lit les catégories depuis le JSON embarqué dans le bundle
+    if (process.env.VERCEL === '1') {
+      try {
+        const mod = await import('../../data/fincas-canarias-categories.json');
+        const categories = (mod as { default: Category[] }).default || (mod as unknown as Category[]);
+        console.log(`✅ ${categories.length} catégories chargées depuis le JSON embarqué (Vercel)`);
+        return categories;
+      } catch (error) {
+        console.error('❌ Erreur chargement JSON embarqué catégories sur Vercel:', error);
+      }
+    }
+
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -238,6 +263,18 @@ export async function setCategories(categories: Category[]): Promise<void> {
 
 export async function getCarousel(): Promise<CarouselConfig | null> {
   try {
+    // Sur Vercel (prod), on lit le carrousel depuis le JSON embarqué dans le bundle
+    if (process.env.VERCEL === '1') {
+      try {
+        const mod = await import('../../data/fincas-canarias-carousel.json');
+        const carousel = (mod as { default: CarouselConfig }).default || (mod as unknown as CarouselConfig);
+        console.log('✅ Carrousel chargé depuis le JSON embarqué (Vercel)');
+        return carousel;
+      } catch (error) {
+        console.error('❌ Erreur chargement JSON embarqué carrousel sur Vercel:', error);
+      }
+    }
+
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
