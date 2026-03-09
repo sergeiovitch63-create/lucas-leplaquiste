@@ -227,7 +227,7 @@ export default function FincasAdminClient() {
   const [newImgData, setNewImgData] = useState<string | null>(null);
   const [confirmId, setConfirmId] = useState<number | null>(null);
   const [toast, setToast] = useState({ visible:false, message:"", type:"success" as "success" | "error" });
-  const [syncing, setSyncing] = useState(false);
+  const [syncing] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [showBulkActions, setShowBulkActions] = useState(false);
   const [viewMode, setViewMode] = useState<"table" | "grid">("table");
@@ -253,14 +253,9 @@ export default function FincasAdminClient() {
     }
   }, []);
 
-  // ── SYNC WITH API (polling every 3 seconds) ──
+  // ── LOAD ONCE AT MOUNT (les actions CRUD rechargent ensuite) ──
   useEffect(() => {
     loadProducts();
-    const interval = setInterval(() => {
-      setSyncing(true);
-      loadProducts().finally(() => setSyncing(false));
-    }, 3000);
-    return () => clearInterval(interval);
   }, [loadProducts]);
 
   // ── FILTER & SORT ──
