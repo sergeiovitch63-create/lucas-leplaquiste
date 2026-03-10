@@ -28,12 +28,7 @@ type CarouselState = {
   }>;
 };
 
-type Props = {
-  initialProducts?: Product[];
-  initialCarousel?: CarouselState | null;
-};
-
-export default function FincasCanariasClient({ initialProducts = [], initialCarousel = null }: Props) {
+export default function FincasCanariasClient() {
   const [lang, setLang] = useState<Lang>('es');
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,9 +36,36 @@ export default function FincasCanariasClient({ initialProducts = [], initialCaro
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [products] = useState<Product[]>(initialProducts);
-  const [carouselConfig] = useState<CarouselState | null>(initialCarousel);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(null);
+  const [productsLoading, setProductsLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(20);
+
+  // ── LOAD PRODUCTS FROM API ──
+  useEffect(() => {
+    let cancelled = false;
+    setProductsLoading(true);
+    fetch('/api/fincas-canarias/products')
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => {
+        if (!cancelled) {
+          setProducts(Array.isArray(data) ? data : []);
+          setProductsLoading(false);
+        }
+      })
+      .catch(() => { if (!cancelled) { setProducts([]); setProductsLoading(false); } });
+    return () => { cancelled = true; };
+  }, []);
+
+  // ── LOAD CAROUSEL FROM API ──
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/fincas-canarias/carousel')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (!cancelled && data) setCarouselConfig(data); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   const getFiltered = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
@@ -499,7 +521,9 @@ export default function FincasCanariasClient({ initialProducts = [], initialCaro
           }}
         />
         <div className={styles.productsGrid}>
-          {filteredProducts.length === 0 ? (
+          {productsLoading && products.length === 0 ? (
+            <div className={styles.emptyState} style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>Cargando…</div>
+          ) : filteredProducts.length === 0 ? (
             <div className={styles.emptyState}>{UI[lang].empty}</div>
           ) : (
             visibleProducts.map((p, i) => (
@@ -517,7 +541,8 @@ export default function FincasCanariasClient({ initialProducts = [], initialCaro
                       fill
                       sizes="(max-width: 480px) 50vw, 210px"
                       className={styles.modalImg}
-                      loading="lazy"
+                      loading={i < 8 ? 'eager' : 'lazy'}
+                      priority={i < 8}
                     />
                   ) : (
                     <div className={styles.imgPlaceholder}>{PLACEHOLDER_SVG}</div>
