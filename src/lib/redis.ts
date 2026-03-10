@@ -91,13 +91,13 @@ const CAROUSEL_KEY = 'fincas:carousel';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    // Sur Vercel (prod), on lit les produits depuis le bundle (TypeScript) pour éviter
-    // les problèmes de disque read-only et de JSON non présent au runtime.
+    // Sur Vercel (prod), on lit les produits depuis le JSON embarqué dans le bundle
+    // pour éviter les problèmes de disque read-only et bénéficier des chemins d'images.
     if (process.env.VERCEL === '1') {
       try {
-        const mod = await import('@/app/fincas-canarias/products');
+        const mod = await import('../../data/fincas-canarias-products.json');
         const products =
-          (mod as { PRODUCTS: Product[] }).PRODUCTS ||
+          (mod as { default: Product[] }).default ||
           ((mod as unknown) as Product[]);
 
         if (Array.isArray(products) && products.length > 0) {
