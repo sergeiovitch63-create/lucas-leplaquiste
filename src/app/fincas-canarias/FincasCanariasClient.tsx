@@ -308,7 +308,7 @@ export default function FincasCanariasClient() {
                       fill
                       sizes="140px"
                       className={styles.modalImg}
-                      unoptimized
+                      loading="lazy"
                     />
                   ) : (
                     <div className={styles.imgPlaceholder}>{PLACEHOLDER_SVG}</div>
@@ -427,7 +427,7 @@ export default function FincasCanariasClient() {
                               fill
                               sizes="(max-width: 768px) 50vw, 280px"
                               className={styles.carouselCardImage}
-                              unoptimized
+                              loading="lazy"
                             />
                           ) : (
                             <div className={styles.carouselCardPlaceholder}>
@@ -461,7 +461,7 @@ export default function FincasCanariasClient() {
                               fill
                               sizes="(max-width: 768px) 50vw, 280px"
                               className={styles.carouselCardImage}
-                              unoptimized
+                              loading="lazy"
                             />
                           ) : (
                             <div className={styles.carouselCardPlaceholder}>
@@ -553,6 +553,7 @@ export default function FincasCanariasClient() {
                       fill
                       sizes="(max-width: 480px) 50vw, 210px"
                       className={styles.modalImg}
+                      loading="lazy"
                     />
                   ) : (
                     <div className={styles.imgPlaceholder}>{PLACEHOLDER_SVG}</div>
@@ -615,6 +616,7 @@ export default function FincasCanariasClient() {
                   alt={getProductName(modalProduct, lang)}
                   fill
                   sizes="(max-width: 520px) 100vw, 520px"
+                  loading="lazy"
                 />
               ) : (
                 <div className={styles.modalImgPlaceholder}>
