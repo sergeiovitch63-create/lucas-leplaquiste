@@ -217,7 +217,7 @@ export default function FincasCanariasClient() {
               </button>
               {isLangMenuOpen && (
                 <div className={styles.langMenu}>
-                  {(['es', 'en', 'de', 'fr', 'it', 'ru', 'pl'] as Lang[]).map((l) => (
+                  {(['es', 'en', 'de'] as Lang[]).map((l) => (
                     <button
                       key={l}
                       className={`${styles.langMenuItem} ${lang === l ? styles.langMenuItemActive : ''}`}
