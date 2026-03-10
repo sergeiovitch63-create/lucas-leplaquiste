@@ -7,8 +7,6 @@ import { UI, CAT_KEY, LANG_NAMES, getProductName, getProductSubtitle, getProduct
 import Chatbot from './Chatbot';
 import './fincas-canarias.css';
 import styles from './fincas-canarias.module.css';
-import initialProductsJson from '../../../data/fincas-canarias-products.json';
-import initialCarouselJson from '../../../data/fincas-canarias-carousel.json';
 
 const PLACEHOLDER_SVG = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -38,17 +36,12 @@ export default function FincasCanariasClient() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [products, setProducts] = useState<Product[]>(initialProductsJson as Product[]);
-  const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(initialCarouselJson as CarouselState);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(null);
   const [visibleCount, setVisibleCount] = useState(20);
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
-    // Ne rafraîchit pas si on a déjà des produits (évite un aller-retour réseau inutile au premier rendu)
-    if ((initialProductsJson as Product[]).length > 0) {
-      return;
-    }
-
     const loadProducts = async () => {
       try {
         const res = await fetch('/api/fincas-canarias/products');
@@ -64,10 +57,6 @@ export default function FincasCanariasClient() {
 
   // ── LOAD CAROUSEL FROM API ──
   useEffect(() => {
-    if ((initialCarouselJson as CarouselState).items?.length > 0) {
-      return;
-    }
-
     const loadCarousel = async () => {
       try {
         const res = await fetch('/api/fincas-canarias/carousel');
