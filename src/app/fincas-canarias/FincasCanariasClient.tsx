@@ -28,7 +28,12 @@ type CarouselState = {
   }>;
 };
 
-export default function FincasCanariasClient() {
+type Props = {
+  initialProducts?: Product[];
+  initialCarousel?: CarouselState | null;
+};
+
+export default function FincasCanariasClient({ initialProducts = [], initialCarousel = null }: Props) {
   const [lang, setLang] = useState<Lang>('es');
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -36,39 +41,9 @@ export default function FincasCanariasClient() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(null);
+  const [products] = useState<Product[]>(initialProducts);
+  const [carouselConfig] = useState<CarouselState | null>(initialCarousel);
   const [visibleCount, setVisibleCount] = useState(20);
-
-  // ── LOAD PRODUCTS FROM API ──
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const res = await fetch('/api/fincas-canarias/products');
-        if (!res.ok) throw new Error('Erreur chargement');
-        const data = await res.json();
-        setProducts(data);
-      } catch {
-        // Error loading products
-      }
-    };
-    loadProducts();
-  }, []);
-
-  // ── LOAD CAROUSEL FROM API ──
-  useEffect(() => {
-    const loadCarousel = async () => {
-      try {
-        const res = await fetch('/api/fincas-canarias/carousel');
-        if (!res.ok) throw new Error('Erreur chargement carrousel');
-        const data = await res.json();
-        setCarouselConfig(data);
-      } catch {
-        // Error loading carousel
-      }
-    };
-    loadCarousel();
-  }, []);
 
   const getFiltered = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
