@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getProducts, setProducts } from "@/lib/redis";
+import { saveBase64Image } from "@/lib/saveImage";
 import type { Product } from "@/app/fincas-canarias/data";
 
 // GET: Récupérer tous les produits
@@ -39,10 +40,22 @@ export async function POST(request: NextRequest) {
       ? Math.max(...products.map(p => p.id)) + 1 
       : 1;
     
+    let img: string | null = body.img || null;
+
+    // Si on reçoit une image en base64, on la sauvegarde comme fichier et on stocke l'URL
+    if (img && typeof img === "string" && img.startsWith("data:image")) {
+      try {
+        img = await saveBase64Image(img, "products", `product-${nextId}`);
+      } catch (error) {
+        console.error("[API POST /products] Erreur saveBase64Image:", error);
+        // En cas d'erreur, on garde la valeur d'origine pour ne pas casser le flux
+      }
+    }
+
     const newProduct: Product = {
       id: nextId,
       category: body.category || "Sauces",
-      img: body.img || null,
+      img,
       name: body.name || { es: "", en: "", de: "" },
       subtitle: body.subtitle || { es: "", en: "", de: "" },
       desc: body.desc || { es: "", en: "", de: "" },
@@ -83,6 +96,24 @@ export async function PUT(request: NextRequest) {
       );
     }
     
+    // Si on reçoit une nouvelle image en base64, la sauvegarder comme fichier et stocker l'URL
+    if (
+      updates.img &&
+      typeof updates.img === "string" &&
+      updates.img.startsWith("data:image")
+    ) {
+      try {
+        updates.img = await saveBase64Image(
+          updates.img,
+          "products",
+          `product-${id}`
+        );
+      } catch (error) {
+        console.error("[API PUT /products] Erreur saveBase64Image:", error);
+        // En cas d'erreur, on garde la valeur d'origine pour ne pas casser la mise à jour
+      }
+    }
+
     products[index] = { ...products[index], ...updates };
     await setProducts(products);
     
