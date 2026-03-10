@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { Product } from "@/app/fincas-canarias/data";
+import type { Product, Lang } from "@/app/fincas-canarias/data";
 import CategoriesManager from "./CategoriesManager";
 import CarouselManager from "./CarouselManager";
 
@@ -71,6 +71,10 @@ function FormTabs({ activeTab, onTabChange }: { activeTab: string; onTabChange: 
     { id:"es", label:"🇪🇸 Español" },
     { id:"en", label:"🇬🇧 English" },
     { id:"de", label:"🇩🇪 Deutsch" },
+    { id:"fr", label:"🇫🇷 Français" },
+    { id:"it", label:"🇮🇹 Italiano" },
+    { id:"ru", label:"🇷🇺 Русский" },
+    { id:"pl", label:"🇵🇱 Polski" },
     { id:"img", label:"📷 Photo" },
     { id:"meta", label:"⚙ Infos" },
   ];
@@ -116,8 +120,8 @@ function ProductForm({ product, onChange, imgData, onImgChange, onImgRemove }: {
   const [activeTab, setActiveTab] = useState("es");
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const field = (lang: "es" | "en" | "de", key: "name" | "subtitle" | "desc") => product?.[key]?.[lang] ?? "";
-  const set = (lang: "es" | "en" | "de", key: "name" | "subtitle" | "desc", val: string) => {
+  const field = (lang: Lang, key: "name" | "subtitle" | "desc") => product?.[key]?.[lang] ?? "";
+  const set = (lang: Lang, key: "name" | "subtitle" | "desc", val: string) => {
     if (!product) return;
     onChange({ ...product, [key]: { ...product[key], [lang]: val } });
   };
@@ -166,6 +170,34 @@ function ProductForm({ product, onChange, imgData, onImgChange, onImgRemove }: {
           <FormGroup label="Name (DE)"><input style={inputStyle} value={field("de","name")} onChange={e=>set("de","name",e.target.value)}/></FormGroup>
           <FormGroup label="Untertitel (DE)"><input style={inputStyle} value={field("de","subtitle")} onChange={e=>set("de","subtitle",e.target.value)}/></FormGroup>
           <FormGroup label="Beschreibung (DE)"><textarea style={textareaStyle} value={field("de","desc")} onChange={e=>set("de","desc",e.target.value)}/></FormGroup>
+        </div>
+      )}
+      {activeTab === "fr" && (
+        <div>
+          <FormGroup label="Nom (FR)"><input style={inputStyle} value={field("fr","name")} onChange={e=>set("fr","name",e.target.value)}/></FormGroup>
+          <FormGroup label="Sous-titre (FR)"><input style={inputStyle} value={field("fr","subtitle")} onChange={e=>set("fr","subtitle",e.target.value)}/></FormGroup>
+          <FormGroup label="Description (FR)"><textarea style={textareaStyle} value={field("fr","desc")} onChange={e=>set("fr","desc",e.target.value)}/></FormGroup>
+        </div>
+      )}
+      {activeTab === "it" && (
+        <div>
+          <FormGroup label="Nome (IT)"><input style={inputStyle} value={field("it","name")} onChange={e=>set("it","name",e.target.value)}/></FormGroup>
+          <FormGroup label="Sottotitolo (IT)"><input style={inputStyle} value={field("it","subtitle")} onChange={e=>set("it","subtitle",e.target.value)}/></FormGroup>
+          <FormGroup label="Descrizione (IT)"><textarea style={textareaStyle} value={field("it","desc")} onChange={e=>set("it","desc",e.target.value)}/></FormGroup>
+        </div>
+      )}
+      {activeTab === "ru" && (
+        <div>
+          <FormGroup label="Название (RU)"><input style={inputStyle} value={field("ru","name")} onChange={e=>set("ru","name",e.target.value)}/></FormGroup>
+          <FormGroup label="Подзаголовок (RU)"><input style={inputStyle} value={field("ru","subtitle")} onChange={e=>set("ru","subtitle",e.target.value)}/></FormGroup>
+          <FormGroup label="Описание (RU)"><textarea style={textareaStyle} value={field("ru","desc")} onChange={e=>set("ru","desc",e.target.value)}/></FormGroup>
+        </div>
+      )}
+      {activeTab === "pl" && (
+        <div>
+          <FormGroup label="Nazwa (PL)"><input style={inputStyle} value={field("pl","name")} onChange={e=>set("pl","name",e.target.value)}/></FormGroup>
+          <FormGroup label="Podtytuł (PL)"><input style={inputStyle} value={field("pl","subtitle")} onChange={e=>set("pl","subtitle",e.target.value)}/></FormGroup>
+          <FormGroup label="Opis (PL)"><textarea style={textareaStyle} value={field("pl","desc")} onChange={e=>set("pl","desc",e.target.value)}/></FormGroup>
         </div>
       )}
       {activeTab === "img" && (

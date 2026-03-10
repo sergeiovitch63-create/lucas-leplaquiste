@@ -91,20 +91,7 @@ const CAROUSEL_KEY = 'fincas:carousel';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    // Sur Vercel (prod), on lit les produits depuis le JSON embarqué dans le bundle
-    if (process.env.VERCEL === '1') {
-      try {
-        const mod = await import('../../data/fincas-canarias-products.json');
-        const products = (mod as { default: Product[] }).default || (mod as unknown as Product[]);
-        console.log(`✅ ${products.length} produits chargés depuis le JSON embarqué (Vercel)`);
-        return products;
-      } catch (error) {
-        console.error('❌ Erreur chargement JSON embarqué produits sur Vercel:', error);
-        // on continue avec le fallback Redis / fichiers pour ne pas casser
-      }
-    }
-
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON (dev / fallback)
+    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON (fallback)
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
         const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
@@ -160,12 +147,6 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function setProducts(products: Product[]): Promise<void> {
   try {
-    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
-    if (process.env.VERCEL === '1') {
-      console.warn('setProducts: environnement Vercel (read-only), écriture ignorée');
-      return;
-    }
-
     // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
     if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
       try {
@@ -176,7 +157,13 @@ export async function setProducts(products: Product[]): Promise<void> {
       }
     }
     
-    // Fallback vers fichiers JSON
+    // Fallback vers fichiers JSON (non disponible sur Vercel en read-only)
+    if (process.env.VERCEL === '1') {
+      console.warn('setProducts: environnement Vercel (read-only), écriture sur le disque ignorée');
+      return;
+    }
+
+    // Écriture fichier uniquement en environnement avec disque en écriture (dev / self-hosted)
     const { promises: fs } = await import('fs');
     const path = await import('path');
     const dataFile = path.join(process.cwd(), 'data', 'fincas-canarias-products.json');

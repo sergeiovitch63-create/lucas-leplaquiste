@@ -132,15 +132,16 @@ export interface Product {
 
 // Helper functions to get translations with fallback
 export function getProductName(product: Product, lang: Lang): string {
-  return product.name[lang] || product.name.en || product.name.es || product.name.de;
+  // Priorité : langue demandée, puis espagnol (langue source), puis anglais, puis allemand
+  return product.name[lang] || product.name.es || product.name.en || product.name.de;
 }
 
 export function getProductSubtitle(product: Product, lang: Lang): string {
-  return product.subtitle[lang] || product.subtitle.en || product.subtitle.es || product.subtitle.de;
+  return product.subtitle[lang] || product.subtitle.es || product.subtitle.en || product.subtitle.de;
 }
 
 export function getProductDesc(product: Product, lang: Lang): string {
-  return product.desc[lang] || product.desc.en || product.desc.es || product.desc.de;
+  return product.desc[lang] || product.desc.es || product.desc.en || product.desc.de;
 }
 
 // Helper function to get category label with fallback
