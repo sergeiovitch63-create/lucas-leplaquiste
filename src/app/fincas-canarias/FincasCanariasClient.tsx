@@ -41,6 +41,7 @@ export default function FincasCanariasClient() {
   const [productsLoading, setProductsLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(12);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
@@ -83,6 +84,43 @@ export default function FincasCanariasClient() {
 
   const filteredProducts = getFiltered();
   const visibleProducts = filteredProducts.slice(0, visibleCount);
+  const inlineSearchResults = searchQuery
+    ? products
+        .filter((p) =>
+          [getProductName(p, lang), getProductSubtitle(p, lang)]
+            .join(' ')
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase().trim())
+        )
+        .slice(0, 6)
+    : [];
+
+  // Auto-scrolling carousel (left to right, infinite loop)
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el || !carouselConfig || !carouselConfig.items.length) return;
+
+    let frameId: number;
+    let offset = 0;
+
+    const speed = 0.3; // pixels per frame approx, adjust for desired speed
+
+    const step = () => {
+      const totalWidth = el.scrollWidth / 2 || 1;
+      offset -= speed;
+      if (Math.abs(offset) >= totalWidth) {
+        offset = 0;
+      }
+      el.style.transform = `translateX(${offset}px)`;
+      frameId = requestAnimationFrame(step);
+    };
+
+    frameId = requestAnimationFrame(step);
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+    };
+  }, [carouselConfig]);
 
   // Infinite scroll with IntersectionObserver
   useEffect(() => {
@@ -422,10 +460,11 @@ export default function FincasCanariasClient() {
               <div className={styles.carouselContainer}>
                 <div 
                   className={styles.carousel}
+                  ref={carouselRef}
                   style={{
                     '--carousel-item-count': carouselConfig.items.length,
                     '--carousel-item-width': '280px',
-                    '--carousel-gap': '40px',
+                    '--carousel-gap': '56px',
                   } as React.CSSProperties & {
                     '--carousel-item-count': number;
                     '--carousel-item-width': string;
@@ -531,6 +570,25 @@ export default function FincasCanariasClient() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+          {inlineSearchResults.length > 0 && (
+            <div className={styles.inlineSearchResults}>
+              {inlineSearchResults.map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={styles.inlineSearchItem}
+                  onClick={() => setModalProduct(p)}
+                >
+                  <span className={styles.inlineSearchName}>
+                    {getProductName(p, lang)}
+                  </span>
+                  <span className={styles.inlineSearchSubtitle}>
+                    {getProductSubtitle(p, lang)}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <div className={styles.categoriesSection}>
           <p className={styles.sectionTitle}>{UI[lang].categories}</p>

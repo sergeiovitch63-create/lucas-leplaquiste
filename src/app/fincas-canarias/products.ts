@@ -1,4 +1,4 @@
-﻿import { Product } from "./data"; export const PRODUCTS: Product[] = [
+import { Product } from "./data"; export const PRODUCTS: Product[] = [
   {
     id:1, category:"Sauces", img: null,
     name:{ es:"Pimienta Puta Madre", en:"Pimienta Puta Madre", de:"Pimienta Puta Madre" },
@@ -654,7 +654,7 @@
 
   // ── PACK DEGUSTACIÓN ALMOGROTE GRAN REY ──
   {
-    id:80, category:"Sauces", img: null,
+    id:80, category:"Packs", img: null,
     name:{ es:"Pack Degustación Almogrote Gran Rey", en:"Gran Rey Almogrote Tasting Pack", de:"Gran Rey Almogrote Degustationspaket" },
     subtitle:{ 
       es:"Estuche de 8 mini porciones de almogrote artesanal",
