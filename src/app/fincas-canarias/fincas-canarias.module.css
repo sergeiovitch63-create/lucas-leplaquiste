@@ -412,7 +412,7 @@
 
 .carousel {
   display: flex;
-  gap: var(--carousel-gap, 24px);
+  gap: 24px;
   width: fit-content;
   will-change: transform;
   animation: carouselScroll 12s linear infinite;
@@ -420,7 +420,7 @@
 
 .carouselWrapper {
   display: flex;
-  gap: var(--carousel-gap, 24px);
+  gap: 24px;
   flex-shrink: 0;
   width: fit-content;
 }
@@ -450,7 +450,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
