@@ -41,6 +41,7 @@ export default function FincasCanariasClient() {
   const [productsLoading, setProductsLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(12);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
@@ -93,6 +94,41 @@ export default function FincasCanariasClient() {
         )
         .slice(0, 6)
     : [];
+
+  // Auto-scrolling carousel with exact pixel distance (no overlap)
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el || !carouselConfig || !carouselConfig.items.length) return;
+
+    let frameId: number;
+    let lastTime: number | null = null;
+    let offset = 0;
+
+    const speed = 40; // pixels per second
+
+    const loop = (timestamp: number) => {
+      if (lastTime == null) {
+        lastTime = timestamp;
+      }
+      const deltaSec = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      const totalWidth = el.scrollWidth / 2 || 1; // one full loop (since we duplicate wrappers)
+      offset -= speed * deltaSec;
+      if (Math.abs(offset) >= totalWidth) {
+        offset = 0;
+      }
+
+      el.style.transform = `translateX(${offset}px)`;
+      frameId = requestAnimationFrame(loop);
+    };
+
+    frameId = requestAnimationFrame(loop);
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+    };
+  }, [carouselConfig]);
 
   // Infinite scroll with IntersectionObserver
   useEffect(() => {
@@ -432,6 +468,7 @@ export default function FincasCanariasClient() {
               <div className={styles.carouselContainer}>
                 <div 
                   className={styles.carousel}
+                  ref={carouselRef}
                   style={{
                     '--carousel-item-count': carouselConfig.items.length,
                     '--carousel-item-width': '210px',
@@ -474,8 +511,8 @@ export default function FincasCanariasClient() {
                         </div>
                       ))}
                   </div>
-                  {/* Duplicate wrapper for seamless loop */}
-                  <div className={styles.carouselWrapper}>
+                  {/* Duplicate wrapper for seamless loop (desktop only) */}
+                  <div className={`${styles.carouselWrapper} ${styles.carouselWrapperDuplicate}`}>
                     {carouselConfig.items
                       .sort((a, b) => a.order - b.order)
                       .map((item) => (

@@ -406,51 +406,49 @@
   width: 100%;
   max-width: 1200px;
   margin: 30px auto 0;
+  --carousel-gap: 24px;
   padding: 0 8px;
   overflow: hidden;
 }
 
 .carousel {
   display: flex;
-  gap: 24px;
+  gap: var(--carousel-gap);
   width: fit-content;
   will-change: transform;
-  animation: carouselScroll 12s linear infinite;
 }
 
 .carouselWrapper {
   display: flex;
-  gap: 24px;
+  gap: var(--carousel-gap);
   flex-shrink: 0;
   width: fit-content;
 }
 
+.carouselWrapperDuplicate {
+}
+
 @media (max-width: 768px) {
   .carouselContainer {
+    --carousel-gap: 16px;
     padding: 0 4px;
   }
 
   .carousel {
-    gap: 16px;
-    animation: carouselScroll 14s linear infinite;
+    gap: var(--carousel-gap);
   }
 
   .carouselWrapper {
-    gap: 16px;
+    gap: var(--carousel-gap);
+  }
+
+  .carouselWrapperDuplicate {
+    display: none;
   }
 
   .carouselCard {
-    flex: 0 0 180px;
+    /* largeur contrôlée par --carousel-item-width pour aligner l'animation */
     height: 240px;
-  }
-}
-
-@keyframes carouselScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
   }
 }
 
@@ -469,7 +467,7 @@
 }
 
 .carouselCard {
-  flex: 0 0 210px;
+  flex: 0 0 var(--carousel-item-width, 210px);
   scroll-snap-align: start;
   height: 280px;
   border-radius: 18px;
