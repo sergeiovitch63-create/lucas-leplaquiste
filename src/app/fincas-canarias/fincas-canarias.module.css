@@ -843,6 +843,69 @@
   background: var(--gold-light);
 }
 
+/* SKELETON GRID */
+.productCardSkeleton {
+  background: var(--wood-mid);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  border: 1px solid rgba(201, 150, 58, 0.08);
+}
+
+.productImgSkeleton {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.2s infinite;
+}
+
+.productInfoSkeleton {
+  padding: 12px 14px 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonLine,
+.skeletonLineShort {
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.2s infinite;
+}
+
+.skeletonLine {
+  height: 12px;
+}
+
+.skeletonLineShort {
+  height: 10px;
+  width: 60%;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* GRID */
 .productsGrid {
   display: grid;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UI, CAT_KEY, LANG_NAMES, getProductName, getProductSubtitle, getProductDesc, getCategoryLabel, type Lang, type Category, type Product } from './data';
@@ -39,7 +39,8 @@ export default function FincasCanariasClient() {
   const [products, setProducts] = useState<Product[]>([]);
   const [carouselConfig, setCarouselConfig] = useState<CarouselState | null>(null);
   const [productsLoading, setProductsLoading] = useState(true);
-  const [visibleCount, setVisibleCount] = useState(20);
+  const [visibleCount, setVisibleCount] = useState(12);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   // ── LOAD PRODUCTS FROM API ──
   useEffect(() => {
@@ -82,6 +83,37 @@ export default function FincasCanariasClient() {
 
   const filteredProducts = getFiltered();
   const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+  // Infinite scroll with IntersectionObserver
+  useEffect(() => {
+    if (!loadMoreRef.current) return;
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setVisibleCount((current) => {
+            const next = current + 12;
+            return Math.min(next, filteredProducts.length);
+          });
+        }
+      },
+      {
+        root: null,
+        rootMargin: '200px',
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(loadMoreRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [filteredProducts.length]);
 
   // Helper function to get flag emoji for language
   const getLangFlag = (langCode: Lang): string => {
@@ -522,7 +554,15 @@ export default function FincasCanariasClient() {
         />
         <div className={styles.productsGrid}>
           {productsLoading && products.length === 0 ? (
-            <div className={styles.emptyState} style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>Cargando…</div>
+            Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className={styles.productCardSkeleton}>
+                <div className={styles.productImgSkeleton} />
+                <div className={styles.productInfoSkeleton}>
+                  <div className={styles.skeletonLine} />
+                  <div className={styles.skeletonLineShort} />
+                </div>
+              </div>
+            ))
           ) : filteredProducts.length === 0 ? (
             <div className={styles.emptyState}>{UI[lang].empty}</div>
           ) : (
@@ -561,14 +601,7 @@ export default function FincasCanariasClient() {
           )}
         </div>
         {visibleCount < filteredProducts.length && (
-          <div style={{ textAlign: 'center', marginTop: 24 }}>
-            <button
-              className={styles.loadMoreBtn}
-              onClick={() => setVisibleCount((c) => c + 20)}
-            >
-              Charger plus de produits
-            </button>
-          </div>
+          <div ref={loadMoreRef} style={{ height: 1 }} />
         )}
       </main>
 

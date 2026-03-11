@@ -14,11 +14,6 @@ export async function saveBase64Image(
   subfolder: 'products' | 'carousel',
   filenameHint?: string
 ): Promise<string> {
-  // Sur Vercel, on ne peut pas écrire sur le disque. On garde la valeur telle quelle.
-  if (process.env.VERCEL === '1') {
-    return base64;
-  }
-
   const match = base64.match(/^data:(image\/[\w+.-]+);base64,(.+)$/);
   if (!match) {
     throw new Error('Format image base64 invalide');
@@ -36,10 +31,26 @@ export async function saveBase64Image(
   const fileName = `${safeName}-${Date.now()}.${ext}`;
   const publicDir = path.join(process.cwd(), 'public', 'fincas', subfolder);
 
-  await fs.mkdir(publicDir, { recursive: true });
+  try {
+    await fs.mkdir(publicDir, { recursive: true });
+  } catch (err) {
+    throw new Error(
+      `Impossible de créer le dossier public pour enregistrer l'image (${publicDir}).` +
+      ` Cela peut indiquer un système de fichiers en lecture seule (par ex. Vercel).` +
+      ` Erreur originale: ${(err as Error).message}`
+    );
+  }
 
   const filePath = path.join(publicDir, fileName);
-  await fs.writeFile(filePath, Buffer.from(data, 'base64'));
+  try {
+    await fs.writeFile(filePath, Buffer.from(data, 'base64'));
+  } catch (err) {
+    throw new Error(
+      `Impossible d'écrire le fichier image à l'emplacement ${filePath}.` +
+      ` Cela peut indiquer un système de fichiers en lecture seule (par ex. Vercel).` +
+      ` Erreur originale: ${(err as Error).message}`
+    );
+  }
 
   // URL publique (Next sert /public à la racine du site)
   return `/fincas/${subfolder}/${fileName}`;
