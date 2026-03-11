@@ -725,14 +725,24 @@
 
 .categoriesScroll {
   display: flex;
-  gap: 10px;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  gap: 8px;
   padding-bottom: 8px;
-  scrollbar-width: none;
+  justify-content: center;
 }
 
-.categoriesScroll::-webkit-scrollbar {
-  display: none;
+@media (max-width: 768px) {
+  .categoriesScroll {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+
+  .categoriesScroll::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .catBtn {
