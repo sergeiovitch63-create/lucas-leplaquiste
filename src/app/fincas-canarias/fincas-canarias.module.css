@@ -450,7 +450,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-1 * (var(--carousel-item-width, 210px) + var(--carousel-gap, 24px)) * var(--carousel-item-count, 4)));
+    transform: translateX(-50%);
   }
 }
 
