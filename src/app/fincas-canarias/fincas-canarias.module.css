@@ -406,32 +406,51 @@
   width: 100%;
   max-width: 1200px;
   margin: 30px auto 0;
-  padding: 0 20px;
+  padding: 0 8px;
   overflow: hidden;
-  animation: heroFadeIn 1.4s ease 0.4s forwards;
-  opacity: 0;
 }
 
 .carousel {
   display: flex;
-  gap: 0;
+  gap: var(--carousel-gap, 24px);
   width: fit-content;
   will-change: transform;
+  animation: carouselScroll 12s linear infinite;
 }
 
 .carouselWrapper {
   display: flex;
-  gap: 0;
+  gap: var(--carousel-gap, 24px);
   flex-shrink: 0;
   width: fit-content;
 }
 
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding: 0 4px;
+  }
+
+  .carousel {
+    gap: 16px;
+    animation: carouselScroll 14s linear infinite;
+  }
+
+  .carouselWrapper {
+    gap: 16px;
+  }
+
+  .carouselCard {
+    flex: 0 0 180px;
+    height: 240px;
+  }
+}
+
 @keyframes carouselScroll {
   0% {
-    transform: translateX(calc(var(--carousel-item-width, 280px) * var(--carousel-item-count, 4) + var(--carousel-gap, 40px) * (var(--carousel-item-count, 4) - 1)) * -1);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(calc(-1 * (var(--carousel-item-width, 210px) + var(--carousel-gap, 24px)) * var(--carousel-item-count, 4)));
   }
 }
 
@@ -450,10 +469,9 @@
 }
 
 .carouselCard {
-  flex: 0 0 280px;
+  flex: 0 0 210px;
   scroll-snap-align: start;
-  height: 200px;
-  margin-right: var(--carousel-gap, 40px);
+  height: 280px;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1022,7 +1040,7 @@
 
 .productImgWrap {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   background: var(--wood-light);
 }
@@ -1030,14 +1048,10 @@
 .productImgWrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  transition: transform 0.5s;
 }
 
-.productCard:hover .productImgWrap img {
-  transform: scale(1.06);
-}
 
 .imgPlaceholder {
   width: 100%;
