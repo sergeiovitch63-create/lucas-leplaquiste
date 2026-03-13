@@ -69,8 +69,31 @@ export default function FincasCanariasClient() {
     return () => { cancelled = true; };
   }, []);
 
+  const matchesQuery = (haystack: string, q: string) => {
+    const query = q.toLowerCase().trim();
+    if (!query) return true;
+
+    const text = haystack.toLowerCase();
+
+    // Pour les petites requêtes (3 lettres ou moins, ex: "vin"),
+    // on ne matche que sur des mots entiers pour éviter des faux positifs
+    // comme "vino" ou "vinagre".
+    if (query.length <= 3) {
+      const tokens = text.split(/[^a-zA-ZÀ-ÿ]+/);
+      return tokens.some((t) => t === query);
+    }
+
+    return text.includes(query);
+  };
+
   const getFiltered = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
+    const restrictedCategoryQuery: Category | null =
+      q === 'vin' ? 'Vins' :
+      q === 'pack' || q === 'packs' ? 'Packs' :
+      q === 'miel' ? 'Miel' :
+      null;
+
     return products.filter((p) => {
       const catMatch = activeCategory === 'All' || p.category === activeCategory;
 
@@ -97,7 +120,12 @@ export default function FincasCanariasClient() {
         .join(' ')
         .toLowerCase();
 
-      const searchMatch = haystack.includes(q);
+      let searchMatch = matchesQuery(haystack, q);
+
+      // Cas particuliers : requêtes qui doivent être restreintes à une catégorie précise
+      if (restrictedCategoryQuery) {
+        searchMatch = searchMatch && p.category === restrictedCategoryQuery;
+      }
 
       return catMatch && searchMatch;
     });
@@ -113,6 +141,11 @@ export default function FincasCanariasClient() {
         .filter((p) => {
           const q = searchQuery.toLowerCase().trim();
           if (!q) return false;
+          const restrictedCategoryQuery: Category | null =
+            q === 'vin' ? 'Vins' :
+            q === 'pack' || q === 'packs' ? 'Packs' :
+            q === 'miel' ? 'Miel' :
+            null;
 
           const categoryLabelsAllLangs = [
             getCategoryLabel(p.category, lang),
@@ -134,7 +167,13 @@ export default function FincasCanariasClient() {
             .join(' ')
             .toLowerCase();
 
-          return haystack.includes(q);
+          let searchMatch = matchesQuery(haystack, q);
+
+          if (restrictedCategoryQuery) {
+            searchMatch = searchMatch && p.category === restrictedCategoryQuery;
+          }
+
+          return searchMatch;
         })
         .slice(0, 10)
     : [];
