@@ -74,25 +74,69 @@ export default function FincasCanariasClient() {
     return products.filter((p) => {
       const catMatch = activeCategory === 'All' || p.category === activeCategory;
 
-      // Recherche: on veut des produits dont le nom commence par la lettre tapée
-      const name = getProductName(p, lang).toLowerCase();
-      const searchMatch = !q || name.startsWith(q);
+      // Recherche principale : mots-clés dans nom + sous-titre + description + libellé de catégorie
+      if (!q) return catMatch;
+
+      const categoryLabelsAllLangs = [
+        getCategoryLabel(p.category, lang),
+        getCategoryLabel(p.category, 'fr'),
+        getCategoryLabel(p.category, 'es'),
+        getCategoryLabel(p.category, 'en'),
+        getCategoryLabel(p.category, 'de'),
+        getCategoryLabel(p.category, 'it'),
+        getCategoryLabel(p.category, 'ru'),
+        getCategoryLabel(p.category, 'pl'),
+      ];
+
+      const haystack = [
+        getProductName(p, lang),
+        getProductSubtitle(p, lang),
+        getProductDesc(p, lang),
+        ...categoryLabelsAllLangs,
+      ]
+        .join(' ')
+        .toLowerCase();
+
+      const searchMatch = haystack.includes(q);
 
       return catMatch && searchMatch;
     });
   }, [searchQuery, activeCategory, lang, products]);
 
   const filteredProducts = getFiltered();
-  const visibleProducts = filteredProducts.slice(0, visibleCount);
+  const visibleProducts = searchQuery
+    ? filteredProducts
+    : filteredProducts.slice(0, visibleCount);
+
   const inlineSearchResults = searchQuery
     ? products
-        .filter((p) =>
-          [getProductName(p, lang), getProductSubtitle(p, lang)]
+        .filter((p) => {
+          const q = searchQuery.toLowerCase().trim();
+          if (!q) return false;
+
+          const categoryLabelsAllLangs = [
+            getCategoryLabel(p.category, lang),
+            getCategoryLabel(p.category, 'fr'),
+            getCategoryLabel(p.category, 'es'),
+            getCategoryLabel(p.category, 'en'),
+            getCategoryLabel(p.category, 'de'),
+            getCategoryLabel(p.category, 'it'),
+            getCategoryLabel(p.category, 'ru'),
+            getCategoryLabel(p.category, 'pl'),
+          ];
+
+          const haystack = [
+            getProductName(p, lang),
+            getProductSubtitle(p, lang),
+            getProductDesc(p, lang),
+            ...categoryLabelsAllLangs,
+          ]
             .join(' ')
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase().trim())
-        )
-        .slice(0, 6)
+            .toLowerCase();
+
+          return haystack.includes(q);
+        })
+        .slice(0, 10)
     : [];
 
   // Auto-scrolling carousel with exact pixel distance (no overlap)
