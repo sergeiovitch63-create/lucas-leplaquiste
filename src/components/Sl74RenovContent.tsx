@@ -14,6 +14,7 @@ const SL74_QUICK_ACTIONS = [
   { id: "email", href: `mailto:${SL74_EMAIL}`, iconKey: "email" as const },
 ];
 import { Icon } from "./icons";
+import { MadeByPublox } from "./MadeByPublox";
 import type { Sl74RenovCategory } from "@/data/sl74renov-categories";
 
 function buildWhatsAppHref(categoryLabel: string): string {
@@ -72,26 +73,26 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
           {category.reviews.map((r, i) => (
             <li
               key={i}
-              className="rounded-lg border border-white/10 bg-white/5 p-3"
+              className="rounded-lg border border-white/10 bg-white/5 p-4"
             >
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="text-xs font-medium text-white/95">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-sm font-medium text-white/95">
                   {r.author}
                 </span>
                 {r.rating != null && (
-                  <span className="text-xs text-amber-300">
+                  <span className="text-sm text-amber-300">
                     {"★".repeat(r.rating)}
                   </span>
                 )}
               </div>
-              <p className="text-sm leading-relaxed text-white/85">{r.text}</p>
+              <p className="text-base leading-relaxed text-white/85">{r.text}</p>
             </li>
           ))}
         </ul>
       ) : (
         <>
           {category.body.map((p, i) => (
-            <p key={i} className="text-sm leading-relaxed text-white/85">
+            <p key={i} className="text-base leading-relaxed text-white/85">
               {p}
             </p>
           ))}
@@ -100,14 +101,14 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
 
       {category.whyUs.length > 0 && (
         <section>
-          <h4 className="text-sm font-semibold text-white/95 mb-2">
+          <h4 className="text-base font-semibold text-white/95 mb-2">
             Pourquoi nous choisir
           </h4>
           <ul className="space-y-2">
             {category.whyUs.map((item, i) => (
               <li
                 key={i}
-                className="flex items-start gap-2 text-sm text-white/85"
+                className="flex items-start gap-2 text-base text-white/85"
               >
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/80" />
                 <span>{item}</span>
@@ -119,7 +120,7 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
 
       {hasImages && !category.hideGallery && (
         <section>
-          <h4 className="text-sm font-semibold text-white/95 mb-2">
+          <h4 className="text-base font-semibold text-white/95 mb-2">
             Galerie
           </h4>
           <div className="grid grid-cols-2 gap-2">
@@ -142,7 +143,7 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
             <button
               type="button"
               onClick={() => setShowAllPhotos(true)}
-              className="mt-3 w-full rounded-xl border border-white/20 bg-white/10 py-2.5 text-sm font-medium text-white transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+              className="mt-3 w-full rounded-xl border border-white/20 bg-white/10 py-3 text-base font-medium text-white transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
             >
               Voir toutes les photos
             </button>
@@ -152,17 +153,17 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
 
       {category.faq.length > 0 && (
         <section>
-          <h4 className="text-sm font-semibold text-white/95 mb-2">
+          <h4 className="text-base font-semibold text-white/95 mb-2">
             Questions fréquentes
           </h4>
           <ul className="space-y-3">
             {category.faq.map((item, i) => (
               <li
                 key={i}
-                className="rounded-lg border border-white/10 bg-white/5 p-2.5"
+                className="rounded-lg border border-white/10 bg-white/5 p-3"
               >
-                <p className="text-xs font-medium text-white/95">{item.question}</p>
-                <p className="mt-1 text-xs leading-relaxed text-white/75">
+                <p className="text-sm font-medium text-white/95">{item.question}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/75">
                   {item.answer}
                 </p>
               </li>
@@ -176,7 +177,7 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-[48px] w-full items-center justify-center rounded-xl border border-white/20 bg-white/15 text-sm font-medium text-white transition-all hover:bg-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+          className="flex h-[52px] w-full items-center justify-center rounded-xl border border-white/20 bg-white/15 text-base font-medium text-white transition-all hover:bg-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           aria-label={`Demander un devis pour ${category.label}`}
         >
           Demander un devis
@@ -202,7 +203,7 @@ function AccordionCategoryRow({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full min-h-[56px] items-center gap-3 rounded-2xl px-4 py-3 text-left transition-all duration-200 hover:bg-white/10 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        className="flex w-full min-h-[60px] items-center gap-3 rounded-2xl px-4 py-3.5 text-left transition-all duration-200 hover:bg-white/10 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
         aria-expanded={isExpanded}
         aria-label={isExpanded ? `Fermer ${category.label}` : `Ouvrir ${category.label}`}
       >
@@ -217,7 +218,7 @@ function AccordionCategoryRow({
           />
         </div>
         <div className="flex-1 min-w-0 flex items-center justify-center">
-          <span className="block text-base font-semibold text-white text-center sm:text-lg leading-tight">
+          <span className="block text-lg font-semibold text-white text-center sm:text-xl leading-tight">
             {category.label}
           </span>
         </div>
@@ -270,10 +271,10 @@ export function Sl74RenovContent({ categories }: Sl74RenovContentProps) {
               />
             </div>
             <div className="text-center">
-              <h1 className="text-xl font-semibold tracking-tight text-white sm:text-2xl text-shadow-soft">
+              <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl text-shadow-soft">
                 SL74 Rénov
               </h1>
-              <p className="mt-1 text-xs text-white/80 sm:text-sm text-shadow-soft">
+              <p className="mt-1.5 text-sm text-white/80 sm:text-base text-shadow-soft">
                 Zones d&apos;intervention: Haute Savoie
               </p>
             </div>
@@ -309,9 +310,9 @@ export function Sl74RenovContent({ categories }: Sl74RenovContentProps) {
                     aria-hidden
                   />
                 </div>
-                <div className="flex h-[58px] w-full items-center justify-center gap-2.5 rounded-b-2xl border-t border-white/10 bg-white/15 px-4 backdrop-blur-xl transition-all duration-200 hover:bg-white/20 active:scale-[0.99]">
-                  <Icon name="phone" className="h-5 w-5 shrink-0 text-white" />
-                  <span className="text-sm font-medium text-white sm:text-base">
+                <div className="flex h-[60px] w-full items-center justify-center gap-2.5 rounded-b-2xl border-t border-white/10 bg-white/15 px-4 backdrop-blur-xl transition-all duration-200 hover:bg-white/20 active:scale-[0.99]">
+                  <Icon name="phone" className="h-6 w-6 shrink-0 text-white" />
+                  <span className="text-base font-medium text-white sm:text-lg">
                     Appeler — Devis gratuit
                   </span>
                 </div>
@@ -330,6 +331,9 @@ export function Sl74RenovContent({ categories }: Sl74RenovContentProps) {
               />
             ))}
           </div>
+
+          {/* Made by Publox — tout en bas */}
+          <MadeByPublox />
         </div>
       </PhoneFrame>
     </BackgroundShell>
