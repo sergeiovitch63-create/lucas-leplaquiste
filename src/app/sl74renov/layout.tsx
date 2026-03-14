@@ -13,7 +13,7 @@ export default function Sl74RenovLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`${cormorant.variable} font-sl74-cormorant`}>
+    <div className={`${cormorant.variable} font-sans md:font-sl74-cormorant`}>
       {children}
     </div>
   );
