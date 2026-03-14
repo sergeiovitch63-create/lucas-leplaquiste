@@ -1,0 +1,20 @@
+import { Cormorant_Garamond } from "next/font/google";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sl74-cormorant",
+  display: "swap",
+});
+
+export default function Sl74RenovLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={`${cormorant.variable} font-sl74-cormorant`}>
+      {children}
+    </div>
+  );
+}

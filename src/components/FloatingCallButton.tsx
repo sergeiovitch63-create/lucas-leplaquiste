@@ -16,11 +16,14 @@ export function FloatingCallButton() {
 
   const isMarina = pathname.startsWith("/marina-masaje");
   const isTaller = pathname.startsWith("/taller-el-salon");
+  const isSl74Renov = pathname.startsWith("/sl74renov") || pathname.startsWith("/electricien");
   const whatsappHref = isMarina
     ? marinaConfig.quickActions.find((a) => a.id === "whatsapp")?.href
     : isTaller
       ? tallerConfig.quickActions.find((a) => a.id === "whatsapp")?.href
-      : site.waLink;
+      : isSl74Renov
+        ? "https://wa.me/33695277901"
+        : site.waLink;
   if (!whatsappHref) return null;
 
   return (
