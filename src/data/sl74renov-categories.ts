@@ -198,7 +198,7 @@ export const sl74RenovCategories: Sl74RenovCategory[] = [
     label: "À propos",
     short: "",
     body: [
-      "SL74 Rénov est une entreprise d'électricité générale et de rénovation basée en Occitanie.",
+      "SL74 Rénov est une entreprise d'électricité générale et de rénovation basée en Haute-Savoie.",
       "Nous intervenons pour tous vos projets : tableaux électriques, portails automatiques, chauffage électrique et bornes de recharge pour véhicules électriques.",
       "Notre priorité : la qualité du travail, le respect des normes et la satisfaction de nos clients.",
     ],
