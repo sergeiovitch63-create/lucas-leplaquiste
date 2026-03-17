@@ -9,9 +9,30 @@ import {
 } from "@/lib/autoaufbereitung-i18n";
 
 export const metadata: Metadata = {
-  title: "Autoaufbereitung | Puerto de la Cruz | Publink",
+  title: "Auto Detailing Puerto de la Cruz | Autoaufbereitung",
   description:
-    "Auto detailing à Puerto de la Cruz. Außenaufbereitung, Innenaufbereitung, Keramikversiegelung, Nanoversiegelung. Contact WhatsApp.",
+    "Auto detailing à Puerto de la Cruz : nettoyage intérieur/extérieur, polissage, protection céramique et nano. Devis rapide par WhatsApp.",
+  openGraph: {
+    title: "Auto Detailing Puerto de la Cruz | Autoaufbereitung",
+    description:
+      "Préparation esthétique automobile à Puerto de la Cruz : extérieur, intérieur, correction de peinture, protection céramique. Contact et devis par WhatsApp.",
+    siteName: "Autoaufbereitung Puerto de la Cruz",
+    images: [
+      {
+        url: "/media/autoaufbereitung/1772448001978-87c4hu.png",
+        width: 1200,
+        height: 630,
+        alt: "Auto detailing à Puerto de la Cruz",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Auto Detailing Puerto de la Cruz | Autoaufbereitung",
+    description:
+      "Préparation esthétique auto : extérieur, intérieur, correction de peinture, protection céramique. Puerto de la Cruz.",
+    images: ["/media/autoaufbereitung/1772448001978-87c4hu.png"],
+  },
 };
 
 const VALID_LOCALES: AutoaufbereitungLocale[] = ["de", "en", "es", "ru"];
