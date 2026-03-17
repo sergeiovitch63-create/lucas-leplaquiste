@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Script from "next/script";
 import { BackgroundShell } from "./BackgroundShell";
 import { PhoneFrame } from "./PhoneFrame";
 const SL74_PHONE = "+33695277901";
@@ -65,6 +66,21 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
   const hasMorePhotos = category.images.length > 4;
   const whatsappHref = buildWhatsAppHref(category.label);
   const showDevis = !category.hideDevis;
+
+  if (category.slug === "avis") {
+    return (
+      <div className="space-y-4 pt-2 pb-1">
+        <Script
+          src="https://elfsightcdn.com/platform.js"
+          strategy="lazyOnload"
+        />
+        <div
+          className="elfsight-app-f28a825d-4f84-4ade-8813-13a5f51121da"
+          data-elfsight-app-lazy
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4 pt-2 pb-1">
