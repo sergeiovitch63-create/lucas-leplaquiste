@@ -130,6 +130,14 @@ function CategoryExpandableContent({ category }: { category: Sl74RenovCategory }
         </section>
       )}
 
+      <section>
+        <div className="aspect-[4/3] rounded-xl border-2 border-dashed border-white/30 bg-white/5 flex items-center justify-center">
+          <span className="text-base font-medium text-white/70">
+            Image à mettre
+          </span>
+        </div>
+      </section>
+
       {showDevis && (
         <button
           type="button"
@@ -151,7 +159,7 @@ function AccordionCategoryRow({
   isExpanded: boolean;
   onToggle: () => void;
 }) {
-  const thumbnailSrc = "/media/jobs/plombier.svg";
+  const thumbnailSrc = "/plombier-lyon-card.jpg";
 
   return (
     <div className="rounded-2xl border border-white/15 bg-black/25 overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.4)] backdrop-blur-md">
