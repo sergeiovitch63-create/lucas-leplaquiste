@@ -508,7 +508,7 @@ export default function FincasCanariasClient() {
             </svg>
           </a>
           <a
-            href="mailto:contact@fincascanarias.com"
+            href="mailto:fincascanarias1@hotmail.com"
             className={styles.socialLink}
             aria-label="Email"
           >
