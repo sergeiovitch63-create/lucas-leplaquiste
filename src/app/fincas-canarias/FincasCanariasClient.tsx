@@ -274,8 +274,17 @@ export default function FincasCanariasClient() {
 
   const overlayFiltered = overlaySearchQuery
     ? products.filter((p) =>
-        [getProductName(p, lang), getProductSubtitle(p, lang), getProductDesc(p, lang)]
-          .join(' ')
+        [
+          getProductName(p, lang),
+          getProductSubtitle(p, lang),
+          getProductDesc(p, lang),
+          // Inclure la catégorie (ex: "Vins" / "Vinos, Licores & Zumos")
+          // pour que la recherche "vin" remonte aussi les vins même si le texte
+          // ne contient pas le mot "vino".
+          p.category,
+          getCategoryLabel(p.category, lang),
+        ]
+          .join(" ")
           .toLowerCase()
           .includes(overlaySearchQuery.toLowerCase().trim())
       ).slice(0, 6)
