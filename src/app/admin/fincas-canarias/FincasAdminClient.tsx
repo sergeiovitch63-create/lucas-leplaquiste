@@ -246,6 +246,7 @@ function ProductForm({ product, onChange, imgData, onImgChange, onImgRemove }: {
 }
 
 export default function FincasAdminClient() {
+  const [isMobile, setIsMobile] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -265,6 +266,13 @@ export default function FincasAdminClient() {
   const [viewMode, setViewMode] = useState<"table" | "grid">("table");
   const [previewImg, setPreviewImg] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"products" | "categories" | "carousel">("products");
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 900);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const showToast = (message: string, type: "success" | "error" = "success") => {
     setToast({ visible:true, message, type });
@@ -476,6 +484,7 @@ export default function FincasAdminClient() {
         variant==="danger" ? { background:"var(--danger-bg)", border:"1px solid rgba(192,57,43,.3)", color:"#e74c3c" } : {}),
   });
   const btnSm = (variant: "gold" | "outline" | "danger") => ({ ...btnStyle(variant), padding:"5px 10px", fontSize:".68rem" });
+  const tableGridTemplate = "40px 60px minmax(240px,1fr) 180px 120px 110px";
 
   if (loading) {
     return (
@@ -500,11 +509,13 @@ export default function FincasAdminClient() {
       <div style={{
         background:"linear-gradient(135deg, rgba(10,6,2,.98), rgba(15,8,3,.98))",
         borderBottom:"1px solid var(--border)",
-        padding:"0 24px",
+        padding:isMobile ? "10px 12px" : "0 24px",
         display:"flex",
-        alignItems:"center",
+        flexDirection:isMobile ? "column" : "row",
+        alignItems:isMobile ? "stretch" : "center",
         justifyContent:"space-between",
-        height:64,
+        height:isMobile ? "auto" : 64,
+        gap:isMobile ? 10 : 0,
         position:"sticky",
         top:0,
         zIndex:100,
@@ -535,7 +546,7 @@ export default function FincasAdminClient() {
             </div>
           </div>
         </div>
-        <div style={{display:"flex",gap:10}}>
+        <div style={{display:"flex",gap:8,flexWrap:"wrap",width:isMobile?"100%":"auto"}}>
           <Link href="/fincas-canarias" target="_blank" style={{...btnStyle("outline"),textDecoration:"none"}}>👁 Voir le site</Link>
           <button style={btnStyle("outline")} onClick={exportJSON}>⬇ Exporter JSON</button>
           <button style={btnStyle("gold")} onClick={openAdd}>+ Ajouter produit</button>
@@ -546,9 +557,11 @@ export default function FincasAdminClient() {
       <div style={{
         background:"var(--surface)",
         borderBottom:"1px solid var(--border)",
-        padding:"0 24px",
+        padding:isMobile ? "0 8px" : "0 24px",
         display:"flex",
         gap:4,
+        overflowX:"auto",
+        whiteSpace:"nowrap",
       }}>
         {[
           { id: "products", label: "📦 Produits", icon: "📦" },
@@ -578,20 +591,22 @@ export default function FincasAdminClient() {
       </div>
 
       {/* ── LAYOUT ── */}
-      <div style={{display:"flex",minHeight:"calc(100vh - 122px)"}}>
+      <div style={{display:"flex",flexDirection:isMobile?"column":"row",minHeight:"calc(100vh - 122px)"}}>
 
         {/* ── SIDEBAR (only for products) ── */}
         {activeTab === "products" && (
           <aside style={{
-            width:240,
+            width:isMobile ? "100%" : 240,
             flexShrink:0,
             background:"linear-gradient(180deg, var(--surface), var(--surface2))",
-            borderRight:"1px solid var(--border)",
-            padding:"24px 0",
-            position:"sticky",
-            top:122,
-            height:"calc(100vh - 122px)",
-            overflowY:"auto",
+            borderRight:isMobile ? "none" : "1px solid var(--border)",
+            borderBottom:isMobile ? "1px solid var(--border)" : "none",
+            padding:isMobile ? "10px 0" : "24px 0",
+            position:isMobile ? "static" : "sticky",
+            top:isMobile ? 0 : 122,
+            height:isMobile ? "auto" : "calc(100vh - 122px)",
+            overflowY:isMobile ? "visible" : "auto",
+            overflowX:isMobile ? "auto" : "visible",
             boxShadow:"2px 0 16px rgba(0,0,0,.2)",
           }}>
             <span style={{
@@ -642,7 +657,7 @@ export default function FincasAdminClient() {
         )}
 
         {/* ── MAIN ── */}
-        <main style={{flex:1,padding:24,overflowY:"auto"}}>
+        <main style={{flex:1,padding:isMobile ? 12 : 24,overflowY:"auto"}}>
           {activeTab === "categories" && <CategoriesManager showToast={showToast} />}
           {activeTab === "carousel" && <CarouselManager showToast={showToast} />}
           {activeTab === "products" && (
@@ -708,7 +723,7 @@ export default function FincasAdminClient() {
 
           {/* Search & Sort */}
           <div style={{display:"flex",gap:12,marginBottom:20,flexWrap:"wrap",alignItems:"center"}}>
-            <div style={{position:"relative",flex:1,minWidth:280}}>
+            <div style={{position:"relative",flex:1,minWidth:isMobile ? 0 : 280}}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 style={{position:"absolute",left:12,top:"50%",transform:"translateY(-50%)",width:16,height:16,color:"var(--muted)",pointerEvents:"none"}}>
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -763,8 +778,8 @@ export default function FincasAdminClient() {
           )}
 
           {/* Table */}
-          <div style={{background:"var(--surface)",border:"1px solid var(--border)",borderRadius:12,overflow:"hidden"}}>
-            <div style={{display:"grid",gridTemplateColumns:"40px 60px 1fr 180px 120px 110px",padding:"10px 16px",borderBottom:"1px solid var(--border)",fontSize:".65rem",letterSpacing:".15em",textTransform:"uppercase",color:"var(--muted)"}}>
+          <div style={{background:"var(--surface)",border:"1px solid var(--border)",borderRadius:12,overflowX:"auto",overflowY:"hidden"}}>
+            <div style={{display:"grid",gridTemplateColumns:tableGridTemplate,minWidth:740,padding:"10px 16px",borderBottom:"1px solid var(--border)",fontSize:".65rem",letterSpacing:".15em",textTransform:"uppercase",color:"var(--muted)"}}>
               <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                 <input type="checkbox" checked={selectedIds.size === filtered.length && filtered.length > 0} onChange={selectAll} style={{cursor:"pointer"}}/>
               </div>
@@ -776,7 +791,7 @@ export default function FincasAdminClient() {
             )}
 
             {filtered.map(p => (
-              <div key={p.id} style={{display:"grid",gridTemplateColumns:"40px 60px 1fr 180px 120px 110px",padding:"12px 16px",borderBottom:"1px solid rgba(201,150,58,.08)",alignItems:"center",transition:"background .15s",background:selectedIds.has(p.id)?"rgba(201,150,58,.08)":"transparent"}}
+              <div key={p.id} style={{display:"grid",gridTemplateColumns:tableGridTemplate,minWidth:740,padding:"12px 16px",borderBottom:"1px solid rgba(201,150,58,.08)",alignItems:"center",transition:"background .15s",background:selectedIds.has(p.id)?"rgba(201,150,58,.08)":"transparent"}}
                 onMouseEnter={e=>{if(!selectedIds.has(p.id)){(e.currentTarget as HTMLElement).style.background="rgba(201,150,58,.04)"}}}
                 onMouseLeave={e=>{if(!selectedIds.has(p.id)){(e.currentTarget as HTMLElement).style.background="transparent"}}}
               >
