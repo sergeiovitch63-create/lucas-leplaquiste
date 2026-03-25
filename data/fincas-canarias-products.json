@@ -1599,4 +1599,285 @@
       "de": "Knusprige gebratene Bananen in drei Geschmacksrichtungen: gesalzen, Knoblauch und scharf, mit einem Chips-ähnlichen Knusper. Perfekt als Vorspeise. Glutenfrei."
     }
   }
+  ,
+  {
+    "id": 81,
+    "category": "Sauces",
+    "img": null,
+    "name": {
+      "es": "Mojo verde picante",
+      "en": "Spicy Green Mojo",
+      "de": "Scharfes Mojo Verde"
+    },
+    "subtitle": {
+      "es": "Salsa de mojo verde con ajo, comino y perejil",
+      "en": "Green pepper mojo with garlic, cumin & parsley",
+      "de": "Mojo verde mit Knoblauch, Kreuzkümmel & Petersilie"
+    },
+    "desc": {
+      "es": "Salsa canaria con pimientos verdes, aceite de oliva y aceite de girasol, realzada con ajo, comino, perejil y otros pimientos típicos de Tenerife, sin dominar los sabores. Ideal con carne a la parrilla y pescado.",
+      "en": "A Tenerife-style green pepper mojo with olive and sunflower oil, enhanced with garlic, cumin, parsley and local peppers—balanced and not overpowering. Ideal with grilled meat and fish.",
+      "de": "Ein Teneriffa-Mojo aus grünen Paprikaschoten mit Oliven- und Sonnenblumenöl, verfeinert mit Knoblauch, Kreuzkümmel, Petersilie und typischen Paprikas von der Insel – ausgewogen, ohne zu dominieren. Ideal zu gegrilltem Fleisch und Fisch."
+    }
+  },
+  {
+    "id": 82,
+    "category": "Sauces",
+    "img": null,
+    "name": {
+      "es": "Ketchup picante",
+      "en": "Spicy Ketchup",
+      "de": "Scharfer Ketchup"
+    },
+    "subtitle": {
+      "es": "Tomate y azúcar moreno con picante de pimientos",
+      "en": "Tomato & brown sugar with pepper heat",
+      "de": "Tomate & brauner Zucker mit Paprika-Schärfe"
+    },
+    "desc": {
+      "es": "Ketchup picante que combina la dulzura del tomate y del azúcar moreno con el picante de los pimientos, realzado con cebolla, vinagre, aceite de girasol y una mezcla de especias. Bastante picante sin enmascarar los sabores. Ideal con carne a la parrilla y pescado.",
+      "en": "A spicy ketchup that blends tomato sweetness and brown sugar with the heat of peppers, enhanced with onion, vinegar, sunflower oil and a spice mix. Quite spicy without masking the flavors. Ideal with grilled meat and fish.",
+      "de": "Ein würziger Ketchup aus Tomatensüße und braunem Zucker, veredelt mit Paprikaschärfe sowie Zwiebel, Essig, Sonnenblumenöl und einer Gewürzmischung. Deutlich scharf, aber ohne die Aromen zu überdecken. Ideal zu gegrilltem Fleisch und Fisch."
+    }
+  },
+  {
+    "id": 83,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Blanco Martinón",
+      "en": "Blanco Martinón",
+      "de": "Blanco Martinón"
+    },
+    "subtitle": {
+      "es": "D.O. Lanzarote | Malvasía de Lanzarote",
+      "en": "D.O. Lanzarote | Malvasía de Lanzarote",
+      "de": "D.O. Lanzarote | Malvasía de Lanzarote"
+    },
+    "desc": {
+      "es": "Blanco de Lanzarote con tonos amarillo pálido y verdes, limpio y brillante. Vino franco con gran complejidad aromática: flores blancas, frutas de hueso (melocotón y albaricoque) y sutiles notas de plantas aromáticas. Excelente mineralidad con final fresco y muy agradable, reflejo de los suelos volcánicos de La Geria.",
+      "en": "Pale yellow wine with green hues, clean and bright. A fresh, off-dry wine with great aromatic complexity: white flowers, stone fruits (peach, apricot) and subtle hints of aromatic plants. Strong minerality with a broad, very pleasant, fresh finish that showcases Lanzarote’s volcanic terroirs.",
+      "de": "Hellgelb mit grünlichen Reflexen, sauber und brillant. Ein offener, frischer Wein mit großer aromatischer Komplexität: weiße Blumen, Steinobst (Pfirsich, Aprikose) und zarte Erinnerungen an aromatische Pflanzen. Sehr mineralisch, frisch und mit einem breiten, angenehm langen Finish – typisch für die vulkanischen Böden der Geria."
+    }
+  },
+  {
+    "id": 84,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Afrutado Martinón",
+      "en": "Afrutado Martinón",
+      "de": "Afrutado Martinón"
+    },
+    "subtitle": {
+      "es": "10,5% Vol. | Donarot | Malvasía de Lanzarote Semidulce",
+      "en": "10.5% Vol. | Donarot | Malvasía de Lanzarote Semidulce",
+      "de": "10,5% Vol. | Donarot | Malvasía de Lanzarote Semidulce"
+    },
+    "desc": {
+      "es": "Afrutado semidulce de Malvasía con amarillo pajizo pálido, limpio y brillante. Muy varietal, franco e intenso: aromas de frutas de hueso y flores blancas. En boca es redondo, fresco y equilibrado, con balance perfecto entre acidez y golosidad del azúcar. Final largo, redondo y agradable; ideal con aperitivos, patés, quesos y postres.",
+      "en": "Pale straw yellow wine, clean and bright. Very varietal and bold with great intensity. Aromas of stone fruits and white flowers, subtle and pleasant. Round, fresh and very well balanced on the palate with harmony between acidity freshness and the sweetness of sugar. Long and very round finish—perfect with appetizers, pâtés, cheeses and all kinds of desserts.",
+      "de": "Blass strohgelb, sauber und brillant. Sehr sortentypisch und klar, mit großer Intensität: Aromen von Steinfrüchten und weißen Blumen, dezent und angenehm. Am Gaumen rund, frisch und sehr ausgewogen—perfektes Zusammenspiel aus der Frische der Säure und der Süße des Zuckers. Langer, sehr runder Abgang; ideal zu Aperitifs, Pâtés, Käse und Desserts."
+    }
+  },
+  {
+    "id": 85,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Blanco Seco",
+      "en": "Blanco Seco",
+      "de": "Blanco Seco"
+    },
+    "subtitle": {
+      "es": "90% Forastera Gomera, 10% Listán Blanco | 13% Vol.",
+      "en": "90% Forastera Gomera, 10% Listán Blanco | 13% Vol.",
+      "de": "90% Forastera Gomera, 10% Listán Blanco | 13% Vol."
+    },
+    "desc": {
+      "es": "Vino limpio y brillante con color amarillo acerado y destellos pajizos. En nariz es franco con intensidad media-alta: frutas tropicales, notas florales y toques tostados. En boca es fresco y equilibrado, redondo y persistente, con un toque salino muy agradable.",
+      "en": "Clean and bright wine with a steel-yellow tone and straw highlights. On the nose it is frank with medium-high intensity: tropical fruit aromas, florals and toasted notes. Fresh and balanced on the palate—round, persistent, with a very pleasant saline touch.",
+      "de": "Klare, brillante Weißweinnote in Stahlgelb mit strohfarbenen Reflexen. In der Nase offen und mit mittelhoher Intensität: Aromen von tropischen Früchten, florale Noten und dezente Röstanklänge. Am Gaumen frisch und ausgewogen, rund und anhaltend—mit einem angenehm salzigen Touch."
+    }
+  },
+  {
+    "id": 86,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Blanco Semidulce",
+      "en": "Blanco Semidulce",
+      "de": "Blanco Semidulce"
+    },
+    "subtitle": {
+      "es": "100% Forastera Gomera | 12% Vol.",
+      "en": "100% Forastera Gomera | 12% Vol.",
+      "de": "100% Forastera Gomera | 12% Vol."
+    },
+    "desc": {
+      "es": "Vino limpio y brillante de tono amarillo acerado con destellos verdosos. En nariz destaca por una intensidad media-alta con aromas tropicales muy sutiles. En boca es ligero, fresco y refrescante.",
+      "en": "Clean and bright wine with steel-yellow tones and green highlights. On the nose it has medium-high intensity with very subtle tropical aromas. Fresh, balanced and light on the palate—lightly refreshing.",
+      "de": "Sauberer, brillanter Wein mit stahlgelben Tönen und grünlichen Highlights. In der Nase mit mittelhoher Intensität und nur sehr feinen tropischen Aromen. Am Gaumen leicht, frisch und erfrischend."
+    }
+  },
+  {
+    "id": 87,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Engazo Tinto Cosecha",
+      "en": "Engazo Tinto Cosecha",
+      "de": "Engazo Tinto Cosecha"
+    },
+    "subtitle": {
+      "es": "Tinto joven | Listán Negro, Tintilla, Castellana | 3 meses en roble francés | D.O. Valle de la Orotava",
+      "en": "Young Red | Listán Negro, Tintilla, Castellana | 3 months in French oak | D.O. Valle de la Orotava",
+      "de": "Junges Rot | Listán Negro, Tintilla, Castellana | 3 Monate im französischen Eichenfass | D.O. Valle de la Orotava"
+    },
+    "desc": {
+      "es": "Color rojo intenso, capa media. En nariz destacan los frutos del bosque y el regaliz, con toque de roble, ahumados, fruto seco tostado y pimienta. En boca es redondo y equilibrado.",
+      "en": "Intense red with medium depth. The nose highlights forest fruits and liquorice, with touches of oak, smoky notes, toasted dried fruit and pepper. Round and balanced on the palate.",
+      "de": "Intensives Rot mit mittlerer Tiefe. In der Nase dominieren Waldfrüchte und Lakritz, mit Anklängen an Eiche, rauchigen Noten, geröstetem Trockenobst und Pfeffer. Am Gaumen rund und balanciert."
+    }
+  },
+  {
+    "id": 88,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Engazo Tinto Roble",
+      "en": "Engazo Tinto Roble",
+      "de": "Engazo Tinto Roble"
+    },
+    "subtitle": {
+      "es": "Tinto Crianza | Listán Negro, Tintilla, Negramoll | D.O. Valle de la Orotava",
+      "en": "Crianza Red | Listán Negro, Tintilla, Negramoll | D.O. Valle de la Orotava",
+      "de": "Crianza Rot | Listán Negro, Tintilla, Negramoll | D.O. Valle de la Orotava"
+    },
+    "desc": {
+      "es": "Color rojo intenso, capa alta. En nariz predominan los frutos negros, ciruela e higos secos, con recuerdos anisados, ahumados y una leve nota de vainilla de la barrica. En boca es redondo y complejo.",
+      "en": "Intense red with high depth. On the nose: black fruits, plum and dried figs, with hints of anise, smoky notes and a touch of vanilla from the barrel. Round and complex on the palate.",
+      "de": "Intensives Rot mit großer Tiefe. In der Nase: schwarze Früchte, Pflaume und getrocknete Feigen, dazu Anisnoten, rauchige Akzente und ein Hauch von Vanille aus dem Fass. Am Gaumen rund und komplex."
+    }
+  },
+  {
+    "id": 89,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Ensamblaje Blanco",
+      "en": "Ensamblaje Blanco",
+      "de": "Ensamblaje Blanco"
+    },
+    "subtitle": {
+      "es": "D.O.P Islas Canarias | 13,5% Vol. | Habitual: Gual, Marmajuelo, Vijariego Blanco, Malvasía Aromática y Verdello",
+      "en": "D.O.P Islas Canarias | 13.5% Vol. | Usually: Gual, Marmajuelo, Vijariego Blanco, Malvasía Aromática and Verdello",
+      "de": "D.O.P Islas Canarias | 13,5% Vol. | Meist: Gual, Marmajuelo, Vijariego Blanco, Malvasía Aromática & Verdello"
+    },
+    "desc": {
+      "es": "Vendimia, vinificación y crianza por separado. Amarillo con tonos verdosos, limpio y brillante. Aromático y cautivador: muy mineral con matiz ahumado; frutas tropicales, madreselva, albaricoque y menta. En boca es brillante y vibrante, con sabor profundo sustentado por el terruño ahumado de Tenerife. Equilibrado y persistente.",
+      "en": "D.O.P Islas Canarias blend. Harvested, vinified and aged separately. Yellow with green hues, clean and bright. Aromatic and captivating, very mineral with smoky tones; tropical fruits, honeysuckle, apricot and mint. Bright and vibrant on the palate, with deep flavour sustained by Tenerife’s smoky terroir. Balanced and persistent.",
+      "de": "D.O.P Islas Canarias Cuvée. Lese, Vinifikation und Reifung getrennt. Gelb mit grünlichen Reflexen, sauber und brillant. Aromatisch und fesselnd: sehr mineralisch mit rauchigen Noten; tropische Früchte, Geißblatt, Aprikose und Minze. Am Gaumen strahlend und lebendig, mit tiefer Tiefe, geprägt vom rauchigen Terroir Teneriffas. Ausgewogen und anhaltend."
+    }
+  },
+  {
+    "id": 90,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Ensamblaje Tinto",
+      "en": "Ensamblaje Tinto",
+      "de": "Ensamblaje Tinto"
+    },
+    "subtitle": {
+      "es": "D.O.P Islas Canarias | 14% Vol. | Habitual: Negramoll, Tintilla, Vijariego Negro y Baboso Negro",
+      "en": "D.O.P Islas Canarias | 14% Vol. | Usually: Negramoll, Tintilla, Vijariego Negro and Baboso Negro",
+      "de": "D.O.P Islas Canarias | 14% Vol. | Meist: Negramoll, Tintilla, Vijariego Negro & Baboso Negro"
+    },
+    "desc": {
+      "es": "Vendimia, vinificación y crianza por separado en condiciones y microclimas diferentes. Rojo granate con tonos violáceos y capa media-alta. Potente y terroso: pimienta negra, setas y frutos negros confitados, con violetas y chocolate que aparecen en la nariz. En boca es estructurado y complejo.",
+      "en": "Harvested, vinified and aged separately in different conditions and microclimates. Garnet red with violet hues, medium-high depth. Powerful and earthy aromas: black pepper, mushrooms and candied black fruits. Violets and chocolate emerge.",
+      "de": "Lese, Vinifikation und Reifung getrennt—je nach Bedingungen und Mikroklima. Granatrot mit violetten Reflexen, mittlere bis hohe Tiefe. Kraftvoll und erdig: schwarze Pfeffernoten, Pilz- und kandierte Noten dunkler Früchte. Dazu kommen Veilchen und Schokolade."
+    }
+  },
+  {
+    "id": 91,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Flor de Chasna Blanco Premium",
+      "en": "Flor de Chasna Blanco Premium",
+      "de": "Flor de Chasna Blanco Premium"
+    },
+    "subtitle": {
+      "es": "Blanco Seco Crianza | 50% Marmajuelo, 50% Moscatel | D.O. Abona",
+      "en": "Dry White Crianza | 50% Marmajuelo, 50% Moscatel | D.O. Abona",
+      "de": "Trockenes Weiß Crianza | 50% Marmajuelo, 50% Moscatel | D.O. Abona"
+    },
+    "desc": {
+      "es": "Botellas de 75cl. Vino blanco con tonos pajizos. En nariz y boca es envolvente y aterciopelado, con buena predisposición al envejecimiento en botella.",
+      "en": "75cl bottles. White wine with straw hues. Both on the nose and palate it is enveloping and velvety, with a good ageing potential in bottle.",
+      "de": "75cl Flaschen. Weißwein mit strohfarbenen Nuancen. Sowohl in der Nase als auch am Gaumen samtig, umhüllend und mit guter Entwicklungsmöglichkeit in der Flasche."
+    }
+  },
+  {
+    "id": 92,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Flor de Chasna Tinto Crianza Premium",
+      "en": "Flor de Chasna Tinto Crianza Premium",
+      "de": "Flor de Chasna Tinto Crianza Premium"
+    },
+    "subtitle": {
+      "es": "Tinto Crianza | Tempranillo | 8 meses en roble francés y americano | D.O. Abona",
+      "en": "Red Crianza | Tempranillo | 8 months in French and American oak | D.O. Abona",
+      "de": "Rot Crianza | Tempranillo | 8 Monate im französischen & amerikanischen Eichenholz | D.O. Abona"
+    },
+    "desc": {
+      "es": "Color rojo intenso con matices a teja. En nariz, intensidad alta con buen equilibrio entre fruta y madera; recuerdos a fruta roja madura sobre un fondo de vainilla y tostado. En boca es amplio, maduro y suave, con un paso de fruta y un final de madera integrado.",
+      "en": "Intense red color with brick hues. High-intensity nose with a good balance of fruit and wood, hints of ripe red fruit over a vanilla and toast background. Broad, mature and smooth on the palate with a good fruity mid-palate and integrated woody finish.",
+      "de": "Intensives Rot mit Ziegelreflexen. In der Nase hohe Intensität und ein gutes Gleichgewicht aus Frucht und Holz—Noten reifer roter Früchte auf einem Hintergrund von Vanille und Toast. Am Gaumen breit, reif und weich; mit fruchtigem Mittelgaumen und einem integrierten, holzigen Finale."
+    }
+  },
+  {
+    "id": 93,
+    "category": "Vins",
+    "img": null,
+    "name": {
+      "es": "Rosado de Tenerife",
+      "en": "Tenerife Rosé",
+      "de": "Teneriffa Rosé"
+    },
+    "subtitle": {
+      "es": "Rosado afrutado y fresco | Listán Negro | Valle de La Orotava",
+      "en": "Fruity & fresh rosé | Listán Negro | Valle de La Orotava",
+      "de": "Fruchtiger, frischer Rosé | Listán Negro | Valle de La Orotava"
+    },
+    "desc": {
+      "es": "Rosado afrutado y fresco de Tenerife, elaborado con uvas Listán Negro en el Valle de La Orotava. Color rosa frambuesa intenso. Aromas delicadamente dulces. En boca ofrece frescura equilibrada, taninos sutiles y notas frutales persistentes. Perfecto para acompañar carne o pescado o para disfrutar entre amigos.",
+      "en": "Fruity and fresh rosé from Tenerife made from Listán Negro grapes in the Valle de La Orotava. Intense raspberry pink color. Delicately sweet aromas. Balanced freshness on the palate, with subtle tannins and persistent fruity notes. Perfect with meat, fish or for a convivial moment with friends.",
+      "de": "Fruchtiger, frischer Rosé aus Teneriffa aus Trauben der Sorte Listán Negro aus dem Valle de La Orotava. Intensives Himbeerrosa. Fein süßliche Aromen. Am Gaumen ausgewogene Frische, dezente Tannine und anhaltende fruchtige Noten. Ideal zu Fleisch, Fisch oder für einen geselligen Moment."
+    }
+  },
+  {
+    "id": 94,
+    "category": "Sauces",
+    "img": null,
+    "name": {
+      "es": "Trío de salsas canarias",
+      "en": "Trío of Canary Sauces",
+      "de": "Trio kanarischer Saucen"
+    },
+    "subtitle": {
+      "es": "Mojo rojo, mojo verde y almogrote",
+      "en": "Mojo rojo, mojo verde & almogrote",
+      "de": "Mojo rojo, mojo verde & Almogrote"
+    },
+    "desc": {
+      "es": "Trío de salsas canarias: (1) Mojo rojo — salsa picante tradicional con pimiento rojo, aceite, vinagre, ajo, comino y sal; (2) Mojo verde — salsa fresca y herbal con cilantro, pimiento verde, ajo, perejil, aceite, vinagre, comino, pimienta y sal; (3) Almogrote — pasta de queso curado fuerte con queso curado (vaca, oveja y cabra), aceite, pimentón, pimientos secos y cayena, con ajo. Ideal con carnes, pescado, verduras y pan.",
+      "en": "Trío of Canary sauces: (1) Mojo rojo — a traditional spicy sauce (red pepper, oil, vinegar, garlic, cumin, salt); (2) Mojo verde — a fresh herbal sauce (coriander, green pepper, garlic, parsley, oil, vinegar, cumin, pepper, salt); (3) Almogrote — a bold cured cheese spread (cured cheese: cow, sheep & goat, oil, paprika, dried peppers, cayenne, garlic). Ideal with meats, fish, vegetables and bread.",
+      "de": "Trio kanarischer Saucen: (1) Mojo rojo — traditionelle würzige Sauce (rote Paprika, Öl, Essig, Knoblauch, Kreuzkümmel, Salz); (2) Mojo verde — frische Kräutersauce (Koriander, grüne Paprika, Knoblauch, Petersilie, Öl, Essig, Kreuzkümmel, Pfeffer, Salz); (3) Almogrote — kräftige Aufstrichpaste aus gereiftem Käse (gereifter Käse: Kuh, Schaf & Ziege, Öl, Paprikapulver, getrocknete Paprika, Cayenne, Knoblauch). Ideal zu Fleisch, Fisch, Gemüse und Brot."
+    }
+  }
 ]

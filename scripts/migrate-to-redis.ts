@@ -8,7 +8,14 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import { getProducts, setProducts, getCategories, setCategories, getCarousel, setCarousel } from '../src/lib/redis';
+import {
+  getProducts,
+  setProducts,
+  getCategories,
+  setCategories,
+  getCarousel,
+  setCarousel,
+} from "../src/lib/redis";
 
 async function migrateProducts() {
   try {
@@ -18,12 +25,12 @@ async function migrateProducts() {
     
     if (products && products.length > 0) {
       await setProducts(products);
-      console.log(`✅ ${products.length} produits migrés vers Redis`);
+      console.log(`[migrate] ${products.length} products migrated to Redis`);
     } else {
-      console.log('⚠️  Aucun produit trouvé dans le fichier local');
+      console.log('[migrate] No products found in local JSON file');
     }
   } catch (error) {
-    console.error('❌ Erreur lors de la migration des produits:', error);
+    console.error('[migrate] Error migrating products:', error);
   }
 }
 
@@ -35,12 +42,12 @@ async function migrateCategories() {
     
     if (categories && categories.length > 0) {
       await setCategories(categories);
-      console.log(`✅ ${categories.length} catégories migrées vers Redis`);
+      console.log(`[migrate] ${categories.length} categories migrated to Redis`);
     } else {
-      console.log('⚠️  Aucune catégorie trouvée dans le fichier local');
+      console.log('[migrate] No categories found in local JSON file');
     }
   } catch (error) {
-    console.error('❌ Erreur lors de la migration des catégories:', error);
+    console.error('[migrate] Error migrating categories:', error);
   }
 }
 
@@ -52,22 +59,31 @@ async function migrateCarousel() {
     
     if (carousel) {
       await setCarousel(carousel);
-      console.log(`✅ Carrousel migré vers Redis (${carousel.items?.length || 0} items)`);
+      console.log(
+        `[migrate] Carousel migrated to Redis (${carousel.items?.length || 0} items)`
+      );
     } else {
-      console.log('⚠️  Aucun carrousel trouvé dans le fichier local');
+      console.log('[migrate] No carousel found in local JSON file');
     }
   } catch (error) {
-    console.error('❌ Erreur lors de la migration du carrousel:', error);
+    console.error('[migrate] Error migrating carousel:', error);
   }
 }
 
 async function main() {
-  console.log('🚀 Début de la migration vers Redis...\n');
+  console.log('[migrate] Starting migration to Redis...\n');
   
   // Vérifier les variables d'environnement
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    console.error('❌ Variables d\'environnement Redis non configurées!');
-    console.error('   Configurez UPSTASH_REDIS_REST_URL et UPSTASH_REDIS_REST_TOKEN');
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
+
+  if (!url || !token) {
+    console.error('[migrate] Redis env vars not configured.');
+    console.error(
+      '  Set UPSTASH_REDIS_REST_URL/TOKEN or KV_REST_API_URL/TOKEN.'
+    );
     process.exit(1);
   }
   
@@ -75,7 +91,7 @@ async function main() {
   await migrateCategories();
   await migrateCarousel();
   
-  console.log('\n✅ Migration terminée!');
+  console.log('\n[migrate] Migration finished!');
 }
 
 main().catch(console.error);
