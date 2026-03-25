@@ -67,13 +67,27 @@ export interface CarouselConfig {
 // These environment variables are automatically set by Vercel when you add Upstash Redis integration
 let redis: Redis | null = null;
 
+function getRedisCredentials() {
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
+  return { url, token };
+}
+
+function hasRedisCredentials(): boolean {
+  const { url, token } = getRedisCredentials();
+  return Boolean(url && token);
+}
+
 function getRedis(): Redis {
   if (!redis) {
-    const url = process.env.UPSTASH_REDIS_REST_URL;
-    const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+    const { url, token } = getRedisCredentials();
     
     if (!url || !token) {
-      throw new Error('UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set to use Redis');
+      throw new Error(
+        'Redis credentials missing. Set UPSTASH_REDIS_REST_URL/UPSTASH_REDIS_REST_TOKEN or KV_REST_API_URL/KV_REST_API_TOKEN.'
+      );
     }
     
     redis = new Redis({
@@ -91,8 +105,21 @@ const CAROUSEL_KEY = 'fincas:carousel';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    // Sur Vercel (prod), on lit les produits depuis le JSON embarqué dans le bundle
-    // pour éviter les problèmes de disque read-only et bénéficier des chemins d'images.
+    // Source principale en prod: Redis (si configuré)
+    if (hasRedisCredentials()) {
+      try {
+        const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
+        if (data && data.length > 0) {
+          console.log(`✅ ${data.length} produits chargés depuis Redis`);
+          return data;
+        }
+        console.warn('⚠️  Redis vide, fallback vers JSON embarqué/fichier');
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers JSON embarqué/fichier:', error);
+      }
+    }
+
+    // Sur Vercel (prod), fallback JSON embarqué dans le bundle
     if (process.env.VERCEL === '1') {
       try {
         const mod = await import('../../data/fincas-canarias-products.json');
@@ -105,24 +132,9 @@ export async function getProducts(): Promise<Product[]> {
           return products;
         }
 
-        console.warn('⚠️  PRODUCTS (bundle Vercel) vide ou non valide, fallback Redis/JSON');
+        console.warn('⚠️  PRODUCTS (bundle Vercel) vide ou non valide, fallback JSON fichier');
       } catch (error) {
         console.error('❌ Erreur chargement PRODUCTS (bundle Vercel):', error);
-        // on continue vers la logique Redis/JSON
-      }
-    }
-
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON (fallback)
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-      try {
-        const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
-        if (data && data.length > 0) {
-          console.log(`✅ ${data.length} produits chargés depuis Redis`);
-          return data;
-        }
-        console.warn('⚠️  Redis vide, fallback vers fichiers JSON');
-      } catch (error) {
-        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
     }
     
@@ -168,8 +180,8 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function setProducts(products: Product[]): Promise<void> {
   try {
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    // Source principale en prod: Redis (si configuré)
+    if (hasRedisCredentials()) {
       try {
         await getRedis().set(PRODUCTS_KEY, products);
         return;
@@ -198,7 +210,21 @@ export async function setProducts(products: Product[]): Promise<void> {
 
 export async function getCategories(): Promise<Category[]> {
   try {
-    // Sur Vercel (prod), on lit les catégories depuis le JSON embarqué dans le bundle
+    // Source principale en prod: Redis (si configuré)
+    if (hasRedisCredentials()) {
+      try {
+        const data = await getRedis().get<Category[]>(CATEGORIES_KEY);
+        if (data && data.length > 0) {
+          console.log(`✅ ${data.length} catégories chargées depuis Redis`);
+          return data;
+        }
+        console.warn('⚠️  Redis catégories vide, fallback JSON embarqué/fichier');
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers JSON embarqué/fichier:', error);
+      }
+    }
+    
+    // Sur Vercel (prod), fallback JSON embarqué dans le bundle
     if (process.env.VERCEL === '1') {
       try {
         const mod = await import('../../data/fincas-canarias-categories.json');
@@ -207,16 +233,6 @@ export async function getCategories(): Promise<Category[]> {
         return categories;
       } catch (error) {
         console.error('❌ Erreur chargement JSON embarqué catégories sur Vercel:', error);
-      }
-    }
-
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-      try {
-        const data = await getRedis().get<Category[]>(CATEGORIES_KEY);
-        return data || [];
-      } catch (error) {
-        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
     }
     
@@ -241,20 +257,20 @@ export async function getCategories(): Promise<Category[]> {
 
 export async function setCategories(categories: Category[]): Promise<void> {
   try {
-    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
-    if (process.env.VERCEL === '1') {
-      console.warn('setCategories: environnement Vercel (read-only), écriture ignorée');
-      return;
-    }
-
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    // Source principale en prod: Redis (si configuré)
+    if (hasRedisCredentials()) {
       try {
         await getRedis().set(CATEGORIES_KEY, categories);
         return;
       } catch (error) {
         console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
+    }
+
+    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
+    if (process.env.VERCEL === '1') {
+      console.warn('setCategories: environnement Vercel (read-only), écriture disque ignorée (configure Redis)');
+      return;
     }
     
     // Fallback vers fichiers JSON
@@ -271,7 +287,21 @@ export async function setCategories(categories: Category[]): Promise<void> {
 
 export async function getCarousel(): Promise<CarouselConfig | null> {
   try {
-    // Sur Vercel (prod), on lit le carrousel depuis le JSON embarqué dans le bundle
+    // Source principale en prod: Redis (si configuré)
+    if (hasRedisCredentials()) {
+      try {
+        const data = await getRedis().get<CarouselConfig>(CAROUSEL_KEY);
+        if (data) {
+          console.log('✅ Carrousel chargé depuis Redis');
+          return data;
+        }
+        console.warn('⚠️  Redis carrousel vide, fallback JSON embarqué/fichier');
+      } catch (error) {
+        console.warn('⚠️  Erreur Redis, fallback vers JSON embarqué/fichier:', error);
+      }
+    }
+    
+    // Sur Vercel (prod), fallback JSON embarqué dans le bundle
     if (process.env.VERCEL === '1') {
       try {
         const mod = await import('../../data/fincas-canarias-carousel.json');
@@ -280,16 +310,6 @@ export async function getCarousel(): Promise<CarouselConfig | null> {
         return carousel;
       } catch (error) {
         console.error('❌ Erreur chargement JSON embarqué carrousel sur Vercel:', error);
-      }
-    }
-
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-      try {
-        const data = await getRedis().get<CarouselConfig>(CAROUSEL_KEY);
-        return data || null;
-      } catch (error) {
-        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
     }
     
@@ -314,20 +334,20 @@ export async function getCarousel(): Promise<CarouselConfig | null> {
 
 export async function setCarousel(carousel: CarouselConfig): Promise<void> {
   try {
-    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
-    if (process.env.VERCEL === '1') {
-      console.warn('setCarousel: environnement Vercel (read-only), écriture ignorée');
-      return;
-    }
-
-    // Utiliser Redis si configuré, sinon utiliser les fichiers JSON
-    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    // Source principale en prod: Redis (si configuré)
+    if (hasRedisCredentials()) {
       try {
         await getRedis().set(CAROUSEL_KEY, carousel);
         return;
       } catch (error) {
         console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
       }
+    }
+
+    // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
+    if (process.env.VERCEL === '1') {
+      console.warn('setCarousel: environnement Vercel (read-only), écriture disque ignorée (configure Redis)');
+      return;
     }
     
     // Fallback vers fichiers JSON
