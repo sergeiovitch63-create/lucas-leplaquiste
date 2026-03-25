@@ -1598,8 +1598,7 @@
       "en": "Crunchy fried bananas available in three flavours: salted, garlic and spicy, with a chip-like crunch. Perfect as an appetiser. Gluten-free.",
       "de": "Knusprige gebratene Bananen in drei Geschmacksrichtungen: gesalzen, Knoblauch und scharf, mit einem Chips-ähnlichen Knusper. Perfekt als Vorspeise. Glutenfrei."
     }
-  }
-  ,
+  },
   {
     "id": 81,
     "category": "Sauces",
@@ -1643,7 +1642,7 @@
   {
     "id": 83,
     "category": "Vins",
-    "img": null,
+    "img": "/fincas/products/product-83-1774444676639.jpg",
     "name": {
       "es": "Blanco Martinón",
       "en": "Blanco Martinón",
