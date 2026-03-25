@@ -282,12 +282,20 @@ export default function FincasCanariasClient() {
           // pour que la recherche "vin" remonte aussi les vins même si le texte
           // ne contient pas le mot "vino".
           p.category,
-          getCategoryLabel(p.category, lang),
+          // Comme l’utilisateur peut taper en FR/EN avec n’importe quelle langue UI,
+          // on inclut aussi les libellés de catégorie dans toutes les langues gérées.
+          getCategoryLabel(p.category, "fr"),
+          getCategoryLabel(p.category, "es"),
+          getCategoryLabel(p.category, "en"),
+          getCategoryLabel(p.category, "de"),
+          getCategoryLabel(p.category, "it"),
+          getCategoryLabel(p.category, "ru"),
+          getCategoryLabel(p.category, "pl"),
         ]
           .join(" ")
           .toLowerCase()
           .includes(overlaySearchQuery.toLowerCase().trim())
-      ).slice(0, 6)
+      ).slice(0, 12)
     : [];
 
   useEffect(() => {
