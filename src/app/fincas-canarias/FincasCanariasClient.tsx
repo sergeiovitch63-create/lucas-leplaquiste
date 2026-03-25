@@ -473,6 +473,9 @@ export default function FincasCanariasClient() {
                       sizes="140px"
                       className={styles.modalImg}
                       loading="lazy"
+                      // If `img` is stored as a base64 data URI (admin upload),
+                      // Next Image optimizations can fail. `unoptimized` lets it render.
+                      unoptimized={p.img.startsWith("data:image")}
                     />
                   ) : (
                     <div className={styles.imgPlaceholder}>{PLACEHOLDER_SVG}</div>
@@ -747,6 +750,7 @@ export default function FincasCanariasClient() {
                       className={styles.modalImg}
                       loading={i < 8 ? 'eager' : 'lazy'}
                       priority={i < 8}
+                      unoptimized={p.img.startsWith("data:image")}
                     />
                   ) : (
                     <div className={styles.imgPlaceholder}>{PLACEHOLDER_SVG}</div>
@@ -803,6 +807,7 @@ export default function FincasCanariasClient() {
                   fill
                   sizes="(max-width: 520px) 100vw, 520px"
                   loading="lazy"
+                  unoptimized={modalProduct.img.startsWith("data:image")}
                 />
               ) : (
                 <div className={styles.modalImgPlaceholder}>
