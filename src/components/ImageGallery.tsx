@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Lightbox, type LightboxImage } from "./Lightbox";
 
 interface ImageGalleryProps {
@@ -19,12 +20,51 @@ export function ImageGallery({
   gridClassName = "",
   imageClassName = "",
 }: ImageGalleryProps) {
+  const pathname = usePathname();
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [runtimeImages, setRuntimeImages] = useState<Array<{ src: string; alt: string }> | null>(null);
+
+  const managedLucasSlugs = useMemo(
+    () => new Set(["/a-propos", "/creation-decoration", "/faux-plafonds", "/doublages", "/cloisons"]),
+    []
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!pathname || !managedLucasSlugs.has(pathname)) {
+      setRuntimeImages(null);
+      return;
+    }
+    fetch("/api/lucas-site")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data?.pagesConfig) return;
+        const gallery = data.pagesConfig?.[pathname]?.gallery;
+        if (!Array.isArray(gallery) || gallery.length === 0) {
+          setRuntimeImages(null);
+          return;
+        }
+        const normalized = gallery
+          .filter((src: unknown): src is string => typeof src === "string" && src.trim().length > 0)
+          .map((src: string, index: number) => ({ src, alt: images[index]?.alt ?? `Photo ${index + 1}` }));
+        setRuntimeImages(normalized.length > 0 ? normalized : null);
+      })
+      .catch(() => setRuntimeImages(null));
+    return () => {
+      cancelled = true;
+    };
+  }, [images, managedLucasSlugs, pathname]);
+
+  const displayImages = runtimeImages && runtimeImages.length > 0 ? runtimeImages : images;
 
   // Prepare images for lightbox (with full path)
-  const lightboxImages: LightboxImage[] = images.map((img) => ({
-    src: basePath ? `${basePath}/${img.src}` : img.src,
+  const lightboxImages: LightboxImage[] = displayImages.map((img) => ({
+    src: img.src.startsWith("data:image") || img.src.startsWith("http") || img.src.startsWith("/")
+      ? img.src
+      : basePath
+      ? `${basePath}/${img.src}`
+      : img.src,
     alt: img.alt,
   }));
 
@@ -45,9 +85,13 @@ export function ImageGallery({
     <>
       <div className={className}>
         <div className={`mx-auto grid max-w-[420px] grid-cols-2 gap-3 ${gridClassName}`}>
-          {images.map((image, index) => {
-            const imageSrc = basePath ? `${basePath}/${image.src}` : image.src;
-            const isLast = index === images.length - 1;
+          {displayImages.map((image, index) => {
+            const imageSrc = image.src.startsWith("data:image") || image.src.startsWith("http") || image.src.startsWith("/")
+              ? image.src
+              : basePath
+              ? `${basePath}/${image.src}`
+              : image.src;
+            const isLast = index === displayImages.length - 1;
 
             return (
               <div
