@@ -1,13 +1,63 @@
+"use client";
+
 import Image from "next/image";
-import { getQuickActions, site } from "../config/site";
+import { useEffect, useMemo, useState } from "react";
+import { site } from "../config/site";
 import { Icon } from "./icons";
+import type { SiteConfig } from "@/config/site";
 
 const AVATAR_SIZE = 80;
 
 export function ProfileHeader() {
-  const quickActions = getQuickActions();
+  const [config, setConfig] = useState<SiteConfig>(site);
+  const quickActions = useMemo(() => {
+    const items = [
+      {
+        id: "call" as const,
+        title: "Appeler — Devis gratuit",
+        href: config.telLink,
+        iconKey: "phone" as const,
+      },
+      {
+        id: "whatsapp" as const,
+        title: "WhatsApp",
+        href: config.waLink,
+        iconKey: "whatsapp" as const,
+      },
+      ...(config.facebookUrl
+        ? [
+            {
+              id: "facebook" as const,
+              title: "Facebook",
+              href: config.facebookUrl,
+              iconKey: "facebook" as const,
+            },
+          ]
+        : []),
+      {
+        id: "email" as const,
+        title: "Envoyer un email",
+        href: "mailto:lucasleplaquiste34@gmail.com?subject=Demande%20de%20devis&body=Bonjour%2C%20je%20souhaite%20un%20devis.",
+        iconKey: "email" as const,
+      },
+    ];
+    return items;
+  }, [config]);
 
-  const initials = site.brandName
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/lucas-site")
+      .then((res) => (res.ok ? res.json() : site))
+      .then((data) => {
+        if (!cancelled && data) setConfig(data as SiteConfig);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const initials = config.brandName
     .split(" ")
     .filter((part) => part.length > 0)
     .slice(0, 2)
@@ -22,7 +72,7 @@ export function ProfileHeader() {
         </div>
         <Image
           src="/media/accueil/logo.png"
-          alt={site.brandName}
+          alt={config.brandName}
           fill
           sizes={`${AVATAR_SIZE}px`}
           className="object-cover scale-[1.08]"
@@ -31,9 +81,9 @@ export function ProfileHeader() {
 
       <div className="text-center">
         <h1 className="text-xl font-semibold tracking-tight text-white sm:text-2xl text-shadow-soft">
-          {site.brandName}
+          {config.brandName}
         </h1>
-        <p className="mt-1 text-xs text-white/80 sm:text-sm text-shadow-soft">{site.tagline}</p>
+        <p className="mt-1 text-xs text-white/80 sm:text-sm text-shadow-soft">{config.tagline}</p>
       </div>
 
       <div className="mt-4 flex items-center justify-center gap-3">

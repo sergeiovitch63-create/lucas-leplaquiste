@@ -22,6 +22,8 @@ export interface SiteLink {
   type: LinkType;
   iconKey?: IconKey;
   thumbnail?: string;
+  enabled?: boolean;
+  order?: number;
 }
 
 export interface SiteSeoConfig {
@@ -31,6 +33,22 @@ export interface SiteSeoConfig {
 
 export interface SiteOgConfig {
   image: string;
+}
+
+export type SocialLinkType =
+  | "phone"
+  | "whatsapp"
+  | "facebook"
+  | "instagram"
+  | "link"
+  | "email"
+  | "maps";
+
+export interface SocialLink {
+  id: string;
+  type: SocialLinkType;
+  url: string;
+  enabled: boolean;
 }
 
 export interface SiteConfig {
@@ -45,6 +63,8 @@ export interface SiteConfig {
   googleMapsUrl: string;
   seo: SiteSeoConfig;
   og: SiteOgConfig;
+  avatar?: string;
+  socialLinks?: SocialLink[];
   links: SiteLink[];
 }
 
@@ -85,6 +105,8 @@ export const site: SiteConfig = {
       type: "action",
       iconKey: "phone",
       thumbnail: linkIcons.call,
+      enabled: true,
+      order: 1,
     },
     {
       id: "reviews",
@@ -93,6 +115,8 @@ export const site: SiteConfig = {
       type: "internal",
       iconKey: "stars",
       thumbnail: linkIcons.reviews,
+      enabled: true,
+      order: 2,
     },
     {
       id: "creation",
@@ -101,6 +125,8 @@ export const site: SiteConfig = {
       type: "internal",
       iconKey: "paint",
       thumbnail: linkIcons.creation,
+      enabled: true,
+      order: 3,
     },
     {
       id: "ceilings",
@@ -109,6 +135,8 @@ export const site: SiteConfig = {
       type: "internal",
       iconKey: "ceiling",
       thumbnail: linkIcons.ceilings,
+      enabled: true,
+      order: 4,
     },
     {
       id: "doublages",
@@ -117,6 +145,8 @@ export const site: SiteConfig = {
       type: "internal",
       iconKey: "layers",
       thumbnail: linkIcons.doublages,
+      enabled: true,
+      order: 5,
     },
     {
       id: "cloisons",
@@ -125,6 +155,8 @@ export const site: SiteConfig = {
       type: "internal",
       iconKey: "walls",
       thumbnail: linkIcons.cloisons,
+      enabled: true,
+      order: 6,
     },
     {
       id: "about",
@@ -133,6 +165,8 @@ export const site: SiteConfig = {
       type: "internal",
       iconKey: "info",
       thumbnail: linkIcons.about,
+      enabled: true,
+      order: 7,
     },
   ],
 };

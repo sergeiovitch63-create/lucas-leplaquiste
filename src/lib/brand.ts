@@ -8,7 +8,7 @@ export interface BrandConfig {
 }
 
 export function getBrandFromHost(host: string | null): BrandConfig {
-  if (host && host.includes("publink-teamplates")) {
+  if (host && (host.includes("publink-teamplates") || host.includes("publink-"))) {
     return {
       siteName: "PUBLINK",
       defaultTitle: "PUBLINK",

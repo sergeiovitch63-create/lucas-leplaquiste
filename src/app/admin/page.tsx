@@ -7,6 +7,15 @@ export default function AdminHomePage() {
       <ul className="list-inside list-disc space-y-2 text-slate-300">
         <li>
           <Link
+            href="/admin/lucas-leplaquiste"
+            className="text-sky-400 hover:underline"
+          >
+            Gérer le site Lucas Le Plaquiste
+          </Link>
+          — identité, SEO, contact et boutons de la page d'accueil.
+        </li>
+        <li>
+          <Link
             href="/admin/fincas-canarias"
             className="text-sky-400 hover:underline"
           >

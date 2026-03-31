@@ -32,6 +32,15 @@ export default function AdminLayout({
               <span>Tableau de bord</span>
             </Link>
             <Link
+              href="/admin/lucas-leplaquiste"
+              className="flex items-center justify-between rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white"
+            >
+              <span>Lucas Le Plaquiste</span>
+              <span className="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] uppercase tracking-wide">
+                Site
+              </span>
+            </Link>
+            <Link
               href="/admin/fincas-canarias"
               className="flex items-center justify-between rounded-lg bg-slate-800 px-3 py-2 text-white"
             >
