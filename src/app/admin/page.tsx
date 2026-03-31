@@ -12,7 +12,7 @@ export default function AdminHomePage() {
           >
             Gérer le site Lucas Le Plaquiste
           </Link>
-          — identité, SEO, contact et boutons de la page d'accueil.
+          — identité, SEO, contact et boutons de la page d&apos;accueil.
         </li>
         <li>
           <Link

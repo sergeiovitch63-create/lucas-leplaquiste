@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { IconKey, SiteConfig, SiteLink } from "@/config/site";
 import { site } from "@/config/site";
 
@@ -236,7 +236,6 @@ export default function LucasMobileAdmin() {
   const [draftAvatar, setDraftAvatar] = useState("");
   const [draftContacts, setDraftContacts] = useState({ telLink: "", whatsappLink: "", facebookLink: "", mapsLink: "", email: "" });
   const [editingInline, setEditingInline] = useState<"name" | "tagline" | "slug" | null>(null);
-  const pageThumbRef = useRef<HTMLInputElement | null>(null);
 
   const showToast = useCallback((type: "success" | "error", text: string) => {
     setToast({ type, text });
@@ -312,11 +311,6 @@ export default function LucasMobileAdmin() {
     setDraftLink(null);
     setDraftPage(null);
   };
-  const pageEmoji = useCallback(
-    (slug: string) => config.links.find((l) => l.href === slug)?.emoji ?? "📄",
-    [config.links]
-  );
-
   if (isAuthLoading) return <div className="min-h-screen bg-[#0f0f12] flex items-center justify-center"><div className="h-10 w-10 animate-spin rounded-full border-2 border-[#e8b84b] border-t-transparent" /></div>;
   if (!isAuthed) {
     return (

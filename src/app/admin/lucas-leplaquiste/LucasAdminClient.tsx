@@ -142,7 +142,7 @@ export default function LucasAdminClient() {
   const [addingSocialUrl, setAddingSocialUrl] = useState("");
   const [editingTitleId, setEditingTitleId] = useState<string | null>(null);
   const [editingHrefId, setEditingHrefId] = useState<string | null>(null);
-  const [editingThumbId, setEditingThumbId] = useState<string | null>(null);
+  const [editingThumbId] = useState<string | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
