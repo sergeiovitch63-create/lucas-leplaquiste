@@ -399,14 +399,19 @@ export default function FincasAdminClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...newProduct, img }),
       });
-      if (!res.ok) throw new Error("Erreur création");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null) as { error?: string; details?: string } | null;
+        const message = data?.details || data?.error || `Erreur création (${res.status})`;
+        throw new Error(message);
+      }
       await loadProducts();
       setShowAddPanel(false);
       setNewProduct(null);
       setNewImgData(null);
       showToast(`"${newProduct.name.es}" ajouté !`);
-    } catch {
-      showToast("Erreur lors de la création", "error");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Erreur lors de la création";
+      showToast(message, "error");
     }
   };
 
