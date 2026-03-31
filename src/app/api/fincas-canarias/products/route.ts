@@ -65,9 +65,12 @@ export async function POST(request: NextRequest) {
     await setProducts(products);
     
     return NextResponse.json(newProduct, { status: 201 });
-  } catch {
+  } catch (error) {
     return NextResponse.json(
-      { error: "Erreur lors de la création du produit" },
+      {
+        error: "Erreur lors de la création du produit",
+        details: error instanceof Error ? error.message : String(error),
+      },
       { status: 500 }
     );
   }
