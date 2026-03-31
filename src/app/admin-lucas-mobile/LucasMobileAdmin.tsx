@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { IconKey, SiteConfig, SiteLink } from "@/config/site";
 import { site } from "@/config/site";
 
@@ -226,8 +226,6 @@ export default function LucasMobileAdmin() {
   const [draftPageVisible, setDraftPageVisible] = useState(true);
   const [draftPageDescription, setDraftPageDescription] = useState("");
   const [draftPageSelectedImage, setDraftPageSelectedImage] = useState<number | null>(null);
-  const [showAddImageInput, setShowAddImageInput] = useState(false);
-  const [newImageUrl, setNewImageUrl] = useState("");
   const [showReplaceImageSheet, setShowReplaceImageSheet] = useState(false);
   const [replaceImageUrl, setReplaceImageUrl] = useState("");
   const [replaceImageIndex, setReplaceImageIndex] = useState<number | null>(null);
@@ -236,6 +234,7 @@ export default function LucasMobileAdmin() {
   const [draftAvatar, setDraftAvatar] = useState("");
   const [draftContacts, setDraftContacts] = useState({ telLink: "", whatsappLink: "", facebookLink: "", mapsLink: "", email: "" });
   const [editingInline, setEditingInline] = useState<"name" | "tagline" | "slug" | null>(null);
+  const galleryUploadRef = useRef<HTMLInputElement | null>(null);
 
   const showToast = useCallback((type: "success" | "error", text: string) => {
     setToast({ type, text });
@@ -283,6 +282,31 @@ export default function LucasMobileAdmin() {
       setIsSaving(false);
     }
   }, [authSecret, config, rawConfig, showToast]);
+
+  const fileToDataUrl = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : "");
+      reader.onerror = () => reject(new Error("read-error"));
+      reader.readAsDataURL(file);
+    });
+
+  const handleAddGalleryFiles = useCallback(async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    const imageFiles = Array.from(files).filter((f) => f.type.startsWith("image/"));
+    if (imageFiles.length === 0) {
+      showToast("error", "Choisis une image");
+      return;
+    }
+    try {
+      const images = (await Promise.all(imageFiles.map((f) => fileToDataUrl(f)))).filter(Boolean);
+      if (!images.length) return;
+      setDraftPage((p) => (p ? { ...p, gallery: [...p.gallery, ...images] } : p));
+      showToast("success", `${images.length} image(s) ajoutée(s)`);
+    } catch {
+      showToast("error", "Erreur upload image");
+    }
+  }, [showToast]);
 
   useEffect(() => {
     const envSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET ?? "";
@@ -435,8 +459,6 @@ export default function LucasMobileAdmin() {
                             .join("\n\n")
                             .trim())
                         );
-                        setShowAddImageInput(false);
-                        setNewImageUrl("");
                         setPageEditorSlug(slug);
                         setIsPageEditorClosing(false);
                         setSheet({ mode: "closed" });
@@ -667,6 +689,17 @@ export default function LucasMobileAdmin() {
             {(pageEditorSlug !== "/" && pageEditorSlug !== "/avis") && (
               <section className="mt-3 rounded-xl bg-[#17171d] p-3">
                 <div className="mb-2 text-xs text-[#888899]">Photos · {draftPage.gallery.length} images</div>
+                <input
+                  ref={galleryUploadRef}
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="hidden"
+                  onChange={(e) => {
+                    void handleAddGalleryFiles(e.currentTarget.files);
+                    e.currentTarget.value = "";
+                  }}
+                />
                 <div className="grid grid-cols-2 gap-2">
                   {draftPage.gallery.map((img, idx) => (
                     <button
@@ -692,26 +725,19 @@ export default function LucasMobileAdmin() {
                       </button>
                     </button>
                   ))}
+                  <button
+                    onClick={() => galleryUploadRef.current?.click()}
+                    className="flex h-[104px] items-center justify-center rounded-xl border border-dashed border-[#e8b84b]/60 bg-[#0f0f12] text-[#e8b84b] active:scale-95"
+                  >
+                    <span className="text-2xl leading-none">+</span>
+                  </button>
                 </div>
-                {!showAddImageInput ? (
-                  <button onClick={() => setShowAddImageInput(true)} className="mt-2 h-11 w-full rounded-xl bg-[#0f0f12] active:scale-95">+ Ajouter</button>
-                ) : (
-                  <div className="mt-2 space-y-2">
-                    <input value={newImageUrl} onChange={(e) => setNewImageUrl(e.target.value)} placeholder="URL photo" className="h-11 w-full rounded-xl bg-[#0f0f12] px-3 text-base" />
-                    <div className="h-16 w-full overflow-hidden rounded-lg bg-[#2a2a33]">{newImageUrl ? <img src={newImageUrl} alt="" className="h-full w-full object-cover" /> : null}</div>
-                    <button
-                      onClick={() => {
-                        if (!newImageUrl.trim()) return;
-                        setDraftPage((p) => p ? { ...p, gallery: [...p.gallery, newImageUrl.trim()] } : p);
-                        setNewImageUrl("");
-                        setShowAddImageInput(false);
-                      }}
-                      className="h-11 w-full rounded-xl bg-[#e8b84b] text-black"
-                    >
-                      Confirmer
-                    </button>
-                  </div>
-                )}
+                <button
+                  onClick={() => galleryUploadRef.current?.click()}
+                  className="mt-2 h-11 w-full rounded-xl bg-[#0f0f12] active:scale-95"
+                >
+                  + Ajouter depuis l&apos;appareil
+                </button>
               </section>
             )}
 
