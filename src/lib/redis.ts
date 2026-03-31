@@ -186,14 +186,16 @@ export async function setProducts(products: Product[]): Promise<void> {
         await getRedis().set(PRODUCTS_KEY, products);
         return;
       } catch (error) {
-        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
+        console.error('❌ Erreur écriture Redis produits:', error);
+        if (process.env.VERCEL === '1') {
+          throw new Error('Redis write failed for products in production.');
+        }
       }
     }
     
     // Fallback vers fichiers JSON (non disponible sur Vercel en read-only)
     if (process.env.VERCEL === '1') {
-      console.warn('setProducts: environnement Vercel (read-only), écriture sur le disque ignorée');
-      return;
+      throw new Error('Redis credentials missing for products in production.');
     }
 
     // Écriture fichier uniquement en environnement avec disque en écriture (dev / self-hosted)
@@ -263,14 +265,16 @@ export async function setCategories(categories: Category[]): Promise<void> {
         await getRedis().set(CATEGORIES_KEY, categories);
         return;
       } catch (error) {
-        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
+        console.error('❌ Erreur écriture Redis catégories:', error);
+        if (process.env.VERCEL === '1') {
+          throw new Error('Redis write failed for categories in production.');
+        }
       }
     }
 
     // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
     if (process.env.VERCEL === '1') {
-      console.warn('setCategories: environnement Vercel (read-only), écriture disque ignorée (configure Redis)');
-      return;
+      throw new Error('Redis credentials missing for categories in production.');
     }
     
     // Fallback vers fichiers JSON
@@ -340,14 +344,16 @@ export async function setCarousel(carousel: CarouselConfig): Promise<void> {
         await getRedis().set(CAROUSEL_KEY, carousel);
         return;
       } catch (error) {
-        console.warn('⚠️  Erreur Redis, fallback vers fichiers JSON:', error);
+        console.error('❌ Erreur écriture Redis carrousel:', error);
+        if (process.env.VERCEL === '1') {
+          throw new Error('Redis write failed for carousel in production.');
+        }
       }
     }
 
     // En production Vercel, on ne tente pas d'écrire sur le disque (read-only)
     if (process.env.VERCEL === '1') {
-      console.warn('setCarousel: environnement Vercel (read-only), écriture disque ignorée (configure Redis)');
-      return;
+      throw new Error('Redis credentials missing for carousel in production.');
     }
     
     // Fallback vers fichiers JSON
