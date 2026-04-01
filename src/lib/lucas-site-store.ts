@@ -80,7 +80,7 @@ function getDefaultPagesConfig(base: SiteConfig): PagesConfig {
       intro: "",
       paragraphs: [],
       listItems: [],
-      thumbnail: base.og.image || "/media/accueil/logo.png",
+      thumbnail: "/media/accueil/fond-ecrans.jpg",
       gallery: [],
       ctaLabel: "Appeler",
       ctaLink: base.telLink,

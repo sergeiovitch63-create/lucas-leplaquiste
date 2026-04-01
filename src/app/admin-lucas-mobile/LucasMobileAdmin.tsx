@@ -34,6 +34,7 @@ type SheetState =
 const EMOJIS = ["🔨", "🏠", "⭐", "📸", "📞", "💬", "📍", "ℹ️", "🎨", "🪚", "🪵", "📋"];
 const DEFAULT_EMAIL = "lucasleplaquiste34@gmail.com";
 const MANAGED_PAGES = ["/", "/avis", "/creation-decoration", "/faux-plafonds", "/doublages", "/cloisons", "/a-propos"];
+const HOME_BG_FALLBACK = "/media/accueil/fond-ecrans.jpg";
 const PAGE_LABELS: Record<string, string> = {
   "/": "Homepage", "/avis": "Avis", "/creation-decoration": "Création & Décoration",
   "/faux-plafonds": "Faux plafonds", "/doublages": "Doublages", "/cloisons": "Cloisons", "/a-propos": "À propos",
@@ -156,7 +157,7 @@ function ContactIcon({ type }: { type: "phone" | "whatsapp" | "facebook" | "mail
 }
 function defaultPages(raw: SiteConfig): Record<string, PageContent> {
   return {
-    "/": { title: raw.brandName, subtitle: raw.tagline, intro: "", thumbnail: raw.og.image || FRONT_LOGO_IMAGE, gallery: [], ctaLabel: "Appeler", ctaLink: raw.telLink },
+    "/": { title: raw.brandName, subtitle: raw.tagline, intro: "", thumbnail: HOME_BG_FALLBACK, gallery: [], ctaLabel: "Appeler", ctaLink: raw.telLink },
     "/avis": { title: "Avis clients", subtitle: "", intro: "", thumbnail: "/media/accueil/favicon-avis.png", gallery: [], ctaLabel: "Voir les avis", ctaLink: "/avis" },
     "/creation-decoration": { title: "Création et Décoration sur mesure", subtitle: "", intro: "", thumbnail: "/media/accueil/favicon-creation-decoration.jpg", gallery: [], ctaLabel: "Demander un devis", ctaLink: raw.telLink },
     "/faux-plafonds": { title: "Faux plafonds", subtitle: "", intro: "", thumbnail: "/media/accueil/favicon-faux-plafond.jpg", gallery: [], ctaLabel: "Demander un devis", ctaLink: raw.telLink },
@@ -235,6 +236,8 @@ export default function LucasMobileAdmin() {
   const [draftContacts, setDraftContacts] = useState({ telLink: "", whatsappLink: "", facebookLink: "", mapsLink: "", email: "" });
   const [editingInline, setEditingInline] = useState<"name" | "tagline" | "slug" | null>(null);
   const galleryUploadRef = useRef<HTMLInputElement | null>(null);
+  const homeBgUploadRef = useRef<HTMLInputElement | null>(null);
+  const [homeBgDraft, setHomeBgDraft] = useState(HOME_BG_FALLBACK);
 
   const showToast = useCallback((type: "success" | "error", text: string) => {
     setToast({ type, text });
@@ -308,6 +311,21 @@ export default function LucasMobileAdmin() {
     }
   }, [showToast]);
 
+  const handleHomeBgFile = useCallback(async (file: File | null) => {
+    if (!file || !file.type.startsWith("image/")) {
+      showToast("error", "Choisis une image");
+      return;
+    }
+    try {
+      const dataUrl = await fileToDataUrl(file);
+      if (!dataUrl) return;
+      setHomeBgDraft(dataUrl);
+      showToast("success", "Image prête ✓");
+    } catch {
+      showToast("error", "Erreur upload image");
+    }
+  }, [showToast]);
+
   useEffect(() => {
     const envSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET ?? "";
     setAuthInput(envSecret);
@@ -320,6 +338,10 @@ export default function LucasMobileAdmin() {
     setIsAuthLoading(false);
     void fetchConfig(envSecret);
   }, [fetchConfig]);
+
+  useEffect(() => {
+    setHomeBgDraft(config.pagesConfig["/"]?.thumbnail || HOME_BG_FALLBACK);
+  }, [config.pagesConfig]);
 
   const handleLogin = useCallback(async () => {
     if (!authInput.trim()) return showToast("error", "Mot de passe requis");
@@ -435,6 +457,47 @@ export default function LucasMobileAdmin() {
                 <div className="text-xl font-semibold">{activeCount}</div>
                 <div className="text-xs text-[#888899]">Nombre de sous-liens</div>
               </div>
+            </section>
+
+            <section className="rounded-[14px] bg-[#17171d] p-3 border border-white/[0.06]">
+              <div className="mb-2 flex items-center justify-between">
+                <h3 className="font-medium">Fond d&apos;écran accueil</h3>
+                <button onClick={() => homeBgUploadRef.current?.click()} className="h-9 rounded-xl bg-[#0f0f12] px-3 text-xs active:scale-95">Upload</button>
+              </div>
+              <input
+                ref={homeBgUploadRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  void handleHomeBgFile(e.currentTarget.files?.[0] ?? null);
+                  e.currentTarget.value = "";
+                }}
+              />
+              <img src={homeBgDraft || HOME_BG_FALLBACK} alt="" className="h-24 w-full rounded-xl object-cover" />
+              <input
+                value={homeBgDraft}
+                onChange={(e) => setHomeBgDraft(e.target.value)}
+                placeholder="URL fond d'écran"
+                className="mt-2 h-11 w-full rounded-xl bg-[#0f0f12] px-3 text-base"
+              />
+              <button
+                onClick={() =>
+                  void putOptimistic({
+                    ...config,
+                    pagesConfig: {
+                      ...config.pagesConfig,
+                      "/": {
+                        ...config.pagesConfig["/"],
+                        thumbnail: homeBgDraft.trim() || HOME_BG_FALLBACK,
+                      },
+                    },
+                  })
+                }
+                className="mt-2 h-11 w-full rounded-xl bg-[#e8b84b] text-black font-semibold active:scale-95"
+              >
+                Enregistrer le fond
+              </button>
             </section>
 
             <section className="rounded-[14px] bg-[#17171d] p-3 border border-white/[0.06]">
