@@ -275,12 +275,12 @@ export default function LucasMobileAdmin() {
         body: JSON.stringify(nextRaw),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Erreur");
+      if (!res.ok) throw new Error(data?.error || data?.details || "Erreur");
       showToast("success", "Enregistré ✓");
-    } catch {
+    } catch (error) {
       setConfig(prevMobile);
       setRawConfig(prevRaw);
-      showToast("error", "Erreur");
+      showToast("error", error instanceof Error ? error.message : "Erreur");
     } finally {
       setIsSaving(false);
     }
@@ -290,6 +290,33 @@ export default function LucasMobileAdmin() {
     new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : "");
+      reader.onerror = () => reject(new Error("read-error"));
+      reader.readAsDataURL(file);
+    });
+
+  const fileToOptimizedImage = (file: File, maxSide = 1600, quality = 0.82): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const src = typeof reader.result === "string" ? reader.result : "";
+        if (!src) return reject(new Error("read-error"));
+        const img = new window.Image();
+        img.onload = () => {
+          const ratio = Math.min(1, maxSide / Math.max(img.width, img.height));
+          const width = Math.max(1, Math.round(img.width * ratio));
+          const height = Math.max(1, Math.round(img.height * ratio));
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) return reject(new Error("canvas-error"));
+          ctx.drawImage(img, 0, 0, width, height);
+          const out = canvas.toDataURL("image/jpeg", quality);
+          resolve(out);
+        };
+        img.onerror = () => reject(new Error("image-error"));
+        img.src = src;
+      };
       reader.onerror = () => reject(new Error("read-error"));
       reader.readAsDataURL(file);
     });
@@ -317,8 +344,12 @@ export default function LucasMobileAdmin() {
       return;
     }
     try {
-      const dataUrl = await fileToDataUrl(file);
+      const dataUrl = await fileToOptimizedImage(file);
       if (!dataUrl) return;
+      if (dataUrl.length > 1_500_000) {
+        showToast("error", "Image trop lourde, choisis une image plus légère");
+        return;
+      }
       setHomeBgDraft(dataUrl);
       showToast("success", "Image prête ✓");
     } catch {

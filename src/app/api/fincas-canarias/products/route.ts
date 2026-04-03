@@ -47,8 +47,11 @@ export async function POST(request: NextRequest) {
       try {
         img = await saveBase64Image(img, "products", `product-${nextId}`);
       } catch (error) {
-        console.error("[API POST /products] Erreur saveBase64Image:", error);
-        // En cas d'erreur, on garde la valeur d'origine pour ne pas casser le flux
+        console.error(
+          "[API POST /products] Échec enregistrement image (saveBase64Image) — la data URL base64 n'est pas stockée, img mis à null:",
+          error
+        );
+        img = null;
       }
     }
 
@@ -112,8 +115,11 @@ export async function PUT(request: NextRequest) {
           `product-${id}`
         );
       } catch (error) {
-        console.error("[API PUT /products] Erreur saveBase64Image:", error);
-        // En cas d'erreur, on garde la valeur d'origine pour ne pas casser la mise à jour
+        console.error(
+          "[API PUT /products] Échec enregistrement image (saveBase64Image) — la data URL base64 est ignorée, champ img retiré de la mise à jour:",
+          error
+        );
+        delete updates.img;
       }
     }
 

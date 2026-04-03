@@ -103,6 +103,10 @@ const PRODUCTS_KEY = 'fincas:products';
 const CATEGORIES_KEY = 'fincas:categories';
 const CAROUSEL_KEY = 'fincas:carousel';
 
+function logProductJsonSize(products: Product[]) {
+  console.log('Taille produits:', JSON.stringify(products).length, 'bytes');
+}
+
 export async function getProducts(): Promise<Product[]> {
   try {
     // Source principale en prod: Redis (si configuré)
@@ -111,6 +115,7 @@ export async function getProducts(): Promise<Product[]> {
         const data = await getRedis().get<Product[]>(PRODUCTS_KEY);
         if (data && data.length > 0) {
           console.log(`✅ ${data.length} produits chargés depuis Redis`);
+          logProductJsonSize(data);
           return data;
         }
         console.warn('⚠️  Redis vide, fallback vers JSON embarqué/fichier');
@@ -129,6 +134,7 @@ export async function getProducts(): Promise<Product[]> {
 
         if (Array.isArray(products) && products.length > 0) {
           console.log(`✅ ${products.length} produits chargés depuis PRODUCTS (bundle Vercel)`);
+          logProductJsonSize(products);
           return products;
         }
 
@@ -160,9 +166,11 @@ export async function getProducts(): Promise<Product[]> {
       
       if (!Array.isArray(products)) {
         console.error(`❌ Les données ne sont pas un tableau:`, typeof products);
+        logProductJsonSize([]);
         return [];
       }
       
+      logProductJsonSize(products);
       return products;
     } catch (error) {
       console.error(`❌ Erreur lecture fichier ${dataFile}:`, error);
@@ -170,10 +178,12 @@ export async function getProducts(): Promise<Product[]> {
         console.error(`   Message: ${error.message}`);
         console.error(`   Code: ${(error as NodeJS.ErrnoException).code}`);
       }
+      logProductJsonSize([]);
       return [];
     }
   } catch (error) {
     console.error('❌ Erreur lors de la récupération des produits:', error);
+    logProductJsonSize([]);
     return [];
   }
 }
