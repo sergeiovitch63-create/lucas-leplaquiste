@@ -27,17 +27,19 @@ function ReserveNowCard({
   logoUrl,
   fallbackLogoUrl,
   locale,
+  reserveHref,
 }: {
   logoUrl?: string;
   fallbackLogoUrl: string;
   locale: MarinaLocale;
+  reserveHref?: string;
 }) {
   const logoSrc = logoUrl || fallbackLogoUrl;
   const label = getMarinaTranslation(locale, "reserve-now");
 
   return (
     <a
-      href="https://wa.me/34614202296"
+      href={reserveHref || "https://wa.me/34614202296"}
       target="_blank"
       rel="noreferrer"
       className="block w-full"
@@ -327,7 +329,7 @@ export function MarinaMasajeContent({
     });
   };
 
-  const { brandName, location, avatarUrl, reserveCardLogoUrl, masseuseCarouselImages, quickActions, links } = config;
+  const { brandName, location, avatarUrl, reserveHref, reserveCardLogoUrl, masseuseCarouselImages, quickActions, links } = config;
   const ourServicesLabel = getMarinaTranslation(locale, "our-services");
 
   return (
@@ -377,6 +379,7 @@ export function MarinaMasajeContent({
             logoUrl={reserveCardLogoUrl}
             fallbackLogoUrl={avatarUrl}
             locale={locale}
+            reserveHref={reserveHref}
           />
         </div>
 

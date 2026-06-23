@@ -25,6 +25,8 @@ export interface MarinaConfig {
   brandName: string;
   location: string;
   avatarUrl: string;
+  /** Lien de la card "Reserve now" (par défaut le WhatsApp de Marina) */
+  reserveHref?: string;
   reserveCardLogoUrl?: string;
   /** Images du carrousel "Your Masseuse" (public/media/) */
   masseuseCarouselImages: string[];
