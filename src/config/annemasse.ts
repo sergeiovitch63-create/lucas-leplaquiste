@@ -39,12 +39,8 @@ export const annemasseConfig: MarinaConfig = {
   // Lien placeholder de la card "Reserve now"
   reserveHref: "https://wa.me/33000000000",
   reserveCardLogoUrl: "/media/RESERVE-NOW.png",
-  masseuseCarouselImages: [
-    "/media/votre-masseuse1.jpg",
-    "/media/votre-masseuse2.jpg",
-    "/media/votre-masseuse3.jpg",
-    "/media/votre-masseuse4.jpg",
-  ],
+  // Carrousel "Your Masseuse" masqué sur le clone Annemasse
+  masseuseCarouselImages: [],
   quickActions: annemasseQuickActions,
   links: [...massageCategoryLinks],
 };
